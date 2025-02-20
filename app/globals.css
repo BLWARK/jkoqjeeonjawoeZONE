@@ -2,20 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Tambahkan di globals.css */
+.bg-green-500 { background-color: #22c55e !important; }
+.bg-blue-500 { background-color: #3b82f6 !important; }
+.bg-red-500 { background-color: #ef4444 !important; }
+.bg-yellow-500 { background-color: #eab308 !important; }
+.bg-pink-500 { background-color: #ec4899 !important; }
+.bg-purple-500 { background-color: #a855f7 !important; }
+.bg-orange-500 { background-color: #f97316 !important; }
+.bg-gray-500 { background-color: #6b7280 !important; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+.judul-besar {
+    font-size: 24px;
+    font-weight: bold;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  
+  .judul-sangat-besar {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .sub-judul {
+    font-weight: bold;
+  }
