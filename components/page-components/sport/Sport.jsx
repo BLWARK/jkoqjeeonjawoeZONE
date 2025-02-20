@@ -1,7 +1,7 @@
 import React from "react";
 import sportNews from "@/data/sportNews"; // Import data berita olahraga
-import MainSport from "./MainSport/MainSport";
-import BottomSport from "./BottomSport/BottomSport";
+import MainSport from "../sport/mainSport/MainSport";
+import BottomSport from "../sport/bottomSport/BottomSport";
 import Ads from "@/components/page-components/adv-sect/AdvBottomHead"
 
 const Sport = () => {
