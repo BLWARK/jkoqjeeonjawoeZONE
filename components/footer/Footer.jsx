@@ -51,15 +51,15 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center  text-sm text-gray-400 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto px-6  gap-8">
+      <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col-reverse md:flex-row justify-between items-center  text-sm text-gray-400 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto px-6  gap-8">
         {/* Copyright */}
         <p className="italic">© 2025 XYZ Creative Group. All Rights Reserved.</p>
 
         {/* Additional Links */}
         <div className="flex space-x-6">
-          <Link href="/kontak" className="hover:underline">Kontak</Link>
-          <Link href="/advertise" className="hover:underline">Advertise</Link>
-          <Link href="/ecosystem" className="hover:underline">Ecosystem</Link>
+          <Link href="/kontak" className="hover:text-pink-500">Kontak</Link>
+          <Link href="/advertise" className="hover:text-pink-500">Advertise</Link>
+          <Link href="/ecosystem" className="hover:text-pink-500">Ekosistem</Link>
         </div>
       </div>
     </footer>

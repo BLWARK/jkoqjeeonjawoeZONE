@@ -3,7 +3,7 @@ import React from "react";
 const Subscribe = () => {
   return (
     <div className="bg-gray-700 py-16 mt-10 w-screen">
-      <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 ">
+      <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 2xl:px-0 px-3 ">
         
         {/* Left Section - Subscription Info */}
         <div className="lg:w-[50%] w-full text-start lg:text-left">
@@ -31,15 +31,15 @@ const Subscribe = () => {
         </div>
 
         {/* Right Section - Subscription Form */}
-        <div className="lg:w-[50%] w-full bg-pink-900 text-white rounded-lg p-10">
+        <div className="lg:w-[50%] w-full bg-pink-900 text-white rounded-lg 2xl:p-10 p-8">
           <h3 className="text-lg font-semibold">Enter your email for our free Newsletter</h3>
           <div className="mt-4 flex">
             <input
               type="email"
               placeholder="Email"
-              className="w-full p-3 rounded-l-lg border border-gray-300 text-white focus:outline-none"
+              className="w-full p-3 rounded-l-lg border border-gray-300 text-black focus:outline-none"
             />
-            <button className="bg-pink-400 px-8 rounded-r-lg text-white font-semibold hover:bg-blue-500 text-nowrap">
+            <button className="bg-pink-400 2xl:px-8 px-3 rounded-r-lg text-white font-semibold hover:bg-blue-500 text-nowrap">
               Sign Up
             </button>
           </div>

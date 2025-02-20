@@ -27,7 +27,7 @@ const HomePage = () => {
       <section className="teknologi 2xl:px-0 px-3"><Teknologi/></section>
       <section className="sport 2xl:px-0 px-3"><Sport/></section>
       <section className="gaya-hidup 2xl:px-0 px-3"><Lifestyle/></section>
-      <section className="subscribe 2xl:px-0 xl:px-0 lg:px-0 px-3"><Subscribe/></section>
+      <section className="subscribe 2xl:px-0 xl:px-0 lg:px-0 px-0"><Subscribe/></section>
      
     </div>
   );
