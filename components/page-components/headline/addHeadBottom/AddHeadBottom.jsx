@@ -29,6 +29,7 @@ const AddHeadBottom = () => {
                   src={headline.image}
                   alt={headline.title}
                   fill
+                  loading="lazy"
                   className="object-cover p-4"
                 />
               </div>

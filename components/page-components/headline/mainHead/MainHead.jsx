@@ -20,7 +20,10 @@ const MainHead = () => {
         alt={mainHeadline.title}
         className="rounded-lg"
         fill
+        sizes="100vw"
         style={{ objectFit: "cover" }}
+        priority
+        
       />
 
       {/* Overlay */}
