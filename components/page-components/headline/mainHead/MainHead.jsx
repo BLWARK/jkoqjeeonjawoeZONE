@@ -22,7 +22,7 @@ const MainHead = () => {
         fill
         sizes="100vw"
         style={{ objectFit: "cover" }}
-        priority
+        priority={true}
         
       />
 
