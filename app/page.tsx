@@ -3,7 +3,7 @@ import Headline from "@/components/page-components/headline/Headline";
 import PilihanEditor from "@/components/page-components/pilihan-editor/topEditorChoice/PilihanEditor"
 import LatestNews from "@/components/page-components/latestNews/LatestNews";
 import PopularNews from "@/components/page-components/popularNews/PopularNews";
-// import Xyzonetv from "@/components/page-components/xyzonetv/Xyzonetv";
+import Xyzonetv from "@/components/page-components/xyzonetv/Xyzonetv";
 import Hiburan from "@/components/page-components/hiburan/Hiburan";
 import Teknologi from "@/components/page-components/teknologi/Teknologi"
 import Sport from "@/components/page-components/sport/Sport"
@@ -22,7 +22,7 @@ const HomePage = () => {
       <section className="pilihan-editor 2xl:px-0 px-3"><PilihanEditor/></section>
       <section className="pppular-news 2xl:px-0"><PopularNews/></section>
       <section className="latest-news 2xl:px-0 px-3"><LatestNews/></section>
-      {/* <section className="XYZONETV 2xl:px-0 px-0"><Xyzonetv/></section> */}
+      <section className="XYZONETV 2xl:px-0 px-0"><Xyzonetv/></section>
       <section className="Hiburan 2xl:px-0 px-3"><Hiburan/></section>
       <section className="teknologi 2xl:px-0 px-3"><Teknologi/></section>
       <section className="sport 2xl:px-0 px-3"><Sport/></section>
