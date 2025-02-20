@@ -38,9 +38,9 @@ const HiburanRight = ({ articles = [] }) => {  // ✅ Menerima data dari props
 
               {/* Judul Artikel */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h4 className="text-md font-semibold hover:underline cursor-pointer mt-2">
+                <h2 className="text-md font-semibold hover:underline cursor-pointer mt-2">
                   {article.title}
-                </h4>
+                </h2>
               </Link>
 
               {/* Author & Date */}

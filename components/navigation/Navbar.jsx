@@ -46,7 +46,7 @@ const Navbar = () => {
 
         {/* Mobile Navbar */}
         <div className="bg-pink-600 md:hidden flex items-center justify-start gap-4 px-4 py-6">
-          <button onClick={toggleMenu} className="text-white text-2xl">
+          <button title="Hamburger Togle" aria-label="Hamburger" onClick={toggleMenu} className="text-white text-2xl">
             {mobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
           <div className="relative w-28 h-8">

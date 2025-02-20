@@ -50,9 +50,9 @@ const AddBottomEditor = () => {
 
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
-                <h4 className="text-md font-semibold hover:underline cursor-pointer 2xl:text-lg">
+                <h2 className="text-md font-semibold hover:underline cursor-pointer 2xl:text-lg">
                   {sliceTitle(article.title)}
-                </h4>
+                </h2>
               </Link>
 
               {/* Author & Date */}

@@ -45,9 +45,9 @@ const PilihanEditorComponent = () => {
 
               {/* Judul */}
               <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`} passHref>
-                <h3 className="text-3xl font-bold hover:underline cursor-pointer mt-2">
+                <h2 className="text-3xl font-bold hover:underline cursor-pointer mt-2">
                   {sliceTitle(mainArticle.title)}
-                </h3>
+                </h2>
               </Link>
 
               <p className="text-gray-500 mt-2 text-sm">{mainArticle.description}</p>

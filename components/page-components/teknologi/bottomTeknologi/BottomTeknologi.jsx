@@ -26,9 +26,9 @@ const BottomTeknologi = ({ bottomArticles }) => {
             <div className="flex flex-col justify-between h-full">
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h4 className="text-md font-semibold hover:underline cursor-pointer mt-1">
+                <h2 className="text-md font-semibold hover:underline cursor-pointer mt-1">
                   {sliceTitle(article.title, 6)}
-                </h4>
+                </h2>
               </Link>
 
               {/* Author & Date */}

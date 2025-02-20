@@ -38,9 +38,9 @@ const MainSport = ({ topArticles }) => {
 
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h3 className="text-white text-lg font-bold leading-tight hover:underline cursor-pointer">
+                <h2 className="text-white text-lg font-bold leading-tight hover:underline cursor-pointer">
                   {sliceTitle(article.title)}
-                </h3>
+                </h2>
               </Link>
 
               {/* Author & Date */}

@@ -29,9 +29,9 @@ const BottomPopular = ({ bottomArticles }) => {
             <div className="flex-1">
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h4 className="text-lg font-semibold hover:underline cursor-pointer text-white">
+                <h2 className="text-lg font-semibold hover:underline cursor-pointer text-white">
                   {sliceTitle(article.title, 8)}
-                </h4>
+                </h2>
               </Link>
 
               {/* Author & Date */}

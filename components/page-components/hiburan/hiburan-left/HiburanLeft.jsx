@@ -43,9 +43,9 @@ const HiburanLeft = ({ articles = [] }) => {
 
               {/* Judul Artikel */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h4 className="text-md font-semibold hover:underline cursor-pointer mt-2">
+                <h2 className="text-md font-semibold hover:underline cursor-pointer mt-2">
                   {sliceTitle(article.title)}
-                </h4>
+                </h2>
               </Link>
 
               {/* Author & Date */}

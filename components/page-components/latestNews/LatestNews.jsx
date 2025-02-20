@@ -66,9 +66,9 @@ const LatestNews = () => {
 
                 {/* Judul Artikel */}
                 <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
-                  <h4 className="text-lg font-semibold hover:underline cursor-pointer mt-2">
+                  <h2 className="text-lg font-semibold hover:underline cursor-pointer mt-2">
                     {sliceTitle(article.title)}
-                  </h4>
+                  </h2>
                 </Link>
 
                 {/* Author & Date */}

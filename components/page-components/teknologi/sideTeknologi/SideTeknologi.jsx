@@ -42,9 +42,9 @@ const SideTeknologi = ({ sideArticles }) => {
             {/* Judul & Author */}
             <div className="mt-2">
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h4 className="text-md font-semibold hover:underline cursor-pointer">
+                <h2 className="text-md font-semibold hover:underline cursor-pointer">
                   {sliceTitle(article.title)}
-                </h4>
+                </h2>
               </Link>
 
               {/* Author & Date */}

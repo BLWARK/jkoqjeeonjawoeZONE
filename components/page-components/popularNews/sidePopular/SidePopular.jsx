@@ -35,9 +35,9 @@ const SidePopular = ({ sideArticles }) => {
 
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
-                <h3 className="text-white text-md font-bold leading-tight hover:underline cursor-pointer mt-3">
+                <h2 className="text-white text-md font-bold leading-tight hover:underline cursor-pointer mt-3">
                   {sliceTitle(article.title, 6)}
-                </h3>
+                </h2>
               </Link>
 
               {/* Author & Date */}
