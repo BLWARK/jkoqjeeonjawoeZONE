@@ -15,7 +15,7 @@ const users = [
     },
     {
       id: 2,
-      name: "Logan Wolfrine",
+      name: "Logan",
       nickname: "Logan Wolfrine",
       email: "logan@gmail.com",
       phone: "+1-555-0202",

@@ -8,7 +8,7 @@ const headline = [
     description: "Maya Septha mengungkapkan pengalaman operasi plastiknya di Korea yang menghabiskan biaya hingga Rp500 juta.",
     slug: "maya-septha-oplas-di-korea-habis-rp500-juta",
     content: `
-      <p class="judul-sangat-besar">Maya Septha Jalani Operasi Wajah di Korea Selatan</p>
+      
       <p>Aktris cantik Maya Septha baru saja menjalani operasi wajah di Korea Selatan. Ia menjalani prosedur operasi untuk mengatasi masalah kantong mata.</p>
       <br>
       <p>Melalui akun Instagramnya, ia membagikan foto terbaru setelah tiga bulan pascaoperasi dan mengungkapkan kebahagiaannya terhadap hasil yang didapat.</p>
@@ -47,7 +47,7 @@ const headline = [
     `,
     tags: ["Maya Septha", "Oplas", "Korea"],
     category: ["hiburan", "selebriti"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
     id: 2,
@@ -100,10 +100,10 @@ const headline = [
     `,
     tags: ["Gemini AI", "Android", "Google"],
     category: ["teknologi", "AI"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
-    id: 1,
+    id: 3,
     title: "Benarkah Puasa Intermiten Bisa Pengaruhi Tumbuh Kembang Remaja? Ini Faktanya",
     type: "headline",
     image: "/puasa-intermiten-remaja.jpg",
@@ -148,7 +148,7 @@ const headline = [
     `,
     tags: ["Puasa Intermiten", "Diet", "Kesehatan Remaja", "Gaya Hidup"],
     category: ["lifestyle", "health"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
     id: 4,
@@ -188,7 +188,7 @@ const headline = [
     `,
     tags: ["Manchester City", "Real Madrid", "Liga Champions"],
     category: ["olahraga", "football"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
     id: 5 ,
@@ -224,7 +224,7 @@ const headline = [
     `,
     tags: ["iPhone 17", "Apple", "Teknologi"],
     category: ["teknologi", "smartphone"],
-    authorIds: [2],
+    authorId: 2,
   },
   ];
   

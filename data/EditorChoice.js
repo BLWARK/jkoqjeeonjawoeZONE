@@ -4,7 +4,7 @@ const editorChoice= [
   {
     id: 1,
     title: "Niantic, Pencipta Pokémon Go Akan Lepas Divisi Gim Senilai Rp57,1 Miliar",
-    type: "news",
+    type: "editor",
     image: "/niantic-pokemon-go.jpg",
     date: "Feb 19 2025",
     description: "Niantic, pencipta Pokémon Go, tengah bernegosiasi dengan Scopely untuk menjual divisi gim mereka senilai Rp57,1 miliar.",
@@ -35,12 +35,12 @@ const editorChoice= [
     `,
     tags: ["Niantic", "Pokémon Go", "Augmented Reality", "Teknologi Gim"],
     category: ["teknologi", "gaming"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
     id: 2,
     title: "Rumah Nicole Kidman dan Keith Urban di Beverly Hills Dibobol Rampok",
-    type: "news",
+    type: "editor",
     image: "/nicole-kidman-keith-urban.jpg",
     date: "Feb 19 2025",
     description: "Rumah Nicole Kidman dan Keith Urban di Beverly Hills disatroni perampok saat pasangan itu tidak berada di tempat.",
@@ -85,12 +85,12 @@ const editorChoice= [
     `,
     tags: ["Nicole Kidman", "Keith Urban", "Hollywood", "Perampokan"],
     category: ["hiburan", "celebrity"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
     id: 3,
     title: "Inovasi Canggih Bisa Ubah Panas Buangan Kendaraan Jadi Listrik",
-    type: "news",
+    type: "editor",
     image: "/panas-buangan-jadi-listrik.jpg",
     date: "Feb 16 2025",
     description: "Para peneliti dari Pennsylvania State University mengembangkan teknologi yang mampu mengubah panas buangan kendaraan menjadi listrik.",
@@ -136,12 +136,12 @@ const editorChoice= [
     `,
     tags: ["Teknologi Energi", "Termoelektrik", "Lingkungan"],
     category: ["teknologi", "energi"],
-    authorIds: [2],
+    authorId: 2,
   },
   {
     id: 4,
     title: "Malaysia Geser Thailand sebagai Destinasi Wisata Terpopuler ASEAN",
-    type: "news",
+    type: "editor",
     image: "/malaysia-pariwisata.jpg",
     date: "Feb 19 2025",
     description: "Malaysia mencatat sejarah baru dengan menyalip Thailand sebagai destinasi wisata paling banyak dikunjungi di ASEAN dengan 38 juta wisatawan.",
@@ -182,33 +182,9 @@ const editorChoice= [
     `,
     tags: ["Malaysia", "Pariwisata", "ASEAN", "Wisata Internasional"],
     category: ["lifestyle", "travel"],
-    authorIds: [2],
+    authorId: 1,
   },
 
-    {
-        id: 5,
-        title: "Bitcoin kembali mencetak rekor harga tertinggi, mencapai $94.000 per koin pada 20 November 2024. ",
-        type: "Editor",
-        image: "/Editor4.jpg",
-        date: "Dec 17 2024",
-        description:
-          "Bitcoin kembali mencetak rekor harga tertinggi, mencapai $94.000 per koin pada 20 November 2024.",
-        slug: "Bitcoin-kembali-mencetak-rekor-harga-tertinggi-mencapai-$94.000-per-koin-pada-20-November-2024.",
-        content: `
-          <p>Beberapa analis memproyeksikan bahwa harga Bitcoin dapat mencapai $115.000 dalam waktu dekat. Laporan dari 10X Research menunjukkan bahwa aktivitas opsi BlackRock Bitcoin ETF (IBIT) menjadi salah satu pendorong utama, dengan rasio opsi call terhadap put mencapai 5,5:1 pada 22 November. Pembeli opsi call menargetkan harga antara 110-120% dari nilai saat ini, mengindikasikan ekspektasi bahwa Bitcoin akan melampaui $100.000 sebelum Natal.</p>
-          <br>
-          <strong style="font-size: 24px;">Potensi Risiko: Short Squeeze</strong><br><br>
-          <p>Meskipun prospek kenaikan harga terlihat menjanjikan, ada spekulasi mengenai potensi short squeeze jika harga Bitcoin mencapai $100.000. Investor disarankan untuk berhati-hati dan mempertimbangkan volatilitas pasar yang mungkin terjadi. </p>
-          <br>
-          <p>Dengan berbagai faktor pendukung, Bitcoin menunjukkan potensi untuk mencapai harga $115.000 dalam waktu dekat. Namun, investor harus tetap waspada terhadap risiko pasar dan melakukan analisis menyeluruh sebelum mengambil keputusan investasi.</p>
-          <br>
-          
-         
-          `,
-        tags: ["Crypto", "Prediction", "Bitcoin"],
-        category: ["Lifestyle"],
-        authorIds: [2],
-      },
       
       
     ];

@@ -17,7 +17,7 @@ const MainSport = ({ topArticles }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {topArticles.map((article) => {
-        const author = getAuthorById(article.authorIds[0]);
+        const author = getAuthorById(article.authorId); // ✅ FIX: Pakai `authorId`, bukan `authorIds[0]`
         return (
           <div key={article.id} className="relative w-full">
             {/* Gambar */}
@@ -28,11 +28,13 @@ const MainSport = ({ topArticles }) => {
             {/* Overlay Judul, Kategori, Author, dan Date */}
             <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex flex-col justify-end p-4">
               {/* Kategori */}
-              <span
-                className={`inline-block max-w-max px-3 py-1 text-xs font-semibold text-white rounded mb-2 ${getCategoryColor(article.category[0])}`}
-              >
-                {article.category[0]}
-              </span>
+              {article.category && (
+                <span
+                  className={`inline-block max-w-max px-3 py-1 text-xs font-semibold text-white rounded mb-2 ${getCategoryColor(article.category[0])}`}
+                >
+                  {article.category[0]}
+                </span>
+              )}
 
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
@@ -43,8 +45,10 @@ const MainSport = ({ topArticles }) => {
 
               {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-300 mt-2">
-                {author?.photo && (
+                {author?.photo ? (
                   <Image src={author.photo} alt={author.name} width={20} height={20} className="rounded-full" />
+                ) : (
+                  <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                 )}
                 <span className="ml-2">{author?.name || "Unknown Author"}</span>
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>

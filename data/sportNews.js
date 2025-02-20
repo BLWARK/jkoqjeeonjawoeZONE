@@ -34,7 +34,7 @@ const sportNews = [
         `,
         tags: ["Liverpool", "You'll Never Walk Alone", "Sepak Bola"],
         category: ["olahraga", "football"],
-        authorIds: [1],
+        authorId: 1,
       },
       {
         id: 2,
@@ -79,7 +79,7 @@ const sportNews = [
         `,
         tags: ["Timnas Indonesia", "Piala Asia U-20", "Sepak Bola"],
         category: ["olahraga", "football"],
-        authorIds: [2],
+        authorId: 2,
       },
       {
         id: 3,
@@ -138,48 +138,9 @@ const sportNews = [
         `,
         tags: ["Cristiano Ronaldo", "Kupang", "Sepak Bola"],
         category: ["olahraga", "football"],
-        authorIds: [3],
+        authorId: 3,
       },
-      {
-        id: 4,
-        title: "Pep Guardiola Sebut Manchester City Sulit Mengalahkan Real Madrid, Ini Kata Ancelotti",
-        type: "news",
-        image: "/pep-guardiola-ancelotti.jpg",
-        date: "Feb 12 2025",
-        description: "Carlo Ancelotti menanggapi klaim Pep Guardiola yang menyebut peluang Manchester City untuk menang atas Real Madrid hanya satu persen.",
-        slug: "pep-guardiola-manchester-city-sulit-kalahkan-real-madrid",
-        content: `
-          
-          <p>Pelatih <strong>Real Madrid</strong>, <strong>Carlo Ancelotti</strong>, menanggapi pernyataan <strong>Pep Guardiola</strong> mengenai peluang kemenangan <strong>Manchester City</strong> di leg kedua playoff <strong>Liga Champions</strong>.</p>
-          <br>
-          <p class="judul-besar">Guardiola Klaim Peluang Manchester City Hanya 1%</p>
-          <p>Sebelumnya, <strong>Guardiola</strong> mengklaim bahwa timnya hanya memiliki peluang <strong>satu persen</strong> untuk menang saat bertandang ke markas <strong>Real Madrid</strong> dalam leg kedua playoff Liga Champions.</p>
-          <p>Pada leg pertama, <strong>Real Madrid</strong> sukses melakukan <strong>comeback dramatis</strong> dengan kemenangan <strong>3-2</strong> di kandang Manchester City.</p>
-          <br>
-          <p>Meski tertinggal secara agregat, <strong>Ancelotti</strong> menegaskan bahwa Manchester City bukanlah tim underdog dalam pertandingan leg kedua.</p>
-          <br>
-          <blockquote>
-            "Apakah Anda benar-benar percaya saat Guardiola mengatakan peluang mereka hanya satu persen? Saya rasa tidak. Saya bahkan akan menanyakannya langsung besok sebelum pertandingan," ujar Ancelotti dalam wawancara di situs resmi klub pada Rabu (19/2/2025).
-          </blockquote>
-          <br>
-          <p>Pelatih asal Italia itu juga menambahkan bahwa laga nanti akan berlangsung sengit, dan timnya akan bermain <strong>seolah-olah skor masih imbang</strong>.</p>
-          <blockquote>
-            "Tidak ada yang benar-benar percaya ketika Anda meminta pemain untuk bertanding seolah-olah skor masih 0-0. Anda bisa memengaruhi persiapan tim, tetapi tidak mungkin sepenuhnya mengabaikan keunggulan yang sudah kami raih di leg pertama," tambahnya.
-          </blockquote>
-          <br>
-          <p class="judul-besar">Performa Terakhir Kedua Tim</p>
-          <p>Menjelang duel penentuan di <strong>Santiago Bernabeu</strong>, kedua tim menjalani laga domestik dengan hasil yang cukup kontras.</p>
-          <p><strong>Manchester City</strong> tampil gemilang dengan menghancurkan <strong>Newcastle 4-0</strong> berkat trigol <strong>Omar Marmoush</strong> dan satu gol <strong>James McAtee</strong> di Premier League.</p>
-          <br>
-          <p>Sementara itu, <strong>Real Madrid</strong> harus puas bermain <strong>imbang 1-1</strong> melawan <strong>Osasuna</strong> di LaLiga.</p>
-          <p>Pertandingan ini diwarnai kartu merah untuk <strong>Jude Bellingham</strong>, meski sempat unggul lebih dulu lewat gol <strong>Kylian Mbappe</strong>.</p>
-          <br>
-          <p>Dengan kondisi tersebut, laga leg kedua antara <strong>Real Madrid</strong> dan <strong>Manchester City</strong> di <strong>Liga Champions</strong> dipastikan akan berlangsung ketat dan penuh drama.</p>
-        `,
-        tags: ["Manchester City", "Real Madrid", "Liga Champions"],
-        category: ["olahraga", "football"],
-        authorIds: [2],
-      },
+      
       {
         id: 5,
         title: "Hasil Playoff Liga Champions: Bayern, Feyenoord, Brugge dan Benfica Lolos ke Babak 16 Besar",
@@ -239,7 +200,7 @@ const sportNews = [
         `,
         tags: ["Liga Champions", "Bayern Munich", "Benfica", "Feyenoord", "Club Brugge"],
         category: ["olahraga", "football"],
-        authorIds: [2],
+        authorId: 2,
       },
       {
         id: 6,
@@ -275,7 +236,7 @@ const sportNews = [
         `,
         tags: ["Jay Idzes", "Venezia", "Serie A", "Genoa"],
         category: ["olahraga", "football"],
-        authorIds: [2],
+        authorId: 2,
       },
       {
         id: 7,
@@ -312,7 +273,7 @@ const sportNews = [
         `,
         tags: ["Barcelona", "LaLiga", "Rayo Vallecano", "Robert Lewandowski"],
         category: ["olahraga", "football"],
-        authorIds: [2],
+        authorId: 2,
       },
 
 

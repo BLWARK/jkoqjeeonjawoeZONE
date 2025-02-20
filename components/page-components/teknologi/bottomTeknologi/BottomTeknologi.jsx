@@ -14,7 +14,7 @@ const BottomTeknologi = ({ bottomArticles }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
       {bottomArticles.map((article) => {
-        const author = getAuthorById(article.authorIds[0]);
+        const author = getAuthorById(article.authorId); // ✅ FIXED: Ambil berdasarkan `authorId`
         return (
           <div key={article.id} className="flex items-start gap-4">
             {/* Gambar kecil */}
@@ -23,7 +23,7 @@ const BottomTeknologi = ({ bottomArticles }) => {
             </div>
 
             {/* Detail Berita */}
-            <div className=" flex flex-col justify-between h-full">
+            <div className="flex flex-col justify-between h-full">
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`}>
                 <h4 className="text-md font-semibold hover:underline cursor-pointer mt-1">
@@ -33,9 +33,23 @@ const BottomTeknologi = ({ bottomArticles }) => {
 
               {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-500 mt-1 w-full">
-                
-                
-                <span className="2xl:text-md xl:text-md lg:text-xs text-nowrap">{article.date}</span>
+                {author?.photo && (
+                  <Image
+                    src={author.photo}
+                    alt={author.name}
+                    width={20}
+                    height={20}
+                    className="rounded-full"
+                  />
+                )}
+                <span className="ml-2">{author?.name || "Unknown Author"}</span>
+
+                {/* Garis pemisah */}
+                <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
+
+                <span className="2xl:text-md xl:text-md lg:text-xs text-nowrap">
+                  {new Date(article.date).toLocaleDateString()}
+                </span>
               </div>
             </div>
           </div>

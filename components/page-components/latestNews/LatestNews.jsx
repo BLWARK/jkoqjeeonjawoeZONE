@@ -17,12 +17,12 @@ const allNews = [...news, ...sportNews, ...teknologiNews, ...lifestyleNews, ...e
   .map((article, index) => ({
     ...article,
     uniqueId: `${article.category[0]}-${article.id}-${index}`, // Tambahkan ID unik agar tidak bentrok
-    date: new Date(article.date), // Ubah tanggal ke format Date untuk sorting
+    dateObj: new Date(article.date), // Ubah tanggal ke format Date untuk sorting
   }))
-  .sort((a, b) => b.date - a.date); // Urutkan berita dari terbaru ke terlama
+  .sort((a, b) => b.dateObj - a.dateObj); // Urutkan berita dari terbaru ke terlama
 
 // Fungsi mendapatkan author berdasarkan ID
-const getAuthorById = (authorId) => users.find((user) => user.id === authorId);
+const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
 
 // Fungsi memotong judul menjadi maksimal 10 kata
 const sliceTitle = (title, maxWords = 10) => {
@@ -52,7 +52,7 @@ const LatestNews = () => {
         </div>
 
         {allNews.slice(0, visibleNews).map((article) => {
-          const author = getAuthorById(article.authorIds[0]); // Ambil author pertama
+          const author = getAuthorById(article.authorId); // ✅ FIX: Pakai `authorId`, bukan `authorIds[0]`
           return (
             <div key={article.uniqueId} className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse items-start gap-6 border-b border-gray-300 pb-4">
               {/* Konten Berita */}
@@ -73,24 +73,18 @@ const LatestNews = () => {
 
                 {/* Author & Date */}
                 <div className="flex items-center text-sm text-gray-500 mt-2">
-                  {author && (
-                    <div className="flex items-center gap-2">
-                      <Image
-                        src={author.photo}
-                        alt={author.name}
-                        width={20}
-                        height={20}
-                        className="rounded-full"
-                      />
-                      <span>{author.name}</span>
-                    </div>
+                  {author?.photo ? (
+                    <Image src={author.photo} alt={author.name} width={20} height={20} className="rounded-full" />
+                  ) : (
+                    <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                   )}
+                  <span className="ml-2">{author?.name || "Unknown Author"}</span>
 
                   {/* Garis Pemisah */}
                   <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
 
                   {/* Date */}
-                  <span>{article.date.toDateString()}</span>
+                  <span>{article.dateObj.toDateString()}</span>
                 </div>
               </div>
 

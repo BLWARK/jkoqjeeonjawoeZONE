@@ -13,7 +13,7 @@ const HiburanMain = ({ article }) => {
       <p className="text-gray-500 text-center">❌ Tidak ada berita utama.</p>
     );
 
-  const author = getAuthorById(article.authorIds?.[0]);
+  const author = getAuthorById(article.authorIds);
 
   return (
     <div className="w-full relative col-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 order-1 2xl:order-2 xl:order-2 lg:order-2">

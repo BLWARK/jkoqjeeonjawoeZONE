@@ -1,57 +1,8 @@
 const entertainmentNews = [
-    {
-        id: 1,
-        title: "Maya Septha Oplas di Korea Habis Rp500 Juta, Bagian Tubuh Mana yang Diperbaiki?",
-        type: "news",
-        image: "/maya-septha-oplas.jpeg",
-        date: "Feb 20 2025",
-        description: "Maya Septha mengungkapkan pengalaman operasi plastiknya di Korea yang menghabiskan biaya hingga Rp500 juta.",
-        slug: "maya-septha-oplas-di-korea-habis-rp500-juta",
-        content: `
-          <p class="judul-sangat-besar">Maya Septha Jalani Operasi Wajah di Korea Selatan</p>
-          <p>Aktris cantik Maya Septha baru saja menjalani operasi wajah di Korea Selatan. Ia menjalani prosedur operasi untuk mengatasi masalah kantong mata.</p>
-          <br>
-          <p>Melalui akun Instagramnya, ia membagikan foto terbaru setelah tiga bulan pascaoperasi dan mengungkapkan kebahagiaannya terhadap hasil yang didapat.</p>
-          <blockquote>
-            "Bengkaknya sudah jauh berkurang, kantong mataku pun mulai sirna. Bye-bye mata lelah! I feel younger," tulisnya di media sosial.
-          </blockquote>
-          <br>
-          <p class="judul-besar">Biaya Operasi Capai Lebih dari Rp500 Juta</p>
-          <p>Ketika ditanya mengenai operasi plastik yang dijalaninya, Maya Septha mengungkapkan bahwa nominal yang dikeluarkannya mencapai lebih dari Rp500 juta.</p>
-          <p>Nominal tersebut belum termasuk biaya penginapan yang dibutuhkannya selama berada di Korea Selatan.</p>
-          <blockquote>
-            "Lebih (dari Rp500 juta), belum termasuk penginapan," kata Maya Septha dalam tayangan FYP Trans7.
-          </blockquote>
-          <br>
-          <p>Meski begitu, ia bersyukur karena keuangan keluarga tidak terganggu dan suaminya, Krisna Wardhana Sidarta, tak mempermasalahkan keputusan tersebut.</p>
-          <blockquote>
-            "Kayaknya dia (suami) pasrah aja deh, mungkin karena aku nggak ada ganggu keuangan keluarga, jadi aman ya," tutur Maya Septha.
-          </blockquote>
-          <br>
-          <p class="judul-besar">Awalnya Ditolak Suami</p>
-          <p>Bintang film <em>Rumput Tetangga</em> itu mengaku sempat menghadapi penolakan dari suaminya saat pertama kali mengungkapkan niat untuk melakukan operasi wajah.</p>
-          <blockquote>
-            "Kalau suami aku (pas awal minta buat operasi bilangnya) 'nggak usahlah nggak perlu', tapi karena aku minta terus setiap hari, akhirnya (suami bilang) 'ya bolehlah'," jelasnya.
-          </blockquote>
-          <br>
-          <p>Setelah menjalani operasi, Maya Septha merasakan tantangan di minggu-minggu awal pemulihan. Namun, kini kondisinya sudah jauh lebih baik.</p>
-          <blockquote>
-            "Sekarang udah aman banget, yang bikin stres tuh satu minggu pertama tuh stres banget, dua minggu udah oke banget. Tinggal bengkak-bengkak dikit aja," bebernya.
-          </blockquote>
-          <br>
-          <p class="judul-besar">Menunggu Hasil Akhir</p>
-          <p>Pilihan Maya Septha untuk melakukan operasi plastik pada wajahnya sudah terpikirkan sejak lama. Saat ini, ibu tiga anak masih menunggu hasil akhir dari prosedur yang dijalaninya.</p>
-          <blockquote>
-            "Ini aku udah oke sih (hasil operasi wajahnya). Tapi kan aku nungguin hasil akhirnya (6 bulan lagi), apa gitu kira-kira," pungkasnya.
-          </blockquote>
-        `,
-        tags: ["Maya Septha", "Oplas", "Korea"],
-        category: ["hiburan", "selebriti"],
-        authorIds: [2],
-      },
+    
       
       {
-        id: 2,
+        id: 7,
         title: "In Memoriam, Inilah Deretan Fakta Profil dan Karir Artis Kim Sae-ron",
         type: "news",
         image: "/kim-saeron-profile.jpg",
@@ -95,11 +46,11 @@ const entertainmentNews = [
         `,
         tags: ["Kim Sae-ron", "Korea", "Aktris"],
         category: ["hiburan", "korea"],
-        authorIds: [1],
+        authorId: 1,
       },
       
       {
-        id: 3,
+        id: 8,
         title: "Pernikahan Al Ghazali dan Alyssa Daguise Akan Dimeriahkan Dewa 19 hingga Vina Panduwinata",
         type: "news",
         image: "/al-ghazali-alyssa-daguise.jpg",
@@ -160,10 +111,10 @@ const entertainmentNews = [
         `,
         tags: ["Al Ghazali", "Alyssa Daguise", "Pernikahan"],
         category: ["hiburan", "musik"],
-        authorIds: [1],
+        authorId: 1,
       },
       {
-        id: 4,
+        id: 9,
         title: "Han So-hee dan Won Bin Hadiri Upacara Pemakaman Kim Sae-ron",
         type: "news",
         image: "/han-sohee-won-bin.jpg",
@@ -212,10 +163,10 @@ const entertainmentNews = [
         `,
         tags: ["Han So-hee", "Won Bin", "Kim Sae-ron"],
         category: ["hiburan", "korea"],
-        authorIds: [3],
+        authorId: 3,
       },
     {
-      id: 5,
+      id: 10,
       title: "Cerita Ariel Tatum Dibully Gegara Pacaran dengan Stefan William",
       type: "news",
       image: "/ariel-tatum-stefan.jpeg",
@@ -227,10 +178,10 @@ const entertainmentNews = [
       `,
       tags: ["Ariel Tatum", "Stefan William", "Selebriti"],
       category: ["hiburan", "gossip"],
-      authorIds: [2],
+      authorId: 2,
     },
     {
-      id: 6,
+      id: 11,
       title: "Ngaku Melahirkan Anak ke-13 Elon Musk, Ashley St. Clair Tagih Janji Bos Tesla",
       type: "news",
       image: "/elon-musk-baby.jpeg",
@@ -242,10 +193,10 @@ const entertainmentNews = [
       `,
       tags: ["Elon Musk", "Ashley St. Clair", "Tesla"],
       category: ["hiburan", "internasional"],
-      authorIds: [1],
+      authorId: 1,
     },
     {
-      id: 7,
+      id: 12,
       title: "Profil Daffa Wardhana, Anak Marini Zumarnis Diduga Pacar Ariel Tatum",
       type: "news",
       image: "/daffa-wardhana.jpeg",
@@ -257,10 +208,10 @@ const entertainmentNews = [
       `,
       tags: ["Daffa Wardhana", "Ariel Tatum", "Gossip"],
       category: ["hiburan", "profil"],
-      authorIds: [1],
+      authorId: 1,
     },
     {
-      id: 8,
+      id: 13,
       title: "Cocoklogi Ariel Tatum dan Daffa Wardhana Pacaran, Buket Bunga dan Pancake Hati Jadi Bukti",
       type: "news",
       image: "/ariel-tatum-daffa.jpeg",
@@ -272,7 +223,7 @@ const entertainmentNews = [
       `,
       tags: ["Ariel Tatum", "Daffa Wardhana", "Gossip"],
       category: ["hiburan", "viral"],
-      authorIds: [3],
+      authorId: 3,
     },
   ];
   

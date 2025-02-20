@@ -10,7 +10,7 @@ const HiburanRight = ({ articles = [] }) => {  // ✅ Menerima data dari props
   return (
     <div className="col-span-1 flex flex-col gap-6 order-3 2xl:order-3  xl:order-3 lg:order-3">
       {articles.map((article) => {
-        const author = getAuthorById(article.authorIds?.[0]);
+        const author = getAuthorById(article.authorIds);
         return (
           <div key={article.id} className="flex flex-col ">
             <div className="relative w-full 2xl:h-[180px] h-[250px] ">

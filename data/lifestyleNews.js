@@ -1,52 +1,5 @@
 const lifestyleNews = [
-    {
-      id: 1,
-      title: "Benarkah Puasa Intermiten Bisa Pengaruhi Tumbuh Kembang Remaja? Ini Faktanya",
-      type: "news",
-      image: "/puasa-intermiten-remaja.jpg",
-      date: "Feb 19 2025",
-      description: "Penelitian terbaru menunjukkan bahwa puasa intermiten mungkin memiliki efek berbeda pada remaja dibandingkan orang dewasa.",
-      slug: "puasa-intermiten-pengaruhi-tumbuh-kembang-remaja",
-      content: `
-        
-        <p>Tidak ada satu pola diet pun yang cocok untuk semua orang, terutama ketika tujuan kesehatan yang ingin dicapai berbeda-beda antara individu.</p>
-        <br>
-        <p>Salah satu pola diet yang kini banyak dianut untuk menurunkan berat badan dan meningkatkan metabolisme tengah menjadi perhatian para peneliti, yang menyarankan bahwa diet ini mungkin berisiko bagi remaja.</p>
-        <p>Seperti dikutip dari <strong>Medical Daily</strong>, diet yang dimaksud adalah <strong>puasa intermiten</strong>, yang juga dikenal sebagai <strong>pola makan dengan batasan waktu</strong>. Diet ini melibatkan siklus antara periode puasa dan makan.</p>
-        <br>
-        <p class="judul-besar">Puasa Intermiten dan Pengaruhnya bagi Remaja</p>
-        <p>Penelitian sebelumnya telah menunjukkan bahwa puasa intermiten dapat bermanfaat untuk <strong>penurunan berat badan, kesehatan jantung, dan pencegahan diabetes</strong>.</p>
-        <p>Namun, masih sedikit yang diketahui tentang efek samping jangka panjangnya, khususnya bagaimana diet ini memengaruhi kesehatan orang dewasa muda.</p>
-        <br>
-        <p>Dalam <strong>penelitian terbaru</strong> yang dilakukan pada tikus, para peneliti menemukan bahwa <strong>puasa intermiten jangka panjang (sekitar 10 minggu)</strong> dapat memengaruhi produksi insulin pada tikus muda, menyerupai <strong>diabetes tipe 1 tahap awal</strong> pada manusia.</p>
-        <p>Selain itu, penelitian juga mencatat bahwa diet yang sama, ketika diterapkan pada <strong>tikus yang lebih tua</strong> dalam periode yang sama, justru <strong>meningkatkan sensitivitas insulin</strong>.</p>
-        <br>
-        <p class="judul-besar">Dampak Berbeda Berdasarkan Usia</p>
-        <p>Pada tikus yang lebih tua, sensitivitas insulin meningkat, memungkinkan mereka untuk merespons insulin yang diproduksi pankreas dengan lebih baik.</p>
-        <p>Ini penting untuk mengatur kadar gula darah dan mencegah kondisi seperti <strong>diabetes tipe 2</strong>.</p>
-        <br>
-        <blockquote>
-          "Puasa intermiten biasanya dianggap bermanfaat bagi sel beta, jadi kami terkejut menemukan bahwa tikus muda menghasilkan lebih sedikit insulin setelah puasa yang diperpanjang," ujar <strong>Leonardo Matta</strong>, salah satu penulis utama.
-        </blockquote>
-        <br>
-        <p>Analisis sel pankreas pada tikus muda menunjukkan bahwa <strong>sel beta</strong>, yang bertugas memproduksi insulin, <strong>tidak matang dengan baik</strong> akibat puasa intermiten jangka panjang.</p>
-        <p>Sebaliknya, tikus yang lebih tua, yang sel betanya sudah matang sebelum berpuasa, tidak terpengaruh oleh diet ini.</p>
-        <p>Hal ini menunjukkan bahwa kematangan sel sebelum memulai puasa dapat memengaruhi cara tubuh merespons <strong>puasa intermiten</strong>.</p>
-        <br>
-        <p class="judul-besar">Berapa Lama Puasa Intermiten yang Aman?</p>
-        <p>Hasil penelitian juga menunjukkan bahwa <strong>puasa jangka pendek (5 minggu)</strong> bermanfaat bagi semua usia.</p>
-        <p>Oleh karena itu, peneliti menyarankan agar <strong>durasi puasa intermiten</strong> pada orang dewasa muda dipertimbangkan dengan hati-hati untuk mengurangi risiko diabetes.</p>
-        <br>
-        <blockquote>
-          "Studi kami menegaskan bahwa puasa intermiten bermanfaat bagi orang dewasa, tetapi mungkin mengandung risiko bagi anak-anak dan remaja. Langkah selanjutnya adalah menggali lebih dalam mekanisme molekuler yang mendasari pengamatan ini." - <strong>Profesor Stephan Herzig, Universitas Teknik Munich</strong>.
-        </blockquote>
-        <br>
-        <p>Jika penelitian lebih lanjut dapat memahami cara meningkatkan perkembangan sel beta yang sehat, hal itu dapat membuka jalan baru untuk <strong>pengobatan diabetes</strong> dengan memulihkan produksi insulin.</p>
-      `,
-      tags: ["Puasa Intermiten", "Diet", "Kesehatan Remaja", "Gaya Hidup"],
-      category: ["lifestyle", "health"],
-      authorIds: [2],
-    },
+    
     {
         id: 2,
         title: "Penting Dibaca Wanita, Mitos Fakta Kolagen dan Klaim Kesehatannya",
@@ -105,54 +58,9 @@ const lifestyleNews = [
         `,
         tags: ["Kolagen", "Kesehatan Kulit", "Diet", "Gaya Hidup Sehat"],
         category: ["lifestyle", "beauty", "health"],
-        authorIds: [3],
+        authorId: 3,
       },
-      {
-        id: 3,
-        title: "Malaysia Geser Thailand sebagai Destinasi Wisata Terpopuler ASEAN",
-        type: "news",
-        image: "/malaysia-pariwisata.jpg",
-        date: "Feb 19 2025",
-        description: "Malaysia mencatat sejarah baru dengan menyalip Thailand sebagai destinasi wisata paling banyak dikunjungi di ASEAN dengan 38 juta wisatawan.",
-        slug: "malaysia-geser-thailand-destinasi-wisata-asean",
-        content: `
-          <p>Malaysia mencatat sejarah baru di sektor pariwisata pada tahun 2024. Negara ini resmi menyalip <strong>Thailand</strong> sebagai destinasi wisata paling banyak dikunjungi di kawasan <strong>ASEAN</strong> dengan torehan <strong>38 juta wisatawan mancanegara</strong>.</p>
-          <p>Capaian ini melampaui target awal sebesar <strong>27,3 juta pengunjung</strong> dan menempatkan Malaysia di posisi terdepan dalam persaingan pariwisata di Asia Tenggara.</p>
-          <br>
-          <p class="judul-besar">Strategi Efektif yang Membawa Malaysia ke Puncak</p>
-          <p>Keberhasilan <strong>Malaysia</strong> menarik jutaan wisatawan tidak terjadi secara kebetulan. Berbagai langkah strategis yang dilakukan pemerintah, terutama melalui <strong>Kementerian Pariwisata, Seni, dan Budaya Malaysia (MOTAC)</strong>, menjadi pendorong utama pencapaian ini.</p>
-          <p>Salah satu faktor kunci adalah kebijakan <strong>bebas visa</strong> yang diperpanjang hingga <strong>2026</strong> bagi wisatawan asal <strong>China</strong> dan <strong>India</strong>. Langkah ini mempermudah akses masuk tanpa hambatan birokrasi, sehingga mendorong lonjakan kedatangan wisatawan dari kedua negara tersebut.</p>
-          <br>
-          <p>Selain itu, Malaysia gencar mempromosikan destinasi unggulannya melalui kampanye internasional. Fokus utama promosi meliputi:</p>
-          <ul>
-            <li>Keindahan alam seperti <strong>Pulau Langkawi</strong> dan <strong>Sabah</strong></li>
-            <li>Kekayaan budaya di <strong>Malaka</strong> dan <strong>George Town</strong></li>
-            <li>Wisata kuliner yang memanjakan lidah wisatawan</li>
-          </ul>
-          <br>
-          <p>Partisipasi aktif dalam pameran pariwisata global juga memperluas jangkauan pemasaran negara ini di kancah internasional.</p>
-          <br>
-          <p>Investasi besar dalam pengembangan infrastruktur turut mendukung pertumbuhan sektor pariwisata. Peningkatan fasilitas bandara, jaringan transportasi umum yang nyaman, serta akomodasi berkualitas menjadikan Malaysia destinasi yang ramah dan mudah dijangkau.</p>
-          <br>
-          <p>Program kerja sama regional seperti <strong>"6 Negara, 1 Tujuan"</strong>, yang melibatkan <strong>Thailand, Malaysia, Kamboja, Laos, Vietnam</strong>, dan <strong>Myanmar</strong>, juga menjadi motor penggerak utama. Inisiatif ini memudahkan wisatawan mengakses beberapa negara sekaligus dengan persyaratan yang disederhanakan, meningkatkan arus kunjungan di kawasan <strong>ASEAN</strong>.</p>
-          <br>
-          <p class="judul-besar">Dampak Ekonomi dan Ambisi Masa Depan</p>
-          <p><strong>Menteri Pariwisata Malaysia, Datuk Seri Tiong King Sing</strong>, menyatakan bahwa kesuksesan ini membuka peluang baru bagi perekonomian nasional. Selain menaikkan target kunjungan wisatawan, pemerintah kini membidik pendapatan pariwisata sebesar <strong>RM150 miliar</strong> atau sekitar <strong>Rp518 triliun</strong>.</p>
-          <blockquote>
-            "Kami ingin menetapkan target yang lebih realistis dan menguntungkan bagi negara," ujar <strong>Tiong King Sing</strong>.
-          </blockquote>
-          <br>
-          <p>Malaysia kini berada di posisi puncak ASEAN, mengungguli <strong>Thailand</strong> yang mencatatkan <strong>35,54 juta</strong> kunjungan.</p>
-          <p>Di belakang mereka, <strong>Vietnam</strong> menyusul dengan <strong>17,5 juta</strong> wisatawan, diikuti <strong>Singapura (15,3 juta)</strong> dan <strong>Indonesia (12,66 juta)</strong>.</p>
-          <br>
-          <p>Meski <strong>Bangkok</strong> tetap menjadi kota paling banyak dikunjungi di dunia, keberhasilan <strong>Malaysia</strong> merebut posisi puncak <strong>ASEAN</strong> menunjukkan bahwa strategi terpadu dan kebijakan yang adaptif mampu membawa perubahan signifikan di sektor pariwisata.</p>
-          <br>
-          <p>Dengan momentum positif ini, Malaysia optimis menghadapi <strong>Visit Malaysia Year (TMM) 2026</strong> dengan ambisi yang lebih besar, membuktikan dirinya sebagai kekuatan utama pariwisata di <strong>Asia Tenggara</strong>.</p>
-        `,
-        tags: ["Malaysia", "Pariwisata", "ASEAN", "Wisata Internasional"],
-        category: ["lifestyle", "travel"],
-        authorIds: [2],
-      },
+      
       {
         id: 4,
         title: "Permen Dalgona Squid Game Viral Lagi, Begini Cara Membuatnya",
@@ -188,7 +96,7 @@ const lifestyleNews = [
         `,
         tags: ["Dalgona", "Squid Game", "Resep", "Kuliner Viral"],
         category: ["lifestyle", "food"],
-        authorIds: [1],
+        authorId: 1,
       },
       {
         id: 5,
@@ -238,7 +146,7 @@ const lifestyleNews = [
         `,
         tags: ["Cancel Culture", "Kim Sae Ron", "Kesehatan Mental", "Bullying"],
         category: ["lifestyle", "mental-health"],
-        authorIds: [2],
+        authorId: 2,
       },
       { 
         id: 6,
@@ -284,7 +192,7 @@ const lifestyleNews = [
         `,
         tags: ["Munggahan", "Ramadhan", "Tradisi Islam", "Budaya Sunda"],
         category: ["lifestyle", "culture"],
-        authorIds: [2],
+        authorId: 2,
      },
      {
       id: 7,
@@ -323,7 +231,7 @@ const lifestyleNews = [
       `,
       tags: ["Zodiak", "Aquarius", "Hubungan", "Tips Percintaan"],
       category: ["lifestyle", "astrology", "relationship"],
-      authorIds: [1],
+      authorId: 1,
     },
     {
       id: 8,
@@ -382,7 +290,7 @@ const lifestyleNews = [
       `,
       tags: ["Pola Makan Nabati", "Kesehatan", "Usia Panjang", "Makanan Sehat"],
       category: ["lifestyle", "health", "food"],
-      authorIds: [1],
+      authorId: 1,
     },
   ];
   

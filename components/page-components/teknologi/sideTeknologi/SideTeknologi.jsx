@@ -7,6 +7,7 @@ import users from "@/data/users"; // Import data author
 // Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
 
+// Fungsi untuk memotong judul menjadi maksimal 8 kata
 const sliceTitle = (title, maxWords = 8) => {
   const words = title.split(" ");
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "..." : title;
@@ -16,16 +17,24 @@ const SideTeknologi = ({ sideArticles }) => {
   return (
     <div className="col-span-1 flex flex-col gap-6">
       {sideArticles.map((article) => {
-        const author = getAuthorById(article.authorIds[0]);
+        const author = getAuthorById(article.authorId); // ✅ FIX: Ambil langsung dari `authorId`
+
         return (
           <div key={article.id} className="flex flex-col">
             {/* Gambar */}
             <div className="relative w-full 2xl:h-[180px] xl:h-[180px] lg:h-[180px] h-[250px]">
-              <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+              <Image 
+                src={article.image} 
+                alt={article.title} 
+                fill 
+                className="rounded-lg object-cover" 
+              />
             </div>
 
             {/* Kategori */}
-            <span className={`inline-block max-w-max px-3 py-1 text-xs font-semibold text-white rounded mt-2 ${getCategoryColor(article.category[0])}`}>
+            <span 
+              className={`inline-block max-w-max px-3 py-1 text-xs font-semibold text-white rounded mt-2 ${getCategoryColor(article.category[0])}`}
+            >
               {article.category[0]}
             </span>
 
@@ -36,13 +45,23 @@ const SideTeknologi = ({ sideArticles }) => {
                   {sliceTitle(article.title)}
                 </h4>
               </Link>
+
+              {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-500 mt-2">
-                {author?.photo && (
-                  <Image src={author.photo || "/images/default-avatar.png"} alt={author.name || "Unknown"} width={20} height={20} className="rounded-full" />
+                {author?.photo ? (
+                  <Image 
+                    src={author.photo} 
+                    alt={author.name} 
+                    width={20} 
+                    height={20} 
+                    className="rounded-full" 
+                  />
+                ) : (
+                  <div className="w-5 h-5 bg-gray-400 rounded-full"></div> // Placeholder jika author tidak punya foto
                 )}
                 <span className="ml-2">{author?.name || "Unknown Author"}</span>
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
-                <span>{article.date}</span>
+                <span>{new Date(article.date).toLocaleDateString()}</span> {/* ✅ Format tanggal */}
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ const BottomSport = ({ bottomArticles }) => {
   return (
     <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
       {bottomArticles.map((article) => {
-        const author = getAuthorById(article.authorIds[0]);
+        const author = getAuthorById(article.authorId); // ✅ FIX: Pakai `authorId`, bukan `authorIds[0]`
         return (
           <div key={article.id} className="flex items-start gap-4">
             {/* Gambar kecil */}
@@ -33,8 +33,10 @@ const BottomSport = ({ bottomArticles }) => {
 
               {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-500 mt-1">
-                {author?.photo && (
+                {author?.photo ? (
                   <Image src={author.photo} alt={author.name} width={20} height={20} className="rounded-full" />
+                ) : (
+                  <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                 )}
                 <span className="ml-2">{author?.name || "Unknown Author"}</span>
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>

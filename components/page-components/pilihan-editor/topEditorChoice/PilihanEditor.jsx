@@ -19,7 +19,8 @@ const sliceTitle = (title, maxWords = 10) => {
 
 const PilihanEditorComponent = () => {
   const mainArticle = PilihanEditor[0]; // Artikel utama
-
+  const author = getAuthorById(mainArticle.authorId); // FIX: Ambil author ID langsung
+  
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8">
       <h2 className="text-3xl font-bold text-pink-500 flex items-center mb-3">
@@ -52,21 +53,18 @@ const PilihanEditorComponent = () => {
               <p className="text-gray-500 mt-2 text-sm">{mainArticle.description}</p>
 
               <div className="flex items-center mt-4 text-sm text-gray-500">
-                {mainArticle.authorIds.map((authorId) => {
-                  const author = getAuthorById(authorId);
-                  return (
-                    <div key={authorId} className="flex items-center space-x-2">
-                      <Image
-                        src={author.photo}
-                        alt={author.name}
-                        width={24}
-                        height={24}
-                        className="rounded-full"
-                      />
-                      <span>{author.name}</span>
-                    </div>
-                  );
-                })}
+                {/* Author Info */}
+                {author?.photo && (
+                  <Image
+                    src={author.photo}
+                    alt={author.name}
+                    width={24}
+                    height={24}
+                    className="rounded-full"
+                  />
+                )}
+                <span className="ml-2">{author?.name || "Unknown Author"}</span>
+
                 {/* Garis pemisah */}
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
                 <span>{mainArticle.date}</span>

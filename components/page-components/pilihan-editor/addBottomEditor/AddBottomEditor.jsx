@@ -20,14 +20,15 @@ const AddBottomEditor = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
       {sideArticles.map((article) => {
-        const author = getAuthorById(article.authorIds[0]);
+        const author = getAuthorById(article.authorId); // FIX: Langsung ambil authorId tanpa array
+
         return (
           <div
             key={article.id}
-            className="flex 2xl:flex-col xl:flex-col lg:flex-col flex-row-reverse items-start justify-start"
+            className="flex  lg:flex-col 2xl:flex-col xl:flex-col flex-row-reverse items-start justify-start"
           >
             {/* Gambar */}
-            <div className="relative 2xl:w-full xl:w-full lg:w-full 2xl:h-[160px] w-[140px] h-[100px]">
+            <div className="relative w-[140px] h-[100px] lg:w-full lg:h-[160px]">
               <Image
                 src={article.image}
                 alt={article.title}
@@ -49,14 +50,14 @@ const AddBottomEditor = () => {
 
               {/* Judul */}
               <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
-                <h4 className="2xl:text-lg text-md font-semibold hover:underline cursor-pointer">
+                <h4 className="text-md font-semibold hover:underline cursor-pointer 2xl:text-lg">
                   {sliceTitle(article.title)}
                 </h4>
               </Link>
 
               {/* Author & Date */}
-              <div className="flex items-center 2xl:text-sm text-[0.7em] text-gray-500 mt-2">
-                {author?.photo && (
+              <div className="flex items-center text-gray-500 text-sm mt-2">
+                {author?.photo ? (
                   <Image
                     src={author.photo}
                     alt={author.name}
@@ -64,6 +65,8 @@ const AddBottomEditor = () => {
                     height={20}
                     className="rounded-full"
                   />
+                ) : (
+                  <div className="w-5 h-5 bg-gray-300 rounded-full"></div>
                 )}
                 <span className="ml-2">{author?.name || "Unknown Author"}</span>
 

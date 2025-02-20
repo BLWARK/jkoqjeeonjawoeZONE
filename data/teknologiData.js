@@ -1,93 +1,6 @@
 const teknologiData = [
-    {
-      id: 1,
-      title: "Tips dan Trik Download Gemini AI untuk Ponsel Android yang Tidak Dilengkapi Fitur AI",
-      type: "news",
-      image: "/gemini-ai-download.jpg",
-      date: "Feb 20 2025",
-      description: "Cara mudah mengunduh dan menggunakan Gemini AI di ponsel Android tanpa fitur AI bawaan.",
-      slug: "tips-trik-download-gemini-ai-android",
-      content: `
-        <p class="judul-sangat-besar">Tips dan Trik Download Gemini AI untuk Ponsel Android</p>
-        <p>Jika ponsel Android Anda tidak dilengkapi dengan fitur AI utama, kemungkinan besar perangkat tersebut adalah model lama atau ponsel dengan harga terjangkau.</p>
-        <br>
-        <p>Namun, apakah ini berarti Anda harus segera upgrade ke model terbaru untuk memaksimalkan potensi Android Anda? Tidak selalu.</p>
-        <p>Anda bisa mendapatkan aplikasi Google Gemini secara gratis di Android, meskipun beberapa fitur premium hanya tersedia melalui Gemini Advanced dan langganan lainnya.</p>
-        <br>
-        <p>Meskipun demikian, versi gratisnya tetap menawarkan berbagai fungsi berguna.</p>
-        <p>Walaupun tidak terintegrasi sistem di seluruh ponsel seperti yang ada di Samsung Galaxy S25 atau Pixel 9, Gemini AI tetap memberikan beragam kemampuan dalam aplikasi yang layak dicoba.</p>
-        <br>
-        <p class="judul-besar">Cara Mendapatkan Gemini AI di Ponsel Android Anda</p>
-        <p class="sub-judul">Langkah 1:</p>
-        <p>Buka Google Play Store.</p>
-        <p class="sub-judul">Langkah 2:</p>
-        <p>Cari “Gemini”.</p>
-        <p class="sub-judul">Langkah 3:</p>
-        <p>Pilih aplikasi pertama dalam hasil pencarian dan tekan Instal.</p>
-        <p class="sub-judul">Langkah 4:</p>
-        <p>Setelah instalasi selesai, buka aplikasi dan mulai gunakan.</p>
-        <br>
-        <p class="sub-judul">Catatan:</p>
-        <p>Aplikasi Gemini memiliki persyaratan perangkat keras dan perangkat lunak tertentu.</p>
-        <p>Pastikan ponsel Anda memiliki RAM minimal 2 GB dan menjalankan Android 10 atau versi yang lebih baru.</p>
-        <br>
-        <p class="judul-besar">Apa yang Bisa Anda Lakukan dengan Aplikasi Gemini AI?</p>
-        <p class="sub-judul">Membuat Gambar</p>
-        <p>Dengan Gemini AI dari Google, Anda bisa membuat gambar hanya dengan memberi perintah deskriptif.</p>
-        <p>Contohnya: "Buat gambar kelinci realistis dalam gaya 3D." Atau "Buat gambar kucing komik yang menari di Gunung Everest sambil memegang bazoka."</p>
-        <br>
-        <p class="sub-judul">Rangkuman dan Penulisan Ulang</p>
-        <p>Seperti alat tulis Apple, Gemini AI juga menyediakan fitur rangkuman dan penulisan ulang teks.</p>
-        <p>Jika Anda bingung menyusun pesan atau perlu merangkum teks panjang, cukup masukkan teks ke dalam aplikasi dan gunakan perintah seperti: "Ringkas ini," atau "Perbaiki tata bahasa."</p>
-        <br>
-        <p class="sub-judul">Saran Mode</p>
-        <p>Salah satu fitur menarik dari Gemini adalah saran gaya pakaian.</p>
-        <p>Anda dapat mengunggah gambar diri Anda dan meminta saran, misalnya: "Bagaimana saya bisa menyempurnakan penampilan saya?"</p>
-        <br>
-        <p class="sub-judul">Latihan Wawancara</p>
-        <p>Fitur ini sangat bermanfaat jika Anda ingin berlatih wawancara kerja.</p>
-        <p>Dengan mengetuk ikon di sudut kanan bawah, Anda bisa berinteraksi langsung dengan Gemini AI, yang akan memberikan pengalaman percakapan alami seperti berbicara dengan seseorang.</p>
-      `,
-      tags: ["Gemini AI", "Android", "Google"],
-      category: ["teknologi", "AI"],
-      authorIds: [2],
-    },
-    {
-        id: 2,
-        title: "Apple Siapkan Desain Revolusioner yang Mengejutkan untuk iPhone 17",
-        type: "news",
-        image: "/iphone-17-revolusi.jpg",
-        date: "Feb 18 2025",
-        description: "Apple dikabarkan akan membawa perubahan desain terbesar dalam sejarah iPhone dengan iPhone 17.",
-        slug: "apple-desain-revolusioner-iphone-17",
-        content: `
-          <p class="judul-sangat-besar">Apple Siapkan Desain Revolusioner untuk iPhone 17</p>
-          <p>Perusahaan teknologi ternama, <strong>Apple</strong>, siap memperkenalkan <strong>iPhone 17</strong> yang diprediksi akan membawa perubahan desain terbesar hingga saat ini.</p>
-          <br>
-          <p>Menurut laporan terbaru, Apple berencana untuk memperkenalkan pembaruan desain pada jajaran iPhone-nya di akhir tahun ini.</p>
-          <p>Seri <strong>iPhone 17</strong> yang sangat dinanti, termasuk model <strong>iPhone 17 Pro</strong> dan <strong>iPhone 17 Air</strong>, akan mengalami transformasi besar dalam desain.</p>
-          <p>Perubahan itu menandai pergeseran dari pembaruan bertahap yang telah terlihat dalam beberapa tahun terakhir.</p>
-          <br>
-          <p class="judul-besar">Benjolan Kamera Horizontal di iPhone 17 Air</p>
-          <p>Diperkirakan, <strong>iPhone 17 Air</strong> akan memiliki benjolan kamera berbentuk batang horizontal di bagian belakang.</p>
-          <p>Sementara model <strong>Pro</strong> akan mengusung desain matriks horizontal yang lebih besar.</p>
-          <p>Desain baru ini bertujuan untuk memberikan tampilan segar pada jajaran iPhone, dengan model Pro yang menggabungkan elemen <strong>aluminium</strong> dan <strong>kaca</strong> pada bagian belakangnya.</p>
-          <br>
-          <p class="judul-besar">Material dan Struktur Baru</p>
-          <p>Bagian atas <strong>iPhone 17 Pro</strong> akan terbuat dari <strong>aluminium</strong> dengan benjolan kamera berbentuk persegi panjang, sedangkan bagian bawahnya akan tetap menggunakan kaca untuk mendukung <strong>pengisian daya nirkabel</strong>.</p>
-          <br>
-          <p class="judul-besar">Dynamic Island yang Lebih Kecil di iPhone 17 Pro Max</p>
-          <p>Selain itu, <strong>iPhone 17 Pro Max</strong> dilaporkan akan dilengkapi dengan <strong>Dynamic Island</strong> yang lebih kecil, berkat teknologi <strong>metalens</strong> yang memungkinkan komponen Face ID menjadi lebih ringkas.</p>
-          <p>Perubahan ini diharapkan hanya akan diterapkan pada model <strong>Pro</strong>, sementara varian standar dan Plus akan tetap menggunakan desain Dynamic Island yang sudah ada.</p>
-          <br>
-          <p class="judul-besar">Jadwal Peluncuran</p>
-          <p>Seri <strong>iPhone 17</strong> diperkirakan akan diluncurkan pada <strong>musim gugur</strong>, dengan Apple kemungkinan mengadakan acara khusus di bulan <strong>September</strong> untuk memperkenalkan perangkat baru ini.</p>
-          <p>Saat komunitas teknologi menantikan pembaruan ini, perubahan desain yang signifikan menjanjikan pengalaman yang segar dan inovatif bagi para pengguna iPhone.</p>
-        `,
-        tags: ["iPhone 17", "Apple", "Teknologi"],
-        category: ["teknologi", "smartphone"],
-        authorIds: [2],
-      },
+    
+    
       {
         id: 3,
         title: "Teknologi AI Bridgit Bantu Pekerja Perawatan Tangani Keluhan",
@@ -133,59 +46,9 @@ const teknologiData = [
         `,
         tags: ["Bridgit AI", "Kecerdasan Buatan", "Teknologi"],
         category: ["teknologi", "AI"],
-        authorIds: [2],
+        authorId: 2,
       },
-      {
-        id: 4,
-        title: "Inovasi Canggih Bisa Ubah Panas Buangan Kendaraan Jadi Listrik",
-        type: "news",
-        image: "/panas-buangan-jadi-listrik.jpg",
-        date: "Feb 16 2025",
-        description: "Para peneliti dari Pennsylvania State University mengembangkan teknologi yang mampu mengubah panas buangan kendaraan menjadi listrik.",
-        slug: "inovasi-ubah-panas-buangan-jadi-listrik",
-        content: `
-          <p class="judul-sangat-besar">Inovasi Canggih Bisa Ubah Panas Buangan Kendaraan Jadi Listrik</p>
-          <p>Para peneliti dari <strong>Pennsylvania State University</strong> menciptakan teknologi inovatif yang mampu mengubah panas buangan dari mobil, helikopter, dan kendaraan udara tanpa awak menjadi listrik.</p>
-          <br>
-          <p>Terobosan ini diharapkan dapat meningkatkan efisiensi bahan bakar dan mengurangi emisi karbon pada kendaraan berbahan bakar fosil, membuka jalan menuju solusi energi yang lebih ramah lingkungan.</p>
-          <br>
-          <p class="judul-besar">Meningkatkan Efisiensi dan Mengurangi Polusi</p>
-          <p>Mesin pembakaran dalam yang digunakan di sebagian besar kendaraan darat dan udara memiliki efisiensi yang rendah. Hanya sekitar <strong>25 persen</strong> energi dari bahan bakar yang digunakan untuk menggerakkan kendaraan, sementara sisanya terbuang dalam bentuk panas.</p>
-          <p>Panas yang terbuang ini tidak hanya membuang energi berharga tetapi juga meningkatkan konsumsi bahan bakar dan memperparah polusi udara.</p>
-          <br>
-          <p>Melalui pengembangan <strong>generator termoelektrik</strong>, para peneliti kini mampu menangkap panas yang terbuang tersebut dan mengubahnya menjadi listrik.</p>
-          <p>Teknologi ini menawarkan cara efektif untuk memanfaatkan energi yang sebelumnya hilang, sekaligus meningkatkan kinerja mesin dan mengurangi dampak lingkungan.</p>
-          <br>
-          <p class="judul-besar">Desain Inovatif yang Lebih Ringan dan Efisien</p>
-          <p>Generator termoelektrik bekerja berdasarkan perbedaan suhu antara permukaan panas, seperti pipa knalpot, dan permukaan yang lebih dingin. Perbedaan suhu ini memicu bahan semikonduktor menghasilkan listrik.</p>
-          <p>Namun, desain sebelumnya memiliki beberapa kekurangan, seperti bobot yang berat dan ketergantungan pada sistem pendingin berbasis air yang kompleks.</p>
-          <p>Kendala ini membuat penerapan teknologi tersebut di kendaraan menjadi sulit dan tidak praktis.</p>
-          <br>
-          <p>Tim peneliti yang dipimpin oleh <strong>Wenjie Li</strong> dan <strong>Bed Poudel</strong> dari Penn State University berhasil mengatasi tantangan ini dengan menggunakan <strong>penukar panas (heat exchanger)</strong> mirip yang digunakan pada pendingin udara.</p>
-          <p>Inovasi ini menghilangkan kebutuhan akan sistem pendingin air tambahan, membuat perangkat lebih ringan dan mudah diintegrasikan ke kendaraan tanpa modifikasi besar.</p>
-          <br>
-          <p>Generator ini menggunakan bahan semikonduktor <strong>bismuth-telluride</strong>, yang terkenal karena kemampuannya mengonversi panas menjadi listrik secara efisien.</p>
-          <p>Selain itu, penambahan <strong>heatsink</strong> pada perangkat membantu meningkatkan perbedaan suhu, sehingga daya listrik yang dihasilkan menjadi lebih besar.</p>
-          <br>
-          <p class="judul-besar">Daya Listrik yang Dihasilkan</p>
-          <p>Prototipe yang dikembangkan mampu menghasilkan daya hingga <strong>40 watt</strong>—cukup untuk menyalakan satu lampu bohlam.</p>
-          <p>Berdasarkan simulasi, generator ini dapat menghasilkan hingga <strong>56 watt</strong> listrik ketika dipasang di sistem knalpot mobil.</p>
-          <p>Sementara itu, jika diaplikasikan pada sistem pembuangan helikopter, daya yang dihasilkan bisa mencapai <strong>146 watt</strong>, setara dengan energi dari 12 baterai lithium-ion.</p>
-          <br>
-          <p class="judul-besar">Menuju Masa Depan Transportasi yang Lebih Ramah Lingkungan</p>
-          <p>Keunggulan utama dari teknologi ini adalah tidak memerlukan infrastruktur pendingin tambahan, memungkinkan instalasi yang lebih mudah di kendaraan yang sudah ada.</p>
-          <p>Dengan memanfaatkan panas buangan, <strong>mobil, helikopter, dan UAV</strong> dapat ditingkatkan efisiensinya, mengurangi konsumsi bahan bakar, dan menekan emisi karbon.</p>
-          <br>
-          <p>Penelitian yang diterbitkan di jurnal <strong>ACS Applied Materials & Interfaces</strong> ini menunjukkan potensi besar teknologi termoelektrik dalam mendukung solusi energi bersih.</p>
-          <p>Dengan menangkap panas buangan yang selama ini terbuang sia-sia, teknologi ini berkontribusi dalam mengurangi ketergantungan pada bahan bakar fosil dan menekan emisi gas rumah kaca.</p>
-          <br>
-          <p>Para peneliti optimis bahwa dengan pengembangan lebih lanjut, <strong>generator termoelektrik</strong> ini bisa menjadi lebih kecil, ringan, dan efisien.</p>
-          <p>Inovasi ini tidak hanya menjadi langkah penting menuju transportasi yang berkelanjutan tetapi juga membuka peluang besar dalam meningkatkan efisiensi energi di berbagai sektor.</p>
-        `,
-        tags: ["Teknologi Energi", "Termoelektrik", "Lingkungan"],
-        category: ["teknologi", "energi"],
-        authorIds: [2],
-      },
+     
       {
         id: 5,
         title: "Tiga Mahasiswa Telkom Ciptakan Aplikasi Pendeteksi Penyakit Mata",
@@ -249,7 +112,7 @@ const teknologiData = [
         `,
         tags: ["Retinex", "AI Kesehatan", "Teknologi Medis"],
         category: ["teknologi", "kesehatan"],
-        authorIds: [2],
+        authorId: 2,
       },
       {
         id: 6,
@@ -297,7 +160,7 @@ const teknologiData = [
         `,
         tags: ["Kaspersky", "Keamanan Siber", "Indonesia"],
         category: ["teknologi", "cybersecurity"],
-        authorIds: [2],
+        authorId: 2,
       },
       {
         id: 7,
@@ -345,7 +208,7 @@ const teknologiData = [
         `,
         tags: ["DeepSeek", "AI", "Keamanan Data"],
         category: ["teknologi", "AI"],
-        authorIds: [1],
+        authorId: 1,
       },
       {
         id: 8,
@@ -391,7 +254,7 @@ const teknologiData = [
         `,
         tags: ["Apple Intelligence", "Alibaba", "China"],
         category: ["teknologi", "AI"],
-        authorIds: [10],
+        authorId: 1,
       },
 
   ];
