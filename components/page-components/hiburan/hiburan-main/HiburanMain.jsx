@@ -13,7 +13,8 @@ const HiburanMain = ({ article }) => {
       <p className="text-gray-500 text-center">❌ Tidak ada berita utama.</p>
     );
 
-  const author = getAuthorById(article.authorIds);
+  // ✅ Fix: Ambil author dengan ID langsung (tanpa map)
+  const author = getAuthorById(article.authorId);
 
   return (
     <div className="w-full relative col-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 order-1 2xl:order-2 xl:order-2 lg:order-2">
@@ -22,7 +23,7 @@ const HiburanMain = ({ article }) => {
         {article.image ? (
           <Image
             src={article.image}
-            alt={article.title}
+            alt={article.title || "No Image Available"}
             fill
             className="rounded-lg object-cover"
           />
@@ -56,7 +57,7 @@ const HiburanMain = ({ article }) => {
           {author?.photo ? (
             <Image
               src={author.photo}
-              alt={author.name}
+              alt={author.name || "Author Image"}
               width={24}
               height={24}
               className="rounded-full"

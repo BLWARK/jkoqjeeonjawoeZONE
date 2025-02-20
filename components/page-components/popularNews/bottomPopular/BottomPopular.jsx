@@ -22,7 +22,7 @@ const BottomPopular = ({ bottomArticles }) => {
           <div key={article.id} className="flex items-center gap-4">
             {/* Gambar */}
             <div className="relative w-[130px] h-[100px]">
-              <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+              <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
 
             {/* Konten */}

@@ -19,7 +19,7 @@ const BottomTeknologi = ({ bottomArticles }) => {
           <div key={article.id} className="flex items-start gap-4">
             {/* Gambar kecil */}
             <div className="relative w-[120px] h-[90px] flex-shrink-0">
-              <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+              <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
 
             {/* Detail Berita */}

@@ -27,6 +27,7 @@ const Navbar = () => {
               src="/Logo XYZone-Solid.png"
               alt="XYZONE Logo"
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               style={{ objectFit: "contain" }}
             />
           </a>
@@ -53,6 +54,7 @@ const Navbar = () => {
               src="/Logo XYZone White.png"
               alt="XYZONE Logo Mobile"
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               style={{ objectFit: "contain" }}
             />
           </div>

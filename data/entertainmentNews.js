@@ -1,6 +1,4 @@
 const entertainmentNews = [
-    
-      
       {
         id: 7,
         title: "In Memoriam, Inilah Deretan Fakta Profil dan Karir Artis Kim Sae-ron",

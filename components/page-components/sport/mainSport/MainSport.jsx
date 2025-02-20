@@ -22,7 +22,7 @@ const MainSport = ({ topArticles }) => {
           <div key={article.id} className="relative w-full">
             {/* Gambar */}
             <div className="relative w-full h-[250px]">
-              <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+              <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
 
             {/* Overlay Judul, Kategori, Author, dan Date */}

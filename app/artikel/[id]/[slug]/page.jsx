@@ -102,7 +102,7 @@ const ArticlePage = () => {
 
           {/* Gambar Artikel */}
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] rounded-lg overflow-hidden mb-6">
-            <Image src={article.image} alt={article.title} fill className="object-cover" />
+            <Image src={article.image} alt={article.title} fill sizes="100vw" className="object-cover" />
           </div>
 
           {/* Konten Artikel */}
@@ -131,7 +131,7 @@ const ArticlePage = () => {
                 <div key={news.id} className="flex flex-col border-b border-gray-300 py-3">
                   {/* Gambar */}
                   <div className="relative w-full 2xl:h-[200px] h-[250px]">
-                    <Image src={news.image} alt={news.title} fill className="rounded-lg object-cover" />
+                    <Image src={news.image} alt={news.title} fill  className="rounded-lg object-cover" />
                   </div>
 
                   {/* Judul */}

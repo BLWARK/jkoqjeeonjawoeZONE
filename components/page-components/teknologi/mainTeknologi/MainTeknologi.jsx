@@ -19,6 +19,7 @@ const MainTeknologi = ({ mainArticle }) => {
           src={mainArticle.image} 
           alt={mainArticle.title} 
           fill 
+          sizes="100vw"
           className="rounded-lg object-cover" 
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex flex-col justify-end p-6">

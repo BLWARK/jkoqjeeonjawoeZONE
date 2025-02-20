@@ -40,7 +40,7 @@ const GayaHidup = () => {
             <div key={article.id} className="2xl:w-[290px] w-full flex-shrink-0">
               {/* Gambar */}
               <div className="relative w-full 2xl:h-[160px] h-[250px]">
-                <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+                <Image src={article.image} alt={article.title} fill  className="rounded-lg object-cover" />
               </div>
 
               {/* Kategori */}

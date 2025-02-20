@@ -23,7 +23,7 @@ const SidePopular = ({ sideArticles }) => {
           <div key={article.id} className="flex flex-col items-start gap-4">
             {/* Gambar */}
             <div className="relative 2xl:w-[280px] xl:w-[280px] lg:w-[220px] w-full 2xl:h-[300px] h-[250px] flex-shrink-0">
-              <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+              <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
 
             {/* Konten */}
