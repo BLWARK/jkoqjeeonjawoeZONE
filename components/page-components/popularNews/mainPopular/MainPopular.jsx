@@ -1,11 +1,36 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getCategoryColor } from "@/data/categoryColors";
-import users from "@/data/users"; // Import data author
+import users from "@/data/users"; 
+import headlines from "@/data/headline";
+import News from "@/data/news";
+import entertainmentNews from "@/data/entertainmentNews";
+import teknologiData from "@/data/teknologiData";
+import olahraga from "@/data/sportNews";
+import lifestyleNews from "@/data/lifestyleNews";
 
 // Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
+
+// Gabungkan semua artikel dari berbagai kategori
+const allArticles = [
+  ...headlines,
+  ...News,
+  ...entertainmentNews,
+  ...teknologiData,
+  ...lifestyleNews,
+  ...olahraga,
+];
+
+// ✅ Ambil berita dengan views terbanyak
+const sortedArticles = allArticles
+  .filter((article) => article.views !== undefined) // Pastikan hanya data yang memiliki views
+  .sort((a, b) => b.views - a.views); // Urutkan dari views terbesar ke terkecil
+
+const mostViewedArticle = sortedArticles.length > 0 ? sortedArticles[0] : null;
 
 // Fungsi untuk memotong judul menjadi maksimal 8 kata
 const sliceTitle = (title, maxWords = 8) => {
@@ -13,10 +38,11 @@ const sliceTitle = (title, maxWords = 8) => {
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "..." : title;
 };
 
+// Komponen MainPopular
 const MainPopular = ({ mainArticle }) => {
   if (!mainArticle) return null;
 
-  const author = getAuthorById(mainArticle.authorId); // ✅ FIX: Menggunakan `authorId`, bukan `authorIds[0]`
+  const author = getAuthorById(mainArticle.authorId); 
 
   return (
     <div className="w-full relative">
@@ -44,7 +70,7 @@ const MainPopular = ({ mainArticle }) => {
             ) : (
               <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
             )}
-            <span className="ml-2">{author?.name || "Unknown Author"} • {mainArticle.date}</span>
+            <span className="ml-2">{author?.name || "Unknown Author"} • {new Date(mainArticle.date).toLocaleDateString()}</span>
           </div>
         </div>
       </div>
@@ -52,4 +78,9 @@ const MainPopular = ({ mainArticle }) => {
   );
 };
 
-export default MainPopular;
+// ✅ Export Komponen dengan Berita Views Terbanyak
+const PopularNewsSection = () => {
+  return <MainPopular mainArticle={mostViewedArticle} />;
+};
+
+export default PopularNewsSection;

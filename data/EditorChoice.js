@@ -7,6 +7,7 @@ const editorChoice= [
     type: "editor",
     image: "/niantic-pokemon-go.jpg",
     date: "Feb 19 2025",
+    views: 2000,
     description: "Niantic, pencipta Pokémon Go, tengah bernegosiasi dengan Scopely untuk menjual divisi gim mereka senilai Rp57,1 miliar.",
     slug: "niantic-lepas-divisi-gim",
     content: `
@@ -43,6 +44,7 @@ const editorChoice= [
     type: "editor",
     image: "/nicole-kidman-keith-urban.jpg",
     date: "Feb 19 2025",
+    views: 2100,
     description: "Rumah Nicole Kidman dan Keith Urban di Beverly Hills disatroni perampok saat pasangan itu tidak berada di tempat.",
     slug: "rumah-nicole-kidman-keith-urban-dibobol-rampok",
     content: `
@@ -93,6 +95,7 @@ const editorChoice= [
     type: "editor",
     image: "/panas-buangan-jadi-listrik.jpg",
     date: "Feb 16 2025",
+    views: 2200,
     description: "Para peneliti dari Pennsylvania State University mengembangkan teknologi yang mampu mengubah panas buangan kendaraan menjadi listrik.",
     slug: "inovasi-ubah-panas-buangan-jadi-listrik",
     content: `
@@ -144,6 +147,7 @@ const editorChoice= [
     type: "editor",
     image: "/malaysia-pariwisata.jpg",
     date: "Feb 19 2025",
+    views: 2300,
     description: "Malaysia mencatat sejarah baru dengan menyalip Thailand sebagai destinasi wisata paling banyak dikunjungi di ASEAN dengan 38 juta wisatawan.",
     slug: "malaysia-geser-thailand-destinasi-wisata-asean",
     content: `

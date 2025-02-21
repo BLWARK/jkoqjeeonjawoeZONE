@@ -1,11 +1,60 @@
 const lifestyleNews = [
+  {
+    id: 10,
+    title: "#KaburAjaDulu, Frustrasi Anak Muda Terhadap Kondisi Dalam Negeri",
+    type: "news",
+    image: "/kabur-aja-dulu.jpg",
+    date: "Feb 19 2025",
+    views: 90000,
+    description: "Fenomena #KaburAjaDulu mencerminkan keinginan anak muda Indonesia untuk mencari kehidupan lebih stabil di luar negeri akibat ketidakpastian ekonomi dan politik.",
+    slug: "kabur-aja-dulu-frustrasi-anak-muda",
+    content: `
+      <p><strong>Lelah menghadapi ketidakpastian masa depan</strong>, banyak anak muda Indonesia kini melirik peluang untuk hidup di luar negeri.</p>
+      <p><strong>Tagar #KaburAjaDulu</strong> yang ramai di media sosial mencerminkan perasaan <strong>frustrasi</strong> mereka terhadap kondisi <strong>pekerjaan, pendidikan, dan kehidupan</strong> di dalam negeri.</p>
+      <br>
+      <p>Fenomena ini bukan sekadar tren di dunia maya, tetapi menjadi <strong>cerminan keinginan sebagian generasi muda</strong> untuk mencari kehidupan yang lebih stabil dan menjanjikan.</p>
+      <p>Negara seperti <strong>Malaysia, Singapura, Jepang, India, hingga Dubai</strong> menjadi tujuan utama mereka. Bahkan, tak sedikit yang mempertimbangkan untuk <strong>pindah kewarganegaraan</strong> demi memperoleh kualitas hidup yang lebih baik.</p>
+      <br>
+      <p class="judul-besar">Lonjakan Minat Studi dan Kerja di Luar Negeri</p>
+      <p>Minat ini terlihat jelas dalam acara <strong>Study and Work Abroad Festival 2024</strong> yang diadakan oleh <strong>Schoters</strong>.</p>
+      <p>Platform yang menyediakan informasi beasiswa serta peluang kerja di luar negeri ini mengalami <strong>lonjakan peminat yang signifikan</strong>.</p>
+      <br>
+      <p>Dalam acara tersebut, lebih dari <strong>100.000 orang</strong> hadir untuk mencari peluang belajar dan bekerja di luar negeri.</p>
+      <p>Antusiasme ini juga didukung oleh data dari <strong>Direktorat Jenderal Imigrasi Kemenkumham</strong>.</p>
+      <p>Antara tahun <strong>2019 hingga 2022</strong>, sebanyak <strong>3.912 WNI</strong> beralih menjadi warga negara <strong>Singapura</strong>, mayoritas berasal dari kelompok usia produktif <strong>25–35 tahun</strong>.</p>
+      <br>
+      <p class="judul-besar">Ketidakpastian Ekonomi dan Brain Drain Indonesia</p>
+      <p><strong>Musni Umar</strong>, Sosiolog dari <strong>Universitas Islam Negeri (UIN) Syarif Hidayatullah Jakarta</strong>, menilai fenomena ini terjadi karena banyak <strong>generasi muda berpendidikan</strong> yang merasa terjebak dalam <strong>ketidakpastian ekonomi dan politik</strong> di Indonesia.</p>
+      <br>
+      <p><strong>Tingkat pengangguran yang tinggi</strong> menjadi salah satu pemicunya.</p>
+      <p><strong>Badan Pusat Statistik (BPS)</strong> mencatat bahwa hingga <strong>Agustus 2024</strong>, terdapat:</p>
+      <p>• <strong>842.378 lulusan S1, S2, dan S3</strong> yang masih menganggur.</p>
+      <p>• <strong>Total pengangguran</strong> di Indonesia mencapai <strong>7,4 juta orang</strong>.</p>
+      <br>
+      <p>Angka ini belum termasuk mereka yang bekerja di <strong>bawah standar kesejahteraan</strong> atau mengalami kesulitan mendapatkan pekerjaan yang sesuai dengan keahlian mereka.</p>
+      <br>
+      <p class="judul-besar">Dampak Ekonomi dan Industri</p>
+      <p>Kondisi ekonomi yang tidak menentu juga berdampak pada <strong>industri manufaktur dan tekstil</strong> yang mengalami banyak <strong>penutupan</strong>.</p>
+      <p>Situasi ini membuat anak muda semakin sulit mendapatkan pekerjaan dengan:</p>
+      <p>• <strong>Gaji yang layak</strong></p>
+      <p>• <strong>Tunjangan kesehatan</strong></p>
+      <p>• <strong>Jaminan pendidikan</strong> bagi anak-anak mereka di masa depan</p>
+      <br>
+      <p>Fenomena <strong>#KaburAjaDulu</strong> menunjukkan bahwa <strong>anak muda Indonesia</strong> semakin pragmatis dalam menentukan masa depan mereka.</p>
+      <p>Bukan sekadar tren, ini adalah <strong>perubahan pola pikir</strong> terhadap ketidakpastian hidup di dalam negeri.</p>
+    `,
+    tags: ["KaburAjaDulu", "Anak Muda", "Pekerjaan", "Masa Depan"],
+    category: ["lifestyle", "career", "society"],
+    authorId: 1,
+  },
     
     {
-        id: 2,
+        id: 11,
         title: "Penting Dibaca Wanita, Mitos Fakta Kolagen dan Klaim Kesehatannya",
         type: "news",
         image: "/kolagen-mitos-fakta.jpg",
         date: "Feb 19 2025",
+        views: 3500,
         description: "Kolagen dikenal sebagai protein penting untuk kulit dan sendi, tetapi apakah klaim kesehatannya benar? Simak mitos dan faktanya.",
         slug: "mitos-fakta-kolagen-dan-klaim-kesehatannya",
         content: `
@@ -60,13 +109,63 @@ const lifestyleNews = [
         category: ["lifestyle", "beauty", "health"],
         authorId: 3,
       },
+      {
+        id: 12,
+        title: "Kolaborasi Epik, Song Hye Kyo dan Gong Yoo Siap Berduet di Serial Terbaru Netflix",
+        type: "news",
+        image: "/song-hye-kyo-gong-yoo.jpg",
+        date: "Feb 19 2025",
+        views: 20000000,
+        description: "Netflix mengumumkan proyek terbaru yang mempertemukan Song Hye Kyo dan Gong Yoo dalam serial bertajuk 'Show Business' yang berlatar Korea era 1960-1980-an.",
+        slug: "song-hye-kyo-gong-yoo-serial-netflix",
+        content: `
+          <p><strong>Aktor terkenal asal Korea Selatan, Gong Yoo, dan aktris Song Hye Kyo</strong> akan bersatu dalam sebuah serial orisinal <strong>Netflix</strong> yang ditulis oleh <strong>Noh Hee Kyung</strong>.</p>
+          <br>
+          <p>Menurut laporan dari <strong>Yonhap</strong>, serial ini saat ini masih berjudul sementara <strong>'Show Business'</strong> dan akan berlatar di Korea pada tahun <strong>1960-an hingga 1980-an</strong>.</p>
+          <p>Ceritanya mengisahkan perjuangan sejumlah individu yang berusaha meraih kesuksesan di <strong>industri hiburan Korea</strong> yang tengah berkembang pesat.</p>
+          <br>
+          <p class="judul-besar">Song Hye Kyo dan Gong Yoo dalam Peran Utama</p>
+          <p><strong>Song Hye Kyo</strong>, yang dikenal lewat perannya dalam <strong>The Glory</strong>, akan memerankan <strong>Min Ja</strong>, seorang wanita ambisius yang memanfaatkan setiap kesempatan untuk terjun ke dunia musik.</p>
+          <p>Sementara itu, <strong>Gong Yoo</strong>, yang sebelumnya tampil dalam serial <strong>Netflix The Trunk</strong> dan <strong>Squid Game</strong>, akan memerankan <strong>Dong Gu</strong>, sahabat Min Ja yang juga berjuang mengejar impian kesuksesan di dunia hiburan.</p>
+          <br>
+          <p>Beberapa bintang lainnya yang turut bergabung dalam serial ini adalah:</p>
+          <p>• <strong>Kim Seol Hyeon</strong></p>
+          <p>• <strong>Cha Seung Won</strong></p>
+          <p>• <strong>Lee Ha Yoon</strong></p>
+          <br>
+          <p class="judul-besar">Netflix Umumkan Secara Resmi</p>
+          <p>Meskipun antusiasme penonton sangat tinggi, tanggal rilis pasti untuk serial ini belum diumumkan.</p>
+          <p>Namun, pertemuan antara <strong>Song Hye Kyo</strong> dan <strong>Gong Yoo</strong> dalam proyek ini telah resmi diumumkan melalui akun <strong>Instagram Netflix Korea Selatan</strong>.</p>
+          <br>
+          <p class="judul-besar">Hubungan Song Hye Kyo dan Gong Yoo di Industri Hiburan</p>
+          <p>Song Hye Kyo dan Gong Yoo dikenal sebagai dua aktor papan atas di dunia hiburan Korea Selatan.</p>
+          <p>Meskipun mereka belum banyak berkolaborasi dalam film atau drama bersama, terdapat beberapa momen menarik di mana mereka bertemu atau bekerja dalam industri hiburan:</p>
+          <br>
+          <p class="sub-judul">1. Drama The First Time (2006)</p>
+          <p>Mereka pertama kali bertemu dalam <strong>drama pendek</strong> berjudul <strong>The First Time</strong> (2006), bagian dari proyek film pendek <strong>The Story of Two Sisters</strong>.</p>
+          <p>Meskipun tidak beradu peran secara langsung, kehadiran mereka menambah warna dalam alur cerita.</p>
+          <br>
+          <p class="sub-judul">2. Drama Coffee Prince (2007)</p>
+          <p>Walaupun tidak berperan bersama, Gong Yoo mencuri perhatian dalam drama legendaris <strong>Coffee Prince</strong> (2007).</p>
+          <p>Sementara itu, Song Hye Kyo tengah sibuk dengan proyek lain. Namun, keduanya dikenal memiliki interaksi sosial di berbagai acara dan festival industri hiburan.</p>
+          <br>
+          <p class="sub-judul">3. Film The Age of Shadows (2016)</p>
+          <p>Pada tahun 2016, meskipun tidak bermain dalam proyek yang sama, mereka sering hadir di acara promosi film besar yang melibatkan aktor Korea papan atas.</p>
+          <br>
+          <p>Kini, dengan proyek <strong>'Show Business'</strong>, penggemar akhirnya bisa melihat <strong>Song Hye Kyo</strong> dan <strong>Gong Yoo</strong> beradu akting dalam drama yang menjanjikan.</p>
+        `,
+        tags: ["Song Hye Kyo", "Gong Yoo", "Netflix", "Drama Korea"],
+        category: ["hiburan", "korean-drama", "streaming"],
+        authorId: 1,
+      },
       
       {
-        id: 4,
+        id: 13,
         title: "Permen Dalgona Squid Game Viral Lagi, Begini Cara Membuatnya",
         type: "news",
         image: "/permen-dalgona.jpeg",
         date: "Feb 19 2025",
+        views: 3600,
         description: "Permen dalgona kembali viral seiring promosi Squid Game season 3. Yuk, coba buat sendiri di rumah dengan resep ini!",
         slug: "permen-dalgona-squid-game-viral-cara-membuatnya",
         content: `
@@ -99,11 +198,12 @@ const lifestyleNews = [
         authorId: 1,
       },
       {
-        id: 5,
+        id: 14,
         title: "Bahaya Cancel Culture, Budaya Boikot yang Dialami Mendiang Kim Sae Ron",
         type: "news",
         image: "/kim-sae-ron-cancel-culture.jpeg",
         date: "Feb 19 2025",
+        views: 3700,
         description: "Kim Sae Ron meninggal dunia di usia 24 tahun. Ia sempat mengalami cancel culture setelah kasus DUI pada 2022, yang membuatnya menjauh dari sorotan publik.",
         slug: "bahaya-cancel-culture-kim-sae-ron",
         content: `
@@ -149,11 +249,12 @@ const lifestyleNews = [
         authorId: 2,
       },
       { 
-        id: 6,
+        id: 15,
         title: "Mengenal Munggahan, Tradisi Masyarakat Menyambut Bulan Ramadhan",
         type: "news",
         image: "/tradisi-munggahan.jpg",
         date: "Feb 19 2025",
+        views: 3800,
         description: "Munggahan adalah tradisi masyarakat Sunda sebelum Ramadhan yang mencerminkan rasa syukur dan persiapan spiritual menyambut bulan suci.",
         slug: "munggahan-tradisi-menyambut-ramadhan",
         content: `
@@ -195,11 +296,12 @@ const lifestyleNews = [
         authorId: 2,
      },
      {
-      id: 7,
+      id: 16,
       title: "Ingin Meluluhkan Hati Zodiak Aquarius? Berikut Tips dan Triknya",
       type: "news",
       image: "/zodiak-aquarius.jpg",
       date: "Feb 19 2025",
+      views: 3900,
       description: "Aquarius dikenal unik dan penuh semangat. Jika ingin meluluhkan hatinya, kamu perlu memahami karakter mereka dan menggunakan pendekatan yang tepat.",
       slug: "tips-meluluhkan-hati-zodiak-aquarius",
       content: `
@@ -234,11 +336,12 @@ const lifestyleNews = [
       authorId: 1,
     },
     {
-      id: 8,
+      id: 17,
       title: "Rahasia Panjang Umur, Konsumsi Makanan Berbasis Nabati yang Sehat",
       type: "news",
       image: "/makanan-nabati-sehat.jpg",
       date: "Feb 19 2025",
+      views: 4000,
       description: "Menjalani hidup panjang dan sehat bisa dimulai dari pola makan berbasis nabati yang kaya nutrisi dan minim pemrosesan.",
       slug: "rahasia-panjang-umur-makanan-nabati",
       content: `

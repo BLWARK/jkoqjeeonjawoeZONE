@@ -1,10 +1,123 @@
 const entertainmentNews = [
+  {
+    id: 1,
+    title: "Deddy Corbuzier Jadi Stafsus Menhan, Ini Gaji dan Fasilitasnya",
+    type: "news",
+    image: "/deddy-corbuzier-stafsus-menhan.jpg",
+    date: "Feb 19 2025",
+    views: 90000000000,
+    description: "Deddy Corbuzier ditunjuk sebagai Staf Khusus Menteri Pertahanan dan berhak menerima gaji serta berbagai tunjangan sebagai pejabat negara.",
+    slug: "deddy-corbuzier-stafsus-menhan",
+    content: `
+      <p><strong>Langkah Menteri Pertahanan Sjafrie Sjamsoeddin</strong> yang menunjuk <strong>Deddy Corbuzier</strong> sebagai <strong>Staf Khusus Menteri Pertahanan (Stafsus Menhan)</strong> menuai beragam reaksi.</p>
+      <p>Sejumlah warganet mengomentari penunjukkan ini sebagai <strong>pemborosan anggaran</strong>. Keputusan ini juga menambah daftar selebritas yang terjun ke dunia pemerintahan.</p>
+      <br>
+      <p>Dengan jabatan tersebut, <strong>Deddy Corbuzier</strong> kini resmi menjadi <strong>pejabat negara</strong> dan berhak menerima <strong>gaji serta berbagai tunjangan</strong> dari negara.</p>
+      <br>
+      <p class="judul-besar">Deddy Ditunjuk Menjadi Stafsus Komunikasi Publik</p>
+      <p>Menurut <strong>Brigjen TNI Frega Wenas Inkiriwang</strong>, Kepala Biro Informasi Pertahanan (Infohan) Setjen Kemenhan RI, penunjukan <strong>Deddy</strong> sebagai stafsus sudah sesuai dengan regulasi yang berlaku.</p>
+      <br>
+      <p>Jabatan stafsus kementerian diatur dalam <strong>Peraturan Presiden (Perpres) Nomor 140 Tahun 2024</strong> tentang Organisasi Kementerian Negara.</p>
+      <p>Deddy ditunjuk untuk menangani bidang <strong>komunikasi publik</strong>.</p>
+      <p>Sebagai figur yang memiliki <strong>pengaruh besar di media sosial</strong>, ia diharapkan dapat membantu menyebarluaskan informasi terkait <strong>kebijakan pertahanan</strong> kepada masyarakat luas.</p>
+      <br>
+      <p>Brigjen Frega menegaskan bahwa stafsus tidak hanya ada di <strong>Kementerian Pertahanan</strong>, tetapi juga di berbagai kementerian lainnya, dengan jumlah maksimal <strong>lima orang</strong> dalam satu kementerian.</p>
+      <br>
+      <p class="judul-besar">Rincian Gaji dan Fasilitas Deddy Corbuzier</p>
+      <p>Sebagai <strong>Stafsus Menhan</strong>, <strong>Deddy Corbuzier</strong> memperoleh hak keuangan setara dengan <strong>pejabat eselon 1b</strong> atau jabatan <strong>pimpinan tinggi madya</strong>.</p>
+      <br>
+      <p>Berdasarkan <strong>Perpres Nomor 10 Tahun 2024</strong> tentang <strong>Penyesuaian Gaji Pokok Pegawai Negeri Sipil</strong>, gaji yang diterimanya berkisar antara:</p>
+      <p>• <strong>Rp3.880.400 hingga Rp6.373.200 per bulan</strong></p>
+      <br>
+      <p>Selain gaji pokok, Deddy juga mendapatkan <strong>tunjangan kinerja (tukin)</strong> sesuai dengan <strong>Perpres Nomor 104 Tahun 2018</strong> tentang <strong>Tunjangan Kinerja Pegawai di Lingkungan Kementerian Pertahanan</strong>.</p>
+      <br>
+      <p>Dalam aturan tersebut, tukin untuk kelas jabatan <strong>16</strong>, yang menjadi kategori Deddy, ditetapkan sebesar:</p>
+      <p>• <strong>Rp20.695.000 per bulan</strong></p>
+      <br>
+      <p class="judul-besar">Total Penghasilan Stafsus Menhan</p>
+      <p>Jika ditotal, penghasilan yang diterimanya setiap bulan berkisar antara:</p>
+      <p>• <strong>Rp24.575.400 hingga Rp27.068.200 per bulan</strong></p>
+      <br>
+      <p class="judul-besar">Fasilitas yang Didapat Deddy Corbuzier</p>
+      <p>Selain gaji dan tunjangan, sebagai stafsus, Deddy juga berhak atas fasilitas lain, seperti:</p>
+      <p>• <strong>Kendaraan dinas dengan pelat khusus</strong></p>
+      <p>• <strong>Akses ke berbagai sarana di Kementerian Pertahanan</strong></p>
+      <br>
+      <p>Dengan jabatan barunya ini, <strong>Deddy Corbuzier</strong> kini resmi menjadi bagian dari pemerintahan dan memiliki peran strategis dalam menyampaikan kebijakan pertahanan kepada publik.</p>
+    `,
+    tags: ["Deddy Corbuzier", "Menhan", "Stafsus", "Politik"],
+    category: ["hiburan", "government"],
+    authorId: 1,
+  },
+  {
+    id: 2,
+    title: "Congrats! Angga Yunanda dan Shenina Cinnamon Resmi Menikah",
+    type: "news",
+    image: "/angga-yunanda-shenina-cinnamon-wedding.jpeg",
+    date: "Feb 10 2025",
+    views: 65000000,
+    description: "Kabar bahagia datang dari pasangan artis Angga Yunanda dan Shenina Cinnamon yang diam-diam telah melangsungkan pernikahan di Bali.",
+    slug: "angga-yunanda-shenina-cinnamon-menikah",
+    content: `
+      <p><strong>Kabar bahagia</strong> datang dari pasangan artis <strong>Angga Yunanda</strong> dan <strong>Shenina Cinnamon</strong>. Keduanya diam-diam telah melangsungkan <strong>pernikahan</strong>.</p>
+      <br>
+      <p>Momen pernikahan mereka dibagikan di akun <strong>Instagram</strong>. Dalam sejumlah foto, <strong>Angga Yunanda</strong> terlihat gagah mengenakan pakaian <strong>serba putih</strong>, sementara <strong>Shenina Cinnamon</strong> tampil anggun dengan kebaya putih dan <strong>veil panjang menjuntai</strong>.</p>
+      <br>
+      <p>Dalam salah satu foto, keduanya tampak <strong>memamerkan buku nikah</strong> sambil tersenyum ke arah kamera, memancarkan <strong>aura bahagia</strong> sebagai pengantin baru.</p>
+      <br>
+      <p class="judul-besar">Pernikahan Digelar Secara Tertutup</p>
+      <p>Kabarnya, pernikahan keduanya digelar secara <strong>tertutup di Bali</strong>, dihadiri oleh sejumlah aktor dan aktris Tanah Air seperti:</p>
+      <p>• <strong>Reza Rahadian</strong></p>
+      <p>• <strong>Laura Basuki</strong></p>
+      <p>• <strong>Chicco Jerikho</strong></p>
+      <br>
+      <p class="judul-besar">Ucapan Selamat dari Rekan Selebriti</p>
+      <p>Setelah unggahan pernikahan mereka tersebar, banyak rekan artis yang turut memberikan ucapan selamat:</p>
+      <p>• <strong>Chand Parwez</strong>: "Masya Allah, turut bahagia dan doa terbaik buat @angga dan @sheninacinnamon."</p>
+      <p>• <strong>Tissa Biani</strong>: "Selamat Angga & Shenina!"</p>
+      <p>• <strong>Chicco Jerikho</strong>: "SAH @angga @sheninacinnamon. Congrats!"</p>
+      <br>
+      <p class="judul-besar">Reaksi Netizen: Kejutan Besar!</p>
+      <p>Meski telah berpacaran cukup lama, kabar pernikahan <strong>Angga Yunanda</strong> dan <strong>Shenina Cinnamon</strong> tetap mengejutkan banyak netizen.</p>
+      <p>"Haahhh!! Kaget banget! Selamat!," ucap seorang netizen.</p>
+      <p>"Tiba-tiba banget udah nikah," komentar lainnya.</p>
+      <p>"Ubur-ubur ikan lele, apakah ini benar leee," canda seorang netizen.</p>
+      <br>
+      <p class="judul-besar">Perjalanan Cinta Angga & Shenina</p>
+      <p><strong>Angga Yunanda</strong> dan <strong>Shenina Cinnamon</strong> mulai <strong>go public</strong> sebagai pasangan sejak <strong>tahun 2020</strong>.</p>
+      <p>Pada sebuah kesempatan, Angga pernah berbicara tentang pernikahan:</p>
+      <blockquote>
+        "Menurut aku, pernikahan itu dunia yang sangat sulit dan panjang banget. Karena kita akan melewati bersama pasangan seumur hidup."
+      </blockquote>
+      <p>Ia juga menambahkan bahwa dirinya ingin berpikir panjang sebelum mengambil keputusan menikah:</p>
+      <blockquote>
+        "Semakin bertambah umur, pemikirannya juga akan lebih matang."
+      </blockquote>
+      <br>
+      <p class="judul-besar">Karier Angga Yunanda & Shenina Cinnamon</p>
+      <p><strong>Angga Yunanda</strong> dikenal sebagai aktor yang telah membintangi banyak film populer seperti:</p>
+      <p>• <strong>Dua Hati Biru</strong></p>
+      <p>• <strong>Mencuri Raden Saleh</strong></p>
+      <p>• <strong>Mariposa</strong></p>
+      <br>
+      <p>Sementara itu, <strong>Shenina Cinnamon</strong> juga membintangi sejumlah film ternama, seperti:</p>
+      <p>• <strong>Cross The Line</strong></p>
+      <p>• <strong>Dear David</strong></p>
+      <p>• <strong>Ku Kira Kau Rumah</strong></p>
+      <br>
+      <p>Pernikahan mereka menjadi kabar bahagia bagi para penggemar, sekaligus menambah daftar selebriti Indonesia yang menikah di tahun 2025.</p>
+    `,
+    tags: ["Angga Yunanda", "Shenina Cinnamon", "Pernikahan", "Selebriti"],
+    category: ["hiburan", "celebrity"],
+    authorId: 3,
+  },
       {
-        id: 7,
+        id: 3,
         title: "In Memoriam, Inilah Deretan Fakta Profil dan Karir Artis Kim Sae-ron",
         type: "news",
         image: "/kim-saeron-profile.jpg",
         date: "Feb 19 2025",
+        views: 2400,
         description: "Kim Sae-ron meninggal dunia, berikut profil dan perjalanan karirnya dari awal hingga akhir hidupnya.",
         slug: "in-memoriam-kim-saeron-profil-dan-karir",
         content: `
@@ -48,11 +161,12 @@ const entertainmentNews = [
       },
       
       {
-        id: 8,
+        id: 4,
         title: "Pernikahan Al Ghazali dan Alyssa Daguise Akan Dimeriahkan Dewa 19 hingga Vina Panduwinata",
         type: "news",
         image: "/al-ghazali-alyssa-daguise.jpg",
         date: "Feb 18 2025",
+        views: 2500,
         description: "Dewa 19 dan Vina Panduwinata akan turut memeriahkan pernikahan Al Ghazali dan Alyssa Daguise.",
         slug: "pernikahan-al-ghazali-alyssa-daguise",
         content: `
@@ -112,11 +226,12 @@ const entertainmentNews = [
         authorId: 1,
       },
       {
-        id: 9,
+        id: 5,
         title: "Han So-hee dan Won Bin Hadiri Upacara Pemakaman Kim Sae-ron",
         type: "news",
         image: "/han-sohee-won-bin.jpg",
         date: "Feb 17 2025",
+        views: 2600,
         description: "Han So-hee dan Won Bin turut menghadiri pemakaman Kim Sae-ron sebagai bentuk penghormatan terakhir.",
         slug: "han-sohee-won-bin-hadiri-pemakaman-kim-saeron",
         content: `
@@ -164,11 +279,12 @@ const entertainmentNews = [
         authorId: 3,
       },
     {
-      id: 10,
+      id: 6,
       title: "Cerita Ariel Tatum Dibully Gegara Pacaran dengan Stefan William",
       type: "news",
       image: "/ariel-tatum-stefan.jpeg",
       date: "Feb 16 2025",
+      views: 2700,
       description: "Ariel Tatum mengungkapkan pengalaman pahitnya dibully netizen karena menjalin hubungan dengan Stefan William.",
       slug: "ariel-tatum-dibully-karena-stefan-william",
       content: `
@@ -179,11 +295,12 @@ const entertainmentNews = [
       authorId: 2,
     },
     {
-      id: 11,
+      id: 7,
       title: "Ngaku Melahirkan Anak ke-13 Elon Musk, Ashley St. Clair Tagih Janji Bos Tesla",
       type: "news",
       image: "/elon-musk-baby.jpeg",
       date: "Feb 15 2025",
+      views: 2800,
       description: "Ashley St. Clair mengaku telah melahirkan anak ke-13 dari Elon Musk dan menuntut pertanggungjawaban.",
       slug: "ashley-stclair-mengaku-anak-elon-musk",
       content: `
@@ -194,11 +311,12 @@ const entertainmentNews = [
       authorId: 1,
     },
     {
-      id: 12,
+      id: 8,
       title: "Profil Daffa Wardhana, Anak Marini Zumarnis Diduga Pacar Ariel Tatum",
       type: "news",
       image: "/daffa-wardhana.jpeg",
       date: "Feb 14 2025",
+      views: 2800,
       description: "Daffa Wardhana, anak Marini Zumarnis, menjadi perbincangan karena diduga berpacaran dengan Ariel Tatum.",
       slug: "profil-daffa-wardhana-anak-marini-zumarnis",
       content: `
@@ -209,11 +327,12 @@ const entertainmentNews = [
       authorId: 1,
     },
     {
-      id: 13,
+      id: 9,
       title: "Cocoklogi Ariel Tatum dan Daffa Wardhana Pacaran, Buket Bunga dan Pancake Hati Jadi Bukti",
       type: "news",
       image: "/ariel-tatum-daffa.jpeg",
       date: "Feb 13 2025",
+      views: 2900,
       description: "Netizen mulai mencocokkan bukti bahwa Ariel Tatum dan Daffa Wardhana berpacaran.",
       slug: "cocoklogi-ariel-tatum-daffa-wardhana-pacaran",
       content: `

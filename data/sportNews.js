@@ -1,10 +1,11 @@
 const sportNews = [
     {
-        id: 1,
+        id: 18,
         title: "You'll Never Walk Alone, Lagu Magis yang Jadi Simbol Liverpool",
         type: "news",
         image: "/ynwa-liverpool.png",
         date: "Feb 20 2025",
+        views: 5000,
         description: "Lagu 'You'll Never Walk Alone' bukan sekadar nyanyian suporter, tetapi simbol solidaritas dan semangat Liverpool FC.",
         slug: "youll-never-walk-alone-simbol-liverpool",
         content: `
@@ -37,11 +38,12 @@ const sportNews = [
         authorId: 1,
       },
       {
-        id: 2,
+        id: 19,
         title: "Timnas Indonesia U-20 Siap Persembahkan Kemenangan di Laga Terakhir Piala Asia U-20 2025",
         type: "news",
         image: "/timnas-u20-piala-asia.jpg",
         date: "Feb 17 2025",
+        views: 5100,
         description: "Garuda Muda siap menghadapi Yaman di laga terakhir Grup C Piala Asia U-20 2025, dengan tekad meraih kemenangan.",
         slug: "timnas-indonesia-u20-laga-terakhir-piala-asia-2025",
         content: `
@@ -82,11 +84,12 @@ const sportNews = [
         authorId: 2,
       },
       {
-        id: 3,
+        id: 20,
         title: "Cristiano Ronaldo Belum Tiba di Kupang, Ini Kata Pihak Pengundang",
         type: "news",
         image: "/cristiano-ronaldo-kupang.jpg",
         date: "Feb 12 2025",
+        views: 5200,
         description: "Cristiano Ronaldo dikabarkan akan berkunjung ke Kupang, namun hingga kini kepastiannya masih belum jelas.",
         slug: "cristiano-ronaldo-belum-tiba-kupang",
         content: `
@@ -142,11 +145,12 @@ const sportNews = [
       },
       
       {
-        id: 5,
+        id: 21,
         title: "Hasil Playoff Liga Champions: Bayern, Feyenoord, Brugge dan Benfica Lolos ke Babak 16 Besar",
         type: "news",
         image: "/liga-champions-playoff.jpg",
         date: "Feb 19 2025",
+        views: 5300,
         description: "Bayern Munich, Feyenoord, Club Brugge, dan Benfica memastikan tiket ke babak 16 besar Liga Champions melalui jalur playoff.",
         slug: "hasil-playoff-liga-champions-bayern-feyenoord-brugge-benfica",
         content: `
@@ -203,11 +207,12 @@ const sportNews = [
         authorId: 2,
       },
       {
-        id: 6,
+        id: 22,
         title: "Jadi Kapten, Jay Idzes Gagal Bawa Venezia Menghindar dari Kekalahan Atas Genoa 2-0",
         type: "news",
         image: "/jay-idzes-venezia-genoa.jpg",
         date: "Feb 18 2025",
+        views: 5400,
         description: "Jay Idzes tampil sebagai kapten Venezia, tetapi gagal menghindarkan timnya dari kekalahan 2-0 atas Genoa di Liga Serie A Italia.",
         slug: "jay-idzes-gagal-bawa-venezia-kalah-dari-genoa",
         content: `
@@ -239,11 +244,12 @@ const sportNews = [
         authorId: 2,
       },
       {
-        id: 7,
+        id: 23,
         title: "Hasil Barcelona Vs Rayo Vallecano 1-0, El Barca Sukses Kudeta Real Madrid di Puncak Klasemen",
         type: "news",
         image: "/barcelona-rayo-vallecano.jpg",
         date: "Feb 18 2025",
+        views: 55555500,
         description: "Barcelona sukses mengalahkan Rayo Vallecano 1-0 lewat gol penalti Robert Lewandowski, sekaligus menggeser Real Madrid di puncak klasemen LaLiga.",
         slug: "hasil-barcelona-vs-rayo-vallecano-1-0",
         content: `

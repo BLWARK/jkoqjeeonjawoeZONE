@@ -1,12 +1,107 @@
 const teknologiData = [
+  {
+    id: 24,
+    title: "Keunggulan iPhone SE 4. Modal 8 Juta, Bisa Punya iPhone Terbaru",
+    type: "news",
+    image: "/iphone-se-4.jpg",
+    date: "Feb 19 2025",
+    views: 900000000,
+    description: "iPhone SE 4 diperkirakan akan dirilis di Indonesia pada akhir Februari 2025 dengan harga mulai dari Rp8,1 juta, membawa desain modern dan fitur canggih.",
+    slug: "keunggulan-iphone-se-4",
+    content: `
+      <p><strong>iPhone SE 4</strong> diperkirakan akan dirilis di Indonesia pada akhir <strong>Februari 2025</strong>.</p>
+      <p>Dikutip dari beberapa sumber, smartphone ini diperkirakan akan diluncurkan pada akhir bulan ini dengan harga mulai dari <strong>499 dolar AS</strong> atau sekitar <strong>8,1 juta rupiah</strong>.</p>
+      <br>
+      <p>Namun, harga resmi di Indonesia mungkin berbeda karena faktor seperti <strong>pajak dan biaya distribusi</strong>.</p>
+      <br>
+      <p>Selain bicara soal harga jualnya di Indonesia, <strong>iPhone SE 4</strong> menawarkan sejumlah keunggulan yang menjadikannya pilihan menarik bagi pengguna yang mencari <strong>perangkat berkinerja tinggi</strong> dengan harga lebih terjangkau.</p>
+      <br>
+      <p class="judul-besar">Keunggulan Utama iPhone SE 4</p>
+      <p><strong>1. Desain Modern Tanpa Tombol Home</strong></p>
+      <p>iPhone SE 4 mengadopsi desain serupa dengan <strong>iPhone 14</strong>, menghilangkan <strong>tombol home fisik</strong> dan menghadirkan <strong>layar penuh dengan notch</strong> di bagian atas untuk sensor <strong>Face ID</strong>.</p>
+      <br>
+      <p><strong>2. Layar OLED Super Retina XDR 6,1 Inci</strong></p>
+      <p>Perangkat ini dilengkapi dengan layar <strong>OLED 6,1 inci</strong> yang menawarkan kualitas visual tajam dan <strong>reproduksi warna akurat</strong>, memberikan pengalaman menonton yang lebih baik dibandingkan dengan layar <strong>LCD pada model sebelumnya</strong>.</p>
+      <br>
+      <p><strong>3. Chipset A18 dan RAM 8GB</strong></p>
+      <p>Ditenagai oleh <strong>chipset A18 terbaru</strong> dan didukung oleh <strong>RAM 8GB</strong>, iPhone SE 4 menawarkan performa yang cepat dan efisien, mampu menangani <strong>multitasking dan aplikasi berat</strong> dengan lancar.</p>
+      <br>
+      <p><strong>4. Kamera Utama 48MP</strong></p>
+      <p>Dilengkapi dengan <strong>kamera belakang tunggal beresolusi 48MP</strong>, perangkat ini mampu menghasilkan foto berkualitas tinggi dengan detail yang tajam.</p>
+      <br>
+      <p><strong>5. Face ID dan Tombol Aksi</strong></p>
+      <p>Menggantikan <strong>Touch ID</strong>, iPhone SE 4 kini menggunakan <strong>Face ID</strong> untuk keamanan biometrik.</p>
+      <p>Selain itu, terdapat <strong>tombol Aksi</strong> yang dapat disesuaikan fungsinya sesuai kebutuhan pengguna.</p>
+      <br>
+      <p><strong>6. Port USB-C</strong></p>
+      <p>Mengikuti tren terbaru, <strong>iPhone SE 4</strong> beralih ke <strong>port USB-C</strong> untuk pengisian daya dan transfer data, menggantikan port <strong>Lightning</strong> yang sebelumnya digunakan.</p>
+      <br>
+      <p><strong>7. Modem 5G Buatan Apple</strong></p>
+      <p>Perangkat ini dilengkapi dengan <strong>modem 5G pertama buatan Apple</strong>, memastikan konektivitas internet yang cepat dan stabil.</p>
+      <br>
+      <p><strong>8. Harga Terjangkau</strong></p>
+      <p>Dengan berbagai peningkatan tersebut, <strong>iPhone SE 4</strong> diperkirakan akan dijual dengan harga sekitar <strong>500 dolar AS</strong>, menjadikannya pilihan yang lebih ekonomis dibandingkan model iPhone lainnya dengan spesifikasi serupa.</p>
+      <br>
+      <p class="judul-besar">Kesimpulan</p>
+      <p>Dengan kombinasi fitur-fitur tersebut, <strong>iPhone SE 4</strong> menawarkan <strong>nilai yang signifikan</strong> bagi pengguna yang mencari <strong>perangkat iPhone modern dengan harga lebih terjangkau</strong>.</p>
+      <p>Peluncurannya yang semakin dekat membuatnya menjadi salah satu smartphone yang paling dinanti tahun ini.</p>
+    `,
+    tags: ["iPhone SE 4", "Apple", "Smartphone", "Teknologi"],
+    category: ["teknologi", "smartphones"],
+    authorId: 1,
+  },
+  {
+    id: 25,
+    title: "Google Tingkatkan Keamanan! Fitur Baru Siap Tangkal Penipuan Online",
+    type: "news",
+    image: "/google-enhanced-fraud-protection.jpg",
+    date: "Feb 19 2025",
+    views: 200000,
+    description: "Google meluncurkan fitur Enhanced Fraud Protection untuk memperkuat keamanan pengguna Android dari ancaman penipuan daring.",
+    slug: "google-enhanced-fraud-protection",
+    content: `
+      <p><strong>Google</strong> terus berinovasi dalam menjaga <strong>keamanan digital</strong> dengan menghadirkan fitur baru bernama <strong>Enhanced Fraud Protection</strong>.</p>
+      <br>
+      <p>Fitur ini dirancang untuk meningkatkan layanan <strong>Google Play Protect</strong>, yang bertujuan melindungi pengguna <strong>Android</strong> dari ancaman <strong>penipuan daring</strong>.</p>
+      <br>
+      <p class="judul-besar">Perlindungan Lebih Ketat terhadap Ancaman Sideloading</p>
+      <p>Menurut <strong>Direktur Hubungan Pemerintah dan Kebijakan Publik Google Indonesia, Putri Alam</strong>, fitur <strong>Enhanced Fraud Protection</strong> berfungsi untuk <strong>meminimalkan risiko dari pemasangan aplikasi di luar Google Play Store</strong>—praktek yang dikenal sebagai <strong>sideloading</strong>.</p>
+      <br>
+      <p>Berdasarkan data dari <strong>Global Anti Scam Alliance (GASA) tahun 2023</strong>, sekitar <strong>50 persen pengguna perangkat digital di dunia</strong> pernah mengalami <strong>penipuan daring</strong> dalam 12 bulan terakhir.</p>
+      <br>
+      <p>Mengingat tingginya ancaman ini, <strong>Google</strong> memperkuat perlindungan dengan fitur-fitur baru guna menutup celah keamanan yang sering dimanfaatkan oleh pelaku kejahatan siber.</p>
+      <br>
+      <p class="judul-besar">Bahaya Sideloading dan Cara Penipu Beraksi</p>
+      <p><strong>Sideloading</strong> memungkinkan pengguna mengunduh dan menginstal aplikasi dari <strong>sumber luar</strong> selain Google Play Store.</p>
+      <p>Sayangnya, metode ini sering dimanfaatkan oleh penipu untuk menyamar sebagai <strong>orang terdekat</strong> dan mengelabui korban agar menginstal aplikasi berbahaya.</p>
+      <br>
+      <p>Begitu aplikasi mencurigakan berhasil terpasang, akses pengguna ke layanan finansialnya bisa terganggu, bahkan berisiko mengalami <strong>pencurian data</strong> atau <strong>kerugian finansial</strong>.</p>
+      <br>
+      <p class="judul-besar">Bagaimana Enhanced Fraud Protection Bekerja?</p>
+      <p>Menurut informasi yang dibagikan melalui <strong>blog resmi Google</strong>, fitur <strong>Enhanced Fraud Protection</strong> secara otomatis akan <strong>memblokir aplikasi dari sumber luar</strong> jika terdeteksi meminta akses ke:</p>
+      <p>• <strong>One Time Password (OTP) melalui SMS</strong></p>
+      <p>• <strong>Mencoba mengintai konten di layar pengguna</strong></p>
+      <br>
+      <p>Setelah sukses diuji coba di beberapa negara, fitur ini resmi dirilis secara <strong>global</strong> dan akan tersedia di <strong>Indonesia</strong> mulai <strong>Februari 2025</strong>.</p>
+      <br>
+      <p class="judul-besar">Google Pastikan Keamanan Pengguna</p>
+      <p>"Proteksi tambahan ini telah terbukti efektif, berhasil <strong>melindungi 10 juta perangkat</strong> di seluruh dunia. Kini, kami bangga dapat membawa keamanan ini lebih jauh untuk masyarakat Indonesia," ujar <strong>Putri Alam</strong>.</p>
+      <br>
+      <p>Dengan langkah ini, <strong>Google</strong> semakin memperkuat komitmennya dalam meningkatkan keamanan siber dan menjaga data pengguna dari ancaman digital.</p>
+    `,
+    tags: ["Google", "Keamanan Digital", "Penipuan Online", "Android"],
+    category: ["teknologi", "cybersecurity"],
+    authorId: 2,
+  },
     
     
       {
-        id: 3,
+        id: 26,
         title: "Teknologi AI Bridgit Bantu Pekerja Perawatan Tangani Keluhan",
         type: "news",
         image: "/ai-bridgit-care.jpeg",
         date: "Feb 17 2025",
+        views: 6000,
         description: "Chatbot AI Bridgit hadir untuk mendukung pekerja perawatan di Inggris dengan akses mudah ke layanan pendukung.",
         slug: "teknologi-ai-bridgit-bantu-pekerja-perawatan",
         content: `
@@ -50,11 +145,12 @@ const teknologiData = [
       },
      
       {
-        id: 5,
+        id: 27,
         title: "Tiga Mahasiswa Telkom Ciptakan Aplikasi Pendeteksi Penyakit Mata",
         type: "news",
         image: "/retinex-ai-telkom.png",
         date: "Feb 15 2025",
+        views: 6100,
         description: "Mahasiswa Telkom University menciptakan aplikasi Retinex, AI pendeteksi penyakit mata berbasis pemindaian retina.",
         slug: "tiga-mahasiswa-telkom-ciptakan-aplikasi-pendeteksi-mata",
         content: `
@@ -115,11 +211,12 @@ const teknologiData = [
         authorId: 2,
       },
       {
-        id: 6,
+        id: 28,
         title: "Terungkap! Kaspersky Temukan 36 Juta Ancaman Siber Lokal di Indonesia pada 2024",
         type: "news",
         image: "/kaspersky-ancaman-siber.jpg",
         date: "Feb 14 2025",
+        views: 6200,
         description: "Kaspersky melaporkan lebih dari 36 juta upaya ancaman siber lokal yang terjadi di Indonesia sepanjang tahun 2024.",
         slug: "kaspersky-temukan-36-juta-ancaman-siber-indonesia",
         content: `
@@ -163,11 +260,12 @@ const teknologiData = [
         authorId: 2,
       },
       {
-        id: 7,
+        id: 29,
         title: "China Merespon Banyaknya Larangan Pada Chatbot AI DeepSeek",
         type: "news",
         image: "/deepseek-ban.jpg",
         date: "Feb 12 2025",
+        views: 6300,
         description: "DeepSeek, chatbot AI asal China, menghadapi larangan dari berbagai negara karena kekhawatiran terkait pengumpulan data pengguna.",
         slug: "china-merespon-larangan-chatbot-deepseek",
         content: `
@@ -211,11 +309,12 @@ const teknologiData = [
         authorId: 1,
       },
       {
-        id: 8,
+        id: 30,
         title: "Apple Siapkan Peluncuran Apple Intelligence di China pada Mei 2025",
         type: "news",
         image: "/apple-intelligence-china.jpg",
         date: "Feb 10 2025",
+        views: 6400,
         description: "Apple Intelligence akan hadir di China pada Mei 2025, dengan Apple menggandeng Alibaba dan Baidu untuk memenuhi regulasi setempat.",
         slug: "apple-intelligence-rilis-di-china-2025",
         content: `

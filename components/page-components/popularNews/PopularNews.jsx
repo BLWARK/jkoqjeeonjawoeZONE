@@ -1,14 +1,37 @@
+"use client";
+
 import React from "react";
 import MainPopular from "@/components/page-components/popularNews/mainPopular/MainPopular";
 import SidePopular from "@/components/page-components/popularNews/sidePopular/SidePopular";
 import BottomPopular from "@/components/page-components/popularNews/bottomPopular/BottomPopular";
-import popularNews from "@/data/popularNews"; // Import data berita populer
+import headlines from "@/data/headline";
+import News from "@/data/news";
+import entertainmentNews from "@/data/entertainmentNews";
+import teknologiData from "@/data/teknologiData";
+import olahraga from "@/data/sportNews";
+import lifestyleNews from "@/data/lifestyleNews";
+
+// 🔹 Gabungkan semua artikel dari berbagai kategori
+const allArticles = [
+  ...headlines,
+  ...News,
+  ...entertainmentNews,
+  ...teknologiData,
+  ...lifestyleNews,
+  ...olahraga,
+];
+
+// 🔹 Urutkan berita berdasarkan views tertinggi
+const sortedArticles = allArticles
+  .filter((article) => article.views !== undefined)
+  .sort((a, b) => b.views - a.views);
+
+// 🔹 Ambil berita dengan views tertinggi
+const mainArticle = sortedArticles[0]; // Berita #1
+const sideArticles = sortedArticles.slice(1, 3); // Berita #2 dan #3
+const bottomArticles = sortedArticles.slice(3, 6); // Berita #4, #5, dan #6
 
 const PopularNews = () => {
-  const mainArticle = popularNews[0]; // Berita utama
-  const sideArticles = popularNews.slice(1, 3); // 2 berita samping
-  const bottomArticles = popularNews.slice(3, 6); // 3 berita di bawah
-
   return (
     <div className="w-screen bg-gray-800">
       <div className="px-3 py-10 w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-8">
@@ -18,12 +41,12 @@ const PopularNews = () => {
 
         {/* Grid Utama */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <MainPopular mainArticle={mainArticle} />
-          <SidePopular sideArticles={sideArticles} />
+          {mainArticle && <MainPopular mainArticle={mainArticle} />}
+          {sideArticles.length > 0 && <SidePopular sideArticles={sideArticles} />}
         </div>
 
         {/* Artikel Bawah */}
-        <BottomPopular bottomArticles={bottomArticles} />
+        {bottomArticles.length > 0 && <BottomPopular bottomArticles={bottomArticles} />}
       </div>
     </div>
   );

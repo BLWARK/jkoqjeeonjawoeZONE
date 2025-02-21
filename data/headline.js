@@ -5,6 +5,7 @@ const headline = [
     type: "headline",
     image: "/maya-septha-oplas.jpeg",
     date: "Feb 20 2025",
+    views: 3000,
     description: "Maya Septha mengungkapkan pengalaman operasi plastiknya di Korea yang menghabiskan biaya hingga Rp500 juta.",
     slug: "maya-septha-oplas-di-korea-habis-rp500-juta",
     content: `
@@ -55,6 +56,7 @@ const headline = [
     type: "headline",
     image: "/gemini-ai-download.jpg",
     date: "Feb 20 2025",
+    views: 3100,
     description: "Cara mudah mengunduh dan menggunakan Gemini AI di ponsel Android tanpa fitur AI bawaan.",
     slug: "tips-trik-download-gemini-ai-android",
     content: `
@@ -108,6 +110,7 @@ const headline = [
     type: "headline",
     image: "/puasa-intermiten-remaja.jpg",
     date: "Feb 19 2025",
+    views: 3200,
     description: "Penelitian terbaru menunjukkan bahwa puasa intermiten mungkin memiliki efek berbeda pada remaja dibandingkan orang dewasa.",
     slug: "puasa-intermiten-pengaruhi-tumbuh-kembang-remaja",
     content: `
@@ -156,6 +159,7 @@ const headline = [
     type: "news",
     image: "/pep-guardiola-ancelotti.jpg",
     date: "Feb 12 2025",
+    views: 3300,
     description: "Carlo Ancelotti menanggapi klaim Pep Guardiola yang menyebut peluang Manchester City untuk menang atas Real Madrid hanya satu persen.",
     slug: "pep-guardiola-manchester-city-sulit-kalahkan-real-madrid",
     content: `
@@ -196,6 +200,7 @@ const headline = [
     type: "news",
     image: "/iphone-17-revolusi.jpg",
     date: "Feb 18 2025",
+    views: 3400,
     description: "Apple dikabarkan akan membawa perubahan desain terbesar dalam sejarah iPhone dengan iPhone 17.",
     slug: "apple-desain-revolusioner-iphone-17",
     content: `

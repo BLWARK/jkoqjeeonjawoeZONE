@@ -2,22 +2,49 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getCategoryColor } from "@/data/categoryColors";
-import users from "@/data/users"; // Import data author
+import users from "@/data/users"; 
+import headlines from "@/data/headline";
+import News from "@/data/news";
 
-// Fungsi mendapatkan author berdasarkan ID
+import entertainmentNews from "@/data/entertainmentNews";
+import teknologiData from "@/data/teknologiData";
+import olahraga from "@/data/sportNews";
+import lifestyleNews from "@/data/lifestyleNews";
+
+// 🔹 Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
 
-// Fungsi untuk memotong judul menjadi maksimal 6 kata
+// 🔹 Gabungkan semua artikel
+const allArticles = [
+  ...headlines,
+  ...News,
+  
+  ...entertainmentNews,
+  ...teknologiData,
+  ...lifestyleNews,
+  ...olahraga,
+];
+
+// 🔹 Urutkan berita berdasarkan `views` dari terbesar ke terkecil
+const sortedArticles = allArticles
+  .filter((article) => article.views !== undefined) // Pastikan hanya yang memiliki views
+  .sort((a, b) => b.views - a.views);
+
+// 🔹 Ambil berita **views tertinggi ke-2 dan ke-3**
+const sideArticles = sortedArticles.slice(1, 3); // Views ke-2 dan ke-3
+
+// 🔹 Fungsi untuk memotong judul menjadi maksimal 6 kata
 const sliceTitle = (title, maxWords = 6) => {
   const words = title.split(" ");
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "..." : title;
 };
 
-const SidePopular = ({ sideArticles }) => {
+// ✅ **Komponen SidePopular untuk 2 berita paling populer setelah MainPopular**
+const SidePopular = () => {
   return (
     <div className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col gap-6">
       {sideArticles.map((article) => {
-        const author = getAuthorById(article.authorId); // ✅ FIX: Menggunakan `authorId`, bukan `authorIds[0]`
+        const author = getAuthorById(article.authorId); 
 
         return (
           <div key={article.id} className="flex flex-col items-start gap-4">
@@ -48,7 +75,7 @@ const SidePopular = ({ sideArticles }) => {
                   <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                 )}
                 <span className="ml-2">
-                  {author?.name || "Unknown Author"} • {article.date}
+                  {author?.name || "Unknown Author"} • {new Date(article.date).toLocaleDateString()}
                 </span>
               </div>
             </div>
