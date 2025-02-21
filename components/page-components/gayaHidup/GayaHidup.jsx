@@ -5,10 +5,10 @@ import lifestyleNews from "@/data/lifestyleNews"; // Data berita gaya hidup
 import users from "@/data/users"; // Data author
 import { getCategoryColor } from "@/data/categoryColors"; // Warna kategori
 
-// Fungsi mendapatkan author berdasarkan ID
+// 🔹 Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
 
-// Fungsi memotong judul agar tidak terlalu panjang
+// 🔹 Fungsi memotong judul agar tidak terlalu panjang
 const sliceTitle = (title, maxWords = 8) => {
   const words = title.split(" ");
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "..." : title;
@@ -26,21 +26,24 @@ const GayaHidup = () => {
           <h2 className="text-3xl font-bold text-pink-500 mb-3">Lifestyle</h2>
           <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
         </div>
-        <a href="/" className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer">
+        <a
+          href="/"
+          className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer"
+        >
           View All
         </a>
       </div>
 
-      {/* Layout Horizontal */}
-      <div className="flex gap-6 overflow-x-auto scrollbar-hide">
+      {/* 🔥 Layout dengan Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6  ">
         {displayedArticles.map((article) => {
-          const author = getAuthorById(article.authorId); // ✅ FIX: Pakai `authorId` langsung
+          const author = getAuthorById(article.authorId);
 
           return (
-            <div key={article.id} className="2xl:w-[290px] w-full flex-shrink-0">
+            <div key={article.id} className="w-full 2xl:border-b-0 xl:border-b-0 lg:border-b-0 border-b border-b-gray-300 2xl:pb-0 xl:pb-0 lg:pb-0 pb-5 ">
               {/* Gambar */}
-              <div className="relative w-full 2xl:h-[160px] h-[250px]">
-                <Image src={article.image} alt={article.title} fill  className="rounded-lg object-cover" />
+              <div className="relative w-full h-[250px] lg:h-[160px]">
+                <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
               </div>
 
               {/* Kategori */}

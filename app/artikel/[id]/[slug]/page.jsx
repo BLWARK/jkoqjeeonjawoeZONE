@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import headlines from "@/data/headline";
@@ -16,9 +16,8 @@ import Share from "@/components/share/Share";
 import Follow from "@/components/follow/Follow";
 import { FaPlay, FaStop } from "react-icons/fa";
 import MostRead from "@/components/mostRead/MostRead";
-import RelatedNews from "@/components/relatedNews/RelatedNews"
+import RelatedNews from "@/components/relatedNews/RelatedNews";
 import editorChoice from "@/data/EditorChoice";
-
 
 // 🔹 Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => {
@@ -43,6 +42,7 @@ const sortedArticles = allArticles
   .sort((a, b) => b.views - a.views);
 
 const ArticlePage = () => {
+  const router = useRouter(); // Inisialisasi router
   const params = useParams();
   const pathname = usePathname();
   const [article, setArticle] = useState(null);
@@ -141,7 +141,7 @@ const ArticlePage = () => {
         <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0">
           {/* Judul & Tanggal */}
           <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
-          <div className="flex justify-between items-center py-5">
+          <div className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse justify-between items-start py-8 2xl:gap-0 gap-6">
             {/* 🔹 Tombol Play (Untuk Membaca Artikel) */}
             <button
               onClick={toggleSpeech}
@@ -208,25 +208,22 @@ const ArticlePage = () => {
           />
           <Share />
           {/* 🔹 Card untuk Semua Tags */}
-          {article.tags && article.tags.length > 0 && (
-            <div className="mt-6 border border-gray-300 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                Tags:
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {article.tags.map((tag, index) => (
-                  <Link
-                    key={index}
-                    href={`/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
-                  >
-                    <button className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full">
-                      {tag}
-                    </button>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
+      {article.tags && article.tags.length > 0 && (
+        <div className="mt-6 border border-gray-300 rounded-lg p-4">
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">Tags:</h3>
+          <div className="flex flex-wrap gap-2">
+            {article.tags.map((tag, index) => (
+              <button
+                key={index}
+                onClick={() => router.push(`/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`)}
+                className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full"
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
           {/* Share & Follow Section */}
 
@@ -234,16 +231,17 @@ const ArticlePage = () => {
         </div>
 
         {/* Right Sidebar - Ads & Most Read */}
-        <MostRead/>
-       
+        <MostRead />
       </div>
 
       {/* Iklan bawah */}
       <Adv />
 
       {/* Related News Section */}
-      <RelatedNews currentArticle={article} mostReadArticles={mostReadArticles} />
-
+      <RelatedNews
+        currentArticle={article}
+        mostReadArticles={mostReadArticles}
+      />
     </div>
   );
 };

@@ -44,7 +44,7 @@ const BottomPopular = () => {
         const author = getAuthorById(article.authorId); 
 
         return (
-          <div key={article.id} className="flex items-center gap-4">
+          <div key={article.id} className="flex items-center gap-4 2xl:border-t-0 xl:border-t-0 lg:border-t-0 border-t border-t-gray-700 2xl:pt-0 xl:pt-0 lg:pt-0 pt-5">
             {/* Gambar */}
             <div className="relative w-[130px] h-[100px]">
               <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
@@ -68,6 +68,7 @@ const BottomPopular = () => {
                     width={18}
                     height={18}
                     className="rounded-full"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="w-4 h-4 bg-gray-400 rounded-full"></div>

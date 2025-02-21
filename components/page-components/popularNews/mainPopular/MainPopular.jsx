@@ -48,7 +48,7 @@ const MainPopular = ({ mainArticle }) => {
     <div className="w-full relative">
       {/* Gambar Utama */}
       <div className="relative w-full h-[350px] md:h-[450px]">
-        <Image src={mainArticle.image} alt={mainArticle.title} fill sizes="100vw" className="rounded-lg object-cover" />
+        <Image src={mainArticle.image} alt={mainArticle.title} fill loading="lazy" sizes="100vw" className="rounded-lg object-cover" />
         <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg p-6 flex flex-col justify-end">
           
           {/* Kategori */}

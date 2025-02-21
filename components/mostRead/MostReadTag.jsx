@@ -35,19 +35,21 @@ const sortedArticles = allArticles
 // 🔹 Ambil 5 berita paling populer untuk Most Read
 const mostReadArticles = sortedArticles.slice(0, 5);
 
-const MostRead = () => {
+const MostReadTag = () => {
   return (
-    <div className="lg:w-[30%] w-full flex flex-col gap-6">
-      <h2 className="text-2xl font-bold text-pink-500">Most Read</h2>
-      <div className="w-[50%] h-[5px] bg-pink-500 mb-5 rounded-full"></div>
+    <div className=" w-full flex flex-col gap-6">
+      
       <AdsMostRead/>
       <AdsMostRead2/>
+
+      <h2 className="text-2xl font-bold text-pink-500">Most Read</h2>
+      <div className="w-[50%] h-[5px] bg-pink-500 mb-5 rounded-full"></div>
       <div className="flex flex-col gap-4">
         {mostReadArticles.map((news) => {
           const author = getAuthorById(news.authorId);
 
           return (
-            <div key={`${news.id}-most-read`} className="flex flex-col border-b border-gray-300 py-3">
+            <div key={`${news.id}-most-read`} className="flex flex-col  border-b border-gray-300 py-3 ">
               {/* Gambar */}
               <div className="relative w-full 2xl:h-[200px] h-[250px]">
                 <Image
@@ -96,4 +98,4 @@ const MostRead = () => {
   );
 };
 
-export default MostRead;
+export default MostReadTag;

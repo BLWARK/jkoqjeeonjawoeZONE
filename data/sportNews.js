@@ -33,7 +33,7 @@ const sportNews = [
           <p>Dari panggung Broadway hingga stadion sepak bola, "<strong>You'll Never Walk Alone</strong>" telah menjadi warisan abadi <strong>Liverpool FC</strong>.</p>
           <p>Lagu ini membuktikan bahwa di tengah segala tantangan, selama ada kebersamaan, tidak ada yang berjalan sendirian.</p>
         `,
-        tags: ["Liverpool", "You'll Never Walk Alone", "Sepak Bola"],
+        tags: ["Liverpool", "You'll Never Walk Alone", "Sepak Bola", "Sport"],
         category: ["olahraga", "football"],
         authorId: 1,
       },
@@ -79,7 +79,7 @@ const sportNews = [
           <br>
           <p>Pelatih yang pernah membawa Indonesia menjuarai <strong>Piala AFF U-19 (2013, 2024)</strong>, <strong>Piala AFF U-22 (2019)</strong>, serta meraih <strong>medali emas SEA Games 2023</strong> ini berharap timnya bisa tampil maksimal dalam pertandingan terakhir mereka di turnamen ini.</p>
         `,
-        tags: ["Timnas Indonesia", "Piala Asia U-20", "Sepak Bola"],
+        tags: ["Timnas Indonesia", "Piala Asia U-20", "Sepak Bola", "Sport"],
         category: ["olahraga", "football"],
         authorId: 2,
       },
@@ -139,7 +139,7 @@ const sportNews = [
           <br>
           <p>Sebagai bentuk kesiapan, <strong>Pemprov NTT</strong> telah bekerja sama dengan <strong>TNI, Polri</strong>, dan unsur terkait lainnya untuk memastikan semua lokasi dalam keadaan siap menyambut kunjungan megabintang tersebut.</p>
         `,
-        tags: ["Cristiano Ronaldo", "Kupang", "Sepak Bola"],
+        tags: ["Cristiano Ronaldo", "Kupang", "Sepak Bola", "Sport"],
         category: ["olahraga", "football"],
         authorId: 3,
       },
@@ -202,7 +202,7 @@ const sportNews = [
           <br>
           <p>Dengan hasil yang semakin ketat, babak 16 besar <strong>Liga Champions</strong> dipastikan akan semakin menarik!</p>
         `,
-        tags: ["Liga Champions", "Bayern Munich", "Benfica", "Feyenoord", "Club Brugge"],
+        tags: ["Liga Champions", "Bayern Munich", "Benfica", "Feyenoord", "Club Brugge", "Sport"],
         category: ["olahraga", "football"],
         authorId: 2,
       },
@@ -239,7 +239,7 @@ const sportNews = [
           <p>Kemenangan ini mengangkat posisi <strong>Genoa</strong> ke peringkat <strong>11</strong> dengan <strong>30 poin</strong>.</p>
           <p>Sementara itu, <strong>Venezia</strong> masih terjebak di <strong>zona degradasi</strong>, menempati posisi ke-<strong>19</strong> dengan raihan <strong>16 poin</strong>.</p>
         `,
-        tags: ["Jay Idzes", "Venezia", "Serie A", "Genoa"],
+        tags: ["Jay Idzes", "Venezia", "Serie A", "Genoa", "Sport"],
         category: ["olahraga", "football"],
         authorId: 2,
       },
@@ -277,7 +277,7 @@ const sportNews = [
           <p>Kemenangan tipis ini cukup mengantarkan <strong>Barcelona</strong> ke <strong>puncak klasemen LaLiga</strong>, menggeser <strong>Real Madrid</strong> berkat keunggulan <strong>selisih gol</strong>. Keduanya sama-sama mengoleksi <strong>51 poin</strong>.</p>
           <p>Sementara itu, kekalahan ini membuat <strong>Rayo Vallecano</strong> harus puas bertahan di <strong>peringkat enam</strong> dengan raihan <strong>35 poin</strong>.</p>
         `,
-        tags: ["Barcelona", "LaLiga", "Rayo Vallecano", "Robert Lewandowski"],
+        tags: ["Barcelona", "LaLiga", "Rayo Vallecano", "Robert Lewandowski", "Sport" ],
         category: ["olahraga", "football"],
         authorId: 2,
       },

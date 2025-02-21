@@ -109,55 +109,7 @@ const lifestyleNews = [
         category: ["lifestyle", "beauty", "health"],
         authorId: 3,
       },
-      {
-        id: 12,
-        title: "Kolaborasi Epik, Song Hye Kyo dan Gong Yoo Siap Berduet di Serial Terbaru Netflix",
-        type: "news",
-        image: "/song-hye-kyo-gong-yoo.jpg",
-        date: "Feb 19 2025",
-        views: 20000000,
-        description: "Netflix mengumumkan proyek terbaru yang mempertemukan Song Hye Kyo dan Gong Yoo dalam serial bertajuk 'Show Business' yang berlatar Korea era 1960-1980-an.",
-        slug: "song-hye-kyo-gong-yoo-serial-netflix",
-        content: `
-          <p><strong>Aktor terkenal asal Korea Selatan, Gong Yoo, dan aktris Song Hye Kyo</strong> akan bersatu dalam sebuah serial orisinal <strong>Netflix</strong> yang ditulis oleh <strong>Noh Hee Kyung</strong>.</p>
-          <br>
-          <p>Menurut laporan dari <strong>Yonhap</strong>, serial ini saat ini masih berjudul sementara <strong>'Show Business'</strong> dan akan berlatar di Korea pada tahun <strong>1960-an hingga 1980-an</strong>.</p>
-          <p>Ceritanya mengisahkan perjuangan sejumlah individu yang berusaha meraih kesuksesan di <strong>industri hiburan Korea</strong> yang tengah berkembang pesat.</p>
-          <br>
-          <p class="judul-besar">Song Hye Kyo dan Gong Yoo dalam Peran Utama</p>
-          <p><strong>Song Hye Kyo</strong>, yang dikenal lewat perannya dalam <strong>The Glory</strong>, akan memerankan <strong>Min Ja</strong>, seorang wanita ambisius yang memanfaatkan setiap kesempatan untuk terjun ke dunia musik.</p>
-          <p>Sementara itu, <strong>Gong Yoo</strong>, yang sebelumnya tampil dalam serial <strong>Netflix The Trunk</strong> dan <strong>Squid Game</strong>, akan memerankan <strong>Dong Gu</strong>, sahabat Min Ja yang juga berjuang mengejar impian kesuksesan di dunia hiburan.</p>
-          <br>
-          <p>Beberapa bintang lainnya yang turut bergabung dalam serial ini adalah:</p>
-          <p>• <strong>Kim Seol Hyeon</strong></p>
-          <p>• <strong>Cha Seung Won</strong></p>
-          <p>• <strong>Lee Ha Yoon</strong></p>
-          <br>
-          <p class="judul-besar">Netflix Umumkan Secara Resmi</p>
-          <p>Meskipun antusiasme penonton sangat tinggi, tanggal rilis pasti untuk serial ini belum diumumkan.</p>
-          <p>Namun, pertemuan antara <strong>Song Hye Kyo</strong> dan <strong>Gong Yoo</strong> dalam proyek ini telah resmi diumumkan melalui akun <strong>Instagram Netflix Korea Selatan</strong>.</p>
-          <br>
-          <p class="judul-besar">Hubungan Song Hye Kyo dan Gong Yoo di Industri Hiburan</p>
-          <p>Song Hye Kyo dan Gong Yoo dikenal sebagai dua aktor papan atas di dunia hiburan Korea Selatan.</p>
-          <p>Meskipun mereka belum banyak berkolaborasi dalam film atau drama bersama, terdapat beberapa momen menarik di mana mereka bertemu atau bekerja dalam industri hiburan:</p>
-          <br>
-          <p class="sub-judul">1. Drama The First Time (2006)</p>
-          <p>Mereka pertama kali bertemu dalam <strong>drama pendek</strong> berjudul <strong>The First Time</strong> (2006), bagian dari proyek film pendek <strong>The Story of Two Sisters</strong>.</p>
-          <p>Meskipun tidak beradu peran secara langsung, kehadiran mereka menambah warna dalam alur cerita.</p>
-          <br>
-          <p class="sub-judul">2. Drama Coffee Prince (2007)</p>
-          <p>Walaupun tidak berperan bersama, Gong Yoo mencuri perhatian dalam drama legendaris <strong>Coffee Prince</strong> (2007).</p>
-          <p>Sementara itu, Song Hye Kyo tengah sibuk dengan proyek lain. Namun, keduanya dikenal memiliki interaksi sosial di berbagai acara dan festival industri hiburan.</p>
-          <br>
-          <p class="sub-judul">3. Film The Age of Shadows (2016)</p>
-          <p>Pada tahun 2016, meskipun tidak bermain dalam proyek yang sama, mereka sering hadir di acara promosi film besar yang melibatkan aktor Korea papan atas.</p>
-          <br>
-          <p>Kini, dengan proyek <strong>'Show Business'</strong>, penggemar akhirnya bisa melihat <strong>Song Hye Kyo</strong> dan <strong>Gong Yoo</strong> beradu akting dalam drama yang menjanjikan.</p>
-        `,
-        tags: ["Song Hye Kyo", "Gong Yoo", "Netflix", "Drama Korea"],
-        category: ["hiburan", "korean-drama", "streaming"],
-        authorId: 1,
-      },
+      
       
       {
         id: 13,

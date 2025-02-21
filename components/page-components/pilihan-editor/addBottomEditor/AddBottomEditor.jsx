@@ -25,10 +25,10 @@ const AddBottomEditor = () => {
         return (
           <div
             key={article.id}
-            className="flex  lg:flex-col 2xl:flex-col xl:flex-col flex-row-reverse items-start justify-start"
+            className="flex  lg:flex-col 2xl:flex-col xl:flex-col flex-row-reverse items-start justify-start 2xl:border-t-0 xl:border-t-0 lg:border-t-0 border-t border-t-gray-300 2xl:pt-0 xl:pt-0 lg:pt-0 pt-5"
           >
             {/* Gambar */}
-            <div className="relative w-[140px] h-[100px] lg:w-full lg:h-[160px]">
+            <div className="relative w-[140px] h-[100px] lg:w-full lg:h-[160px] 2xl:ml-0 ml-2">
               <Image
                 src={article.image}
                 alt={article.title}
