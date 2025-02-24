@@ -97,13 +97,13 @@ const Navbar = () => {
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Hiburan
+            <a href="/entertainment" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+              Entertainment
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Teknologi
+            <a href="/technology" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+              Technology
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 

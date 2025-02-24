@@ -141,7 +141,7 @@ const ArticlePage = () => {
         <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0">
           {/* Judul & Tanggal */}
           <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
-          <div className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse justify-between items-start py-8 2xl:gap-0 gap-6">
+          <div className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse justify-between 2xl:items-center xl:items-center lg:items-center items-start py-8 2xl:gap-0 gap-6">
             {/* 🔹 Tombol Play (Untuk Membaca Artikel) */}
             <button
               onClick={toggleSpeech}
@@ -182,7 +182,7 @@ const ArticlePage = () => {
                   <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
 
                   {/* Tanggal */}
-                  <p className="text-gray-600 border-l border-l-gray-400 pl-3">
+                  <p className="text-gray-600">
                     {new Date(article.date).toLocaleDateString()}
                   </p>
                 </>
