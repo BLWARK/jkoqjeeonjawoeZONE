@@ -11,7 +11,7 @@ import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
 import AdsMostRead from "@/components/page-components/adv-sect/AdvMostRead"
-import AdsMostRead2 from "@/components/page-components/adv-sect/AdvMostRead2"
+import cLevel from "@/data/cLevel";
 
 // 🔹 Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) =>
@@ -21,6 +21,7 @@ const getAuthorById = (authorId) =>
 const allArticles = [
   ...headlines,
   ...News,
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

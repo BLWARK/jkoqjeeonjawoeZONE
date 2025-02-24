@@ -10,6 +10,7 @@ import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
 import editorChoice from "@/data/EditorChoice"
+import cLevel from "@/data/cLevel"
 ;
 
 const share = () => {
@@ -19,6 +20,7 @@ const allArticles = [
     ...editorChoice,
     ...headlines,
     ...News,
+    ...cLevel,
     ...entertainmentNews,
     ...teknologiData,
     ...olahraga,

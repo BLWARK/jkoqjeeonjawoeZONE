@@ -4,7 +4,7 @@ const teknologiData = [
     title: "Keunggulan iPhone SE 4. Modal 8 Juta, Bisa Punya iPhone Terbaru",
     type: "news",
     image: "/iphone-se-4.jpg",
-    date: "Feb 19 2025",
+    date: "Feb 24 2025",
     views: 900000000,
     description: "iPhone SE 4 diperkirakan akan dirilis di Indonesia pada akhir Februari 2025 dengan harga mulai dari Rp8,1 juta, membawa desain modern dan fitur canggih.",
     slug: "keunggulan-iphone-se-4",

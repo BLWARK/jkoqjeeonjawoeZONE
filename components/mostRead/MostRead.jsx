@@ -10,6 +10,7 @@ import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
+import cLevel from "@/data/cLevel";
 import AdsMostRead from "@/components/page-components/adv-sect/AdvMostRead"
 import AdsMostRead2 from "@/components/page-components/adv-sect/AdvMostRead2"
 
@@ -21,6 +22,7 @@ const getAuthorById = (authorId) =>
 const allArticles = [
   ...headlines,
   ...News,
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,
@@ -38,10 +40,11 @@ const mostReadArticles = sortedArticles.slice(0, 5);
 const MostRead = () => {
   return (
     <div className="lg:w-[30%] w-full flex flex-col gap-6">
-      <h2 className="text-2xl font-bold text-pink-500">Most Read</h2>
-      <div className="w-[50%] h-[5px] bg-pink-500 mb-5 rounded-full"></div>
       <AdsMostRead/>
       <AdsMostRead2/>
+      <h2 className="text-2xl font-bold text-pink-500">Most Read</h2>
+      <div className="w-[50%] h-[5px] bg-pink-500  rounded-full"></div>
+      
       <div className="flex flex-col gap-4">
         {mostReadArticles.map((news) => {
           const author = getAuthorById(news.authorId);

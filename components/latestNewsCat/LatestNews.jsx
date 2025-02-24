@@ -11,12 +11,14 @@ import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
+import cLevel from "@/data/cLevel";
 import users from "@/data/users"; // Data author
 
 // 🔹 Gabungkan semua artikel dari berbagai kategori lalu urutkan berdasarkan tanggal terbaru
 const allArticles = [
   ...headlines,
   ...News,
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

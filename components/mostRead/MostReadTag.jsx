@@ -10,6 +10,7 @@ import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
+import cLevel from "@/data/cLevel";
 import AdsMostRead from "@/components/page-components/adv-sect/AdvMostRead"
 import AdsMostRead2 from "@/components/page-components/adv-sect/AdvMostRead2"
 
@@ -21,6 +22,7 @@ const getAuthorById = (authorId) =>
 const allArticles = [
   ...headlines,
   ...News,
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

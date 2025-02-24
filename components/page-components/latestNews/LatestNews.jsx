@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Clevel from "@/data/cLevel";
 import news from "@/data/news";
 import sportNews from "@/data/sportNews";
 import teknologiNews from "@/data/teknologiData";
@@ -13,7 +14,7 @@ import Adv from "@/components/page-components/adv-sect/AdvEditor";
 import { getCategoryColor } from "@/data/categoryColors";
 
 // 🔹 Gabungkan Semua Data & Urutkan Berdasarkan Tanggal 🔹
-const allNews = [...news, ...sportNews, ...teknologiNews, ...lifestyleNews, ...entertainmentNews]
+const allNews = [...news, ...sportNews, ...teknologiNews, ...lifestyleNews, ...entertainmentNews, ...Clevel,]
   .map((article, index) => ({
     ...article,
     uniqueId: `${article.category[0]}-${article.id}-${index}`, // Tambahkan ID unik agar tidak bentrok

@@ -5,7 +5,7 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import headlines from "@/data/headline";
-import News from "@/data/news";
+import Clevel from "@/data/cLevel";
 import users from "@/data/users";
 import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
@@ -28,7 +28,7 @@ const getAuthorById = (authorId) => {
 // Gabungkan semua artikel
 const allArticles = [
   ...headlines,
-  ...News,
+  ...Clevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

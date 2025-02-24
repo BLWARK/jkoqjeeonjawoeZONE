@@ -107,12 +107,12 @@ const Navbar = () => {
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Olahraga
+            <a href="/sport" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+              Sport
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2 ">
+            <a href="/c-level" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2 ">
               C-Level
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>

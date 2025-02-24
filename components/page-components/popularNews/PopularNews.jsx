@@ -10,11 +10,13 @@ import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
+import cLevel from "@/data/cLevel";
 
 // 🔹 Gabungkan semua artikel dari berbagai kategori
 const allArticles = [
   ...headlines,
   ...News,
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

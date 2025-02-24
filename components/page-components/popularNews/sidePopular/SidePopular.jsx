@@ -5,7 +5,7 @@ import { getCategoryColor } from "@/data/categoryColors";
 import users from "@/data/users"; 
 import headlines from "@/data/headline";
 import News from "@/data/news";
-
+import cLevel from "@/data/cLevel";
 import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
@@ -18,7 +18,7 @@ const getAuthorById = (authorId) => users.find((user) => user.id === authorId) |
 const allArticles = [
   ...headlines,
   ...News,
-  
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

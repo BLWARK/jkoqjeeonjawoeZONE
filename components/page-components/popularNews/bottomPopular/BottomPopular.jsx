@@ -8,6 +8,7 @@ import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
 import lifestyleNews from "@/data/lifestyleNews";
+import cLevel from "@/data/cLevel";
 
 // 🔹 Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
@@ -16,6 +17,7 @@ const getAuthorById = (authorId) => users.find((user) => user.id === authorId) |
 const allArticles = [
   ...headlines,
   ...News,
+  ...cLevel,
   ...entertainmentNews,
   ...teknologiData,
   ...lifestyleNews,

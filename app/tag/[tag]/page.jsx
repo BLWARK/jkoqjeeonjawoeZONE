@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import headlines from "@/data/headline";
-
+import cLevel from "@/data/cLevel";
 import entertainmentNews from "@/data/entertainmentNews";
 import teknologiData from "@/data/teknologiData";
 import olahraga from "@/data/sportNews";
@@ -15,6 +15,7 @@ import MostReadTag from "@/components/mostRead/MostReadTag"; // Import Most Read
 
 // 🔹 Gabungkan semua artikel dari berbagai kategori
 const allArticles = [
+  ...cLevel,
   ...headlines,
   ...entertainmentNews,
   ...teknologiData,
