@@ -117,7 +117,7 @@ const SportPage = () => {
       {/* 🔹 Iklan & Latest News */}
       <div>
         <Ads />
-        <LatestNews category="olahraga" />
+        <LatestNews category="olahraga" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
       </div>
     </div>
   );

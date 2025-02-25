@@ -17,7 +17,7 @@ const Sport = () => {
           <div className="w-[100%] h-[6px] rounded-full bg-pink-500 mb-10"></div>
         </div>
         <a
-          href="/"
+          href="/sport"
           className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer"
         >
           View All

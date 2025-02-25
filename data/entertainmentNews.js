@@ -2,7 +2,8 @@ const entertainmentNews = [
   {
     id: 1,
     title: "Deddy Corbuzier Jadi Stafsus Menhan, Ini Gaji dan Fasilitasnya",
-    type: "news",
+    type: "headline",
+    position: "top-left",
     image: "/deddy-corbuzier-stafsus-menhan.jpg",
     date: "Feb 19 2025",
     views: 90000000000,
@@ -52,7 +53,7 @@ const entertainmentNews = [
   {
     id: 2,
     title: "Congrats! Angga Yunanda dan Shenina Cinnamon Resmi Menikah",
-    type: "news",
+    type: "headline",
     image: "/angga-yunanda-shenina-cinnamon-wedding.jpeg",
     date: "Feb 10 2025",
     views: 65000000,

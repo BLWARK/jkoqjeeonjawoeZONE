@@ -27,7 +27,7 @@ const GayaHidup = () => {
           <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
         </div>
         <a
-          href="/"
+          href="/lifestyle"
           className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer"
         >
           View All

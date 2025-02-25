@@ -16,7 +16,7 @@ const Teknologi = () => {
       <h2 className="text-3xl font-bold text-pink-500 flex items-center mb-3">Teknologi</h2>
       <div className="w-[100%] h-[6px] rounded-full bg-pink-500 mb-10"></div>
       </div>
-      <a href="/" className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer">View All</a>
+      <a href="/technology" className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer">View All</a>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <MainTeknologi mainArticle={mainArticle} />

@@ -1,68 +1,62 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import headline from "@/data/headline"; // Pastikan path sesuai
-import users from "@/data/users"; // Pastikan path sesuai
+import users from "@/data/users"; // Data author
 import { getCategoryColor } from "@/data/categoryColors";
 
-// Fungsi mendapatkan author berdasarkan ID
-const getAuthorById = (authorId) => users.find((user) => user.id === authorId);
+// 🔹 Fungsi mendapatkan author berdasarkan ID
+const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
 
-const MainHead = () => {
-  const mainHeadline = headline[0]; // Berita utama
-  const author = getAuthorById(mainHeadline.authorId); // Ambil author langsung
+const MainHead = ({ headline }) => {
+  if (!headline) {
+    return <p className="text-center text-gray-500 py-10">Belum ada berita headline terbaru.</p>;
+  }
+
+  const author = getAuthorById(headline.authorId);
 
   return (
-    <div className="2xl:col-span-2 xl:col-span-2 lg:col-span-2 col-span-0 2xl:w-full 2xl:h-[500px] xl:h-full lg:h-full w-full h-[300px] relative ">
-      {/* Gambar Headline */}
+    <div className="2xl:col-span-2 xl:col-span-2 lg:col-span-2 col-span-0 2xl:w-full 2xl:h-[500px] xl:h-full lg:h-full w-full h-[300px] relative">
+      {/* 🔹 Gambar Headline */}
       <Image
-        src={mainHeadline.image}
-        alt={mainHeadline.title}
+        src={headline.image}
+        alt={headline.title}
         className="rounded-lg"
         fill
         sizes="100vw"
         style={{ objectFit: "cover" }}
         priority={true}
-        
       />
 
-      {/* Overlay */}
+      {/* 🔹 Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg p-6 flex flex-col justify-end">
-        {/* Judul */}
-        <Link href={`/artikel/${mainHeadline.id}/${mainHeadline.slug}`} passHref>
+        <Link href={`/artikel/${headline.id}/${headline.slug}`} passHref>
           <h2 className="text-white 2xl:text-3xl text-lg font-bold leading-tight mt-2 hover:underline cursor-pointer">
-            {mainHeadline.title}
+            {headline.title}
           </h2>
         </Link>
 
-        {/* Deskripsi */}
-        <p className="text-gray-300 mt-4 2xl:block hidden">{mainHeadline.description}</p>
+        {/* 🔹 Deskripsi */}
+        <p className="text-gray-300 mt-4 2xl:block hidden">{headline.description}</p>
 
-        {/* Author & Tanggal */}
+        {/* 🔹 Author & Tanggal */}
         <div className="mt-4 flex items-center space-x-2 text-sm text-gray-300">
-          {author && (
-            <div className="flex 2xl:text-xs text-[0.9em] items-center space-x-2">
-              <Image
-                src={author.photo}
-                alt={author.name}
-                width={24}
-                height={24}
-                className="rounded-full"
-              />
-              <span className="border-r border-gray-300 pr-2">{author.name}</span>
-            </div>
+          {author?.photo ? (
+            <Image src={author.photo} alt={author.name} width={24} height={24} className="rounded-full" />
+          ) : (
+            <div className="w-[24px] h-[24px] bg-gray-400 rounded-full"></div>
           )}
-          <span>{mainHeadline.date}</span>
+          <span className="border-r border-gray-300 pr-2">{author.name || "Unknown"}</span>
+          <span>{new Date(headline.date).toLocaleDateString()}</span>
         </div>
       </div>
 
-      {/* Kategori */}
+      {/* 🔹 Kategori */}
       <span
         className={`absolute top-4 left-4 text-white px-4 py-1 rounded-lg text-xs font-semibold ${getCategoryColor(
-          mainHeadline.category[0]
+          headline.category[0]
         )}`}
       >
-        {mainHeadline.category[0]}
+        {headline.category[0]}
       </span>
     </div>
   );

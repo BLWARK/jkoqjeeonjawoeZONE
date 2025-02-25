@@ -137,7 +137,8 @@ const CLevelPage = () => {
       <Ads />
 
       {/* 🔹 Berita Terbaru */}
-      <LatestNews category="c-level" />
+      <LatestNews category="c-level" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
+
     </div>
   );
 };

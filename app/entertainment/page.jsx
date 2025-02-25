@@ -7,6 +7,7 @@ import entertainmentNews from "@/data/entertainmentNews";
 import LatestNews from "@/components/latestNewsCat/LatestNews";
 import users from "@/data/users"; // Data author
 import Ads from "@/components/page-components/adv-sect/AdvBottomHead";
+import lifestyleNews from "@/data/lifestyleNews";
 
 // 🔹 Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) =>
@@ -117,7 +118,7 @@ const EntertainmentPage = () => {
       {/* 🔹 Iklan & Latest News */}
       <div>
         <Ads />
-        <LatestNews category="hiburan" />
+        <LatestNews category="hiburan" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
       </div>
     </div>
   );

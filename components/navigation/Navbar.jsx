@@ -92,7 +92,7 @@ const Navbar = () => {
         {/* Menu Navigation */}
         <nav className=" bg-gray-100 w-full mt-2 ">
           <div className="container 2xl:px-0 px-2 2xl:font-thin font-medium 2xl:mx-auto xl:mx-auto lg:mx-auto overflow-auto flex justify-start items-center 2xl:space-x-4 py-6 border-b border-b-black border-t-4 border-black">
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+            <a href="https://lensaberitajakarta.com" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
               Berita
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
@@ -117,8 +117,8 @@ const Navbar = () => {
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Gaya Hidup
+            <a href="/lifestyle" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+              Lifestyle
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
@@ -127,7 +127,7 @@ const Navbar = () => {
             </a>
             <div className="w-[1px] h-6 bg-gray-400"></div>
 
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+            <a href="https://www.youtube.com/@XYZoneTV" target="blank"  className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
               XYZONE TV
             </a>
           </div>

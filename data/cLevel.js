@@ -3,7 +3,7 @@ const cLevel = [
     {
         id: 100,
         title: "Data1n: Prioritas Anggaran Pemerintahan Prabowo dan Tantangan Implementasi",
-        type: "news",
+        type: "headline",
         image: "/prioritas-anggaran-prabowo.webp",
         date: "Feb 24 2025",
         views: 2000,
@@ -387,7 +387,7 @@ const cLevel = [
         id: 108,
         title: "Rupiah Melemah, IHSG Diprediksi Menguat di Tengah Antisipasi Keputusan Suku Bunga BI",
         type: "news",
-        image: "/rupiah-ihsg.jpg",
+        image: "/rupiah-ihsg.jpeg",
         date: "Feb 18 2025",
         views: 3000,
         description: "Nilai tukar rupiah melemah menjelang keputusan suku bunga BI, sementara IHSG diprediksi menguat di tengah surplus neraca dagang dan peningkatan investasi di pasar keuangan.",

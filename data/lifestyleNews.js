@@ -2,7 +2,7 @@ const lifestyleNews = [
   {
     id: 10,
     title: "#KaburAjaDulu, Frustrasi Anak Muda Terhadap Kondisi Dalam Negeri",
-    type: "news",
+    type: "headline",
     image: "/kabur-aja-dulu.jpg",
     date: "Feb 19 2025",
     views: 90000,
@@ -51,7 +51,7 @@ const lifestyleNews = [
     {
         id: 11,
         title: "Penting Dibaca Wanita, Mitos Fakta Kolagen dan Klaim Kesehatannya",
-        type: "news",
+        type: "headline",
         image: "/kolagen-mitos-fakta.jpg",
         date: "Feb 19 2025",
         views: 3500,
