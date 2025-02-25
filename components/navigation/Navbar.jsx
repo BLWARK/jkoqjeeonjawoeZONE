@@ -2,25 +2,38 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
+import DropdownMenu from "@/components/navigation/DropDownMenu";
 import Image from "next/image";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState(null);
+  const [dropdownTimeout, setDropdownTimeout] = useState(null); // State untuk delay
 
-  // Dapatkan tanggal hari ini
-
+  // Fungsi Toggle Menu Mobile
   const toggleMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  return (
-    <div className="w-full max-w-[1200px] bg-gray-100">
-      {/* Top Navbar */}
-      
+  // Fungsi Menampilkan Dropdown dengan Delay
+  const handleMouseEnter = (category) => {
+    if (dropdownTimeout) clearTimeout(dropdownTimeout);
+    setHoveredCategory(category);
+  };
 
+  // Fungsi Menghilangkan Dropdown dengan Delay
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setHoveredCategory(null);
+    }, 30); // Delay 300ms agar tidak langsung hilang
+    setDropdownTimeout(timeout);
+  };
+
+  return (
+    <div className="w-full max-w-[1200px] 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1000px] bg-gray-100">
       {/* Main Navbar */}
       <div className="bg-gray-100">
-        <div className="container mx-auto 2xl:py-6 flex justify-between items-center px-2">
+        <div className="container mx-auto 2xl:py-6 xl:py-6 lg:py-6 flex justify-between items-center px-2">
           {/* Logo - Desktop */}
           <a href="/" className="hidden md:block relative w-40 h-10">
             <Image
@@ -42,11 +55,9 @@ const Navbar = () => {
           </a>
         </div>
 
-        
-
         {/* Mobile Navbar */}
         <div className="bg-pink-600 md:hidden flex items-center justify-start gap-4 px-4 py-6">
-          <button title="Hamburger Togle" aria-label="Hamburger" onClick={toggleMenu} className="text-white text-2xl">
+          <button title="Hamburger Toggle" aria-label="Hamburger" onClick={toggleMenu} className="text-white text-2xl">
             {mobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
           <div className="relative w-28 h-8">
@@ -69,7 +80,7 @@ const Navbar = () => {
             <a href="#" className="block hover:underline">
               New Look
             </a>
-            <a href="#" className="block hover:underline">7
+            <a href="#" className="block hover:underline">
               Fashion
             </a>
             <a href="#" className="block hover:underline">
@@ -89,50 +100,58 @@ const Navbar = () => {
             </a>
           </nav>
         )}
+
         {/* Menu Navigation */}
-        <nav className=" bg-gray-100 w-full mt-2 ">
-          <div className="container 2xl:px-0 px-2 2xl:font-thin font-medium 2xl:mx-auto xl:mx-auto lg:mx-auto overflow-auto flex justify-start items-center 2xl:space-x-4 py-6 border-b border-b-black border-t-4 border-black">
-            <a href="https://lensaberitajakarta.com" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+        <nav className="bg-gray-100 w-full mt-2 relative ">
+          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] flex justify-start items-center space-x-4 py-6 border-b border-black border-t-4">
+          <a
+              href="https://lensaberitajakarta.com"
+              target="blank"
+              className="text-black whitespace-nowrap hover:underline px-4"
+            >
               Berita
             </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
+            {[
+              
+              { name: "Entertainment", path: "/entertainment", category: "entertainment" },
+              { name: "Technology", path: "/technology", category: "technology" },
+              { name: "Sport", path: "/sport", category: "sport" },
+              { name: "C-Level", path: "/c-level", category: "c-level" },
+              { name: "Lifestyle", path: "/lifestyle", category: "lifestyle" },
+            ].map((menu) => (
+              <div
+                key={menu.name}
+                className="relative group "
+                onMouseEnter={() => handleMouseEnter(menu.category)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <a href={menu.path} className="text-black whitespace-nowrap hover:underline px-4 ">
+                  {menu.name}
+                </a>
+              </div>
+            ))}
 
-            <a href="/entertainment" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Entertainment
-            </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
-
-            <a href="/technology" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Technology
-            </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
-
-            <a href="/sport" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Sport
-            </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
-
-            <a href="/c-level" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2 ">
-              C-Level
-            </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
-
-            <a href="/lifestyle" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Lifestyle
-            </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
-
-            <a href="#" className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
-              Komunitas
-            </a>
-            <div className="w-[1px] h-6 bg-gray-400"></div>
-
-            <a href="https://www.youtube.com/@XYZoneTV" target="blank"  className="text-black whitespace-nowrap hover:underline 2xl:px-4 px-2">
+            <a
+              href="https://www.youtube.com/@XYZoneTV"
+              target="blank"
+              className="text-black whitespace-nowrap hover:underline px-4"
+            >
               XYZONE TV
             </a>
           </div>
         </nav>
       </div>
+
+      {/* Dropdown Menu */}
+      {hoveredCategory && (
+        <DropdownMenu
+          category={hoveredCategory}
+          isVisible={hoveredCategory !== null}
+          onMouseEnter={() => handleMouseEnter(hoveredCategory)}
+          onMouseLeave={handleMouseLeave}
+          
+        />
+      )}
     </div>
   );
 };
