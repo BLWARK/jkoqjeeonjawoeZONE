@@ -48,7 +48,7 @@ const SideTeknologi = ({ sideArticles }) => {
               </Link>
 
               {/* Author & Date */}
-              <div className="flex items-center text-sm text-gray-500 mt-2">
+              <div className="flex items-center text-sm text-gray-300 mt-2">
                 {author?.photo ? (
                   <Image 
                     src={author.photo} 

@@ -18,7 +18,7 @@ const BottomTeknologi = ({ bottomArticles }) => {
         return (
           <div key={article.id} className="flex items-start gap-4">
             {/* Gambar kecil */}
-            <div className="relative w-[120px] h-[90px] flex-shrink-0">
+            <div className="relative w-[130px] h-[90px] flex-shrink-0">
               <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
 
@@ -32,7 +32,7 @@ const BottomTeknologi = ({ bottomArticles }) => {
               </Link>
 
               {/* Author & Date */}
-              <div className="flex items-center text-sm text-gray-500 mt-1 w-full">
+              <div className="flex items-center text-sm  text-gray-300 mt-1 w-full">
                 {author?.photo && (
                   <Image
                     src={author.photo}

@@ -23,8 +23,7 @@ const HomePage = () => {
       <section className="pppular-news 2xl:px-0"><PopularNews/></section>
       <section className="latest-news 2xl:px-0 px-3"><LatestNews/></section>
       {/* <section className="XYZONETV 2xl:px-0 px-0"><Xyzonetv/></section> */}
-      <section className="Hiburan 2xl:px-0 px-3"><Hiburan/></section>
-      <section className="teknologi 2xl:px-0 px-3"><Teknologi/></section>
+      <section className="teknologi 2xl:px-0 xl:px-0 lg:px-0  px-3"><Teknologi/></section>
       <section className="sport 2xl:px-0 px-3"><Sport/></section>
       <section className="gaya-hidup 2xl:px-0 px-3"><Lifestyle/></section>
       <section className="subscribe 2xl:px-0 xl:px-0 lg:px-0 px-0"><Subscribe/></section>

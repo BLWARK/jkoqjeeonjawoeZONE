@@ -57,7 +57,12 @@ const Navbar = () => {
 
         {/* Mobile Navbar */}
         <div className="bg-pink-600 md:hidden flex items-center justify-start gap-4 px-4 py-6">
-          <button title="Hamburger Toggle" aria-label="Hamburger" onClick={toggleMenu} className="text-white text-2xl">
+          <button
+            title="Hamburger Toggle"
+            aria-label="Hamburger"
+            onClick={toggleMenu}
+            className="text-white text-2xl"
+          >
             {mobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
           <div className="relative w-28 h-8">
@@ -102,19 +107,26 @@ const Navbar = () => {
         )}
 
         {/* Menu Navigation */}
-        <nav className="bg-gray-100 w-full mt-2 relative ">
-          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] flex justify-start items-center space-x-4 py-6 border-b border-black border-t-4">
-          <a
+        <nav className="bg-gray-100 w-full mt-2 relative  ">
+          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] flex justify-start items-center space-x-4 py-6 border-b  border-black border-t-4 overflow-x-auto">
+            <a
               href="https://lensaberitajakarta.com"
               target="blank"
-              className="text-black whitespace-nowrap hover:underline px-4"
+              className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300"
             >
               Berita
             </a>
             {[
-              
-              { name: "Entertainment", path: "/entertainment", category: "entertainment" },
-              { name: "Technology", path: "/technology", category: "technology" },
+              {
+                name: "Entertainment",
+                path: "/entertainment",
+                category: "entertainment",
+              },
+              {
+                name: "Technology",
+                path: "/technology",
+                category: "technology",
+              },
               { name: "Sport", path: "/sport", category: "sport" },
               { name: "C-Level", path: "/c-level", category: "c-level" },
               { name: "Lifestyle", path: "/lifestyle", category: "lifestyle" },
@@ -125,18 +137,23 @@ const Navbar = () => {
                 onMouseEnter={() => handleMouseEnter(menu.category)}
                 onMouseLeave={handleMouseLeave}
               >
-                <a href={menu.path} className="text-black whitespace-nowrap hover:underline px-4 ">
+                <a
+                  href={menu.path}
+                  className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 "
+                >
                   {menu.name}
                 </a>
               </div>
             ))}
 
-            <a
-              href="https://www.youtube.com/@XYZoneTV"
-              target="blank"
-              className="text-black whitespace-nowrap hover:underline px-4"
-            >
-              XYZONE TV
+            <a href="https://www.youtube.com/@XYZoneTV" target="blank" className="hidden md:block relative w-28 h-10">
+              <Image
+                src="/Logo OneZone TV.png"
+                alt="XYZONETV"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                style={{ objectFit: "contain" }}
+              />
             </a>
           </div>
         </nav>
@@ -149,7 +166,6 @@ const Navbar = () => {
           isVisible={hoveredCategory !== null}
           onMouseEnter={() => handleMouseEnter(hoveredCategory)}
           onMouseLeave={handleMouseLeave}
-          
         />
       )}
     </div>

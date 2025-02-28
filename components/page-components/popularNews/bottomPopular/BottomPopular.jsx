@@ -41,7 +41,7 @@ const sliceTitle = (title, maxWords = 8) => {
 // ✅ **Komponen BottomPopular untuk berita ranking 4-6 berdasarkan views**
 const BottomPopular = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 ">
       {bottomArticles.map((article) => {
         const author = getAuthorById(article.authorId); 
 

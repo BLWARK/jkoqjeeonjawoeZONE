@@ -16,7 +16,7 @@ const sliceTitle = (title, maxWords = 8) => {
 
 const GayaHidup = () => {
   // Ambil 4 berita pertama dari lifestyleNews
-  const displayedArticles = lifestyleNews.slice(0, 4);
+  const displayedArticles = lifestyleNews.slice(0, 8);
 
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8">
@@ -35,12 +35,12 @@ const GayaHidup = () => {
       </div>
 
       {/* 🔥 Layout dengan Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6  ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5  ">
         {displayedArticles.map((article) => {
           const author = getAuthorById(article.authorId);
 
           return (
-            <div key={article.id} className="w-full 2xl:border-b-0 xl:border-b-0 lg:border-b-0 border-b border-b-gray-300 2xl:pb-0 xl:pb-0 lg:pb-0 pb-5 ">
+            <div key={article.id} className="w-full 2xl:border-b-0 xl:border-b-0 lg:border-b-0 border-b border-b-gray-300  pb-5 ">
               {/* Gambar */}
               <div className="relative w-full h-[250px] lg:h-[160px]">
                 <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
