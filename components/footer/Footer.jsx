@@ -26,23 +26,28 @@ const Footer = () => {
           <h4 className="text-lg font-semibold mb-6 text-pink-500">Category</h4>
           <ul className="text-sm text-gray-200 space-y-6">
             <li>
-              <Link href="/kategori/hiburan" className=" hover:text-pink-500">
-                Hiburan
+              <Link href="/entertainment" className=" hover:text-pink-500">
+                Entertainment
               </Link>
             </li>
             <li>
-              <Link href="/kategori/lifestyle" className=" hover:text-pink-500">
+              <Link href="/lifestyle" className=" hover:text-pink-500">
                 Lifestyle
               </Link>
             </li>
             <li>
-              <Link href="/kategori/teknologi" className=" hover:text-pink-500">
-                Teknologi
+              <Link href="/technology" className=" hover:text-pink-500">
+                Technology
               </Link>
             </li>
             <li>
-              <Link href="/kategori/olahraga" className=" hover:text-pink-500">
-                Olahraga
+              <Link href="/sport" className=" hover:text-pink-500">
+                Sport
+              </Link>
+            </li>
+            <li>
+              <Link href="/c-level" className=" hover:text-pink-500">
+                C-Level
               </Link>
             </li>
           </ul>
@@ -55,22 +60,22 @@ const Footer = () => {
           </h4>
           <ul className="text-sm text-gray-200 space-y-6 ">
             <li>
-              <Link href="/visi-misi" className=" hover:text-pink-500">
+              <Link href="/#" className=" hover:text-pink-500">
                 Visi dan Misi
               </Link>
             </li>
             <li>
-              <Link href="/susunan-redaksi" className=" hover:text-pink-500">
+              <Link href="/#" className=" hover:text-pink-500">
                 Susunan Redaksi
               </Link>
             </li>
             <li>
-              <Link href="/disclaimer" className=" hover:text-pink-500">
+              <Link href="/#" className=" hover:text-pink-500">
                 Disclaimer
               </Link>
             </li>
             <li>
-              <Link href="/kontak" className=" hover:text-pink-500">
+              <Link href="/#" className=" hover:text-pink-500">
                 Kontak Kami
               </Link>
             </li>
