@@ -33,9 +33,15 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // ✅ Ambil keywords dari artikel (jika ada)
+  const keywords = article.tags?.length
+    ? article.tags.join(", ")
+    : "berita terkini, berita terbaru, informasi terkini";
+
   return {
     title: `${article.title} | XYZONEMEDIA`,
     description: article.description || article.content.substring(0, 150) + "...",
+    keywords: keywords, // ✅ Tambahkan keywords ke metadata
     openGraph: {
       title: article.title,
       description: article.description || article.content.substring(0, 150) + "...",
