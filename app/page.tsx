@@ -4,7 +4,7 @@ import PilihanEditor from "@/components/page-components/pilihan-editor/topEditor
 import LatestNews from "@/components/page-components/latestNews/LatestNews";
 import PopularNews from "@/components/page-components/popularNews/PopularNews";
 // import Xyzonetv from "@/components/page-components/xyzonetv/Xyzonetv";
-import Hiburan from "@/components/page-components/hiburan/Hiburan";
+// import Hiburan from "@/components/page-components/hiburan/Hiburan";
 import Teknologi from "@/components/page-components/teknologi/Teknologi"
 import Sport from "@/components/page-components/sport/Sport"
 import Lifestyle from "@/components/page-components/gayaHidup/GayaHidup"
