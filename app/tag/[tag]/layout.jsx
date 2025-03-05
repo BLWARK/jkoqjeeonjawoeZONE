@@ -17,8 +17,6 @@ const allArticles = [
 
 export async function generateMetadata({ params }) {
   const { tag } = params;
-
-  // ✅ Konversi tag ke format bersih untuk judul & deskripsi
   const formattedTag = tag.replace("-", " ");
 
   // ✅ Cari artikel yang memiliki tag yang sesuai
@@ -37,9 +35,22 @@ export async function generateMetadata({ params }) {
   // ✅ Ambil artikel terbaru untuk gambar utama
   const featuredArticle = articlesWithTag[0];
 
+  // ✅ Ambil semua keyword unik dari artikel dengan tag tersebut
+  const uniqueKeywords = [
+    ...new Set(
+      articlesWithTag.flatMap((article) => article.tags || [])
+    ),
+  ]
+    .slice(0, 10) // Batasi agar tidak terlalu panjang
+    .join(", "); // Gabungkan keyword menjadi string
+
+  // ✅ Tambahkan keyword manual untuk optimasi SEO
+  const manualKeywords = `berita ${formattedTag}, informasi ${formattedTag}, topik ${formattedTag}, XYZONEMEDIA`;
+
   return {
     title: `Berita dengan Tag "${formattedTag}" | XYZONEMEDIA`,
     description: `Dapatkan berita terbaru dengan tag "${formattedTag}" di XYZONEMEDIA.`,
+    keywords: `${manualKeywords}, ${uniqueKeywords}`,
     openGraph: {
       title: `Berita dengan Tag "${formattedTag}" | XYZONEMEDIA`,
       description: `Dapatkan berita terbaru dengan tag "${formattedTag}" di XYZONEMEDIA.`,

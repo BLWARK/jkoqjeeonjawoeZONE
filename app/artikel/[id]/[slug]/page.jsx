@@ -132,11 +132,11 @@ const ArticlePage = () => {
   }
 
   return (
-    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-10 2xl:px-0 px-3">
+    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-0 xl:py-0 lg:py-0 py-2 2xl:px-0 px-3">
       {/* Iklan atas */}
       <Adv />
 
-      <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 2xl:px-0 flex flex-col lg:flex-row gap-10">
+      <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-0 2xl:px-0 xl:px-0 lg:px-0 flex flex-col lg:flex-row gap-10">
         {/* Left Section - Article Content */}
         <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0">
           {/* Judul & Tanggal */}

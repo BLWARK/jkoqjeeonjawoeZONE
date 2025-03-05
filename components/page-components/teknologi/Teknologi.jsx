@@ -11,10 +11,10 @@ const Teknologi = () => {
 
   return (
     <div className="w-screen bg-gray-800 text-white">
-    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8">
+    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 2xl:px-0 xl:px-0 lg:px-0 px-3">
       <div className="flex w-full justify-between items-center">
         <div className="">
-      <h2 className="text-3xl font-bold text-white flex items-center mb-3">Teknologi</h2>
+      <h2 className="text-3xl font-bold text-white flex items-center mb-3 mt-6">Teknologi</h2>
       <div className="w-[100%] h-[6px] rounded-full bg-pink-500 mb-10"></div>
       </div>
       <a href="/technology" className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer">View All</a>
