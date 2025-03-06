@@ -37,7 +37,7 @@ const LatestNews = () => {
     <div className="w-full flex 2xl:flex-row xl:flex-row lg:flex-row flex-col gap-10 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 px-3">
       {/* News List */}
       <div className="2xl:w-[70%] xl:w-[70%] lg:w-[70%] w-full flex flex-col gap-6 2xl:border-r border-gray-300 2xl:pr-8">
-        <div className="flex justify-between items-center mb-10">
+        <div className="flex justify-between items-center mb-6">
           <div className="w-full">
             <h2 className="text-3xl font-bold text-pink-500 mb-3">Latest News</h2>
             <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
