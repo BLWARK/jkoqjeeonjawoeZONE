@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "XYZONEMEDIA",
     images: [
       {
-        url: "https://xyzonemedia.com/preview-image.jpg",
+        url: "https://xyzonemedia.com/XYZONELOGOAPP.png",
         width: 1200,
         height: 630,
         alt: "XYZONEMEDIA",

@@ -79,30 +79,25 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="md:hidden bg-gray-100 p-4 space-y-4">
-            <a href="#" className="block hover:underline">
+            <a href="/" className="block hover:underline">
               Home
             </a>
-            <a href="#" className="block hover:underline">
-              New Look
+            <a href="/entertainment" className="block hover:underline">
+              Entertainment
             </a>
-            <a href="#" className="block hover:underline">
-              Fashion
-            </a>
-            <a href="#" className="block hover:underline">
-              Lifestyle
-            </a>
-            <a href="#" className="block hover:underline">
-              Business
-            </a>
-            <a href="#" className="block hover:underline">
-              Art
-            </a>
-            <a href="#" className="block hover:underline">
+            <a href="/technology" className="block hover:underline">
               Technology
             </a>
-            <a href="#" className="block hover:underline">
-              Pages
+            <a href="/sport" className="block hover:underline">
+              Sport
             </a>
+            <a href="/c-level" className="block hover:underline">
+              C-level
+            </a>
+            <a href="/lifestyle" className="block hover:underline">
+              Lifestyle
+            </a>
+            
           </nav>
         )}
 
