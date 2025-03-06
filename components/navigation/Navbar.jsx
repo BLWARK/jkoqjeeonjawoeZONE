@@ -65,7 +65,7 @@ const Navbar = () => {
           >
             {mobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
-          <div className="relative w-28 h-8">
+          <a href="/" className="relative w-28 h-8">
             <Image
               src="/Logo XYZone White.png"
               alt="XYZONE Logo Mobile"
@@ -73,7 +73,7 @@ const Navbar = () => {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               style={{ objectFit: "contain" }}
             />
-          </div>
+          </a>
         </div>
 
         {/* Mobile Menu */}

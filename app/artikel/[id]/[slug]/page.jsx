@@ -132,15 +132,15 @@ const ArticlePage = () => {
   }
 
   return (
-    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-0 xl:py-0 lg:py-0 py-2 2xl:px-0 px-3">
+    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-0 xl:py-0 lg:py-0 py-2 2xl:px-0 px-3 pb-20">
       {/* Iklan atas */}
       <Adv />
 
-      <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-0 2xl:px-0 xl:px-0 lg:px-0 flex flex-col lg:flex-row gap-10">
+      <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-0 2xl:px-0 xl:px-0 lg:px-0 flex flex-col lg:flex-row gap-10 ">
         {/* Left Section - Article Content */}
-        <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0">
+        <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0 pt-5" >
           {/* Judul & Tanggal */}
-          <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
+          <h1 className="text-3xl font-bold ">{article.title}</h1>
           <div className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse justify-between 2xl:items-center xl:items-center lg:items-center items-start py-8 2xl:gap-0 gap-6">
             {/* 🔹 Tombol Play (Untuk Membaca Artikel) */}
             <button

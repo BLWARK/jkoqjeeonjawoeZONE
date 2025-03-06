@@ -13,7 +13,7 @@ const roboto = Roboto({
   weight: ["300", "400", "500", "700", "900"],
 });
 
-// ✅ Metadata Default untuk Halaman Utama Saja
+// ✅ Metadata Lengkap untuk SEO & PWA
 export const metadata: Metadata = {
   title: "XYZONEMEDIA - Berita dan Informasi Terkini",
   description:
@@ -50,6 +50,7 @@ export const metadata: Metadata = {
       "Dapatkan berita terbaru dari dunia crypto, keuangan, dan teknologi di XYZONEMEDIA.",
     images: ["https://xyzonemedia.com/preview-image.jpg"],
   },
+  manifest: "/site.webmanifest", // PWA Web Manifest
 };
 
 export default function RootLayout({
@@ -59,12 +60,52 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
+      <head>
+        {/* ✅ Tambahkan PWA support */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#ff6600" />
+
+        {/* ✅ JSON-LD Structured Data untuk SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "NewsMediaOrganization",
+              "name": "XYZONEMEDIA",
+              "url": "https://xyzonemedia.com",
+              "logo": "https://xyzonemedia.com/logo.png",
+              "sameAs": [
+                "https://twitter.com/XyzoneMedia",
+                "https://www.facebook.com/XyzoneMedia",
+                "https://www.instagram.com/XyzoneMedia"
+              ],
+              "publisher": {
+                "@type": "Organization",
+                "name": "XYZONEMEDIA",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://xyzonemedia.com/logo.png",
+                  "width": 600,
+                  "height": 60
+                }
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://xyzonemedia.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }),
+          }}
+        />
+      </head>
       <body className={roboto.className}>
         <div className="flex flex-col justify-center items-center overflow-hidden bg-gray-100 w-full">
           <TopNav />
           <Ecosystem />
           <Navbar />
-
           <main className="w-full 2xl:px-0">{children}</main>
           <Footer />
         </div>
