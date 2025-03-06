@@ -32,11 +32,7 @@ const sliceTitle = (title, maxWords = 10) => {
 };
 
 const LatestNews = () => {
-  const [visibleNews, setVisibleNews] = useState(4); // Awal tampilkan 4 berita
-
-  const handleLoadMore = () => {
-    setVisibleNews((prev) => prev + 4); // Tambah 4 berita setiap klik
-  };
+ 
 
   return (
     <div className="w-full flex 2xl:flex-row xl:flex-row lg:flex-row flex-col gap-10 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 px-3">
@@ -47,9 +43,7 @@ const LatestNews = () => {
             <h2 className="text-3xl font-bold text-pink-500 mb-3">Latest News</h2>
             <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
           </div>
-          <a href="/" className="text-nowrap font-semibold bg-pink-500 flex justify-center items-center text-white px-4 py-3 text-xs rounded-lg cursor-pointer">
-            View All
-          </a>
+          
         </div>
 
         {allNews.slice(0, visibleNews).map((article) => {
@@ -98,14 +92,14 @@ const LatestNews = () => {
         })}
 
         {/* Load More Button */}
-        {visibleNews < allNews.length && (
-          <button
-            onClick={handleLoadMore}
+    
+          <a
+            href="/"
             className="mt-6 bg-pink-500 text-white py-3 px-5 rounded-lg font-semibold hover:bg-pink-600 transition w-full"
           >
-            Load More
-          </button>
-        )}
+            View All
+          </a>
+        
       </div>
 
       {/* Bagian Adv (Tetap di Posisi Tetap, tetapi Ikut Scroll) */}
