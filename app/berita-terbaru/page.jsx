@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import MostReadTag from "@/components/mostRead/MostReadTag"; // Komponen Most Read
 import Clevel from "@/data/cLevel";
 import news from "@/data/news";
 import sportNews from "@/data/sportNews";
@@ -10,18 +11,16 @@ import teknologiNews from "@/data/teknologiData";
 import lifestyleNews from "@/data/lifestyleNews";
 import entertainmentNews from "@/data/entertainmentNews";
 import users from "@/data/users";
-import Adv from "@/components/page-components/adv-sect/AdvEditor";
 import { getCategoryColor } from "@/data/categoryColors";
 
 // 🔹 Gabungkan Semua Data & Urutkan Berdasarkan Tanggal 🔹
 const allNews = [...news, ...sportNews, ...teknologiNews, ...lifestyleNews, ...entertainmentNews, ...Clevel,]
   .map((article, index) => ({
     ...article,
-    uniqueId: `${article.category[0]}-${article.id}-${index}`, // Tambahkan ID unik agar tidak bentrok
-    dateObj: new Date(article.date), // Ubah tanggal ke format Date untuk sorting
+    uniqueId: `${article.category[0]}-${article.id}-${index}`,
+    dateObj: new Date(article.date),
   }))
-  .sort((a, b) => b.dateObj - a.dateObj) // Urutkan berita dari terbaru ke terlama
-  .slice(0, 6); // ✅ Hanya tampilkan 6 berita terbaru
+  .sort((a, b) => b.dateObj - a.dateObj); // Urutkan berita terbaru ke lama
 
 // Fungsi mendapatkan author berdasarkan ID
 const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
@@ -32,24 +31,50 @@ const sliceTitle = (title, maxWords = 10) => {
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "..." : title;
 };
 
-const LatestNews = () => {
+const Page = () => {
+  const itemsPerPage = 6; // ✅ 6 berita per halaman
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(allNews.length / itemsPerPage);
+
+  // 🔹 Scroll ke atas ketika halaman berubah
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
+  // Ambil berita sesuai halaman saat ini
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const visibleNews = allNews.slice(startIndex, startIndex + itemsPerPage);
+
+  // 🔹 Logika rentang angka untuk pagination
+  const getPageNumbers = () => {
+    let range = [];
+    const maxButtons = 5;
+    let start = Math.max(1, currentPage - 2);
+    let end = Math.min(totalPages, start + maxButtons - 1);
+
+    if (end - start < maxButtons - 1) {
+      start = Math.max(1, end - maxButtons + 1);
+    }
+
+    for (let i = start; i <= end; i++) {
+      range.push(i);
+    }
+    return range;
+  };
+
   return (
     <div className="w-full flex 2xl:flex-row xl:flex-row lg:flex-row flex-col gap-10 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 px-3">
-      {/* News List */}
-      <div className="2xl:w-[70%] xl:w-[70%] lg:w-[70%] w-full flex flex-col gap-6 2xl:border-r border-gray-300 2xl:pr-8">
-        <div className="flex justify-between items-center mb-10">
+      {/* 🔹 Kiri: News List */}
+      <div className="2xl:w-[70%] xl:w-[70%] lg:w-[70%] w-full flex flex-col gap-6">
+        <div className="flex justify-between items-center mb-3">
           <div className="w-full">
             <h2 className="text-3xl font-bold text-pink-500 mb-3">Latest News</h2>
             <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
           </div>
-          {/* ✅ View All Button */}
-           
-           
-          
         </div>
 
-        {/* ✅ Hanya Menampilkan 6 Berita Terbaru */}
-        {allNews.map((article) => {
+        {/* ✅ Hanya Menampilkan 6 Berita Sesuai Halaman */}
+        {visibleNews.map((article) => {
           const author = getAuthorById(article.authorId);
           return (
             <div key={article.uniqueId} className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse items-start gap-6 border-b border-gray-300 pb-4">
@@ -93,19 +118,54 @@ const LatestNews = () => {
             </div>
           );
         })}
-         <a href="/berita-terbaru" className="text-nowrap 2xl:w-[200px] xl:w-[200px] lg:w-[200px] w-full font-semibold bg-pink-500 flex justify-center items-center text-white px-6 py-3 text-md rounded-lg cursor-pointer">
-              Lihat Semua
-            </a>
+
+        {/* 🔹 Pagination */}
+        <div className="flex justify-center items-center gap-2 mt-6">
+          {/* Tombol Prev */}
+          <button
+            className={`px-4 py-2 text-sm rounded-lg font-semibold ${
+              currentPage > 1 ? "bg-pink-500 text-white hover:bg-pink-600" : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }`}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+
+          {/* Rentang Angka */}
+          {getPageNumbers().map((num) => (
+            <button
+              key={num}
+              className={`px-3 py-2 text-sm font-semibold rounded-lg ${
+                currentPage === num ? "bg-pink-500 text-white" : "bg-gray-200 text-black hover:bg-gray-300"
+              }`}
+              onClick={() => setCurrentPage(num)}
+            >
+              {num}
+            </button>
+          ))}
+
+          {/* Tombol Next */}
+          <button
+            className={`px-4 py-2 text-sm rounded-lg font-semibold ${
+              currentPage < totalPages ? "bg-pink-500 text-white hover:bg-pink-600" : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }`}
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
 
-      {/* Bagian Adv (Tetap di Posisi Tetap, tetapi Ikut Scroll) */}
+      {/* 🔹 Kanan: Komponen Most Read */}
       <div className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] w-full relative">
         <div className="2xl:sticky top-20">
-          <Adv />
+          <MostReadTag />
         </div>
       </div>
     </div>
   );
 };
 
-export default LatestNews;
+export default Page;
