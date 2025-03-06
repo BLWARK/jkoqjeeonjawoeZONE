@@ -159,7 +159,7 @@ const Page = () => {
       </div>
 
       {/* 🔹 Kanan: Komponen Most Read */}
-      <div className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] w-full relative">
+      <div className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] w-full relative 2xl:pl-8 xl:pl-8 lg:pl-8 border-l border-l-gray-300">
         <div className="2xl:sticky top-20">
           <MostReadTag />
         </div>
