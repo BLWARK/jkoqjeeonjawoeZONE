@@ -35,7 +35,7 @@ const editorChoice= [
       <p>Akankah mereka kembali menemukan kejayaan dengan inovasi baru? Waktu yang akan menjawab.</p>
     `,
     tags: ["Niantic", "Pokémon Go", "Augmented Reality", "Teknologi Gim"],
-    category: ["teknologi", "gaming"],
+    category: ["technology", "gaming"],
     authorId: 2,
   },
   {
@@ -86,7 +86,7 @@ const editorChoice= [
       <p>Rumor juga beredar bahwa <strong>Nicole Kidman</strong> sedang mempertimbangkan untuk <strong>pindah kembali ke Australia</strong> demi memulai kehidupan baru yang lebih tenang.</p>
     `,
     tags: ["Nicole Kidman", "Keith Urban", "Hollywood", "Perampokan"],
-    category: ["hiburan", "celebrity"],
+    category: ["entertainment", "celebrity"],
     authorId: 2,
   },
   {
@@ -138,7 +138,7 @@ const editorChoice= [
       <p>Inovasi ini tidak hanya menjadi langkah penting menuju transportasi yang berkelanjutan tetapi juga membuka peluang besar dalam meningkatkan efisiensi energi di berbagai sektor.</p>
     `,
     tags: ["Teknologi Energi", "Termoelektrik", "Lingkungan"],
-    category: ["teknologi", "energi"],
+    category: ["technology", "energi"],
     authorId: 2,
   },
   {

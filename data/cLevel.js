@@ -10,7 +10,8 @@ const cLevel = [
         description: "Podcast Data1n membahas temuan GSRI mengenai prioritas anggaran pemerintahan Prabowo dan tantangan dalam implementasinya.",
         slug: "prioritas-anggaran-pemerintahan-prabowo",
         content: `
-          <p><strong>Podcast perdana Data1n</strong> menghadirkan diskusi menarik mengenai temuan <strong>Global Strategy Research Institute (GSRI)</strong> terkait <strong>prioritas anggaran pemerintahan Prabowo</strong>.</p>
+        
+        <p><strong>Podcast perdana Data1n</strong> menghadirkan diskusi menarik mengenai temuan <strong>Global Strategy Research Institute (GSRI)</strong> terkait <strong>prioritas anggaran pemerintahan Prabowo</strong>.</p>
           <p>Dalam sesi ini, <strong>Sebastian Salang</strong> sebagai pemateri mengulas kebijakan anggaran berdasarkan struktur belanja negara, dengan <strong>Sabrina Restiawan</strong> sebagai host.</p>
           <br>
           <p class="judul-besar">Prioritas Anggaran dan Tantangan Implementasi</p>
@@ -26,6 +27,8 @@ const cLevel = [
           <br>
           <p>Subsidi ini bertujuan menjaga <strong>daya beli masyarakat</strong> dan kestabilan harga, tetapi juga menghadapi tantangan klasik, seperti <strong>ketidaktepatan sasaran</strong> serta potensi <strong>pemborosan akibat tumpang tindih kebijakan</strong> antar-kementerian.</p>
           <br>
+          <blockquote class="twitter-tweet"><p lang="in" dir="ltr">*💰 Alokasi APBN 2025 Buat Apa Aja??? 🤔* <br><br>Pernah kepikiran gak sih, pajak yang kita bayar tuh dipake buat apa aja?<br><br>Tonton videonya sampai habis &amp; kasih pendapatmu di komentar! 👇 <a href="https://twitter.com/hashtag/gsri?src=hash&amp;ref_src=twsrc%5Etfw">#gsri</a> <a href="https://twitter.com/hashtag/data1n?src=hash&amp;ref_src=twsrc%5Etfw">#data1n</a> <a href="https://twitter.com/hashtag/APBN2025?src=hash&amp;ref_src=twsrc%5Etfw">#APBN2025</a> <a href="https://twitter.com/hashtag/EkonomiIndonesia?src=hash&amp;ref_src=twsrc%5Etfw">#EkonomiIndonesia</a> <a href="https://twitter.com/hashtag/UtangNegara?src=hash&amp;ref_src=twsrc%5Etfw">#UtangNegara</a> <a href="https://twitter.com/hashtag/PemerintahIndonesia?src=hash&amp;ref_src=twsrc%5Etfw">#PemerintahIndonesia</a> <a href="https://twitter.com/hashtag/AnggaranNegara?src=hash&amp;ref_src=twsrc%5Etfw">#AnggaranNegara</a> <a href="https://t.co/YfDsFAJ43Q">pic.twitter.com/YfDsFAJ43Q</a></p>&mdash; Data in (@Data1n) <a href="https://twitter.com/Data1n/status/1892738651315929129?ref_src=twsrc%5Etfw">February 21, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </br>
           <p>Sektor lain yang mendapat perhatian adalah <strong>kesehatan</strong> dengan anggaran <strong>Rp218,5 triliun</strong>, namun terjadi <strong>fragmentasi dalam pengelolaannya</strong>.</p>
           <p>Dengan banyaknya instansi yang turut serta dalam pengelolaan rumah sakit, mulai dari:</p>
           <p>• <strong>Kementerian Kesehatan</strong></p>

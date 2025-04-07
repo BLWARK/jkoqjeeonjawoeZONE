@@ -53,3 +53,25 @@
   /* 🔥 HAPUS transform agar posisi tetap */
 }
 
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-shimmer-blue {
+  background: linear-gradient(
+    to right,
+    #bfdbfe 0%,  /* bg-blue-200 */
+    #dbeafe 50%, /* bg-blue-100 */
+    #bfdbfe 100%
+  );
+  background-size: 2000px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: 0.5rem;
+}
+

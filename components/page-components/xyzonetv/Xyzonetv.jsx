@@ -10,8 +10,8 @@ const Xyzonetv = () => {
 
   return (
     <div className="w-screen bg-gray-800 text-white">
-      <div className="px-3 py-10 w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-8 ">
-      <div className="flex justify-start items-center font-bold gap-4 text-[2em] py-10">
+      <div className="px-3 py-10 w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-20 ">
+      <div className="flex justify-start items-center font-bold gap-4 text-[2em] mb-10">
         <Image
           src="/Logo OneZone TV - White.png"
           alt="Judul Video"
@@ -20,7 +20,7 @@ const Xyzonetv = () => {
           className="object-contain"
         />
       </div>
-        <div className="flex flex-col  gap-10">
+        <div className="flex flex-col  gap-10 mb-5">
         {/* Bagian Kiri: Video Besar */}
         <div className=" w-full ">
           <div className="w-full aspect-video">

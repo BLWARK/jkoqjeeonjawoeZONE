@@ -20,9 +20,11 @@ const BottomSport = ({ bottomArticles }) => {
         return (
           <div key={article.id} className="flex items-start gap-4">
             {/* Gambar kecil */}
-            <div className="relative w-[120px] h-[90px] flex-shrink-0">
+            <Link href={`/artikel/${article.id}/${article.slug}`}>
+            <div className="relative w-[150px] h-[100px] flex-shrink-0">
               <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
+            </Link>
 
             {/* Detail Berita */}
             <div className="flex-1">

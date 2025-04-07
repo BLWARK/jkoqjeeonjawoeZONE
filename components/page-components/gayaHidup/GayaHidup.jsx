@@ -42,9 +42,11 @@ const GayaHidup = () => {
           return (
             <div key={article.id} className="w-full 2xl:border-b-0 xl:border-b-0 lg:border-b-0 border-b border-b-gray-300  pb-5 ">
               {/* Gambar */}
+              <Link href={`/artikel/${article.id}/${article.slug}`}>
               <div className="relative w-full h-[250px] lg:h-[160px]">
                 <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
               </div>
+              </Link>
 
               {/* Kategori */}
               <span

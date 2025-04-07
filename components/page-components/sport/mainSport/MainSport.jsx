@@ -21,10 +21,11 @@ const MainSport = ({ topArticles }) => {
         return (
           <div key={article.id} className="relative w-full">
             {/* Gambar */}
+            <Link href={`/artikel/${article.id}/${article.slug}`}>
             <div className="relative w-full h-[250px]">
               <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
-
+            
             {/* Overlay Judul, Kategori, Author, dan Date */}
             <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex flex-col justify-end p-4">
               {/* Kategori */}
@@ -37,11 +38,11 @@ const MainSport = ({ topArticles }) => {
               )}
 
               {/* Judul */}
-              <Link href={`/artikel/${article.id}/${article.slug}`}>
+              
                 <h2 className="text-white text-lg font-bold leading-tight hover:underline cursor-pointer">
                   {sliceTitle(article.title)}
                 </h2>
-              </Link>
+            
 
               {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-300 mt-2">
@@ -55,6 +56,7 @@ const MainSport = ({ topArticles }) => {
                 <span>{article.date}</span>
               </div>
             </div>
+            </Link>
           </div>
         );
       })}

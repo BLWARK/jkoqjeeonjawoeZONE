@@ -14,6 +14,7 @@ const MainTeknologi = ({ mainArticle }) => {
 
   return (
     <div className="lg:col-span-2 relative">
+      <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`}>
       <div className="relative w-full 2xl:h-[620px] xl:h-[620px] lg:h-[620px] h-[400px]">
         <Image 
           src={mainArticle.image} 
@@ -31,11 +32,11 @@ const MainTeknologi = ({ mainArticle }) => {
           </span>
 
           {/* Judul */}
-          <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`}>
+          
             <h2 className="text-white text-2xl font-bold leading-tight hover:underline cursor-pointer">
               {mainArticle.title}
             </h2>
-          </Link>
+          
 
           {/* Author & Date */}
           <div className="flex items-center text-sm text-gray-300 mt-2">
@@ -55,7 +56,9 @@ const MainTeknologi = ({ mainArticle }) => {
             <span>{new Date(mainArticle.date).toLocaleDateString()}</span> {/* ✅ Format tanggal */}
           </div>
         </div>
+        
       </div>
+      </Link>
     </div>
   );
 };

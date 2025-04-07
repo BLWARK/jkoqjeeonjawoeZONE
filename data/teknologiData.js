@@ -47,7 +47,7 @@ const teknologiData = [
       <p>Peluncurannya yang semakin dekat membuatnya menjadi salah satu smartphone yang paling dinanti tahun ini.</p>
     `,
     tags: ["iPhone SE 4", "Apple", "Smartphone", "Teknologi"],
-    category: ["teknologi", "smartphones"],
+    category: ["technology", "smartphones"],
     authorId: 1,
   },
   {
@@ -90,7 +90,7 @@ const teknologiData = [
       <p>Dengan langkah ini, <strong>Google</strong> semakin memperkuat komitmennya dalam meningkatkan keamanan siber dan menjaga data pengguna dari ancaman digital.</p>
     `,
     tags: ["Google", "Keamanan Digital", "Penipuan Online", "Android"],
-    category: ["teknologi", "cybersecurity"],
+    category: ["technology", "cybersecurity"],
     authorId: 2,
   },
     
@@ -140,7 +140,7 @@ const teknologiData = [
           <p>Dengan kemajuan ini, pekerja perawatan di Inggris kini memiliki akses cepat dan mudah ke dukungan yang mereka butuhkan, memungkinkan mereka memberikan pelayanan yang lebih baik bagi orang-orang yang mereka rawat.</p>
         `,
         tags: ["Bridgit AI", "Kecerdasan Buatan", "Teknologi"],
-        category: ["teknologi", "AI"],
+        category: ["technology", "AI"],
         authorId: 2,
       },
      
@@ -207,7 +207,7 @@ const teknologiData = [
           </blockquote>
         `,
         tags: ["Retinex", "AI Kesehatan", "Teknologi Medis"],
-        category: ["teknologi", "kesehatan"],
+        category: ["technology", "kesehatan"],
         authorId: 2,
       },
       {
@@ -256,7 +256,7 @@ const teknologiData = [
           </blockquote>
         `,
         tags: ["Kaspersky", "Keamanan Siber", "Indonesia"],
-        category: ["teknologi", "cybersecurity"],
+        category: ["technology", "cybersecurity"],
         authorId: 2,
       },
       {
@@ -305,7 +305,7 @@ const teknologiData = [
           <p>Dengan meningkatnya larangan di berbagai negara, masa depan DeepSeek sebagai salah satu chatbot AI terpopuler masih belum jelas, terutama dengan meningkatnya kekhawatiran mengenai keamanan data dan privasi pengguna.</p>
         `,
         tags: ["DeepSeek", "AI", "Keamanan Data"],
-        category: ["teknologi", "AI"],
+        category: ["technology", "AI"],
         authorId: 1,
       },
       {
@@ -352,7 +352,7 @@ const teknologiData = [
           <p>Pada kuartal terakhir 2024, penjualan Apple di China mengalami penurunan sebesar <strong>11,1 persen</strong>, sehingga membuat perusahaan ini berada di posisi ketiga dalam pasar ponsel pintar negara tersebut, setelah <strong>Huawei</strong> dan <strong>Xiaomi</strong>.</p>
         `,
         tags: ["Apple Intelligence", "Alibaba", "China"],
-        category: ["teknologi", "AI"],
+        category: ["technology", "AI"],
         authorId: 1,
       },
 

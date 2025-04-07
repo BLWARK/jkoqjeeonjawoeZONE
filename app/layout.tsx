@@ -4,6 +4,9 @@ import TopNav from "@/components/navigation/TopNavbar";
 import Navbar from "@/components/navigation/Navbar";
 import Ecosystem from "@/components/navigation/Ecosystem";
 import Footer from "@/components/footer/Footer";
+import Tracking from "@/components/Tracking"
+import Scrolltop from "@/components/scroll-to-top/Scroll"
+import { BackProvider } from "@/context/BackContext";
 
 import "./globals.css";
 
@@ -102,13 +105,17 @@ export default function RootLayout({
         />
       </head>
       <body className={roboto.className}>
+      <BackProvider>
+        <Tracking/>
         <div className="flex flex-col justify-center items-center overflow-hidden bg-gray-100 w-full">
           <TopNav />
           <Ecosystem />
           <Navbar />
           <main className="w-full 2xl:px-0">{children}</main>
           <Footer />
+          <Scrolltop/>
         </div>
+        </BackProvider>
       </body>
     </html>
   );

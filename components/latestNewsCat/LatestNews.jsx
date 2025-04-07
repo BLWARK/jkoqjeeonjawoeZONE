@@ -80,6 +80,7 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
                   className="flex 2xl:flex-row xl:flex-col lg:flex-col flex-col gap-4 border-b pb-4 items-start"
                 >
                   {/* Gambar Berita */}
+                  <Link href={`/artikel/${article.id}/${article.slug}`}>
                   <div className="relative 2xl:w-[300px] w-full 2xl:h-[200px] xl:h-[300px] lg:h-[300px] h-[200px] flex-shrink-0">
                     <Image
                       src={article.image}
@@ -88,6 +89,7 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
                       className="rounded-lg object-cover"
                     />
                   </div>
+                  </Link>
 
                   {/* Detail Berita */}
                   <div className="flex-1">

@@ -18,9 +18,11 @@ const BottomTeknologi = ({ bottomArticles }) => {
         return (
           <div key={article.id} className="flex items-start gap-4">
             {/* Gambar kecil */}
+            <Link href={`/artikel/${article.id}/${article.slug}`}>
             <div className="relative w-[130px] h-[90px] flex-shrink-0">
               <Image src={article.image} alt={article.title} fill sizes="100vw" className="rounded-lg object-cover" />
             </div>
+            </Link>
 
             {/* Detail Berita */}
             <div className="flex flex-col justify-between h-full">

@@ -35,7 +35,9 @@ const SportPage = () => {
             priority={true}
           />
           {/* Overlay */}
+          <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`} passHref>
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+          </Link>
 
           {/* Konten Berita */}
           <div className="absolute bottom-5 left-5 text-white">
@@ -82,7 +84,9 @@ const SportPage = () => {
               className="object-cover"
             />
             {/* Overlay */}
+            <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+            </Link>
 
             {/* Konten Berita */}
             <div className="absolute bottom-5 left-5 text-white">
@@ -117,7 +121,7 @@ const SportPage = () => {
       {/* 🔹 Iklan & Latest News */}
       <div>
         <Ads />
-        <LatestNews category="olahraga" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
+        <LatestNews category="sport" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
       </div>
     </div>
   );

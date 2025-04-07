@@ -53,6 +53,7 @@ const MostReadTag = () => {
           return (
             <div key={`${news.id}-most-read`} className="flex flex-col  border-b border-gray-300 py-3 ">
               {/* Gambar */}
+              <Link href={`/artikel/${news.id}/${news.slug}`} passHref>
               <div className="relative w-full 2xl:h-[200px] h-[250px]">
                 <Image
                   src={news.image}
@@ -61,6 +62,7 @@ const MostReadTag = () => {
                   className="rounded-lg object-cover"
                 />
               </div>
+              </Link>
 
               {/* Judul */}
               <div className="mt-2">

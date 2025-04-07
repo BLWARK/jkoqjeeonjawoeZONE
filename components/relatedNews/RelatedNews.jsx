@@ -55,7 +55,7 @@ const RelatedNews = ({ currentArticle, mostReadArticles = [] }) => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="my-10 ">
       <h2 className="text-2xl font-bold text-pink-500">Berita Terkait</h2>
       <div className="w-[10%] h-[5px] bg-pink-500 mb-5 rounded-full my-5"></div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -65,6 +65,7 @@ const RelatedNews = ({ currentArticle, mostReadArticles = [] }) => {
           return (
             <div key={`${news.id}-related`} className="flex flex-col">
               {/* Gambar */}
+              <Link href={`/artikel/${news.id}/${news.slug}`} passHref>
               <div className="relative w-full h-[200px]">
                 <Image
                   src={news.image}
@@ -75,6 +76,7 @@ const RelatedNews = ({ currentArticle, mostReadArticles = [] }) => {
                   
                 />
               </div>
+              </Link>
 
               {/* Judul */}
               <Link href={`/artikel/${news.id}/${news.slug}`} passHref>

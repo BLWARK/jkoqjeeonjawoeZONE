@@ -22,6 +22,7 @@ const SideTeknologi = ({ sideArticles }) => {
         return (
           <div key={article.id} className="flex flex-col">
             {/* Gambar */}
+            <Link href={`/artikel/${article.id}/${article.slug}`}>
             <div className="relative w-full 2xl:h-[180px] xl:h-[180px] lg:h-[180px] h-[250px]">
               <Image 
                 src={article.image} 
@@ -31,6 +32,7 @@ const SideTeknologi = ({ sideArticles }) => {
                 className="rounded-lg object-cover" 
               />
             </div>
+            </Link>
 
             {/* Kategori */}
             <span 

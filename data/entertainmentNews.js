@@ -47,7 +47,7 @@ const entertainmentNews = [
       <p>Dengan jabatan barunya ini, <strong>Deddy Corbuzier</strong> kini resmi menjadi bagian dari pemerintahan dan memiliki peran strategis dalam menyampaikan kebijakan pertahanan kepada publik.</p>
     `,
     tags: ["Deddy Corbuzier", "Menhan", "Stafsus", "Politik"],
-    category: ["hiburan", "government"],
+    category: ["entertainment", "government"],
     authorId: 1,
   },
   {
@@ -109,7 +109,7 @@ const entertainmentNews = [
       <p>Pernikahan mereka menjadi kabar bahagia bagi para penggemar, sekaligus menambah daftar selebriti Indonesia yang menikah di tahun 2025.</p>
     `,
     tags: ["Angga Yunanda", "Shenina Cinnamon", "Pernikahan", "Selebriti"],
-    category: ["hiburan", "celebrity"],
+    category: ["entertainment", "celebrity"],
     authorId: 3,
   },
       {
@@ -130,7 +130,7 @@ const entertainmentNews = [
           <p class="judul-besar">Penyelidikan Polisi</p>
           <p>Menurut laporan <em>Reuters</em>, aktris berusia 24 tahun itu ditemukan oleh seorang teman yang berencana menemuinya, sebelum akhirnya segera menghubungi pihak berwenang.</p>
           <p>Polisi setempat telah memulai penyelidikan, namun hingga kini tidak ditemukan adanya tanda-tanda keterlibatan tindakan kriminal.</p>
-          <p>Kabar tragis ini mengejutkan dunia hiburan Korea Selatan dan para penggemarnya yang mengenalnya begitu dekat.</p>
+          <p>Kabar tragis ini mengejutkan dunia entertainment Korea Selatan dan para penggemarnya yang mengenalnya begitu dekat.</p>
       
           <p class="judul-besar">Fakta Profil dan Perjalanan Karir Kim Sae-ron</p>
       
@@ -153,11 +153,11 @@ const entertainmentNews = [
           <p>Kim Sae-ron ditemukan meninggal dunia di kediamannya di Seongsu-dong, Seoul, pada usia 24 tahun. Penyebab kematiannya masih dalam penyelidikan, namun tidak ditemukan tanda-tanda kekerasan.</p>
       
           <p class="sub-judul">7. Warisan dan Pengaruh yang Tak Terlupakan</p>
-          <p>Meski kariernya singkat, Kim Sae-ron meninggalkan pengaruh besar dalam industri hiburan Korea.</p>
+          <p>Meski kariernya singkat, Kim Sae-ron meninggalkan pengaruh besar dalam industri entertainment Korea.</p>
           <p>Dedikasi dan bakatnya yang luar biasa sejak usia muda menginspirasi banyak orang, dan karya-karyanya akan selalu dikenang oleh penggemar dan koleganya.</p>
         `,
         tags: ["Kim Sae-ron", "Korea", "Aktris"],
-        category: ["hiburan", "korea"],
+        category: ["entertainment", "korea"],
         authorId: 1,
       },
       
@@ -223,7 +223,7 @@ const entertainmentNews = [
           <p>"Kemungkinan ada (sungkeman) ya pas akad nikahnya," ujar Maia. "Sungkeman bisa diatur tempatnya dimana," tandasnya.</p>
         `,
         tags: ["Al Ghazali", "Alyssa Daguise", "Pernikahan"],
-        category: ["hiburan", "musik"],
+        category: ["entertainment", "musik"],
         authorId: 1,
       },
       {
@@ -265,18 +265,18 @@ const entertainmentNews = [
       
           <p>Setelah insiden tersebut, Kim Sae-ron meminta maaf kepada publik dan memberikan kompensasi kepada pihak-pihak yang terdampak. Namun, akibat kejadian itu, ia harus mundur dari drama <strong>Trolley</strong>, dan perannya dalam serial Netflix <strong>Bloodhounds</strong> juga dipangkas secara signifikan.</p>
       
-          <p class="judul-besar">Film Terakhir dan Warisan dalam Industri Hiburan</p>
-          <p>Film terakhir Kim Sae-ron berjudul <strong>Guitar Man</strong> kini masih menunggu jadwal rilisnya. Meski kariernya mengalami pasang surut, pengaruh dan dedikasinya dalam industri hiburan Korea Selatan tetap dikenang oleh penggemar dan rekan-rekannya.</p>
+          <p class="judul-besar">Film Terakhir dan Warisan dalam Industri entertainment</p>
+          <p>Film terakhir Kim Sae-ron berjudul <strong>Guitar Man</strong> kini masih menunggu jadwal rilisnya. Meski kariernya mengalami pasang surut, pengaruh dan dedikasinya dalam industri entertainment Korea Selatan tetap dikenang oleh penggemar dan rekan-rekannya.</p>
       
           <p>"Kim Sae-ron adalah sosok yang penuh bakat sejak kecil. Kami kehilangan seseorang yang sangat berbakat dan penuh semangat," ujar salah satu rekannya.</p>
       
           <p class="judul-besar">Duka yang Mendalam</p>
-          <p>Kepergian Kim Sae-ron di usia muda meninggalkan duka yang mendalam bagi para penggemar dan dunia hiburan Korea. Warisan yang ia tinggalkan melalui karya-karyanya akan terus dikenang oleh banyak orang.</p>
+          <p>Kepergian Kim Sae-ron di usia muda meninggalkan duka yang mendalam bagi para penggemar dan dunia entertainment Korea. Warisan yang ia tinggalkan melalui karya-karyanya akan terus dikenang oleh banyak orang.</p>
       
           <p>"Kami berharap dia mendapat ketenangan di sana," tutup salah satu sahabatnya.</p>
         `,
         tags: ["Han So-hee", "Won Bin", "Kim Sae-ron"],
-        category: ["hiburan", "korea"],
+        category: ["entertainment", "korea"],
         authorId: 3,
       },
       {
@@ -292,11 +292,11 @@ const entertainmentNews = [
           <p><strong>Aktor terkenal asal Korea Selatan, Gong Yoo, dan aktris Song Hye Kyo</strong> akan bersatu dalam sebuah serial orisinal <strong>Netflix</strong> yang ditulis oleh <strong>Noh Hee Kyung</strong>.</p>
           <br>
           <p>Menurut laporan dari <strong>Yonhap</strong>, serial ini saat ini masih berjudul sementara <strong>'Show Business'</strong> dan akan berlatar di Korea pada tahun <strong>1960-an hingga 1980-an</strong>.</p>
-          <p>Ceritanya mengisahkan perjuangan sejumlah individu yang berusaha meraih kesuksesan di <strong>industri hiburan Korea</strong> yang tengah berkembang pesat.</p>
+          <p>Ceritanya mengisahkan perjuangan sejumlah individu yang berusaha meraih kesuksesan di <strong>industri entertainment Korea</strong> yang tengah berkembang pesat.</p>
           <br>
           <p class="judul-besar">Song Hye Kyo dan Gong Yoo dalam Peran Utama</p>
           <p><strong>Song Hye Kyo</strong>, yang dikenal lewat perannya dalam <strong>The Glory</strong>, akan memerankan <strong>Min Ja</strong>, seorang wanita ambisius yang memanfaatkan setiap kesempatan untuk terjun ke dunia musik.</p>
-          <p>Sementara itu, <strong>Gong Yoo</strong>, yang sebelumnya tampil dalam serial <strong>Netflix The Trunk</strong> dan <strong>Squid Game</strong>, akan memerankan <strong>Dong Gu</strong>, sahabat Min Ja yang juga berjuang mengejar impian kesuksesan di dunia hiburan.</p>
+          <p>Sementara itu, <strong>Gong Yoo</strong>, yang sebelumnya tampil dalam serial <strong>Netflix The Trunk</strong> dan <strong>Squid Game</strong>, akan memerankan <strong>Dong Gu</strong>, sahabat Min Ja yang juga berjuang mengejar impian kesuksesan di dunia entertainment.</p>
           <br>
           <p>Beberapa bintang lainnya yang turut bergabung dalam serial ini adalah:</p>
           <p>• <strong>Kim Seol Hyeon</strong></p>
@@ -307,9 +307,9 @@ const entertainmentNews = [
           <p>Meskipun antusiasme penonton sangat tinggi, tanggal rilis pasti untuk serial ini belum diumumkan.</p>
           <p>Namun, pertemuan antara <strong>Song Hye Kyo</strong> dan <strong>Gong Yoo</strong> dalam proyek ini telah resmi diumumkan melalui akun <strong>Instagram Netflix Korea Selatan</strong>.</p>
           <br>
-          <p class="judul-besar">Hubungan Song Hye Kyo dan Gong Yoo di Industri Hiburan</p>
-          <p>Song Hye Kyo dan Gong Yoo dikenal sebagai dua aktor papan atas di dunia hiburan Korea Selatan.</p>
-          <p>Meskipun mereka belum banyak berkolaborasi dalam film atau drama bersama, terdapat beberapa momen menarik di mana mereka bertemu atau bekerja dalam industri hiburan:</p>
+          <p class="judul-besar">Hubungan Song Hye Kyo dan Gong Yoo di Industri entertainment</p>
+          <p>Song Hye Kyo dan Gong Yoo dikenal sebagai dua aktor papan atas di dunia entertainment Korea Selatan.</p>
+          <p>Meskipun mereka belum banyak berkolaborasi dalam film atau drama bersama, terdapat beberapa momen menarik di mana mereka bertemu atau bekerja dalam industri entertainment:</p>
           <br>
           <p class="sub-judul">1. Drama The First Time (2006)</p>
           <p>Mereka pertama kali bertemu dalam <strong>drama pendek</strong> berjudul <strong>The First Time</strong> (2006), bagian dari proyek film pendek <strong>The Story of Two Sisters</strong>.</p>
@@ -317,7 +317,7 @@ const entertainmentNews = [
           <br>
           <p class="sub-judul">2. Drama Coffee Prince (2007)</p>
           <p>Walaupun tidak berperan bersama, Gong Yoo mencuri perhatian dalam drama legendaris <strong>Coffee Prince</strong> (2007).</p>
-          <p>Sementara itu, Song Hye Kyo tengah sibuk dengan proyek lain. Namun, keduanya dikenal memiliki interaksi sosial di berbagai acara dan festival industri hiburan.</p>
+          <p>Sementara itu, Song Hye Kyo tengah sibuk dengan proyek lain. Namun, keduanya dikenal memiliki interaksi sosial di berbagai acara dan festival industri entertainment.</p>
           <br>
           <p class="sub-judul">3. Film The Age of Shadows (2016)</p>
           <p>Pada tahun 2016, meskipun tidak bermain dalam proyek yang sama, mereka sering hadir di acara promosi film besar yang melibatkan aktor Korea papan atas.</p>
@@ -325,7 +325,7 @@ const entertainmentNews = [
           <p>Kini, dengan proyek <strong>'Show Business'</strong>, penggemar akhirnya bisa melihat <strong>Song Hye Kyo</strong> dan <strong>Gong Yoo</strong> beradu akting dalam drama yang menjanjikan.</p>
         `,
         tags: ["Song Hye Kyo", "Gong Yoo", "Netflix", "Drama Korea"],
-        category: ["hiburan", "korean-drama", "streaming"],
+        category: ["entertainment", "korean-drama", "streaming"],
         authorId: 1,
       },
     {
@@ -341,7 +341,7 @@ const entertainmentNews = [
         <p>Ariel Tatum mengaku mengalami perundungan online karena kedekatannya dengan Stefan William. Netizen banyak memberikan komentar negatif terhadap hubungan mereka.</p>
       `,
       tags: ["Ariel Tatum", "Stefan William", "Selebriti"],
-      category: ["hiburan", "gossip"],
+      category: ["entertainment", "gossip"],
       authorId: 2,
     },
     {
@@ -357,7 +357,7 @@ const entertainmentNews = [
         <p>Kontroversi baru muncul setelah Ashley St. Clair mengklaim bahwa dia telah melahirkan anak ke-13 dari Elon Musk. Namun, hingga kini belum ada tanggapan resmi dari pihak Musk.</p>
       `,
       tags: ["Elon Musk", "Ashley St. Clair", "Tesla"],
-      category: ["hiburan", "internasional"],
+      category: ["entertainment", "internasional"],
       authorId: 1,
     },
     {
@@ -373,7 +373,7 @@ const entertainmentNews = [
         <p>Daffa Wardhana, putra Marini Zumarnis, tengah menjadi sorotan setelah dikabarkan menjalin hubungan dengan Ariel Tatum. Siapakah dia sebenarnya?</p>
       `,
       tags: ["Daffa Wardhana", "Ariel Tatum", "Gossip"],
-      category: ["hiburan", "profil"],
+      category: ["entertainment", "profil"],
       authorId: 1,
     },
     {
@@ -381,7 +381,7 @@ const entertainmentNews = [
       title: "Cocoklogi Ariel Tatum dan Daffa Wardhana Pacaran, Buket Bunga dan Pancake Hati Jadi Bukti",
       type: "news",
       image: "/ariel-tatum-daffa.jpeg",
-      date: "Feb 13 2025",
+      date: "Feb 27 2025",
       views: 2900,
       description: "Netizen mulai mencocokkan bukti bahwa Ariel Tatum dan Daffa Wardhana berpacaran.",
       slug: "cocoklogi-ariel-tatum-daffa-wardhana-pacaran",
@@ -389,7 +389,7 @@ const entertainmentNews = [
         <p>Spekulasi hubungan Ariel Tatum dan Daffa Wardhana semakin menguat setelah keduanya kedapatan mengunggah foto dengan buket bunga dan pancake berbentuk hati.</p>
       `,
       tags: ["Ariel Tatum", "Daffa Wardhana", "Gossip"],
-      category: ["hiburan", "viral"],
+      category: ["entertainment", "viral"],
       authorId: 3,
     },
   ];

@@ -118,7 +118,9 @@ const CLevelPage = () => {
                   fill
                   className="object-cover"
                 />
+                <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                </Link>
 
                 <div className="absolute bottom-3 left-3 text-white">
                   <Link href={`/artikel/${article.id}/${article.slug}`} passHref>

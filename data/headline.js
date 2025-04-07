@@ -4,7 +4,7 @@ const headline = [
     title: "Maya Septha Oplas di Korea Habis Rp500 Juta, Bagian Tubuh Mana yang Diperbaiki?",
     type: "headline",
     image: "/maya-septha-oplas.jpeg",
-    date: "Feb 20 2025",
+    date: "Mar 20 2025",
     views: 3000,
     description: "Maya Septha mengungkapkan pengalaman operasi plastiknya di Korea yang menghabiskan biaya hingga Rp500 juta.",
     slug: "maya-septha-oplas-di-korea-habis-rp500-juta",

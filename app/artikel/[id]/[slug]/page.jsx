@@ -3,55 +3,80 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import headlines from "@/data/headline";
-import Clevel from "@/data/cLevel";
-import users from "@/data/users";
-import entertainmentNews from "@/data/entertainmentNews";
-import teknologiData from "@/data/teknologiData";
-import olahraga from "@/data/sportNews";
-import lifestyleNews from "@/data/lifestyleNews";
+import { useBackContext } from "@/context/BackContext";
 import Adv from "@/components/page-components/adv-sect/AdvBottomHead";
 import Share from "@/components/share/Share";
 import Follow from "@/components/follow/Follow";
 import { FaPlay, FaStop } from "react-icons/fa";
 import MostRead from "@/components/mostRead/MostRead";
 import RelatedNews from "@/components/relatedNews/RelatedNews";
-import editorChoice from "@/data/EditorChoice";
-
-// 🔹 Fungsi mendapatkan author berdasarkan ID
-const getAuthorById = (authorId) => {
-  if (!authorId) return null; // Cek jika authorId undefined
-  return users.find((user) => user.id === authorId) || null;
-};
-
-// Gabungkan semua artikel
-const allArticles = [
-  ...headlines,
-  ...Clevel,
-  ...entertainmentNews,
-  ...teknologiData,
-  ...lifestyleNews,
-  ...olahraga,
-  ...editorChoice,
-];
-
-// 🔹 Urutkan berdasarkan views tertinggi untuk Most Read
-const sortedArticles = allArticles
-  .filter((article) => article.views !== undefined)
-  .sort((a, b) => b.views - a.views);
+import Tracking from "@/components/Tracking";
+import he from "he"; // ✅ Import library untuk decode HTML escape\
 
 const ArticlePage = () => {
-  const router = useRouter(); // Inisialisasi router
+  const router = useRouter();
   const params = useParams();
   const pathname = usePathname();
-  const [article, setArticle] = useState(null);
-  const [authorInfo, setAuthorInfo] = useState(null);
-  const [relatedArticles, setRelatedArticles] = useState([]);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [mostReadArticles, setMostReadArticles] = useState([]);
-  const speechRef = useRef(null); // Untuk mengontrol Speech API
 
+  const { getArticleBySlug, currentArticle } = useBackContext();
+  const [relatedArticles, setRelatedArticles] = useState([]);
+  const [authorInfo, setAuthorInfo] = useState(null);
+  const [mostReadArticles, setMostReadArticles] = useState([]);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const speechRef = useRef(null);
+  const BASE_URL = "http://156.67.217.169:9001";
+  const DEFAULT_IMAGE = "/default-image.jpg"; // 🔥 Pakai gambar lokal sebagai fallback
+
+  // ✅ Ambil data artikel berdasarkan `slug` atau `id`
+  useEffect(() => {
+    console.log("🚀 Slug dari params:", params?.slug);
+    if (params?.slug) {
+      getArticleBySlug(params.slug);
+    }
+  }, [params?.slug]);
+
+  useEffect(() => {
+    console.log("🚀 Slug dari params:", params?.slug);
+    if (params?.slug) {
+      getArticleBySlug(params.slug);
+    }
+  }, [params?.slug]);
+
+  // ✅ Set author setelah article berhasil didapat
+  useEffect(() => {
+    if (currentArticle?.author) {
+      setAuthorInfo(currentArticle.author);
+    }
+  }, [currentArticle]);
+
+  useEffect(() => {
+    if (currentArticle?.content.includes("twitter-tweet")) {
+      console.log("🚀 Twitter embed detected");
+
+      if (window.twttr) {
+        window.twttr.widgets.load();
+      } else {
+        const script = document.createElement("script");
+        script.src = "https://platform.twitter.com/widgets.js";
+        script.async = true;
+        script.charset = "utf-8";
+
+        script.onload = () => {
+          console.log("✅ Twitter script loaded");
+          setTimeout(() => {
+            if (window.twttr) {
+              window.twttr.widgets.load(); // ✅ Render ulang embed
+              console.log("✅ Twitter embed loaded");
+            }
+          }, 100);
+        };
+
+        document.body.appendChild(script);
+      }
+    }
+  }, [currentArticle]);
+
+  // ✅ Fungsi untuk membaca artikel dengan Speech API
   const toggleSpeech = () => {
     if (!window.speechSynthesis) {
       alert("Text-to-Speech tidak didukung di browser ini!");
@@ -62,11 +87,14 @@ const ArticlePage = () => {
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
     } else {
-      const plainTextContent = article.content.replace(/<\/?[^>]+(>|$)/g, "");
+      const plainTextContent = currentArticle.content.replace(
+        /<\/?[^>]+(>|$)/g,
+        ""
+      );
 
       const utterance = new SpeechSynthesisUtterance(plainTextContent);
-      utterance.lang = "id-ID"; // Bahasa Indonesia
-      utterance.rate = 1; // Kecepatan pembacaan normal
+      utterance.lang = "id-ID";
+      utterance.rate = 1;
 
       speechRef.current = utterance;
 
@@ -78,69 +106,113 @@ const ArticlePage = () => {
     }
   };
 
+  // ✅ Hentikan speech saat pindah halaman atau refresh
   useEffect(() => {
-    if (!params?.id || !params?.slug) return;
-
-    // 🔹 Cari artikel yang sedang dibuka
-    const foundArticle = allArticles.find(
-      (item) => item.id.toString() === params.id && item.slug === params.slug
-    );
-
-    if (foundArticle) {
-      setArticle(foundArticle); // Simpan artikel utama
-
-      if (foundArticle.authorId) {
-        const authorData = getAuthorById(foundArticle.authorId);
-        setAuthorInfo(authorData);
-      }
-
-      // 🔹 Ambil berita terkait berdasarkan kategori yang sama
-      const related = allArticles
-        .filter(
-          (item) =>
-            item.id !== foundArticle.id && // Jangan tampilkan artikel yang sedang dibuka
-            item.category.some((cat) => foundArticle.category.includes(cat)) // Cek jika kategori sama
-        )
-        .slice(0, 4);
-      setRelatedArticles(related);
-
-      // 🔹 Ambil berita dengan views tertinggi untuk Most Read
-      const mostRead = sortedArticles
-        .filter((item) => item.id !== foundArticle.id) // Hindari artikel yang sedang dibuka
-        .slice(0, 5);
-      setMostReadArticles(mostRead);
-    }
-  }, [params?.id, params?.slug]);
-
-  // ✅ FIX: Hentikan speech saat page refresh atau route berubah
-  useEffect(() => {
-    const stopSpeech = () => {
+    return () => {
       if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();
         setIsSpeaking(false);
       }
     };
+  }, [pathname]);
 
-    // Hentikan speech jika user navigasi ke halaman lain
-    return () => {
-      stopSpeech();
-    };
-  }, [pathname]); // Setiap kali pathname berubah, stopSpeech() dipanggil
+  // ✅ Deteksi embed Twitter → Load script Twitter
+  useEffect(() => {
+    if (currentArticle?.content.includes("twitter-tweet")) {
+      console.log("🚀 Twitter embed detected");
 
-  if (!article) {
+      // Coba hapus script sebelumnya jika ada
+      const existingScript = document.querySelector(
+        'script[src="https://platform.twitter.com/widgets.js"]'
+      );
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      // Tambahkan script baru
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.charset = "utf-8";
+
+      script.onload = () => {
+        console.log("✅ Twitter script loaded");
+        if (window.twttr) {
+          setTimeout(() => {
+            window.twttr.widgets.load(); // ✅ Trigger ulang load embed
+            console.log("✅ Twitter embed loaded");
+          }, 100);
+        }
+      };
+
+      document.body.appendChild(script);
+    }
+  }, [currentArticle]);
+
+  useEffect(() => {
+    if (currentArticle?.content.includes("tiktok-embed")) {
+      console.log("🚀 TikTok embed detected");
+
+      // Hapus script sebelumnya jika ada
+      const existingScript = document.querySelector(
+        'script[src="https://www.tiktok.com/embed.js"]'
+      );
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      // Tambahkan script baru
+      const script = document.createElement("script");
+      script.src = "https://www.tiktok.com/embed.js";
+      script.async = true;
+      script.onload = () => {
+        console.log("✅ TikTok script loaded and initialized");
+      };
+
+      document.body.appendChild(script);
+    }
+  }, [currentArticle]);
+
+  useEffect(() => {
+    const hasInstagram = document.querySelector(".instagram-media");
+  
+    if (hasInstagram && !document.querySelector('script[src*="instagram.com/embed.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        if (window.instgrm) {
+          window.instgrm.Embeds.process(); // ✅ Proses embed setelah script dimuat
+        }
+      };
+      document.body.appendChild(script);
+    } else {
+      // Jika script sudah ada, re-process
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    }
+  }, [currentArticle]);
+  
+
+  if (!currentArticle) {
     return <p className="text-center py-10">Artikel tidak ditemukan...</p>;
   }
 
   return (
-    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-0 xl:py-0 lg:py-0 py-2 2xl:px-0 px-3 pb-20">
-      {/* Iklan atas */}
+    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-2 px-3">
+      {/* 🔹 Tracking Komponen ✅ */}
+      <Tracking />
+
+      {/* 🔹 Iklan atas */}
       <Adv />
 
       <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-0 2xl:px-0 xl:px-0 lg:px-0 flex flex-col lg:flex-row gap-10 ">
         {/* Left Section - Article Content */}
-        <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0 pt-5" >
+        <div className="lg:w-[70%] w-full 2xl:border-r border-gray-300 2xl:pr-10 pr-0 pt-5">
           {/* Judul & Tanggal */}
-          <h1 className="text-3xl font-bold ">{article.title}</h1>
+          <h1 className="text-3xl font-bold ">{currentArticle.title}</h1>
           <div className="flex 2xl:flex-row xl:flex-row lg:flex-row flex-col-reverse justify-between 2xl:items-center xl:items-center lg:items-center items-start py-8 2xl:gap-0 gap-6">
             {/* 🔹 Tombol Play (Untuk Membaca Artikel) */}
             <button
@@ -164,10 +236,10 @@ const ArticlePage = () => {
             <div className="flex items-center space-x-2">
               {authorInfo && (
                 <>
-                  {authorInfo.photo ? (
+                  {authorInfo.avatar ? (
                     <Image
-                      src={authorInfo.photo}
-                      alt={authorInfo.name}
+                      src={authorInfo.avatar || "/default.jpg"}
+                      alt={authorInfo.username}
                       width={40}
                       height={40}
                       className="rounded-full object-cover"
@@ -176,14 +248,14 @@ const ArticlePage = () => {
                     <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
                   )}
                   <span className="text-sm text-gray-700">
-                    {authorInfo.name}
+                    {authorInfo.username}
                   </span>
                   {/* Garis pemisah */}
                   <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
 
                   {/* Tanggal */}
                   <p className="text-gray-600">
-                    {new Date(article.date).toLocaleDateString()}
+                    {new Date(currentArticle.date).toLocaleDateString()}
                   </p>
                 </>
               )}
@@ -193,8 +265,12 @@ const ArticlePage = () => {
           {/* Gambar Artikel */}
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] rounded-lg overflow-hidden mb-6">
             <Image
-              src={article.image}
-              alt={article.title}
+              src={
+                currentArticle.image
+                  ? `${BASE_URL}/${currentArticle.image}`
+                  : DEFAULT_IMAGE // 🔥 Pakai gambar lokal kalau gagal load
+              }
+              alt={currentArticle.title || "Gambar tidak tersedia"}
               fill
               sizes="100vw"
               className="object-cover"
@@ -203,27 +279,59 @@ const ArticlePage = () => {
 
           {/* Konten Artikel */}
           <div
-            className="mt-4 text-md leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: article.content }}
+            className="
+            [&_iframe]:w-full [&_iframe]:h-[400px] [&_iframe]:rounded-lg
+            [&_p]:mb-4 
+            [&_p]:leading-relaxed 
+            [&_a]:text-blue-600 
+            [&_a]:hover:underline 
+            [&_a]:italic
+            [&_table]:w-full 
+            [&_table]:border 
+            [&_th]:border 
+            [&_td]:border 
+            [&_td]:p-2 
+            [&_th]:p-2 
+            [&_thead]:bg-gray-100 
+            [&_table]:my-6 
+            [&_table]:text-sm
+            [&_blockquote.tiktok-embed]:w-full [&_blockquote.tiktok-embed]:!max-w-full
+            
+            
+          "
+            dangerouslySetInnerHTML={{
+              __html: he.decode(currentArticle.content),
+            }}
           />
-          <Share />
+          
+
+          <Share article={currentArticle} />
+
           {/* 🔹 Card untuk Semua Tags */}
-      {article.tags && article.tags.length > 0 && (
-        <div className="mt-6 border border-gray-300 rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">Tags:</h3>
-          <div className="flex flex-wrap gap-2">
-            {article.tags.map((tag, index) => (
-              <button
-                key={index}
-                onClick={() => router.push(`/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`)}
-                className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full"
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+          {/* 🔹 Card untuk Semua Tags */}
+          {Array.isArray(currentArticle.tags) &&
+            currentArticle.tags.length > 0 && (
+              <div className="mt-6 border border-gray-300 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                  Tags:
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {currentArticle.tags.map((tag, index) => (
+                    <button
+                      key={index}
+                      onClick={() =>
+                        router.push(
+                          `/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`
+                        )
+                      }
+                      className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full"
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
           {/* Share & Follow Section */}
 
@@ -234,14 +342,11 @@ const ArticlePage = () => {
         <MostRead />
       </div>
 
-      {/* Iklan bawah */}
+      {/* 🔹 Iklan Bawah */}
       <Adv />
 
-      {/* Related News Section */}
-      <RelatedNews
-        currentArticle={article}
-        mostReadArticles={mostReadArticles}
-      />
+      {/* 🔹 Related News */}
+      <RelatedNews relatedArticles={relatedArticles} />
     </div>
   );
 };

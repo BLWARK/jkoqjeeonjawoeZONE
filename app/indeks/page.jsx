@@ -116,7 +116,7 @@ const LatestNewsPage = () => {
         <div className="flex justify-between items-center mb-3">
           <div className="w-full">
             <h2 className="text-3xl font-bold text-pink-500 mb-3">
-              Latest News
+              Indeks Berita
             </h2>
             <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
           </div>

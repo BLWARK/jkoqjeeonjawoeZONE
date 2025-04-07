@@ -36,8 +36,9 @@ const EntertainmentPage = () => {
             priority={true}
           />
           {/* Overlay */}
+          <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`} passHref>
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-
+          </Link>
           {/* Konten Berita */}
           <div className="absolute bottom-5 left-5 text-white">
             <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`} passHref>
@@ -83,8 +84,9 @@ const EntertainmentPage = () => {
               className="object-cover"
             />
             {/* Overlay */}
+            <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-
+            </Link>
             {/* Konten Berita */}
             <div className="absolute bottom-5 left-5 text-white">
               <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
@@ -118,7 +120,7 @@ const EntertainmentPage = () => {
       {/* 🔹 Iklan & Latest News */}
       <div>
         <Ads />
-        <LatestNews category="hiburan" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
+        <LatestNews category="entertainment" displayedCategoryArticles={[mainArticle, ...secondaryArticles]} />
       </div>
     </div>
   );

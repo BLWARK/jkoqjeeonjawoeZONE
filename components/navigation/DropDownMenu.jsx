@@ -48,7 +48,7 @@ const DropdownMenu = ({ category, isVisible, onMouseEnter, onMouseLeave }) => {
 
   return (
     <div
-      className={`hidden absolute top-[310px]  transform -translate-x-1/2 bg-white shadow-lg rounded-lg 2xl:w-[1200px] xl:w-[1200px] lg:w-[1000px]  p-10 z-50 2xl:flex xl:flex lg:flex justify-center space-x-6 border border-gray-200 ${animationClass}`}
+      className={`hidden absolute top-[330px]  transform -translate-x-1/2 bg-white shadow-lg rounded-lg 2xl:w-[1200px] xl:w-[1200px] lg:w-[1000px]  p-10 z-50 2xl:flex xl:flex lg:flex justify-center space-x-6 border border-gray-200 ${animationClass}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -58,8 +58,8 @@ const DropdownMenu = ({ category, isVisible, onMouseEnter, onMouseLeave }) => {
         return (
             
           <div key={article.id} className="flex flex-col items-start w-64">
-            
-            <div className="relative w-full h-[100px]">
+            <Link href={`/artikel/${article.id}/${article.slug}`}>
+            <div className="relative w-full h-[130px]">
               <Image
                 src={article.image}
                 alt={article.title}
@@ -68,16 +68,14 @@ const DropdownMenu = ({ category, isVisible, onMouseEnter, onMouseLeave }) => {
               />
             </div>
             <div className="mt-2">
-              <Link href={`/artikel/${article.id}/${article.slug}`}>
+              
                 <h4 className="text-sm font-semibold hover:underline cursor-pointer">
                   {article.title}
                 </h4>
-              </Link>
-              <p className="text-xs text-gray-500">
-                {author?.name || "Unknown"} •{" "}
-                {new Date(article.date).toLocaleDateString()}
-              </p>
+              
+             
             </div>
+            </Link>
           </div>
         );
       })}

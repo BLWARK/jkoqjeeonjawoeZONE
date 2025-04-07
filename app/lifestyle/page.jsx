@@ -39,12 +39,13 @@ const LifestylePage = () => {
             fill
             className="object-cover"
           />
+          <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`}>
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-5 flex flex-col justify-end">
-            <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`}>
+            
               <h2 className="text-2xl font-bold text-white hover:underline cursor-pointer">
                 {mainArticle.title}
               </h2>
-            </Link>
+            
             <div className="flex items-center text-sm text-white mt-2">
               {getAuthorById(mainArticle.authorId).photo && (
                 <Image
@@ -62,6 +63,7 @@ const LifestylePage = () => {
               <span>{new Date(mainArticle.date).toLocaleDateString()}</span>
             </div>
           </div>
+          </Link>
         </div>
 
         {/* 🟠 KANAN: 2 Berita */}
@@ -70,6 +72,7 @@ const LifestylePage = () => {
             const author = getAuthorById(article.authorId);
             return (
               <div key={article.id} className="flex flex-col gap-2 ">
+                <Link href={`/artikel/${article.id}/${article.slug}`}>
                 <div className="relative  w-full h-[200px]">
                   <Image
                     src={article.image}
@@ -78,6 +81,7 @@ const LifestylePage = () => {
                     className="rounded-lg object-cover "
                   />
                 </div>
+                </Link>
                 <div className="flex  flex-col">
                 <Link href={`/artikel/${article.id}/${article.slug}`}>
                   <h3 className="text-lg font-semibold mt-2 hover:underline cursor-pointer">
@@ -114,6 +118,7 @@ const LifestylePage = () => {
             const author = getAuthorById(article.authorId);
             return (
               <div key={article.id} className="flex flex-col border-b pb-4">
+                <Link href={`/artikel/${article.id}/${article.slug}`}>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src={article.image}
@@ -122,6 +127,7 @@ const LifestylePage = () => {
                     className="rounded-lg object-cover"
                   />
                 </div>
+                </Link>
                 <Link href={`/artikel/${article.id}/${article.slug}`}>
                   <h3 className="text-lg font-semibold mt-2 hover:underline cursor-pointer">
                     {article.title}

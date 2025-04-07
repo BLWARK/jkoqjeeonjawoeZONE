@@ -36,8 +36,9 @@ const TechnologyPage = () => {
               priority={true}
             />
             {/* Overlay */}
+            <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`} passHref>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-
+            </Link>
             {/* Konten Berita */}
             <div className="absolute bottom-5 left-5 text-white">
               <Link href={`/artikel/${mainArticle.id}/${mainArticle.slug}`} passHref>
@@ -82,27 +83,30 @@ const TechnologyPage = () => {
               fill
               className="object-cover"
             />
+            <Link href={`/artikel/${rightSideArticles[0]?.id}/${rightSideArticles[0]?.slug}`} passHref>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white">
-              <Link href={`/artikel/${rightSideArticles[0]?.id}/${rightSideArticles[0]?.slug}`} passHref>
                 <h2 className="text-xl font-bold hover:underline cursor-pointer">
                   {rightSideArticles[0]?.title}
                 </h2>
-              </Link>
             </div>
+            </Link>
           </div>
 
           {/* 2 Berita Kotak di Bawah (Grid 2 kolom) */}
           <div className="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 gap-4">
             {rightSideArticles.slice(1, 3).map((article) => (
               <div key={article.id} className="relative w-full h-[250px] rounded-lg overflow-hidden">
+                
                 <Image
                   src={article.image}
                   alt={article.title}
                   fill
                   className="object-cover"
                 />
+                <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                </Link>
                 <div className="absolute bottom-3 left-3 text-white">
                   <Link href={`/artikel/${article.id}/${article.slug}`} passHref>
                     <h3 className="text-md font-semibold hover:underline cursor-pointer">
