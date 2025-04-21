@@ -2,30 +2,30 @@ import React from "react";
 
 const Subscribe = () => {
   return (
-    <div className="bg-gray-700 py-16 mt-10 w-screen">
+    <div className="bg-gray-100 py-16  w-screen">
       <div className="2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 2xl:px-0 px-3 ">
         
         {/* Left Section - Subscription Info */}
         <div className="lg:w-[50%] w-full text-start lg:text-left">
           <h2 className="text-3xl font-bold text-pink-500">Newsletter Subscribed</h2>
-          <p className="text-white mt-2">
+          <p className="text-black mt-2">
             Get dialed in every Tuesday & Friday with quick updates of the world
           </p>
 
           {/* Stats */}
           <div className="mt-6 flex flex-wrap gap-6 justify-start lg:justify-start">
             <div className="text-start">
-              <h3 className="text-xl font-bold text-white">2M+</h3>
-              <p className="text-white text-sm">Active Monthly Users</p>
+              <h3 className="text-xl font-bold text-black">2M+</h3>
+              <p className="text-black text-sm">Active Monthly Users</p>
             </div>
             <div className="text-start">
-              <h3 className="text-xl font-bold text-white">250+</h3>
-              <p className="text-white text-sm">Guides and Reviews Articles</p>
+              <h3 className="text-xl font-bold text-black">250+</h3>
+              <p className="text-black text-sm">Guides and Reviews Articles</p>
             </div>
             
             <div className="text-start">
-              <h3 className="text-xl font-bold text-white">70</h3>
-              <p className="text-white text-sm">International Team Authors</p>
+              <h3 className="text-xl font-bold text-black">70</h3>
+              <p className="text-black text-sm">International Team Authors</p>
             </div>
           </div>
         </div>

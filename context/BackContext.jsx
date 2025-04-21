@@ -19,12 +19,17 @@ export const BackProvider = ({ children }) => {
   const [latestArticles, setLatestArticles] = useState([]);
   const [articlesByTag, setArticlesByTag] = useState([]);
   const [articlesByTagMeta, setArticlesByTagMeta] = useState({});
+  const [articlesByCategory, setArticlesByCategory] = useState({});
+  const [articlesByCategoryMeta, setArticlesByCategoryMeta] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchLoading, setSearchLoading] = useState(false);
 
-  // ✅ Fungsi untuk mengambil data headlines dari backend dengan `useCallback`
-  const getHeadlines = useCallback(async (platformId) => {
+  const getHeadlines = useCallback(async (platformId, headlineCategory) => {
+    if (!platformId || !headlineCategory) return;
+
     try {
       const response = await customGet(
-        `/api/headlines?platform_id=${platformId}`
+        `/api/headlines?platform_id=${platformId}&headline_category=${headlineCategory}`
       );
       if (response?.data) {
         const sortedHeadlines = response.data.sort(
@@ -33,7 +38,7 @@ export const BackProvider = ({ children }) => {
         setHeadlines(sortedHeadlines);
       }
     } catch (error) {
-      console.error("Failed to fetch headlines:", error);
+      console.error("❌ Failed to fetch headlines:", error);
     }
   }, []);
 
@@ -41,7 +46,7 @@ export const BackProvider = ({ children }) => {
   const getArticles = useCallback(async (platformId, page = 1, limit = 10) => {
     try {
       const response = await customGet(
-        `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&status=all`
+        `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
       );
       if (response?.data) {
         setArticles(response.data);
@@ -51,41 +56,35 @@ export const BackProvider = ({ children }) => {
     }
   }, []);
 
-  const getArticleBySlug = async (slug) => {
+  const getArticleBySlug = useCallback(async (slug) => {
+    if (!slug) return;
+
     const encodedSlug = encodeURIComponent(slug);
     try {
       const response = await customGet(`/api/articles-by-slug/${encodedSlug}`);
-
       if (response) {
-        console.log("✅ Data Sebelum Set State:", response);
-
-        setTimeout(() => {
-          setCurrentArticle({ ...response }); // Langsung ambil response
-        }, 10);
+        console.log("✅ Article fetched:", response);
+        setCurrentArticle(response);
       } else {
-        console.warn("❌ Article not found");
         setCurrentArticle(null);
       }
     } catch (error) {
-      console.error(`❌ Error: ${error.response?.status} - ${error.message}`);
+      console.error("❌ Error fetching article:", error);
       setCurrentArticle(null);
     }
-  };
+  }, []);
 
   // ✅ Fungsi untuk mengambil artikel berdasarkan views
   const getArticlesByViews = useCallback(
     async (platformId, page = 1, limit = 10) => {
       try {
         const response = await customGet(
-          `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}`
+          `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
         );
 
         if (response?.data) {
-          console.log(
-            "🔥 Articles by Views Response:",
-            JSON.stringify(response.data, null, 2)
-          );
-          setPopularArticles(response.data); // ✅ Data sudah terfilter dan ter-sort berdasarkan views
+          const sorted = response.data.sort((a, b) => b.views - a.views); // ⬅️ Urutkan di frontend
+          setPopularArticles(sorted);
         }
       } catch (error) {
         console.error("❌ Failed to fetch articles by views:", error);
@@ -94,10 +93,10 @@ export const BackProvider = ({ children }) => {
     []
   );
 
-  const getArticlesByTag = useCallback(async (tag, page = 1, limit = 6) => {
+  const getArticlesByTag = useCallback(async (tags, page = 1, limit = 20) => {
     try {
       const response = await customGet(
-        `/api/articles?tags=${tag}&platform_id=1&page=${page}&limit=${limit}`
+        `/api/articles?tags=${tags}&platform_id=1&page=${page}&limit=${limit}&status=publish`
       );
       if (response?.data) {
         setArticlesByTag(response.data);
@@ -109,6 +108,36 @@ export const BackProvider = ({ children }) => {
       console.error("❌ Gagal mengambil artikel berdasarkan tag:", error);
     }
   }, []);
+
+  const getArticlesByCategory = useCallback(
+    async (category, platformId = 1, page = 1, limit = 9) => {
+      try {
+        const res = await customGet(
+          `/api/articles?category=${category}&platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
+        );
+
+        if (res?.data) {
+          setArticlesByCategory((prev) => ({
+            ...prev,
+            [category]: res.data, // Simpan array artikelnya
+          }));
+        }
+
+        if (res?.meta) {
+          setArticlesByCategoryMeta((prev) => ({
+            ...prev,
+            [category]: res.meta, // Simpan pagination info per kategori
+          }));
+        }
+      } catch (error) {
+        console.error(
+          `❌ Gagal mengambil artikel untuk kategori ${category}:`,
+          error
+        );
+      }
+    },
+    []
+  );
 
   // ✅ Fungsi untuk mengambil data editor choices dari backend dengan `useCallback`
   const getEditorChoices = useCallback(async (platformId) => {
@@ -131,7 +160,7 @@ export const BackProvider = ({ children }) => {
     async (platformId = 1, page = 1, limit = 6) => {
       try {
         const response = await customGet(
-          `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&sort=date&order=desc`
+          `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&status=publish&sort=date&order=desc`
         );
 
         if (response?.data) {
@@ -143,6 +172,32 @@ export const BackProvider = ({ children }) => {
     },
     []
   );
+
+  // Di dalam BackContext.js
+  const searchArticles = useCallback(async (query, platformId = 1) => {
+    if (!query) return [];
+
+    try {
+      setSearchLoading(true);
+      const response = await customGet(
+        `/api/articles?search=${encodeURIComponent(
+          query
+        )}&platform_id=${platformId}`
+      );
+      if (response?.data) {
+        setSearchResults(response.data);
+        return response.data;
+      }
+      setSearchResults([]);
+      return [];
+    } catch (error) {
+      console.error("❌ Failed to search articles:", error);
+      setSearchResults([]);
+      return [];
+    } finally {
+      setSearchLoading(false);
+    }
+  }, []);
 
   // ✅ Gunakan `useEffect` tanpa menyebabkan loop
   useEffect(() => {
@@ -168,6 +223,12 @@ export const BackProvider = ({ children }) => {
         getArticlesByTag,
         articlesByTag,
         articlesByTagMeta,
+        getArticlesByCategory,
+        articlesByCategory,
+        articlesByCategoryMeta,
+        searchArticles,
+        searchResults,
+        searchLoading,
       }}
     >
       {children}

@@ -7,31 +7,28 @@ import { useBackContext } from "@/context/BackContext";
 import LatestNews from "@/components/latestNewsCat/LatestNews";
 import Ads from "@/components/page-components/adv-sect/AdvBottomHead";
 
-// 🔹 Fungsi untuk potong deskripsi
+// 🔹 Fungsi untuk memotong deskripsi
 const sliceDescription = (desc, maxChars = 120) => {
-  return desc?.length > maxChars ? desc.slice(0, maxChars) + "..." : desc;
+  return desc.length > maxChars ? desc.slice(0, maxChars) + "..." : desc;
 };
 
-const SportPage = () => {
+const EntertainmentPage = () => {
   const { getHeadlines, headlines } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      await getHeadlines(1, "SPORT");
+      await getHeadlines(1, "ENTERTAINTMENT");
       setIsLoading(false);
     };
     fetchData();
   }, [getHeadlines]);
 
-
-
+  // 🔹 Pisahkan berdasarkan posisi
   const mainArticle = headlines.find((item) => item.position === 1)?.article;
-
   const secondaryArticles = headlines
     .filter((item) => [2, 3, 4].includes(item.position))
-    .sort((a, b) => a.position - b.position)
     .map((item) => item.article);
 
   return (
@@ -132,7 +129,7 @@ const SportPage = () => {
           <div>
             <Ads />
             <LatestNews
-              category="SPORT"
+              category="entertainment"
               displayedCategoryArticles={[mainArticle, ...secondaryArticles].filter(Boolean)}
             />
           </div>
@@ -142,4 +139,4 @@ const SportPage = () => {
   );
 };
 
-export default SportPage;
+export default EntertainmentPage;

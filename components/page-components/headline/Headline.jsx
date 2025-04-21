@@ -15,12 +15,12 @@ const Headline = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      await getHeadlines(1);
+      await getHeadlines(1, "HOME"); // 🔹 Kirim kategori HEADLINE yang diminta backend
       setIsLoading(false);
     };
     fetchData();
   }, [getHeadlines]);
-
+  
   // 🔹 Filter data berdasarkan posisi
   const mainHeadline = headlines.find((item) => item.position === 1)?.article;
   const sideHeadlines = headlines

@@ -1,12 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import lifestyleNews from "@/data/lifestyleNews"; // Data berita gaya hidup
-import users from "@/data/users"; // Data author
-import { getCategoryColor } from "@/data/categoryColors"; // Warna kategori
-
-// 🔹 Fungsi mendapatkan author berdasarkan ID
-const getAuthorById = (authorId) => users.find((user) => user.id === authorId) || {};
+import { getCategoryColor } from "@/data/categoryColors";
+import { useBackContext } from "@/context/BackContext";
 
 // 🔹 Fungsi memotong judul agar tidak terlalu panjang
 const sliceTitle = (title, maxWords = 8) => {
@@ -15,8 +13,14 @@ const sliceTitle = (title, maxWords = 8) => {
 };
 
 const GayaHidup = () => {
-  // Ambil 4 berita pertama dari lifestyleNews
-  const displayedArticles = lifestyleNews.slice(0, 8);
+  const { getArticlesByCategory, articlesByCategory } = useBackContext();
+  const lifestyleArticles = articlesByCategory["LIFESTYLE"] || [];
+
+  useEffect(() => {
+    getArticlesByCategory("LIFESTYLE");
+  }, []);
+
+  const displayedArticles = lifestyleArticles.slice(0, 8);
 
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8">
@@ -35,17 +39,15 @@ const GayaHidup = () => {
       </div>
 
       {/* 🔥 Layout dengan Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5  ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {displayedArticles.map((article) => {
-          const author = getAuthorById(article.authorId);
-
           return (
-            <div key={article.id} className="w-full 2xl:border-b-0 xl:border-b-0 lg:border-b-0 border-b border-b-gray-300  pb-5 ">
+            <div key={`${article.article_id}-${article.slug}`} className="w-full 2xl:border-b-0 xl:border-b-0 lg:border-b-0 border-b border-b-gray-300 pb-5">
               {/* Gambar */}
-              <Link href={`/artikel/${article.id}/${article.slug}`}>
-              <div className="relative w-full h-[250px] lg:h-[160px]">
-                <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
-              </div>
+              <Link href={`/artikel/${article.article_id}/${article.slug}`}>
+                <div className="relative w-full h-[250px] lg:h-[160px]">
+                  <Image src={article.image} alt={article.title} fill className="rounded-lg object-cover" />
+                </div>
               </Link>
 
               {/* Kategori */}
@@ -57,7 +59,7 @@ const GayaHidup = () => {
 
               {/* Judul */}
               <div className="mt-2">
-                <Link href={`/artikel/${article.id}/${article.slug}`}>
+                <Link href={`/artikel/${article.article_id}/${article.slug}`}>
                   <h2 className="text-md font-semibold hover:underline cursor-pointer">
                     {sliceTitle(article.title)}
                   </h2>
@@ -66,14 +68,14 @@ const GayaHidup = () => {
 
               {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-500 mt-2">
-                {author?.photo ? (
-                  <Image src={author.photo} alt={author.name} width={20} height={20} className="rounded-full" />
+                {article.author?.avatar ? (
+                  <Image src={article.author.avatar} alt={article.author.username} width={20} height={20} className="rounded-full" />
                 ) : (
                   <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                 )}
-                <span className="ml-2">{author?.name || "Unknown"}</span>
+                <span className="ml-2">{article.author?.username || "Unknown"}</span>
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
-                <span>{article.date}</span>
+                <span>{new Date(article.date).toLocaleDateString("id-ID")}</span>
               </div>
             </div>
           );

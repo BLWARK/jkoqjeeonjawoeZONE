@@ -1,84 +1,66 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import News from "@/data/news";
-import entertainmentNews from "@/data/entertainmentNews";
-import teknologiData from "@/data/teknologiData";
-import olahraga from "@/data/sportNews";
-import lifestyleNews from "@/data/lifestyleNews";
-import cLevel from "@/data/cLevel";
-import users from "@/data/users"; // Data author
-
-// 🔹 Map kategori ke dataset berita
-const categoryArticles = {
-  berita: News,
-  entertainment: entertainmentNews,
-  technology: teknologiData,
-  sport: olahraga,
-  "c-level": cLevel,
-  lifestyle: lifestyleNews,
-};
-
-// 🔹 Fungsi mendapatkan author berdasarkan ID
-const getAuthorById = (authorId) =>
-  users.find((user) => user.id === authorId) || {};
+import { useBackContext } from "@/context/BackContext";
 
 const DropdownMenu = ({ category, isVisible, onMouseEnter, onMouseLeave }) => {
-  const [articles, setArticles] = useState([]);
-  const [animationClass, setAnimationClass] = useState(""); // 🔥 Animasi class
+  const { getArticlesByCategory, articlesByCategory } = useBackContext();
+  const [animationClass, setAnimationClass] = useState("");
 
+  // 🔹 Mapping kategori frontend ke nama kategori backend
+  const categoryMap = {
+    entertainment: "ENTERTAINTMENT",
+    technology: "TECHNOLOGY",
+    sport: "SPORT",
+    lifestyle: "LIFESTYLE",
+    "c-level": "C-LEVEL",
+    berita: "BERITA", // kalau perlu
+  };
+
+  const formattedCategory =
+    categoryMap[category?.toLowerCase()] || category?.toUpperCase();
+
+  // 🔹 Ambil artikel dari backend saat kategori berubah
   useEffect(() => {
-    const selectedArticles = categoryArticles[category] || [];
-    const sortedArticles = selectedArticles
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 4); // Ambil 4 berita terbaru
-
-    setArticles(sortedArticles);
-  }, [category]);
-
-  useEffect(() => {
-    if (isVisible) {
-      setAnimationClass("dropdown-enter"); // Tambahkan animasi saat muncul
-    } else {
-      setAnimationClass("dropdown-exit"); // Tambahkan animasi saat menghilang
+    if (formattedCategory) {
+      getArticlesByCategory(formattedCategory, 1, 1, 4); // platformId = 1, limit = 4
     }
+  }, [formattedCategory]);
+
+  // 🔹 Animasi masuk/keluar
+  useEffect(() => {
+    setAnimationClass(isVisible ? "dropdown-enter" : "dropdown-exit");
   }, [isVisible]);
+
+  const articles = articlesByCategory[formattedCategory] || [];
 
   return (
     <div
-      className={`hidden absolute top-[330px]  transform -translate-x-1/2 bg-white shadow-lg rounded-lg 2xl:w-[1200px] xl:w-[1200px] lg:w-[1000px]  p-10 z-50 2xl:flex xl:flex lg:flex justify-center space-x-6 border border-gray-200 ${animationClass}`}
+      className={`hidden absolute top-[330px] transform -translate-x-1/2 bg-white shadow-lg rounded-lg 2xl:w-[1200px] xl:w-[1200px] lg:w-[1000px] p-10 z-50 2xl:flex xl:flex lg:flex justify-center space-x-6 border border-gray-200 ${animationClass}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-        
-      {articles.map((article) => {
-        const author = getAuthorById(article.authorId);
-        return (
-            
-          <div key={article.id} className="flex flex-col items-start w-64">
-            <Link href={`/artikel/${article.id}/${article.slug}`}>
-            <div className="relative w-full h-[130px]">
+      {articles.map((article) => (
+        <div key={article.article_id} className="flex flex-col items-start w-64">
+          <Link href={`/artikel/${article.article_id}/${article.slug}`} passHref>
+            <div className="relative w-[220px] h-[150px]">
               <Image
-                src={article.image}
+                src={article.image || "/default.jpg"}
                 alt={article.title}
                 fill
                 className="rounded-lg object-cover"
               />
             </div>
             <div className="mt-2">
-              
-                <h4 className="text-sm font-semibold hover:underline cursor-pointer">
-                  {article.title}
-                </h4>
-              
-             
+              <h4 className="text-sm font-semibold hover:underline cursor-pointer">
+                {article.title}
+              </h4>
             </div>
-            </Link>
-          </div>
-        );
-      })}
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };

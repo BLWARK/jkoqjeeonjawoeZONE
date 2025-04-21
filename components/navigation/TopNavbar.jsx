@@ -1,5 +1,6 @@
 import React from 'react'
 import PwaButton from "@/components/InstallPWAButton"
+import { FaCalendarAlt } from "react-icons/fa";
 
 
 const TopNavbar = () => {
@@ -15,7 +16,7 @@ const TopNavbar = () => {
     <div className="w-screen   bg-black text-white text-sm mx-auto  justify-center items-center 2xl:flex xl:flex lg:flex flex px-3">
         <div className="container 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] flex justify-between items-center py-4">
           <div>
-            <span>{formattedDate}</span>
+            <span className='flex gap-2 justify-center items-center text-sm'><FaCalendarAlt />{formattedDate}</span>
           </div>
           <div className="space-x-4 flex justify-start items-center">
             <a href="#" className="hover:underline 2xl:block xl:block lg:block hidden">

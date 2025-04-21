@@ -1,97 +1,106 @@
 "use client";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation"; // ✅ Ambil URL saat ini
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 const Tracking = () => {
-  const [userIP, setUserIP] = useState(null);
-  const [location, setLocation] = useState(null);
-  const pathname = usePathname(); // ✅ Ambil URL saat ini
+  const pathname = usePathname();
+  const entryTimeRef = useRef(new Date());
+  const visitorIdRef = useRef(null);
+  const previousPathRef = useRef(null);
+  const visitTypeRef = useRef(null);
+
+  const determineVisitType = (path) => {
+    if (path === "/" || path === "/home") return "homepage";
+    const categoryMatch = path.match(/^\/(entertaintment|technology|sport|c-level|lifestyle)/);
+    if (categoryMatch) return `category:${categoryMatch[1]}`;
+    return `article:${path}`;
+  };
+
+  const sendExitTracking = () => {
+    if (!visitorIdRef.current || !visitTypeRef.current) return;
+
+    const exitTime = new Date();
+    const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
+
+    navigator.sendBeacon("/api/track-exit", JSON.stringify({
+      pathname: previousPathRef.current,
+      type: visitTypeRef.current,
+      exitedAt: exitTime.toISOString(),
+      duration,
+      visitorId: visitorIdRef.current,
+    }));
+
+    console.log("📤 Sent exit tracking:", {
+      pathname: previousPathRef.current,
+      type: visitTypeRef.current,
+      duration,
+    });
+  };
+
+  const trackEntry = async () => {
+    const visitType = determineVisitType(pathname);
+    visitTypeRef.current = visitType;
+    entryTimeRef.current = new Date();
+    previousPathRef.current = pathname;
+
+    const fp = await FingerprintJS.load();
+    const { visitorId } = await fp.get();
+    visitorIdRef.current = visitorId;
+
+    const ipRes = await fetch("https://api64.ipify.org?format=json");
+    const ipData = await ipRes.json();
+    const ip = ipData.ip;
+
+    const today = new Date().toISOString().split("T")[0];
+    const stored = JSON.parse(localStorage.getItem("trackingData")) || {};
+
+    if (stored[visitorId]?.[visitType] === today) return;
+
+    localStorage.setItem("trackingData", JSON.stringify({
+      ...stored,
+      [visitorId]: {
+        ...stored[visitorId],
+        [visitType]: today,
+      },
+    }));
+
+    await fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        visitorId,
+        ip,
+        url: window.location.href,
+        referrer: document.referrer || "direct",
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        type: visitType,
+      }),
+    });
+
+    console.log("✅ Sent entry tracking:", { visitorId, visitType });
+  };
 
   useEffect(() => {
-    const trackVisit = async () => {
-      try {
-        // 🔹 Dapatkan IP pengguna
-        const ipResponse = await fetch("https://api64.ipify.org?format=json");
-        const ipData = await ipResponse.json();
-        const ip = ipData.ip;
-        setUserIP(ip);
+    // Jika path sebelumnya sudah ada, kirim exit-nya dulu
+    if (previousPathRef.current) {
+      sendExitTracking();
+    }
 
-        // 🔹 Dapatkan tanggal hari ini dalam format YYYY-MM-DD
-        const today = new Date().toISOString().split("T")[0];
+    // Lalu track yang baru
+    trackEntry();
 
-        // 🔹 Tentukan tipe kunjungan (homepage, kategori, atau artikel)
-        const isHomepage = pathname === "/" || pathname === "/home";
-        let visitType = isHomepage ? "homepage" : `article:${pathname}`;
-
-        // 🔹 Cek apakah URL termasuk kategori
-        const categoryMatch = pathname.match(/\/(|entertainment|technology|sport|c-level|lifestyle)/);
-        if (categoryMatch) {
-          const category = categoryMatch[1];
-          visitType = `category:${category}`; // 🚀 Tracking kategori
-        }
-
-        // 🔹 Cek apakah sudah ada data tracking di localStorage
-        const storedData = JSON.parse(localStorage.getItem("trackingData")) || {};
-
-        // 🔹 Jika user sudah mengunjungi kategori yang sama hari ini, skip tracking
-        if (storedData[ip]?.[visitType] === today) {
-          console.log(`User sudah mengunjungi ${visitType} hari ini, tidak dihitung lagi.`);
-          return;
-        }
-
-        // 🔹 Ambil Geolocation dari Browser
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              const { latitude, longitude } = position.coords;
-              setLocation({ latitude, longitude });
-              sendTrackingData(ip, visitType, today, latitude, longitude);
-            },
-            async (error) => {
-              console.warn("Geolocation error:", error);
-              // 🔹 Jika gagal, fallback ke API IP Location
-              const locationResponse = await fetch(`https://ip-api.com/json/${ip}`);
-              const locationData = await locationResponse.json();
-              setLocation({ latitude: locationData.lat, longitude: locationData.lon });
-              sendTrackingData(ip, visitType, today, locationData.lat, locationData.lon);
-            }
-          );
-        } else {
-          console.warn("Geolocation tidak didukung.");
-          sendTrackingData(ip, visitType, today, null, null);
-        }
-      } catch (error) {
-        console.error("Error dalam tracking:", error);
-      }
+    // On unload terakhir (close tab/browser)
+    const handleBeforeUnload = () => {
+      sendExitTracking();
     };
 
-    const sendTrackingData = async (ip, visitType, date, latitude, longitude) => {
-      // 🔹 Simpan data kunjungan ke localStorage
-      localStorage.setItem("trackingData", JSON.stringify({
-        ...JSON.parse(localStorage.getItem("trackingData")) || {},
-        [ip]: { [visitType]: date },
-      }));
-
-      // 🔹 Kirim data ke backend
-      await fetch("/api/track", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ip: ip,
-          url: window.location.href,
-          referrer: document.referrer || "direct",
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent,
-          type: visitType,
-          location: latitude && longitude ? { latitude, longitude } : null, // ✅ Tambahkan geolocation
-        }),
-      });
-
-      console.log(`Tracking data terkirim untuk ${visitType}:`, { ip, date, location: { latitude, longitude } });
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-
-    trackVisit();
-  }, [pathname]); // ✅ Jalankan ulang jika URL berubah (berpindah kategori atau artikel)
+  }, [pathname]); // 🔁 Trigger saat URL berubah
 
   return null;
 };

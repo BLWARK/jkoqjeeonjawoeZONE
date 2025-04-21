@@ -1,7 +1,7 @@
 import { getArticlesByTag } from "@/lib/api";
 
 export async function generateMetadata(context) {
-  const { tag } = context.params;
+  const { tag } = await context.params;
   const formattedTag = tag.replace(/-/g, " ");
 
   try {

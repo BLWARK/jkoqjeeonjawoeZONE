@@ -1,12 +1,21 @@
-import React from "react";
-import sportNews from "@/data/sportNews"; // Import data berita olahraga
+"use client";
+
+import React, { useEffect } from "react";
+import { useBackContext } from "@/context/BackContext";
 import MainSport from "../sport/mainSport/MainSport";
 import BottomSport from "../sport/bottomSport/BottomSport";
 import Ads from "@/components/page-components/adv-sect/AdvBottomHead"
 
 const Sport = () => {
-  const topArticles = sportNews.slice(0, 4); // 4 berita utama (grid 2x2)
-  const bottomArticles = sportNews.slice(4, 7); // 3 berita tambahan (horizontal)
+  const { getArticlesByCategory, articlesByCategory } = useBackContext();
+  const sportArticles = articlesByCategory["SPORT"] || [];
+
+  useEffect(() => {
+    getArticlesByCategory("SPORT", 1, 6); // Ambil 6 artikel teknologi
+  }, []);
+
+  const topArticles = sportArticles.slice(0, 4); // 4 berita utama (grid 2x2)
+  const bottomArticles = sportArticles.slice(4, 7); // 3 berita tambahan (horizontal)
 
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8">

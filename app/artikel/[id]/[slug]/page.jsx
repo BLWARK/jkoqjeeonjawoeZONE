@@ -19,25 +19,17 @@ const ArticlePage = () => {
   const pathname = usePathname();
 
   const { getArticleBySlug, currentArticle } = useBackContext();
-  const [relatedArticles, setRelatedArticles] = useState([]);
-  const [authorInfo, setAuthorInfo] = useState(null);
-  const [mostReadArticles, setMostReadArticles] = useState([]);
+  const [authorInfo, setAuthorInfo] = useState(null); 
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const fetchedSlugRef = useRef(null);
   const speechRef = useRef(null);
   const BASE_URL = "http://156.67.217.169:9001";
   const DEFAULT_IMAGE = "/default-image.jpg"; // 🔥 Pakai gambar lokal sebagai fallback
 
   // ✅ Ambil data artikel berdasarkan `slug` atau `id`
   useEffect(() => {
-    console.log("🚀 Slug dari params:", params?.slug);
-    if (params?.slug) {
-      getArticleBySlug(params.slug);
-    }
-  }, [params?.slug]);
-
-  useEffect(() => {
-    console.log("🚀 Slug dari params:", params?.slug);
-    if (params?.slug) {
+    if (params?.slug && params.slug !== fetchedSlugRef.current) {
+      fetchedSlugRef.current = params.slug;
       getArticleBySlug(params.slug);
     }
   }, [params?.slug]);
@@ -149,6 +141,7 @@ const ArticlePage = () => {
     }
   }, [currentArticle]);
 
+// ✅ Deteksi embed Twitter → Load script Tiktok
   useEffect(() => {
     if (currentArticle?.content.includes("tiktok-embed")) {
       console.log("🚀 TikTok embed detected");
@@ -173,10 +166,14 @@ const ArticlePage = () => {
     }
   }, [currentArticle]);
 
+  // ✅ Deteksi embed Twitter → Load script Instagram
   useEffect(() => {
     const hasInstagram = document.querySelector(".instagram-media");
-  
-    if (hasInstagram && !document.querySelector('script[src*="instagram.com/embed.js"]')) {
+
+    if (
+      hasInstagram &&
+      !document.querySelector('script[src*="instagram.com/embed.js"]')
+    ) {
       const script = document.createElement("script");
       script.src = "https://www.instagram.com/embed.js";
       script.async = true;
@@ -194,7 +191,6 @@ const ArticlePage = () => {
       }
     }
   }, [currentArticle]);
-  
 
   if (!currentArticle) {
     return <p className="text-center py-10">Artikel tidak ditemukan...</p>;
@@ -238,7 +234,8 @@ const ArticlePage = () => {
                 <>
                   {authorInfo.avatar ? (
                     <Image
-                      src={authorInfo.avatar || "/default.jpg"}
+                      // src={authorInfo.avatar || "/default.jpg"}
+                      src={"/default.jpg"}
                       alt={authorInfo.username}
                       width={40}
                       height={40}
@@ -303,35 +300,44 @@ const ArticlePage = () => {
               __html: he.decode(currentArticle.content),
             }}
           />
-          
 
           <Share article={currentArticle} />
 
           {/* 🔹 Card untuk Semua Tags */}
           {/* 🔹 Card untuk Semua Tags */}
-          {Array.isArray(currentArticle.tags) &&
-            currentArticle.tags.length > 0 && (
-              <div className="mt-6 border border-gray-300 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                  Tags:
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {currentArticle.tags.map((tag, index) => (
-                    <button
-                      key={index}
-                      onClick={() =>
-                        router.push(
-                          `/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`
-                        )
-                      }
-                      className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full"
-                    >
-                      {tag}
-                    </button>
-                  ))}
+          {(Array.isArray(currentArticle.tags) ||
+            typeof currentArticle.tags === "string") &&
+            (() => {
+              // Konversi tag menjadi array
+              const tagList = Array.isArray(currentArticle.tags)
+                ? currentArticle.tags
+                : currentArticle.tags.split(",").map((tag) => tag.trim());
+
+              return tagList.length > 0 ? (
+                <div className="mt-6 border border-gray-300 rounded-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                    Tags:
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {tagList.map((tag, index) => (
+                      <button
+                        key={index}
+                        onClick={() =>
+                          router.push(
+                            `/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`
+                          )
+                        }
+                        className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full"
+                      >
+                        {tag
+                          .replace(/-/g, " ")
+                          .replace(/\b\w/g, (char) => char.toUpperCase())}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              ) : null;
+            })()}
 
           {/* Share & Follow Section */}
 
@@ -346,7 +352,8 @@ const ArticlePage = () => {
       <Adv />
 
       {/* 🔹 Related News */}
-      <RelatedNews relatedArticles={relatedArticles} />
+      <RelatedNews currentArticle={currentArticle} />
+
     </div>
   );
 };

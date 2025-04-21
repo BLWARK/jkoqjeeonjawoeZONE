@@ -4,16 +4,11 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import DropdownMenu from "@/components/navigation/DropDownMenu";
 import { useRouter } from "next/navigation"; // ✅ Gunakan router untuk navigasi
-import newsData from "@/data/news";
-import cLevel from "@/data/cLevel";
-import headlines from "@/data/headline";
-import entertainmentNews from "@/data/entertainmentNews";
-import teknologiData from "@/data/teknologiData";
-import lifestyleNews from "@/data/lifestyleNews";
-import olahraga from "@/data/sportNews";
+import { useBackContext } from "@/context/BackContext"; // pastikan ini sudah ada
 import Image from "next/image";
 
 const Navbar = () => {
+  const { searchArticles, searchResults } = useBackContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
@@ -21,17 +16,6 @@ const Navbar = () => {
   const [filteredResults, setFilteredResults] = useState([]);
 
   const router = useRouter(); // ✅ Router untuk navigasi
-
-  const allNews = [
-    ...newsData,
-    ...cLevel,
-    ...headlines,
-    ...entertainmentNews,
-    ...teknologiData,
-    ...lifestyleNews,
-    ...olahraga,
-  ];
- // State untuk delay
 
   // Fungsi Toggle Menu Mobile
   const toggleMenu = () => {
@@ -53,20 +37,26 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setFilteredResults([]);
-      return;
-    }
+    const delayDebounce = setTimeout(() => {
+      if (searchQuery.trim() === "") {
+        setFilteredResults([]); // Hapus hasil jika kosong
+        return;
+      }
+  
+      searchArticles(searchQuery);
+    }, 300);
+  
+    return () => clearTimeout(delayDebounce);
+  }, [searchQuery, searchArticles]);
 
-    const results = allNews.filter((news) =>
-      news.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  useEffect(() => {
+    setFilteredResults(searchResults);
+  }, [searchResults]);
+  
+  
 
-    setFilteredResults(results);
-  }, [searchQuery]);
-
-   // ✅ Fungsi Menangani Pencarian
-   const handleSearch = (e) => {
+  // ✅ Fungsi Menangani Pencarian
+  const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== "") {
       router.push(`/search?q=${searchQuery}`);
@@ -95,8 +85,8 @@ const Navbar = () => {
             />
           </a>
 
-           {/* ✅ Kolom Pencarian */}
-           <div className="relative w-full 2xl:max-w-[700px] xl:max-w-[700px] lg:max-w-[550px]  2xl:block xl:block lg:block hidden">
+          {/* ✅ Kolom Pencarian */}
+          <div className="relative w-full 2xl:max-w-[700px] xl:max-w-[700px] lg:max-w-[550px]  2xl:block xl:block lg:block hidden">
             <form
               onSubmit={handleSearch}
               className="flex items-center w-full bg-white border border-gray-300 rounded-lg px-4 py-4 shadow-sm"
@@ -108,21 +98,19 @@ const Navbar = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent focus:outline-none text-gray-700 px-2"
               />
-             
             </form>
 
             {/* ✅ Hasil Pencarian */}
-            {filteredResults.length > 0 && (
+            {searchQuery.trim() !== "" && filteredResults.length > 0 && (
               <div className="absolute left-0 w-full bg-white border border-gray-300 shadow-lg rounded-md mt-1 max-h-120 overflow-y-auto z-50 cursor-pointer">
-                {filteredResults.slice(0, 5).map((news) => (
+                {searchResults.slice(0, 6).map((news) => (
                   <div
-                    key={news.id}
+                    key={news.article_id}
                     onClick={() => handleSelectArticle(news)}
-                    className="flex items-center gap-3 px-4 py-3  hover:bg-gray-200 cursor-pointer transition"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-200 transition"
                   >
-                    
                     <Image
-                      src={news.image}
+                      src={news.image || "/default.jpg"}
                       alt={news.title}
                       width={150}
                       height={50}
@@ -155,27 +143,27 @@ const Navbar = () => {
         {/* Mobile Navbar */}
         <div className="bg-pink-600 md:hidden flex items-center justify-start gap-4 px-4 py-6">
           <div className=" flex w-full justify-items-start gap-4">
-          <button
-            title="Hamburger Toggle"
-            aria-label="Hamburger"
-            onClick={toggleMenu}
-            className="text-white text-2xl"
-          >
-            {mobileMenuOpen ? <FiX /> : <FiMenu />}
-          </button>
-          <a href="/" className="relative w-28 h-8">
-            <Image
-              src="/Logo XYZone White.png"
-              alt="XYZONE Logo Mobile"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              style={{ objectFit: "contain" }}
-            />
-          </a>
+            <button
+              title="Hamburger Toggle"
+              aria-label="Hamburger"
+              onClick={toggleMenu}
+              className="text-white text-2xl"
+            >
+              {mobileMenuOpen ? <FiX /> : <FiMenu />}
+            </button>
+            <a href="/" className="relative w-28 h-8">
+              <Image
+                src="/Logo XYZone White.png"
+                alt="XYZONE Logo Mobile"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                style={{ objectFit: "contain" }}
+              />
+            </a>
           </div>
 
           {/* ✅ Kolom Pencarian */}
-         <div className="relative w-full max-w-[200px]  cursor-pointer 2xl:hidden xl:hidden lg:hidden block">
+          <div className="relative w-full max-w-[200px]  cursor-pointer 2xl:hidden xl:hidden lg:hidden block">
             <form
               onSubmit={handleSearch}
               className="flex items-center w-full bg-white border border-gray-300 rounded-lg px-2 py-2 shadow-sm"
@@ -187,7 +175,6 @@ const Navbar = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent focus:outline-none text-gray-700 px-2"
               />
-             
             </form>
 
             {/* ✅ Hasil Pencarian */}
@@ -195,7 +182,7 @@ const Navbar = () => {
               <div className="absolute left-0 w-full bg-white border border-gray-300 shadow-lg rounded-md mt-1 max-h-60 overflow-y-auto z-50 cursor-pointer">
                 {filteredResults.slice(0, 5).map((news) => (
                   <div
-                    key={news.id}
+                    key={news.article_id}
                     onClick={() => handleSelectArticle(news)}
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-200 cursor-pointer transition"
                   >
@@ -221,15 +208,13 @@ const Navbar = () => {
           </div>
         </div>
 
-         
-
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="md:hidden bg-gray-100 p-4 space-y-4">
             <a href="/" className="block hover:underline">
               Home
             </a>
-            <a href="/entertainment" className="block hover:underline">
+            <a href="/entertaintment" className="block hover:underline">
               Entertainment
             </a>
             <a href="/technology" className="block hover:underline">
@@ -247,7 +232,6 @@ const Navbar = () => {
             <a href="/indeks" className="block hover:underline">
               Indeks
             </a>
-            
           </nav>
         )}
 
@@ -264,7 +248,7 @@ const Navbar = () => {
             {[
               {
                 name: "Entertainment",
-                path: "/entertainment",
+                path: "/entertaintment",
                 category: "entertainment",
               },
               {
@@ -275,7 +259,7 @@ const Navbar = () => {
               { name: "Sport", path: "/sport", category: "sport" },
               { name: "C-Level", path: "/c-level", category: "c-level" },
               { name: "Lifestyle", path: "/lifestyle", category: "lifestyle" },
-              { name: "Indeks", path: "/indeks",  },
+              { name: "Indeks", path: "/indeks" },
             ].map((menu) => (
               <div
                 key={menu.name}
@@ -292,7 +276,11 @@ const Navbar = () => {
               </div>
             ))}
 
-            <a href="https://www.youtube.com/@XYZoneTV" target="blank" className="hidden md:block relative w-28 h-10">
+            <a
+              href="https://www.youtube.com/@XYZoneTV"
+              target="blank"
+              className="hidden md:block relative w-28 h-10"
+            >
               <Image
                 src="/Logo OneZone TV.png"
                 alt="XYZONETV"
@@ -319,4 +307,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

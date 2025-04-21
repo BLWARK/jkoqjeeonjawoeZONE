@@ -49,7 +49,7 @@ export async function getArticleBySlug(slug) {
 
     const article = await res.json();
 
-    console.log("🔥 Article Response:", JSON.stringify(article, null, 2));
+   
 
     return article || null; // ✅ Kembalikan data artikel langsung (bukan di dalam `data`)
   } catch (error) {

@@ -2,10 +2,10 @@ import { getArticleBySlug } from "@/lib/api"; // ✅ Panggil langsung fungsi get
 
 export async function generateMetadata(context) {
   // ✅ Ambil params langsung TANPA AWAIT
-  const { slug } = context.params;
+  const { slug } = await context.params;
 
   try {
-    console.log(`🔥 Fetching article with slug: ${slug}`);
+    
 
     // ✅ Ambil artikel langsung dari slug (pakai await karena fetching async)
     const article = await getArticleBySlug(slug);
