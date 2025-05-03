@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  dashboard-coinzone:
+    image: dashboard-coinzone
+    container_name: dashboard-coinzone
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+    restart: always
