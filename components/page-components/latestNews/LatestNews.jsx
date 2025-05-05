@@ -12,18 +12,22 @@ const sliceTitle = (title, maxWords = 10) => {
   return words.length > maxWords ? words.slice(0, maxWords).join(" ") + "..." : title;
 };
 
-const LatestNews = () => {
-  const { getLatestArticles, latestArticles } = useBackContext();
+// ✅ Bisa menerima prop platformId dari luar
+const LatestNews = ({ platformId: propPlatformId }) => {
+  const { getLatestArticles, latestArticles, selectedPortal } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
+
+  // ✅ Gunakan propPlatformId jika ada, fallback ke selectedPortal
+  const platformId = propPlatformId || selectedPortal?.platform_id || 1;
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      await getLatestArticles(1); // platformId = 1, limit default = 6
+      await getLatestArticles(platformId);
       setIsLoading(false);
     };
     fetchData();
-  }, [getLatestArticles]);
+  }, [getLatestArticles, platformId]);
 
   return (
     <div className="w-full flex 2xl:flex-row xl:flex-row lg:flex-row flex-col gap-10 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 px-3">

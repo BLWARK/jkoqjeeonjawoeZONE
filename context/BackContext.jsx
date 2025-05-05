@@ -26,7 +26,7 @@ export const BackProvider = ({ children }) => {
 
   const getHeadlines = useCallback(async (platformId, headlineCategory) => {
     if (!platformId || !headlineCategory) return;
-
+  
     try {
       const response = await customGet(
         `/api/headlines?platform_id=${platformId}&headline_category=${headlineCategory}`
@@ -35,12 +35,17 @@ export const BackProvider = ({ children }) => {
         const sortedHeadlines = response.data.sort(
           (a, b) => a.position - b.position
         );
-        setHeadlines(sortedHeadlines);
+  
+        setHeadlines((prev) => ({
+          ...prev,
+          [platformId]: sortedHeadlines, // ✅ simpan data per platform ID
+        }));
       }
     } catch (error) {
       console.error("❌ Failed to fetch headlines:", error);
     }
   }, []);
+  
 
   // ✅ Fungsi untuk mengambil data artikel dari backend dengan `useCallback`
   const getArticles = useCallback(async (platformId, page = 1, limit = 10) => {

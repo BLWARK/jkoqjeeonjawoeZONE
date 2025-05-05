@@ -11,7 +11,7 @@ const Sport = () => {
   const sportArticles = articlesByCategory["SPORT"] || [];
 
   useEffect(() => {
-    getArticlesByCategory("SPORT", 1, 6); // Ambil 6 artikel teknologi
+    getArticlesByCategory("SPORT"); // Ambil 6 artikel teknologi
   }, []);
 
   const topArticles = sportArticles.slice(0, 4); // 4 berita utama (grid 2x2)

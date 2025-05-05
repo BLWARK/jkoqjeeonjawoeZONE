@@ -12,7 +12,7 @@ const RelatedNews = ({ currentArticle }) => {
 
   useEffect(() => {
     if (currentArticle?.category?.[0]) {
-      getArticlesByCategory(currentArticle.category[0], 1, 20);
+      getArticlesByCategory(currentArticle.category);
     }
   }, [currentArticle]);
 

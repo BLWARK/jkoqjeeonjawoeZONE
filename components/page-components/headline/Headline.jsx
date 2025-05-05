@@ -15,20 +15,23 @@ const Headline = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      await getHeadlines(1, "HOME"); // 🔹 Kirim kategori HEADLINE yang diminta backend
+      await getHeadlines(1, "HOME");
       setIsLoading(false);
     };
     fetchData();
   }, [getHeadlines]);
   
-  // 🔹 Filter data berdasarkan posisi
-  const mainHeadline = headlines.find((item) => item.position === 1)?.article;
-  const sideHeadlines = headlines
+  const platformId = 1;
+  const platformHeadlines = headlines[platformId] || [];
+  
+  const mainHeadline = platformHeadlines.find((item) => item.position === 1)?.article;
+  const sideHeadlines = platformHeadlines
     .filter((item) => item.position === 2 || item.position === 3)
     .map((item) => item.article);
-  const bottomHeadlines = headlines
+  const bottomHeadlines = platformHeadlines
     .filter((item) => item.position === 4 || item.position === 5)
     .map((item) => item.article);
+  
 
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto">

@@ -1,10 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi"; // pastikan ini ada di atas
+import Link from "next/link";
+import regionData from "@/data/regionData";
 import DropdownMenu from "@/components/navigation/DropDownMenu";
 import { useRouter } from "next/navigation"; // ✅ Gunakan router untuk navigasi
 import { useBackContext } from "@/context/BackContext"; // pastikan ini sudah ada
+import RegionalDropdown from "../../components/navigation/DropDownRegional";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -14,8 +19,38 @@ const Navbar = () => {
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // ✅ State untuk input pencarian
   const [filteredResults, setFilteredResults] = useState([]);
+  const [mobileRegionOpen, setMobileRegionOpen] = useState(false);
 
   const router = useRouter(); // ✅ Router untuk navigasi
+  const pathname = usePathname();
+
+  const isRegionalPage = pathname.startsWith("/regional/");
+  const regionSlug = isRegionalPage ? pathname.split("/")[2] : null;
+
+  const logoMap = {
+    "jawa-barat": "/Jawabarat.png",
+    "jawa-tengah": "/Jawatengah.png",
+    "jawa-timur": "/Jawatimur.png",
+    banten: "/banten.png",
+    yogyakarta: "/Yogyakarta.png"
+  };
+
+  const logoMapWhite = {
+    jabar: "/jawabarat-white.png",
+    jateng: "/jawatengah-white.png",
+    jatim: "/jawatimur-white.png",
+    banten: "/banten-white.png",
+    yogyakarta: "/yogyakarta-white.png"
+  };
+
+  const logoSrc = isRegionalPage
+    ? logoMap[regionSlug] || "/Official.png"
+    : "/Official.png";
+
+    const logoWhiteSrc = isRegionalPage
+    ? logoMapWhite[regionSlug] || "/Official-white.png"
+    : "/Official-white.png";
+
 
   // Fungsi Toggle Menu Mobile
   const toggleMenu = () => {
@@ -42,18 +77,16 @@ const Navbar = () => {
         setFilteredResults([]); // Hapus hasil jika kosong
         return;
       }
-  
+
       searchArticles(searchQuery);
     }, 300);
-  
+
     return () => clearTimeout(delayDebounce);
   }, [searchQuery, searchArticles]);
 
   useEffect(() => {
     setFilteredResults(searchResults);
   }, [searchResults]);
-  
-  
 
   // ✅ Fungsi Menangani Pencarian
   const handleSearch = (e) => {
@@ -75,12 +108,11 @@ const Navbar = () => {
       <div className="bg-gray-100">
         <div className="container mx-auto 2xl:py-6 xl:py-6 lg:py-6 flex justify-between items-center px-2">
           {/* Logo - Desktop */}
-          <a href="/" className="hidden md:block relative w-40 h-10">
+          <a href="/" className="hidden md:block relative w-48 h-20">
             <Image
-              src="/Logo XYZone-Solid.png"
-              alt="XYZONE Logo"
+              src={logoSrc}
+              alt="Logo"
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               style={{ objectFit: "contain" }}
             />
           </a>
@@ -151,9 +183,9 @@ const Navbar = () => {
             >
               {mobileMenuOpen ? <FiX /> : <FiMenu />}
             </button>
-            <a href="/" className="relative w-28 h-8">
+            <a href="/" className="relative w-32 h-10">
               <Image
-                src="/Logo XYZone White.png"
+                src={logoWhiteSrc}
                 alt="XYZONE Logo Mobile"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -211,9 +243,32 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <nav className="md:hidden bg-gray-100 p-4 space-y-4">
-            <a href="/" className="block hover:underline">
-              Home
-            </a>
+            <button
+              onClick={() => setMobileRegionOpen(!mobileRegionOpen)}
+              className="flex justify-between items-center w-full text-left text-black hover:underline"
+            >
+              <span>Regional</span>
+              {mobileRegionOpen ? (
+                <FiChevronUp className="text-lg" />
+              ) : (
+                <FiChevronDown className="text-lg" />
+              )}
+            </button>
+            {mobileRegionOpen && (
+              <div className="pl-4 space-y-2">
+                {regionData.map((region) => (
+                  <Link
+                    key={region.id}
+                    href={region.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-sm text-gray-700 hover:underline"
+                  >
+                    {region.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+
             <a href="/entertaintment" className="block hover:underline">
               Entertainment
             </a>
@@ -237,14 +292,22 @@ const Navbar = () => {
 
         {/* Menu Navigation */}
         <nav className="bg-gray-100 w-full mt-2 relative  ">
-          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] flex justify-start items-center space-x-4 py-6 border-b  border-pink-600 border-t-4 overflow-x-auto">
-            <a
-              href="https://lensaberitajakarta.com"
-              target="blank"
-              className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300"
+          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] 2xl:flex xl:flex lg:flex hidden justify-start items-center space-x-4 py-6 border-b  border-pink-600 border-t-4 overflow-x-auto">
+            <div
+              className="relative group"
+              onMouseEnter={() => handleMouseEnter("regional")}
+              onMouseLeave={handleMouseLeave}
             >
-              Berita
-            </a>
+              <span className="flex items-center gap-1 text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 cursor-pointer">
+                Regional
+                <FiChevronDown
+                  className={`transition-transform duration-200 ${
+                    hoveredCategory === "regional" ? "rotate-180" : ""
+                  }`}
+                />
+              </span>
+            </div>
+
             {[
               {
                 name: "Entertainment",
@@ -294,13 +357,21 @@ const Navbar = () => {
       </div>
 
       {/* Dropdown Menu */}
-      {hoveredCategory && (
-        <DropdownMenu
-          category={hoveredCategory}
-          isVisible={hoveredCategory !== null}
-          onMouseEnter={() => handleMouseEnter(hoveredCategory)}
+      {hoveredCategory === "regional" ? (
+        <RegionalDropdown
+          isVisible={true}
+          onMouseEnter={() => handleMouseEnter("regional")}
           onMouseLeave={handleMouseLeave}
         />
+      ) : (
+        hoveredCategory && (
+          <DropdownMenu
+            category={hoveredCategory}
+            isVisible={hoveredCategory !== null}
+            onMouseEnter={() => handleMouseEnter(hoveredCategory)}
+            onMouseLeave={handleMouseLeave}
+          />
+        )
       )}
     </div>
   );

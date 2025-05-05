@@ -11,7 +11,7 @@ const Teknologi = () => {
   const teknologiArticles = articlesByCategory["TECHNOLOGY"] || [];
 
   useEffect(() => {
-    getArticlesByCategory("TECHNOLOGY", 1, 6); // Ambil 6 artikel teknologi
+    getArticlesByCategory("TECHNOLOGY"); // Ambil 6 artikel teknologi
   }, []);
 
   const mainArticle = teknologiArticles[0];
