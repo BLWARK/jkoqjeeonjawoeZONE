@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  fe-xyzone:
+    image: fe-xyzone
+    container_name: fe-xyzone
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "3002:4014"
+    environment:
+      - NODE_ENV=production
+    restart: always
