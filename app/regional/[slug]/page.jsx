@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import Link from "next/link"
+import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 import regionArticles from "@/data/regionArticles";
 import regionPlatformMap from "@/data/regionPlatformMap";
@@ -58,7 +59,7 @@ useEffect(() => {
         {/* Berita Utama */}
         {featured && (
           <div className="relative lg:col-span-2 h-[400px] rounded-lg overflow-hidden group">
-            <img
+            <Image
               src={featured.image}
               alt={featured.title}
               className="w-full h-full object-cover"
@@ -70,7 +71,7 @@ useEffect(() => {
               </h2>
               <p className="text-sm text-white mt-2 line-clamp-2">{featured.description}</p>
               <div className="flex items-center gap-2 mt-3">
-                <img
+                <Image
                   src={featured.author?.avatar || "/default.jpg"}
                   alt={featured.author?.fullname}
                   className="w-6 h-6 rounded-full object-cover"
@@ -88,7 +89,7 @@ useEffect(() => {
           {sideArticles.map((article) => (
             <Link key={article.article_id} href={`/artikel/${article.article_id}/${article.slug}`}>
             <div className="relative h-[190px] rounded-lg overflow-hidden group">
-              <img
+              <Image
                 src={article.image}
                 alt={article.title}
                 className="w-full h-full object-cover "
@@ -96,7 +97,7 @@ useEffect(() => {
               <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
                 <h3 className="text-white text-lg font-semibold line-clamp-2">{article.title}</h3>
                 <div className="flex items-center gap-2 mt-2">
-                  <img
+                  <Image
                     src={article.author?.avatar || "/default.jpg"}
                     alt={article.author?.fullname}
                     className="w-5 h-5 rounded-full object-cover"
@@ -115,15 +116,15 @@ useEffect(() => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {bottomArticles.map((article) => (
           <div key={article.article_id} className="bg-white rounded-lg shadow p-4 hover:shadow-md transition flex gap-4 justify-center items-center">
-            <img
-              src={article.image}
+            <Image
+              src={article.image || "/default.jpg"}
               alt={article.title}
               className="w-40 h-24 object-cover rounded"
             />
             <div className="flex flex-col">
             <h2 className="text-lg font-semibold  line-clamp-2">{article.title}</h2>
             <div className="flex items-center gap-3 mt-3">
-              <img
+              <Image
                 src={article.author?.avatar || "/default.jpg"}
                 alt={article.author?.fullname}
                 className="w-8 h-8 rounded-full object-cover"
