@@ -15,6 +15,8 @@ const sliceDescription = (desc, maxChars = 120) => {
 const EntertainmentPage = () => {
   const { getHeadlines, headlines } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
+  const platformId = 1; // bisa disesuaikan jika dinamis
+const data = headlines[platformId] || [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +28,8 @@ const EntertainmentPage = () => {
   }, [getHeadlines]);
 
   // 🔹 Pisahkan berdasarkan posisi
-  const mainArticle = headlines.find((item) => item.position === 1)?.article;
-  const secondaryArticles = headlines
+  const mainArticle = data.find((item) => item.position === 1)?.article;
+  const secondaryArticles = data
     .filter((item) => [2, 3, 4].includes(item.position))
     .map((item) => item.article);
 

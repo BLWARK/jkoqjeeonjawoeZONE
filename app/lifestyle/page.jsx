@@ -10,6 +10,8 @@ import LatestNews from "@/components/latestNewsCat/LatestNews";
 const LifestylePage = () => {
   const { getHeadlines, headlines } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
+  const platformId = 1; // bisa disesuaikan jika dinamis
+  const data = headlines[platformId] || [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,11 +22,11 @@ const LifestylePage = () => {
     fetchData();
   }, [getHeadlines]);
 
-  const mainArticle = headlines.find((item) => item.position === 1)?.article;
-  const rightArticles = headlines
+  const mainArticle = data.find((item) => item.position === 1)?.article;
+  const rightArticles = data
     .filter((item) => item.position === 2 || item.position === 3)
     .map((item) => item.article);
-  const bottomArticles = headlines
+  const bottomArticles = data
     .filter((item) => item.position === 4 || item.position === 5)
     .map((item) => item.article);
 

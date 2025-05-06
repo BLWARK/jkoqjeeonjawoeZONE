@@ -28,19 +28,19 @@ const Navbar = () => {
   const regionSlug = isRegionalPage ? pathname.split("/")[2] : null;
 
   const logoMap = {
-    "jawa-barat": "/Jawabarat.png",
-    "jawa-tengah": "/Jawatengah.png",
-    "jawa-timur": "/Jawatimur.png",
+    "jawa-barat": "/jawabarat.png",
+    "jawa-tengah": "/jawatengah.png",
+    "jawa-timur": "/jawatimur.png",
     banten: "/banten.png",
-    yogyakarta: "/Yogyakarta.png"
+    "di-yogyakarta": "/yogyakarta.png"
   };
 
   const logoMapWhite = {
-    jabar: "/jawabarat-white.png",
-    jateng: "/jawatengah-white.png",
-    jatim: "/jawatimur-white.png",
+    "jawa-barat": "/jawabarat-white.png",
+    "jawa-tengah": "/jawatengah-white.png",
+    "jawa-timur": "/jawatimur-white.png",
     banten: "/banten-white.png",
-    yogyakarta: "/yogyakarta-white.png"
+    "di-yogyakarta": "/yogyakarta-white.png"
   };
 
   const logoSrc = isRegionalPage
@@ -310,9 +310,9 @@ const Navbar = () => {
 
             {[
               {
-                name: "Entertainment",
+                name: "Entertaintment",
                 path: "/entertaintment",
-                category: "entertainment",
+                category: "entertaintment",
               },
               {
                 name: "Technology",

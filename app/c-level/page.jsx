@@ -14,6 +14,8 @@ const sliceDescription = (desc, maxChars = 120) =>
 const CLevelPage = () => {
   const { getHeadlines, headlines } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
+  const platformId = 1; // bisa disesuaikan jika dinamis
+  const data = headlines[platformId] || [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,9 +26,9 @@ const CLevelPage = () => {
     fetchData();
   }, [getHeadlines]);
 
-  const mainArticle = headlines.find((item) => item.position === 1)?.article;
+  const mainArticle = data.find((item) => item.position === 1)?.article;
 
-  const secondaryArticles = headlines
+  const secondaryArticles = data
     .filter((item) => [2, 3, 4].includes(item.position))
     .sort((a, b) => a.position - b.position)
     .map((item) => item.article);

@@ -14,6 +14,8 @@ const sliceDescription = (desc, maxChars = 120) => {
 const TechnologyPage = () => {
   const { getHeadlines, headlines } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
+  const platformId = 1; // bisa disesuaikan jika dinamis
+  const data = headlines[platformId] || [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +26,8 @@ const TechnologyPage = () => {
     fetchData();
   }, [getHeadlines]);
 
-  const mainArticle = headlines.find((item) => item.position === 1)?.article;
-  const rightSideArticles = headlines
+  const mainArticle = data.find((item) => item.position === 1)?.article;
+  const rightSideArticles = data
     .filter((item) => [2, 3, 4].includes(item.position))
     .sort((a, b) => a.position - b.position)
     .map((item) => item.article);
@@ -49,11 +51,17 @@ const TechnologyPage = () => {
                   className="object-cover"
                   priority={true}
                 />
-                <Link href={`/artikel/${mainArticle.article_id}/${mainArticle.slug}`} passHref>
+                <Link
+                  href={`/artikel/${mainArticle.article_id}/${mainArticle.slug}`}
+                  passHref
+                >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
                 </Link>
                 <div className="absolute bottom-5 left-5 text-white">
-                  <Link href={`/artikel/${mainArticle.article_id}/${mainArticle.slug}`} passHref>
+                  <Link
+                    href={`/artikel/${mainArticle.article_id}/${mainArticle.slug}`}
+                    passHref
+                  >
                     <h1 className="text-3xl font-bold hover:underline cursor-pointer">
                       {mainArticle.title}
                     </h1>
@@ -69,9 +77,13 @@ const TechnologyPage = () => {
                       height={24}
                       className="rounded-full"
                     />
-                    <span className="ml-2">{mainArticle.author?.username || "Unknown"}</span>
+                    <span className="ml-2">
+                      {mainArticle.author?.username || "Unknown"}
+                    </span>
                     <div className="w-[1px] h-5 bg-white mx-2" />
-                    <span>{new Date(mainArticle.date).toLocaleDateString()}</span>
+                    <span>
+                      {new Date(mainArticle.date).toLocaleDateString()}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -88,7 +100,10 @@ const TechnologyPage = () => {
                     fill
                     className="object-cover"
                   />
-                  <Link href={`/artikel/${rightSideArticles[0].article_id}/${rightSideArticles[0].slug}`} passHref>
+                  <Link
+                    href={`/artikel/${rightSideArticles[0].article_id}/${rightSideArticles[0].slug}`}
+                    passHref
+                  >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
                   </Link>
                   <div className="absolute bottom-4 left-4 text-white">
@@ -102,18 +117,27 @@ const TechnologyPage = () => {
               {/* Dua Berita Kotak */}
               <div className="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 gap-4">
                 {rightSideArticles.slice(1).map((article) => (
-                  <div key={article.article_id} className="relative w-full h-[250px] rounded-lg overflow-hidden">
+                  <div
+                    key={article.article_id}
+                    className="relative w-full h-[250px] rounded-lg overflow-hidden"
+                  >
                     <Image
                       src={article.image}
                       alt={article.title}
                       fill
                       className="object-cover"
                     />
-                    <Link href={`/artikel/${article.article_id}/${article.slug}`} passHref>
+                    <Link
+                      href={`/artikel/${article.article_id}/${article.slug}`}
+                      passHref
+                    >
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
                     </Link>
                     <div className="absolute bottom-3 left-3 text-white">
-                      <Link href={`/artikel/${article.article_id}/${article.slug}`} passHref>
+                      <Link
+                        href={`/artikel/${article.article_id}/${article.slug}`}
+                        passHref
+                      >
                         <h3 className="text-md font-semibold hover:underline cursor-pointer">
                           {article.title}
                         </h3>
@@ -127,7 +151,10 @@ const TechnologyPage = () => {
 
           {/* 🔹 Ads & Latest News */}
           <Ads />
-          <LatestNews category="teknologi" displayedCategoryArticles={[mainArticle, ...rightSideArticles]} />
+          <LatestNews
+            category="teknologi"
+            displayedCategoryArticles={[mainArticle, ...rightSideArticles]}
+          />
         </>
       )}
     </div>
