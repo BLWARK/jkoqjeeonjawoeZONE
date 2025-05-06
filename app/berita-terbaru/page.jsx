@@ -8,22 +8,25 @@ import { getCategoryColor } from "@/data/categoryColors";
 import { useBackContext } from "@/context/BackContext";
 
 const LatestNewsPage = () => {
-  const { latestArticles, getLatestArticles } = useBackContext();
+  const { getLatestArticles, latestArticles } = useBackContext()
   
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const articles = latestArticles?.[1] || []; // khusus platform_id = 1
   const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      await getLatestArticles(1, currentPage, ITEMS_PER_PAGE);
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, [currentPage, getLatestArticles]);
-
+      const fetchData = async () => {
+        setIsLoading(true);
+        await getLatestArticles(1, currentPage, ITEMS_PER_PAGE);
+        setIsLoading(false);
+      };
+  
+      fetchData();
+    }, [currentPage, getLatestArticles]);
+    
+    
+ 
   // Scroll ke atas setiap ganti halaman
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -48,12 +51,12 @@ const LatestNewsPage = () => {
       </span>
       <button
         className={`px-4 py-2 text-sm rounded-lg font-semibold ${
-          latestArticles.length === ITEMS_PER_PAGE
+          articles.length === ITEMS_PER_PAGE
             ? "bg-pink-500 text-white hover:bg-pink-600"
             : "bg-gray-300 text-gray-500 cursor-not-allowed"
         }`}
         onClick={() => setCurrentPage((prev) => prev + 1)}
-        disabled={latestArticles.length < ITEMS_PER_PAGE}
+        disabled={articles.length < ITEMS_PER_PAGE}
       >
         Next
       </button>
@@ -83,7 +86,8 @@ const LatestNewsPage = () => {
         <div className="flex items-center text-sm text-gray-500 mt-2">
           {article.author?.avatar ? (
             <Image
-              src={article.author.avatar}
+              // src={article.author.avatar}
+              src="/default.jpg"
               alt={article.author.username}
               width={20}
               height={20}
@@ -128,7 +132,7 @@ const LatestNewsPage = () => {
           </div>
         ) : (
           <>
-            {latestArticles.map((article) => renderArticleCard(article))}
+            {articles.map((article) => renderArticleCard(article))}
             {renderPagination()}
           </>
         )}

@@ -16,9 +16,12 @@ const sliceTitle = (title, maxWords = 10) => {
 const LatestNews = ({ platformId: propPlatformId }) => {
   const { getLatestArticles, latestArticles, selectedPortal } = useBackContext();
   const [isLoading, setIsLoading] = useState(true);
+ 
+
 
   // ✅ Gunakan propPlatformId jika ada, fallback ke selectedPortal
   const platformId = propPlatformId || selectedPortal?.platform_id || 1;
+  const articles = latestArticles?.[platformId] || [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +48,7 @@ const LatestNews = ({ platformId: propPlatformId }) => {
           </div>
         ) : (
           <>
-            {latestArticles.map((article, index) => {
+            {articles.map((article, index) => {
               const author = article.author || {};
               return (
                 <div

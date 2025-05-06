@@ -14,12 +14,12 @@ const MostRead = () => {
     getArticlesByViews(1, 1, 10); // platformId = 1, page = 1, limit = 10
   }, [getArticlesByViews]);
 
-  const mostReadArticles = popularArticles.slice(0, 10);
+  const mostReadArticles = popularArticles.slice(0, 6);
 
   return (
     <div className="lg:w-[30%] w-full flex flex-col gap-6">
       <AdsMostRead />
-      <AdsMostRead2 />
+     
       <h2 className="text-2xl font-bold text-pink-500">Most Read</h2>
       <div className="w-[50%] h-[5px] bg-pink-500 rounded-full"></div>
 

@@ -24,10 +24,12 @@ export const BackProvider = ({ children }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
   const [platformLogos, setPlatformLogos] = useState({});
+  const [platformSlugToId, setPlatformSlugToId] = useState({});
+  const [platformIdToSlug, setPlatformIdToSlug] = useState({});
 
   const getHeadlines = useCallback(async (platformId, headlineCategory) => {
     if (!platformId || !headlineCategory) return;
-  
+
     try {
       const response = await customGet(
         `/api/headlines?platform_id=${platformId}&headline_category=${headlineCategory}`
@@ -36,7 +38,7 @@ export const BackProvider = ({ children }) => {
         const sortedHeadlines = response.data.sort(
           (a, b) => a.position - b.position
         );
-  
+
         setHeadlines((prev) => ({
           ...prev,
           [platformId]: sortedHeadlines, // ✅ simpan data per platform ID
@@ -46,7 +48,6 @@ export const BackProvider = ({ children }) => {
       console.error("❌ Failed to fetch headlines:", error);
     }
   }, []);
-  
 
   // ✅ Fungsi untuk mengambil data artikel dari backend dengan `useCallback`
   const getArticles = useCallback(async (platformId, page = 1, limit = 10) => {
@@ -163,21 +164,25 @@ export const BackProvider = ({ children }) => {
   }, []);
 
   const getLatestArticles = useCallback(
-    async (platformId = 1, page = 1, limit = 6) => {
-      try {
-        const response = await customGet(
-          `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&status=publish&sort=date&order=desc`
-        );
+  async (platformId = 1, page = 1, limit = 6) => {
+    try {
+      const response = await customGet(
+        `/api/articles?platform_id=${platformId}&page=${page}&limit=${limit}&status=publish&sort=date&order=desc`
+      );
 
-        if (response?.data) {
-          setLatestArticles(response.data);
-        }
-      } catch (error) {
-        console.error("❌ Gagal mengambil artikel terbaru:", error);
+      if (response?.data) {
+        setLatestArticles((prev) => ({
+          ...prev,
+          [platformId]: response.data, // ✅ PER PLATFORM
+        }));
       }
-    },
-    []
-  );
+    } catch (error) {
+      console.error("❌ Gagal mengambil artikel terbaru:", error);
+    }
+  },
+  []
+);
+
 
   // Di dalam BackContext.js
   const searchArticles = useCallback(async (query, platformId = 1) => {
@@ -210,21 +215,38 @@ export const BackProvider = ({ children }) => {
     try {
       const res = await customGet("/api/platforms");
       const logos = {};
-  
+
       res.data.forEach((platform) => {
         logos[platform.platform_name] = {
           logo_url: platform.logo_url,
         };
       });
-  
+
       setPlatformLogos(logos);
     } catch (err) {
       console.error("❌ Gagal ambil logo platform:", err);
     }
   }, []);
-  
-  
 
+  const getAllPlatforms = useCallback(async () => {
+    try {
+      const res = await customGet("/api/platforms");
+      if (res?.data) {
+        const slugToId = {};
+        const idToSlug = {};
+        res.data.forEach((platform) => {
+          const slug = platform.platform_name.toLowerCase().replace(/\s+/g, "-");
+          slugToId[slug] = platform.platform_id;
+          idToSlug[platform.platform_id] = slug;
+        });
+        setPlatformSlugToId(slugToId);
+        setPlatformIdToSlug(idToSlug);
+      }
+    } catch (err) {
+      console.error("Gagal mengambil daftar platform", err);
+    }
+  }, []);
+  
   // ✅ Gunakan `useEffect` tanpa menyebabkan loop
   useEffect(() => {
     getHeadlines(1); // platformId = 1
@@ -234,10 +256,6 @@ export const BackProvider = ({ children }) => {
   useEffect(() => {
     getAllPlatformLogos(); // ✅ cukup satu kali saja di context
   }, [getAllPlatformLogos]);
-  
-
-  
-  
 
   return (
     <BackContext.Provider
@@ -265,6 +283,9 @@ export const BackProvider = ({ children }) => {
         searchLoading,
         getAllPlatformLogos,
         platformLogos,
+        platformSlugToId,
+        platformIdToSlug,
+        getAllPlatforms,
       }}
     >
       {children}
