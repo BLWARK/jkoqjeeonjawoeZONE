@@ -15,7 +15,7 @@ const RegionalDropdown = ({ isVisible, onMouseEnter, onMouseLeave }) => {
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`absolute transform translate-x-1  top-[350px] mt-1 bg-white shadow-lg border rounded-md z-50 ${animationClass}`}
+      className={`absolute transform translate-x-1  top-[343px] mt-1 bg-white shadow-lg border rounded-md z-50 ${animationClass}`}
     >
       <ul className="py-2 px-4 min-w-[180px]">
         {regionData.map((region) => (
