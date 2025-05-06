@@ -13,7 +13,7 @@ import RegionalDropdown from "../../components/navigation/DropDownRegional";
 import Image from "next/image";
 
 const Navbar = () => {
-  const { searchArticles, searchResults } = useBackContext();
+  const { searchArticles, searchResults,  platformLogos, getAllPlatformLogos } = useBackContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
@@ -27,29 +27,24 @@ const Navbar = () => {
   const isRegionalPage = pathname.startsWith("/regional/");
   const regionSlug = isRegionalPage ? pathname.split("/")[2] : null;
 
-  const logoMap = {
-    "jawa-barat": "/jawabarat.png",
-    "jawa-tengah": "/jawatengah.png",
-    "jawa-timur": "/jawatimur.png",
-    banten: "/banten.png",
-    "di-yogyakarta": "/yogyakarta.png"
-  };
+  useEffect(() => {
+    if (regionSlug && !platformLogos?.[regionSlug]) {
+      getAllPlatformLogos(); // hanya fetch jika logo belum tersedia
+    }
+  }, [regionSlug]);
+  
 
-  const logoMapWhite = {
-    "jawa-barat": "/jawabarat-white.png",
-    "jawa-tengah": "/jawatengah-white.png",
-    "jawa-timur": "/jawatimur-white.png",
-    banten: "/banten-white.png",
-    "di-yogyakarta": "/yogyakarta-white.png"
-  };
+
+  const defaultBlack = "/Official.png";
+  const defaultWhite = "/Official-white.png";
 
   const logoSrc = isRegionalPage
-    ? logoMap[regionSlug] || "/Official.png"
-    : "/Official.png";
+  ? platformLogos?.[regionSlug]?.logo_url || defaultBlack
+  : defaultBlack;
 
-    const logoWhiteSrc = isRegionalPage
-    ? logoMapWhite[regionSlug] || "/Official-white.png"
-    : "/Official-white.png";
+const logoWhiteSrc = isRegionalPage
+  ? platformLogos?.[regionSlug]?.logo_url || defaultWhite
+  : defaultWhite;
 
 
   // Fungsi Toggle Menu Mobile

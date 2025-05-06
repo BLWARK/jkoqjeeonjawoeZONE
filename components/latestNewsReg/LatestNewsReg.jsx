@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Adv from "@/components/page-components/adv-sect/AdvEditor";
+import MostReadCat from "@/components/mostRead/MostReadCat";
 import { getCategoryColor } from "@/data/categoryColors";
 import { useBackContext } from "@/context/BackContext";
 
@@ -110,8 +111,10 @@ const LatestNews = ({ platformId: propPlatformId }) => {
       {/* Bagian Adv */}
       <div className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] w-full relative">
         <div className="2xl:sticky top-20">
-          <Adv />
+        
           
+          <MostReadCat />
+       
         </div>
       </div>
     </div>

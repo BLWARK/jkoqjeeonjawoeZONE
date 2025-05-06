@@ -7,7 +7,7 @@ import Image from "next/image";
 import React from "react";
 import regionArticles from "@/data/regionArticles";
 import regionPlatformMap from "@/data/regionPlatformMap";
-import LatestNews from "@/components/page-components/latestNews/LatestNews";
+import LatestNewsReg from "@/components/latestNewsReg/LatestNewsReg";
 import AdvBottomHead from "@/components/page-components/adv-sect/AdvBottomHead";
 import { useBackContext } from "@/context/BackContext";
 
@@ -155,7 +155,7 @@ useEffect(() => {
         ))}
       </div>
       <AdvBottomHead/>
-      <LatestNews platformId={platformId} />
+      <LatestNewsReg platformId={platformId} />
     </div>
   );
 };

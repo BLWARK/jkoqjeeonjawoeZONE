@@ -23,6 +23,7 @@ export const BackProvider = ({ children }) => {
   const [articlesByCategoryMeta, setArticlesByCategoryMeta] = useState({});
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [platformLogos, setPlatformLogos] = useState({});
 
   const getHeadlines = useCallback(async (platformId, headlineCategory) => {
     if (!platformId || !headlineCategory) return;
@@ -204,11 +205,39 @@ export const BackProvider = ({ children }) => {
     }
   }, []);
 
+  // Fetch data platform
+  const getAllPlatformLogos = useCallback(async () => {
+    try {
+      const res = await customGet("/api/platforms");
+      const logos = {};
+  
+      res.data.forEach((platform) => {
+        logos[platform.platform_name] = {
+          logo_url: platform.logo_url,
+        };
+      });
+  
+      setPlatformLogos(logos);
+    } catch (err) {
+      console.error("❌ Gagal ambil logo platform:", err);
+    }
+  }, []);
+  
+  
+
   // ✅ Gunakan `useEffect` tanpa menyebabkan loop
   useEffect(() => {
     getHeadlines(1); // platformId = 1
     getEditorChoices(1); // platformId = 1
   }, [getHeadlines, getEditorChoices]);
+
+  useEffect(() => {
+    getAllPlatformLogos(); // ✅ cukup satu kali saja di context
+  }, [getAllPlatformLogos]);
+  
+
+  
+  
 
   return (
     <BackContext.Provider
@@ -234,6 +263,8 @@ export const BackProvider = ({ children }) => {
         searchArticles,
         searchResults,
         searchLoading,
+        getAllPlatformLogos,
+        platformLogos,
       }}
     >
       {children}
