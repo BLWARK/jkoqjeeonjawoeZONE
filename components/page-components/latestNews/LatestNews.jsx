@@ -89,10 +89,10 @@ const LatestNews = ({ platformId: propPlatformId }) => {
                   </div>
                   <Link href={`/artikel/${article.article_id}/${article.slug}`} passHref>
                     <div className="relative 2xl:w-[280px] xl:w-[280px] lg:w-[280px] w-full h-[200px] flex-shrink-0 rounded-lg overflow-hidden">
-                      <Image
+                      <img
                         src={article.image || "/default.jpg"}
                         alt={article.title}
-                        fill
+                        fill="true"
                         className="object-cover"
                       />
                     </div>

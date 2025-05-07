@@ -37,10 +37,10 @@ const SidePopular = () => {
           {/* 🔹 Gambar */}
           <Link href={`/artikel/${article.article_id}/${article.slug}`}>
             <div className="relative 2xl:w-[280px] xl:w-[280px] lg:w-[220px] w-full 2xl:h-[300px] h-[250px] flex-shrink-0">
-              <Image
+              <img
                 src={article.image}
                 alt={article.title}
-                fill
+                fill="true"
                 sizes="100vw"
                 className="rounded-lg object-cover"
               />
