@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import Image from "next/image";
 import { useBackContext } from "@/context/BackContext";
 import Adv from "@/components/page-components/adv-sect/AdvBottomHead";
@@ -17,13 +22,15 @@ const ArticlePage = () => {
   const router = useRouter();
   const params = useParams();
   const pathname = usePathname();
+  const [pages, setPages] = useState([]);
+  const searchParams = useSearchParams();
+  const rawPage = parseInt(searchParams.get("page") || "1", 10);
+  const [currentPage, setCurrentPage] = useState(rawPage - 1);
+  const [showAll, setShowAll] = useState(rawPage === pages.length); // ⬅️ aktif kalau page = pages.length + 1
 
   const { getArticleBySlug, currentArticle } = useBackContext();
   const [authorInfo, setAuthorInfo] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  const [pages, setPages] = useState([]);
-
   const fetchedSlugRef = useRef(null);
   const speechRef = useRef(null);
   const BASE_URL = "http://156.67.217.169:9001";
@@ -41,6 +48,51 @@ const ArticlePage = () => {
   useEffect(() => {
     if (currentArticle?.author) {
       setAuthorInfo(currentArticle.author);
+    }
+  }, [currentArticle]);
+
+  useEffect(() => {
+    setShowAll(rawPage === pages.length + 1);
+  }, [rawPage, pages.length]);
+  
+
+  const splitHtmlContent = (html, maxChars = 4000) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    let chunks = [];
+    let temp = "";
+    let count = 0;
+
+    const children = Array.from(doc.body.childNodes);
+
+    children.forEach((node) => {
+      const htmlString = node.outerHTML || node.textContent;
+      const length = htmlString.length;
+
+      if (count + length > maxChars) {
+        chunks.push(temp);
+        temp = htmlString;
+        count = length;
+      } else {
+        temp += htmlString;
+        count += length;
+      }
+    });
+
+    if (temp) {
+      chunks.push(temp);
+    }
+
+    return chunks;
+  };
+
+  useEffect(() => {
+    if (currentArticle?.content) {
+      const decoded = he.decode(currentArticle.content);
+      const splitted = splitHtmlContent(decoded, 4000);
+      setPages(splitted);
+      setCurrentPage(0);
     }
   }, [currentArticle]);
 
@@ -99,32 +151,6 @@ const ArticlePage = () => {
       window.speechSynthesis.speak(utterance);
       setIsSpeaking(true);
     }
-  };
-  useEffect(() => {
-    if (currentArticle?.content) {
-      const decodedHTML = he.decode(currentArticle.content);
-      const resultPages = splitContentIntoPages(decodedHTML);
-      setPages(resultPages);
-      setCurrentPageIndex(0);
-    }
-  }, [currentArticle]);
-
-  const splitContentIntoPages = (decodedHTML, maxParagraphsPerPage = 4) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = decodedHTML;
-
-    const paragraphs = Array.from(tempDiv.querySelectorAll("p"));
-    const pages = [];
-
-    for (let i = 0; i < paragraphs.length; i += maxParagraphsPerPage) {
-      const page = paragraphs
-        .slice(i, i + maxParagraphsPerPage)
-        .map((p) => p.outerHTML)
-        .join("");
-      pages.push(page);
-    }
-
-    return pages;
   };
 
   // ✅ Hentikan speech saat pindah halaman atau refresh
@@ -220,6 +246,55 @@ const ArticlePage = () => {
       }
     }
   }, [currentArticle]);
+
+  useEffect(() => {
+    // Twitter
+    if (document.querySelector(".twitter-tweet")) {
+      const existingScript = document.querySelector(
+        'script[src="https://platform.twitter.com/widgets.js"]'
+      );
+      if (existingScript) existingScript.remove();
+
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.onload = () => {
+        window?.twttr?.widgets?.load();
+      };
+      document.body.appendChild(script);
+    }
+
+    // TikTok
+    if (document.querySelector(".tiktok-embed")) {
+      const existingScript = document.querySelector(
+        'script[src="https://www.tiktok.com/embed.js"]'
+      );
+      if (existingScript) existingScript.remove();
+
+      const script = document.createElement("script");
+      script.src = "https://www.tiktok.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    // Instagram
+    if (document.querySelector(".instagram-media")) {
+      const existingScript = document.querySelector(
+        'script[src*="instagram.com/embed.js"]'
+      );
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.src = "https://www.instagram.com/embed.js";
+        script.async = true;
+        script.onload = () => {
+          window?.instgrm?.Embeds?.process();
+        };
+        document.body.appendChild(script);
+      } else {
+        window?.instgrm?.Embeds?.process();
+      }
+    }
+  }, [currentPage]);
 
   if (!currentArticle) {
     return <p className="text-center py-10">Artikel tidak ditemukan...</p>;
@@ -325,43 +400,50 @@ const ArticlePage = () => {
             
             
           "
-            dangerouslySetInnerHTML={{ __html: pages[currentPageIndex] || "" }}
+            dangerouslySetInnerHTML={{
+              __html: showAll ? pages.join("") : pages[currentPage] || "",
+            }}
           />
-          {pages.length > 1 && (
-            <div className="flex justify-center gap-4 mt-4">
-              <button
-                onClick={() =>
-                  setCurrentPageIndex((prev) => Math.max(prev - 1, 0))
-                }
-                disabled={currentPageIndex === 0}
-                className={`px-4 py-2 rounded-lg font-semibold ${
-                  currentPageIndex === 0
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-pink-500 text-white hover:bg-pink-600"
-                }`}
-              >
-                Sebelumnya
-              </button>
-              <span className="text-sm font-medium text-gray-700 self-center">
-                Halaman {currentPageIndex + 1} dari {pages.length}
-              </span>
-              <button
-                onClick={() =>
-                  setCurrentPageIndex((prev) =>
-                    Math.min(prev + 1, pages.length - 1)
-                  )
-                }
-                disabled={currentPageIndex === pages.length - 1}
-                className={`px-4 py-2 rounded-lg font-semibold ${
-                  currentPageIndex === pages.length - 1
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-pink-500 text-white hover:bg-pink-600"
-                }`}
-              >
-                Selanjutnya
-              </button>
-            </div>
-          )}
+
+<div className="flex justify-center mt-4 gap-2 flex-wrap">
+  {pages.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => {
+        setCurrentPage(index);
+        router.push(`${pathname}?page=${index + 1}`, {
+          scroll: false,
+        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      className={`px-4 py-2 rounded ${
+        !showAll && index === currentPage
+          ? "bg-pink-500 text-white font-bold"
+          : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+      }`}
+    >
+      {index + 1}
+    </button>
+  ))}
+
+  {/* Tombol Show All di akhir */}
+  <button
+    onClick={() => {
+      router.push(`${pathname}?page=${pages.length + 1}`, {
+        scroll: false,
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}
+    className={`px-4 py-2 rounded ${
+      showAll
+        ? "bg-gray-200 text-gray-700  font-bold"
+        : "bg-pink-500 text-white hover:bg-gray-300"
+    }`}
+  >
+    show all
+  </button>
+</div>
+
 
           <Share article={currentArticle} />
 
