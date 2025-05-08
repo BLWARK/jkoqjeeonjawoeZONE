@@ -19,8 +19,11 @@ const ArticlePage = () => {
   const pathname = usePathname();
 
   const { getArticleBySlug, currentArticle } = useBackContext();
-  const [authorInfo, setAuthorInfo] = useState(null); 
+  const [authorInfo, setAuthorInfo] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [pages, setPages] = useState([]);
+
   const fetchedSlugRef = useRef(null);
   const speechRef = useRef(null);
   const BASE_URL = "http://156.67.217.169:9001";
@@ -97,6 +100,32 @@ const ArticlePage = () => {
       setIsSpeaking(true);
     }
   };
+  useEffect(() => {
+    if (currentArticle?.content) {
+      const decodedHTML = he.decode(currentArticle.content);
+      const resultPages = splitContentIntoPages(decodedHTML);
+      setPages(resultPages);
+      setCurrentPageIndex(0);
+    }
+  }, [currentArticle]);
+
+  const splitContentIntoPages = (decodedHTML, maxParagraphsPerPage = 4) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = decodedHTML;
+
+    const paragraphs = Array.from(tempDiv.querySelectorAll("p"));
+    const pages = [];
+
+    for (let i = 0; i < paragraphs.length; i += maxParagraphsPerPage) {
+      const page = paragraphs
+        .slice(i, i + maxParagraphsPerPage)
+        .map((p) => p.outerHTML)
+        .join("");
+      pages.push(page);
+    }
+
+    return pages;
+  };
 
   // ✅ Hentikan speech saat pindah halaman atau refresh
   useEffect(() => {
@@ -141,7 +170,7 @@ const ArticlePage = () => {
     }
   }, [currentArticle]);
 
-// ✅ Deteksi embed Twitter → Load script Tiktok
+  // ✅ Deteksi embed Twitter → Load script Tiktok
   useEffect(() => {
     if (currentArticle?.content.includes("tiktok-embed")) {
       console.log("🚀 TikTok embed detected");
@@ -296,10 +325,43 @@ const ArticlePage = () => {
             
             
           "
-            dangerouslySetInnerHTML={{
-              __html: he.decode(currentArticle.content),
-            }}
+            dangerouslySetInnerHTML={{ __html: pages[currentPageIndex] || "" }}
           />
+          {pages.length > 1 && (
+            <div className="flex justify-center gap-4 mt-4">
+              <button
+                onClick={() =>
+                  setCurrentPageIndex((prev) => Math.max(prev - 1, 0))
+                }
+                disabled={currentPageIndex === 0}
+                className={`px-4 py-2 rounded-lg font-semibold ${
+                  currentPageIndex === 0
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-pink-500 text-white hover:bg-pink-600"
+                }`}
+              >
+                Sebelumnya
+              </button>
+              <span className="text-sm font-medium text-gray-700 self-center">
+                Halaman {currentPageIndex + 1} dari {pages.length}
+              </span>
+              <button
+                onClick={() =>
+                  setCurrentPageIndex((prev) =>
+                    Math.min(prev + 1, pages.length - 1)
+                  )
+                }
+                disabled={currentPageIndex === pages.length - 1}
+                className={`px-4 py-2 rounded-lg font-semibold ${
+                  currentPageIndex === pages.length - 1
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-pink-500 text-white hover:bg-pink-600"
+                }`}
+              >
+                Selanjutnya
+              </button>
+            </div>
+          )}
 
           <Share article={currentArticle} />
 
@@ -353,7 +415,6 @@ const ArticlePage = () => {
 
       {/* 🔹 Related News */}
       <RelatedNews currentArticle={currentArticle} />
-
     </div>
   );
 };
