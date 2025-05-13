@@ -130,7 +130,7 @@ const RegionalIndeksPage = () => {
       <div className="2xl:w-[70%] xl:w-[70%] lg:w-[70%] w-full flex flex-col gap-6">
         <div className="flex justify-between items-center mb-3">
           <div className="w-full">
-            <h2 className="text-3xl font-bold text-pink-500 mb-3">Indeks Regional: {displayRegionName || "Loading..."}</h2>
+            <h2 className="text-3xl font-bold text-pink-500 mb-3">Indeks {displayRegionName || "Loading..."}</h2>
             <div className="w-[10%] h-[6px] rounded-full bg-pink-500"></div>
           </div>
         </div>

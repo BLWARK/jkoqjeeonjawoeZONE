@@ -1,5 +1,6 @@
 import React from "react";
-import { FaTwitter, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { FaTwitter, FaInstagram, FaYoutube,} from "react-icons/fa";
+import { AiFillTikTok } from "react-icons/ai";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -60,20 +61,16 @@ const Footer = () => {
           </h4>
           <ul className="text-sm text-gray-200 space-y-6 ">
             <li>
-              <Link href="/#" className=" hover:text-pink-500">
+              <Link href="/visimisi" className=" hover:text-pink-500">
                 Visi dan Misi
               </Link>
             </li>
             <li>
-              <Link href="/#" className=" hover:text-pink-500">
+              <Link href="/redaksi" className=" hover:text-pink-500">
                 Susunan Redaksi
               </Link>
             </li>
-            <li>
-              <Link href="/#" className=" hover:text-pink-500">
-                Disclaimer
-              </Link>
-            </li>
+            
             <li>
               <Link href="/#" className=" hover:text-pink-500">
                 Kontak Kami
@@ -89,7 +86,7 @@ const Footer = () => {
           </h4>
           <div className="flex space-x-4">
             <Link
-              href="https://twitter.com"
+              href="https://x.com/xyzoneupdate?s=21"
               target="blank"
               aria-label="twitter"
               rel="noopener noreferrer"
@@ -98,7 +95,7 @@ const Footer = () => {
               <FaTwitter />
             </Link>
             <Link
-              href="https://instagram.com"
+              href="https://www.instagram.com/xyzonemedia?igsh=NzNoaTF3aDc3aDM2"
               target="blank"
               aria-label="Instagram"
               rel="noopener noreferrer"
@@ -107,16 +104,16 @@ const Footer = () => {
               <FaInstagram />
             </Link>
             <Link
-              href="https://facebook.com"
+              href="https://www.tiktok.com/@xyzonemedia?_t=ZS-8wDy2fTaIBE&_r=1"
               target="blank"
-              aria-label="Facebook"
+              aria-label="Tiktok"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-pink-500 text-2xl"
             >
-              <FaFacebookF />
+              <AiFillTikTok />
             </Link>
             <Link
-              href="https://youtube.com"
+              href="https://www.youtube.com/@XYZoneTV"
               target="blank"
               aria-label="Youtube"
               rel="noopener noreferrer"

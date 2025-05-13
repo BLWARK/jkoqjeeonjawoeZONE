@@ -287,7 +287,7 @@ const logoWhiteSrc = isRegionalPage
 
         {/* Menu Navigation */}
         <nav className="bg-gray-100 w-full mt-2 relative  ">
-          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] 2xl:flex xl:flex lg:flex hidden justify-start items-center space-x-4 py-6 border-b  border-pink-600 border-t-4 overflow-x-auto">
+          <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] 2xl:flex xl:flex lg:flex flex justify-start items-center space-x-4 py-6 border-b  border-pink-600 border-t-4 overflow-x-auto">
             <div
               className="relative group"
               onMouseEnter={() => handleMouseEnter("regional")}
@@ -327,7 +327,7 @@ const logoWhiteSrc = isRegionalPage
               >
                 <a
                   href={menu.path}
-                  className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 "
+                  className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs "
                 >
                   {menu.name}
                 </a>
@@ -337,7 +337,7 @@ const logoWhiteSrc = isRegionalPage
             <a
               href="https://www.youtube.com/@XYZoneTV"
               target="blank"
-              className="hidden md:block relative w-28 h-10"
+              className="hidden md:block relative w-24 h-10"
             >
               <Image
                 src="/Logo OneZone TV.png"
