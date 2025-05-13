@@ -54,11 +54,27 @@ const ArticlePage = () => {
   useEffect(() => {
     setShowAll(rawPage === pages.length + 1);
   }, [rawPage, pages.length]);
-  
 
   const splitHtmlContent = (html, maxChars = 4000) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
+
+    // Tambahkan caption setelah setiap <img> yang punya alt
+    const images = doc.querySelectorAll("img[alt]");
+    images.forEach((img) => {
+      const altText = img.getAttribute("alt");
+      if (altText) {
+        const caption = document.createElement("small");
+        caption.textContent = altText;
+        caption.style.display = "block";
+        caption.style.textAlign = "left";
+        caption.style.color = "#666";
+        caption.style.fontSize = "0.8rem";
+        caption.style.marginTop = "4px";
+
+        img.insertAdjacentElement("afterend", caption);
+      }
+    });
 
     let chunks = [];
     let temp = "";
@@ -364,12 +380,12 @@ const ArticlePage = () => {
           </div>
 
           {/* Gambar Artikel */}
-          <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] rounded-lg overflow-hidden mb-6">
+          <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] rounded-lg overflow-hidden mb-2">
             <Image
               src={
                 currentArticle.image
                   ? `${BASE_URL}/${currentArticle.image}`
-                  : DEFAULT_IMAGE // 🔥 Pakai gambar lokal kalau gagal load
+                  : DEFAULT_IMAGE
               }
               alt={currentArticle.title || "Gambar tidak tersedia"}
               fill
@@ -377,6 +393,13 @@ const ArticlePage = () => {
               className="object-cover"
             />
           </div>
+
+          {/* ✅ Caption gambar utama */}
+          {currentArticle.caption && (
+            <p className="text-sm text-gray-500 mt-2 text-left mb-5 italic">
+              {currentArticle.caption}
+            </p>
+          )}
 
           {/* Konten Artikel */}
           <div
@@ -405,45 +428,44 @@ const ArticlePage = () => {
             }}
           />
 
-<div className="flex justify-center mt-4 gap-2 flex-wrap">
-  {pages.map((_, index) => (
-    <button
-      key={index}
-      onClick={() => {
-        setCurrentPage(index);
-        router.push(`${pathname}?page=${index + 1}`, {
-          scroll: false,
-        });
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }}
-      className={`px-4 py-2 rounded ${
-        !showAll && index === currentPage
-          ? "bg-pink-500 text-white font-bold"
-          : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-      }`}
-    >
-      {index + 1}
-    </button>
-  ))}
+          <div className="flex justify-center mt-4 gap-2 flex-wrap">
+            {pages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setCurrentPage(index);
+                  router.push(`${pathname}?page=${index + 1}`, {
+                    scroll: false,
+                  });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className={`px-4 py-2 rounded ${
+                  !showAll && index === currentPage
+                    ? "bg-pink-500 text-white font-bold"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
 
-  {/* Tombol Show All di akhir */}
-  <button
-    onClick={() => {
-      router.push(`${pathname}?page=${pages.length + 1}`, {
-        scroll: false,
-      });
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    className={`px-4 py-2 rounded ${
-      showAll
-        ? "bg-gray-200 text-gray-700  font-bold"
-        : "bg-pink-500 text-white hover:bg-gray-300"
-    }`}
-  >
-    show all
-  </button>
-</div>
-
+            {/* Tombol Show All di akhir */}
+            <button
+              onClick={() => {
+                router.push(`${pathname}?page=${pages.length + 1}`, {
+                  scroll: false,
+                });
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className={`px-4 py-2 rounded ${
+                showAll
+                  ? "bg-gray-200 text-gray-700  font-bold"
+                  : "bg-pink-500 text-white hover:bg-gray-300"
+              }`}
+            >
+              show all
+            </button>
+          </div>
 
           <Share article={currentArticle} />
 
