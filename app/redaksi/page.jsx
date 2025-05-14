@@ -42,7 +42,7 @@ const page = () => {
             <div className="bg-blue-50 p-2">Cecep Mahmud</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Wakil Pemimpin Redaksi</div>
-            <div className="bg-blue-50 p-2">Shandi March Dede Titin</div>
+            <div className="bg-blue-50 p-2">Shandi March Dede Titin SE. MiKom</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Sekretaris Redaksi</div>
             <div className="bg-blue-50 p-2">Rizka Kurnia</div>
@@ -50,8 +50,7 @@ const page = () => {
             <div className="bg-blue-100 p-2 font-semibold">Penulis</div>
             <div className="bg-blue-50 p-2 space-y-1">
               <p>Priyo Husada</p>
-              <p>Abdul Hadi</p>
-              <p>Deblot Iwan</p>
+              <p>Deblot Ivan</p>
               <p>Andana Eiky</p>
               <p>Siti Ayani</p>
             </div>

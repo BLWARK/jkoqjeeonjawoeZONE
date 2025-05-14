@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,10 +16,64 @@ const TagPage = () => {
     getArticlesByTag,
     articlesByTag,
     articlesByTagMeta,
+    
   } = useBackContext();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [matchedTag, setMatchedTag] = useState(tag);
+  
+
+const [platformId, setPlatformId] = useState(null);;
+const searchParams = useSearchParams();
+const platformIdFromQuery = searchParams.get("platform_id");
+
+
+useEffect(() => {
+  const platformIdRaw = searchParams.get("platform_id");
+  if (platformIdRaw) {
+    console.log("🎯 Search param platform_id changed:", platformIdRaw);
+    setPlatformId(Number(platformIdRaw));
+  }
+}, [searchParams.toString()]); // <- KUNCI DI SINI
+
+
+
+// useEffect(() => {
+//   const resolvePlatform = async () => {
+//     if (!slug) return;
+
+//     console.log("🔎 Slug:", slug);
+
+//     if (!platformSlugToId?.[slug]) {
+//       if (!hasFetchedPlatforms) {
+//         console.log("🌐 Fetching platform mapping...");
+//         await getAllPlatforms();
+//         setHasFetchedPlatforms(true);
+//       }
+//       return;
+//     }
+
+//     const pid = platformSlugToId[slug];
+//     console.log("✅ Resolved platformId:", pid);
+//     if (pid) setPlatformId(pid);
+//   };
+
+//   resolvePlatform();
+// }, [slug, platformSlugToId, hasFetchedPlatforms]);
+
+
+
+
+useEffect(() => {
+  if (tag && platformIdFromQuery) {
+    console.log("🚀 Fetch by tag:", tag, "platform:", platformIdFromQuery);
+    getArticlesByTag(tag, Number(platformIdFromQuery), currentPage, ARTICLES_PER_PAGE);
+  }
+}, [tag, platformIdFromQuery, currentPage]);
+
+
+
+
 
   const normalizeTag = (t) => t?.toLowerCase().replace(/[-\s]/g, "");
 
@@ -45,25 +99,9 @@ const TagPage = () => {
     setCurrentPage(1); // reset page
   }, [tag]);
 
-  useEffect(() => {
-    if (matchedTag) {
-      getArticlesByTag(matchedTag, currentPage, ARTICLES_PER_PAGE);
-  
-      // ✅ Scroll ke atas saat ganti halaman
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // atau 'auto' kalau mau instant
-      });
-    }
-  }, [matchedTag, currentPage]);
-  
+ 
 
-  // ✅ Ambil data berdasarkan matchedTag dan halaman
-  useEffect(() => {
-    if (matchedTag) {
-      getArticlesByTag(matchedTag, currentPage, ARTICLES_PER_PAGE);
-    }
-  }, [matchedTag, currentPage]);
+
 
   const goToNextPage = () => {
     if (currentPage < articlesByTagMeta?.totalPages) {

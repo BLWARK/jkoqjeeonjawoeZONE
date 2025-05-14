@@ -13,13 +13,21 @@ import RegionalDropdown from "../../components/navigation/DropDownRegional";
 import Image from "next/image";
 
 const Navbar = () => {
-  const { searchArticles, searchResults,  platformLogos, getAllPlatformLogos } = useBackContext();
+  const {
+    searchArticles,
+    searchResults,
+    platformLogos,
+    getAllPlatformLogos,
+    getCategoriesByPlatform,
+    platformSlugToId,
+  } = useBackContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // ✅ State untuk input pencarian
   const [filteredResults, setFilteredResults] = useState([]);
   const [mobileRegionOpen, setMobileRegionOpen] = useState(false);
+  const [platformCategories, setPlatformCategories] = useState([]);
 
   const router = useRouter(); // ✅ Router untuk navigasi
   const pathname = usePathname();
@@ -32,20 +40,30 @@ const Navbar = () => {
       getAllPlatformLogos(); // hanya fetch jika logo belum tersedia
     }
   }, [regionSlug]);
-  
+
+  useEffect(() => {
+  const fetchCategories = async () => {
+    if (!regionSlug || !platformSlugToId?.[regionSlug]) return;
+
+    const platformId = platformSlugToId[regionSlug];
+    const categories = await getCategoriesByPlatform(platformId);
+    setPlatformCategories(categories); // 🛠️ LANGSUNG ISI ARRAY
+  };
+
+  fetchCategories();
+}, [regionSlug, platformSlugToId]);
 
 
   const defaultBlack = "/Official.png";
   const defaultWhite = "/Official-white.png";
 
   const logoSrc = isRegionalPage
-  ? platformLogos?.[regionSlug]?.logo_url || defaultBlack
-  : defaultBlack;
+    ? platformLogos?.[regionSlug]?.logo_url || defaultBlack
+    : defaultBlack;
 
-const logoWhiteSrc = isRegionalPage
-  ? platformLogos?.[regionSlug]?.logo_url || defaultWhite
-  : defaultWhite;
-
+  const logoWhiteSrc = isRegionalPage
+    ? platformLogos?.[regionSlug]?.logo_url || defaultWhite
+    : defaultWhite;
 
   // Fungsi Toggle Menu Mobile
   const toggleMenu = () => {
@@ -303,36 +321,47 @@ const logoWhiteSrc = isRegionalPage
               </span>
             </div>
 
-            {[
-              {
-                name: "Entertaintment",
-                path: "/entertaintment",
-                category: "entertaintment",
-              },
-              {
-                name: "Technology",
-                path: "/technology",
-                category: "technology",
-              },
-              { name: "Sport", path: "/sport", category: "sport" },
-              { name: "C-Level", path: "/c-level", category: "c-level" },
-              { name: "Lifestyle", path: "/lifestyle", category: "lifestyle" },
-              { name: "Indeks", path: "/indeks" },
-            ].map((menu) => (
-              <div
-                key={menu.name}
-                className="relative group "
-                onMouseEnter={() => handleMouseEnter(menu.category)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <a
-                  href={menu.path}
-                  className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs "
-                >
-                  {menu.name}
-                </a>
-              </div>
-            ))}
+            {isRegionalPage && Array.isArray(platformCategories) && platformCategories.length > 0 ? (
+  platformCategories.map((cat) => (
+    <div
+      key={cat.id}
+      className="relative group"
+      onMouseEnter={() => handleMouseEnter(cat.category_slug)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Link
+        href={`/regional/${regionSlug}/kategori/${cat.category_slug}`}
+        className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
+      >
+        {cat.category_name}
+      </Link>
+    </div>
+  ))
+) : !isRegionalPage ? (
+  [
+    { name: "Entertainment", path: "/entertaintment" },
+    { name: "Technology", path: "/technology" },
+    { name: "Sport", path: "/sport" },
+    { name: "C-Level", path: "/c-level" },
+    { name: "Lifestyle", path: "/lifestyle" },
+    { name: "Indeks", path: "/indeks" },
+  ].map((menu) => (
+    <div
+      key={menu.name}
+      className="relative group"
+      onMouseEnter={() => handleMouseEnter(menu.category)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Link
+        href={menu.path}
+        className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
+      >
+        {menu.name}
+      </Link>
+    </div>
+  ))
+) : null}
+
 
             <a
               href="https://www.youtube.com/@XYZoneTV"

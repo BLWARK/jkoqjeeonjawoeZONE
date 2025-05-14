@@ -100,10 +100,13 @@ export const BackProvider = ({ children }) => {
     []
   );
 
-  const getArticlesByTag = useCallback(async (tags, page = 1, limit = 20) => {
+ const getArticlesByTag = useCallback(
+  async (tags, platformId, page = 1, limit = 20) => {
+    if (!tags || !platformId) return;
+
     try {
       const response = await customGet(
-        `/api/articles?tags=${tags}&platform_id=1&page=${page}&limit=${limit}&status=publish`
+        `/api/articles?tags=${tags}&platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
       );
       if (response?.data) {
         setArticlesByTag(response.data);
@@ -114,37 +117,43 @@ export const BackProvider = ({ children }) => {
     } catch (error) {
       console.error("❌ Gagal mengambil artikel berdasarkan tag:", error);
     }
-  }, []);
+  },
+  []
+);
 
-  const getArticlesByCategory = useCallback(
-    async (category, platformId = 1, page = 1, limit = 9) => {
-      try {
-        const res = await customGet(
-          `/api/articles?category=${category}&platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
-        );
 
-        if (res?.data) {
-          setArticlesByCategory((prev) => ({
-            ...prev,
-            [category]: res.data, // Simpan array artikelnya
-          }));
-        }
+ const getArticlesByCategory = useCallback(
+  async (category, platformId = 1, page = 1, limit = 9) => {
+    try {
+      const res = await customGet(
+        `/api/articles?category=${category}&platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
+      );
 
-        if (res?.meta) {
-          setArticlesByCategoryMeta((prev) => ({
-            ...prev,
-            [category]: res.meta, // Simpan pagination info per kategori
-          }));
-        }
-      } catch (error) {
-        console.error(
-          `❌ Gagal mengambil artikel untuk kategori ${category}:`,
-          error
-        );
+      if (res?.data) {
+        setArticlesByCategory((prev) => ({
+          ...prev,
+          [category]: res.data,
+        }));
       }
-    },
-    []
-  );
+
+      if (res?.meta) {
+        setArticlesByCategoryMeta((prev) => ({
+          ...prev,
+          [category]: res.meta,
+        }));
+      }
+
+      return res; // 🔁 Tambahkan ini biar bisa di `await` dan dapat datanya
+    } catch (error) {
+      console.error(
+        `❌ Gagal mengambil artikel untuk kategori ${category}:`,
+        error
+      );
+      return null;
+    }
+  },
+  []
+);
 
   // ✅ Fungsi untuk mengambil data editor choices dari backend dengan `useCallback`
   const getEditorChoices = useCallback(async (platformId) => {
@@ -246,6 +255,26 @@ export const BackProvider = ({ children }) => {
       console.error("Gagal mengambil daftar platform", err);
     }
   }, []);
+
+  const getCategoriesByPlatform = async (platformId) => {
+  if (!platformId) return [];
+
+  try {
+    const response = await customGet(`/api/categories?platform_id=${platformId}`);
+    console.log("✅ Data kategori dari backend:", response?.data || []);
+    return response?.data || [];
+  } catch (error) {
+    console.error("❌ Error fetching categories:", error);
+    return [];
+  }
+};
+
+useEffect(() => {
+  getAllPlatforms(); // ✅ fetch mapping slug/id saat awal
+}, [getAllPlatforms]);
+
+
+
   
   // ✅ Gunakan `useEffect` tanpa menyebabkan loop
   useEffect(() => {
@@ -286,6 +315,7 @@ export const BackProvider = ({ children }) => {
         platformSlugToId,
         platformIdToSlug,
         getAllPlatforms,
+        getCategoriesByPlatform,
       }}
     >
       {children}

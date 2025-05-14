@@ -490,7 +490,11 @@ const ArticlePage = () => {
                         key={index}
                         onClick={() =>
                           router.push(
-                            `/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`
+                            `/tag/${tag
+                              .toLowerCase()
+                              .replace(/\s+/g, "-")}?platform_id=${
+                              currentArticle.platform_id
+                            }`
                           )
                         }
                         className="px-4 py-3 text-sm font-semibold text-pink-600 bg-pink-100 hover:bg-pink-200 transition rounded-full"
