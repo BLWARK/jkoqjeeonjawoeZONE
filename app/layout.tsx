@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "XYZONEMEDIA - Berita dan Informasi Terkini",
   description:
     "XYZONEMEDIA adalah portal berita terpercaya yang menyajikan informasi terkini di dunia crypto, teknologi, dan keuangan.",
+    icons: {
+    icon: "/favicon.ico", // atau "/favicon.png"
+  },
   keywords:
     "Xyzone Media, portal berita, informasi terkini, berita teknologi, berita keuangan, berita terkini",
   authors: [{ name: "Xyzone Team", url: "https://xyzonemedia.com" }],
