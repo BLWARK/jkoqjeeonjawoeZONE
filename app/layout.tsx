@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico", // atau "/favicon.png"
   },
   keywords:
-    "Xyzone Media, portal berita, informasi terkini, berita teknologi, berita keuangan, berita terkini",
+    "Xyzone Media, xyzonemedia, portal berita, informasi terkini, berita teknologi, berita keuangan, berita terkini",
   authors: [{ name: "Xyzone Team", url: "https://xyzonemedia.com" }],
   alternates: {
     canonical: "https://xyzonemedia.com",
