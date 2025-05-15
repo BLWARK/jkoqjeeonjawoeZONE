@@ -369,21 +369,29 @@ const Navbar = () => {
                   { name: "C-Level", path: "/c-level" },
                   { name: "Lifestyle", path: "/lifestyle" },
                   { name: "Indeks", path: "/indeks" },
-                ].map((menu) => (
-                  <div
-                    key={menu.name}
-                    className="relative group"
-                    onMouseEnter={() => handleMouseEnter(menu.category)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <Link
-                      href={menu.path}
-                      className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
+                ].map((menu) => {
+                  const isActive = pathname.startsWith(menu.path);
+
+                  return (
+                    <div
+                      key={menu.name}
+                      className="relative group"
+                      onMouseEnter={() => handleMouseEnter(menu.category)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      {menu.name}
-                    </Link>
-                  </div>
-                ))
+                      <Link
+                        href={menu.path}
+                        className={`whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs ${
+                          isActive
+                            ? "text-pink-500 font-semibold"
+                            : "text-black"
+                        }`}
+                      >
+                        {menu.name}
+                      </Link>
+                    </div>
+                  );
+                })
               : null}
 
             <a
@@ -402,29 +410,34 @@ const Navbar = () => {
           </div>
         </nav>
         {/* 🔽 Daftar Regional untuk Mobile (langsung tampil) */}
-
-
       </div>
-     {(platformId !== null && platformId !== 0) || isRegionalPage ? (
-  <div className="bg-gray-700 py-2 border-t border-gray-300 overflow-x-auto mt-4 px-4">
-    <div className="flex gap-10 ">
-      {regionData.map((region) => (
-        <Link
-          key={region.id}
-          href={region.path}
-          className="text-sm text-white hover:underline whitespace-nowrap"
-        >
-          {region.name}
-        </Link>
-      ))}
-      {/* Spacer di ujung kanan */}
-      <div className="min-w-[5px]" />
-    </div>
-  </div>
-) : null}
+      {(platformId !== null && platformId !== 0) || isRegionalPage ? (
+        <div className="bg-gray-700 py-2 border-t border-gray-300 overflow-x-auto mt-4 px-4">
+          <div className="flex gap-10 ">
+            {regionData.map((region) => {
+              const isActive =
+                region.path === "/"
+                  ? pathname === "/" // Nasional hanya aktif di halaman root
+                  : pathname.startsWith(region.path); // Lainnya pakai startsWith
 
+              return (
+                <Link
+                  key={region.id}
+                  href={region.path}
+                  className={`text-sm whitespace-nowrap hover:underline ${
+                    isActive ? "text-pink-500 font-semibold" : "text-white"
+                  }`}
+                >
+                  {region.name}
+                </Link>
+              );
+            })}
 
-
+            {/* Spacer di ujung kanan */}
+            <div className="min-w-[5px]" />
+          </div>
+        </div>
+      ) : null}
 
       {/* Dropdown Menu */}
       {hoveredCategory === "regional" && (
