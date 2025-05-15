@@ -329,7 +329,7 @@ const Navbar = () => {
         <nav className="bg-gray-100 w-full mt-2 relative  ">
           <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] 2xl:flex xl:flex lg:flex flex justify-start items-center space-x-4 py-6 border-b  border-pink-600 border-t-4 overflow-x-auto">
             <div
-              className="relative group 2xl:block hidden"
+              className="relative group 2xl:block xl:block lg:block hidden"
               onMouseEnter={() => handleMouseEnter("regional")}
               onMouseLeave={handleMouseLeave}
             >
@@ -412,7 +412,7 @@ const Navbar = () => {
         {/* 🔽 Daftar Regional untuk Mobile (langsung tampil) */}
       </div>
       {(platformId !== null && platformId !== 0) || isRegionalPage ? (
-        <div className="bg-gray-700 py-2 border-t border-gray-300 overflow-x-auto mt-4 px-4">
+        <div className="bg-gray-700 py-2 border-t border-gray-300 overflow-x-auto mt-2  px-4 mx-auto">
           <div className="flex gap-10 ">
             {regionData.map((region) => {
               const isActive =
@@ -434,7 +434,7 @@ const Navbar = () => {
             })}
 
             {/* Spacer di ujung kanan */}
-            <div className="min-w-[5px]" />
+            <div className="2xl:min-w-0 xl:min-w-0 lg:min-w-0 min-w-[5px]" />
           </div>
         </div>
       ) : null}

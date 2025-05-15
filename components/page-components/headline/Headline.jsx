@@ -42,7 +42,7 @@ const Headline = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 2xl:mt-4 mt-3">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 2xl:mt-4 mt-3 2xl:px-0 xl:px-0  lg:px-3">
             <MainHead headline={mainHeadline} />
             <AddHeadSide headlines={sideHeadlines} />
           </div>

@@ -1,7 +1,7 @@
 const categoryColors = {
   TECHNOLOGY: "bg-green-500",
   ENTERTAINTMENT: "bg-blue-500",
-  berita: "bg-red-500",
+  Berita: "bg-red-500",
   SPORT: "bg-yellow-500",
   LIFESTYLE: "bg-pink-500",
   crypto: "bg-purple-500",
