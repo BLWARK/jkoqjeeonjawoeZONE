@@ -20,10 +20,10 @@ const { slug } = await context.params;
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: `https://xyzonemedia.com/regional/${slug}`,
+      url: `https://xyzone.media/regional/${slug}`,
       images: [
         {
-          url: "https://xyzonemedia.com/og-image-regional.jpg", // opsional
+          url: "https://xyzone.media/og-image-regional.jpg", // opsional
           width: 1200,
           height: 630,
           alt: meta.title,
@@ -35,7 +35,7 @@ const { slug } = await context.params;
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: ["https://xyzonemedia.com/og-image-regional.jpg"],
+      images: ["https://xyzone.media/og-image-regional.jpg"],
     },
   };
 }

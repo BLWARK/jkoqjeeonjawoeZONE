@@ -11,7 +11,7 @@ export async function generateMetadata() {
     openGraph: {
       title: "C-Level News - Berita Eksekutif, CEO, dan Pemimpin Bisnis | XYZONEMEDIA",
       description: "Dapatkan berita terbaru seputar eksekutif, CEO, dan pemimpin bisnis di dunia industri dan teknologi hanya di XYZONEMEDIA.",
-      url: "https://xyzonemedia.com/c-level",
+      url: "https://xyzone.media/c-level",
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [

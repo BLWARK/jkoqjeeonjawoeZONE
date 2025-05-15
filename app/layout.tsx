@@ -26,19 +26,19 @@ export const metadata: Metadata = {
   },
   keywords:
     "Xyzone Media, xyzonemedia, portal berita, informasi terkini, berita teknologi, berita keuangan, berita terkini",
-  authors: [{ name: "Xyzone Team", url: "https://xyzonemedia.com" }],
+  authors: [{ name: "Xyzone Team", url: "https://xyzone.media" }],
   alternates: {
-    canonical: "https://xyzonemedia.com",
+    canonical: "https://xyzone.media",
   },
   openGraph: {
     title: "XYZONEMEDIA - Berita dan Informasi Terkini",
     description:
       "Dapatkan berita terbaru dari dunia crypto, keuangan, dan teknologi di XYZONEMEDIA.",
-    url: "https://xyzonemedia.com",
+    url: "https://xyzone.media",
     siteName: "XYZONEMEDIA",
     images: [
       {
-        url: "https://xyzonemedia.com/XYZONELOGOAPP.png",
+        url: "https://xyzone.media/XYZONELOGOAPP.png",
         width: 1200,
         height: 630,
         alt: "XYZONEMEDIA",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "XYZONEMEDIA - Berita dan Informasi Terkini",
     description:
       "Dapatkan berita terbaru dari dunia crypto, keuangan, dan teknologi di XYZONEMEDIA.",
-    images: ["https://xyzonemedia.com/preview-image.jpg"],
+    images: ["https://xyzone.media/preview-image.jpg"],
   },
   manifest: "/site.webmanifest", // PWA Web Manifest
 };
@@ -82,8 +82,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "NewsMediaOrganization",
               "name": "XYZONEMEDIA",
-              "url": "https://xyzonemedia.com",
-              "logo": "https://xyzonemedia.com/logo.png",
+              "url": "https://xyzone,media",
+              "logo": "https://xyzone.media/logo.png",
               "sameAs": [
                 "https://twitter.com/XyzoneMedia",
                 "https://www.facebook.com/XyzoneMedia",
@@ -94,14 +94,14 @@ export default function RootLayout({
                 "name": "XYZONEMEDIA",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://xyzonemedia.com/logo.png",
+                  "url": "https://xyzone.media/logo.png",
                   "width": 600,
                   "height": 60
                 }
               },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://xyzonemedia.com/search?q={search_term_string}",
+                "target": "https://xyzone.media/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             }),

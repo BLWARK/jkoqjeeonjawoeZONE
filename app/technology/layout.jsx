@@ -14,7 +14,7 @@ export async function generateMetadata() {
       title: "Berita Teknologi Terkini - AI, Gadget, Startup | XYZONEMEDIA",
       description:
         "Dapatkan berita terbaru seputar teknologi, AI, gadget, startup, dan inovasi digital terkini hanya di XYZONEMEDIA.",
-      url: "https://xyzonemedia.com/teknologi",
+      url: "https://xyzone.media/technology",
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [

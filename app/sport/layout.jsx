@@ -14,7 +14,7 @@ export async function generateMetadata() {
       title: "Berita Olahraga Terbaru - Sepak Bola, MotoGP & Lainnya | XYZONEMEDIA",
       description:
         "Dapatkan berita olahraga terbaru dari dunia sepak bola, MotoGP, F1, bulu tangkis, dan cabang olahraga lainnya hanya di XYZONEMEDIA.",
-      url: "https://xyzonemedia.com/olahraga",
+      url: "https://xyzone.media/olahraga",
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [

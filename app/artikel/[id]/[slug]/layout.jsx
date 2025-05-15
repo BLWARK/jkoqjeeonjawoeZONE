@@ -33,7 +33,7 @@ export async function generateMetadata(context) {
         title: article.title,
         description:
           article.description || article.content.substring(0, 150) + "...",
-        url: `https://xyzonemedia.com/post/${article.article_id}/${article.slug}`,
+        url: `https://xyzone.media/post/${article.article_id}/${article.slug}`,
         images: [
           {
             url: article.image

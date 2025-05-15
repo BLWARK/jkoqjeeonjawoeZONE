@@ -14,7 +14,7 @@ export async function generateMetadata() {
       title: "Lifestyle News - Gaya Hidup, Kesehatan & Tren Terkini | XYZONEMEDIA",
       description:
         "Temukan berita terbaru tentang gaya hidup, kesehatan, tren fashion, dan inspirasi sehari-hari hanya di XYZONEMEDIA.",
-      url: "https://xyzonemedia.com/lifestyle",
+      url: "https://xyzone.media/lifestyle",
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [

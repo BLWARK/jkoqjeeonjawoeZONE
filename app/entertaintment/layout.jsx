@@ -11,7 +11,7 @@ export async function generateMetadata() {
     openGraph: {
       title: "Entertainment News - Berita Seputar Hiburan & Selebriti | XYZONEMEDIA",
       description: "Dapatkan berita terbaru seputar dunia hiburan, film, musik, selebriti, dan gaya hidup hanya di XYZONEMEDIA.",
-      url: "https://xyzonemedia.com/entertainment",
+      url: "https://xyzone.media/entertaintment",
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
