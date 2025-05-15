@@ -128,7 +128,7 @@ export const BackProvider = ({ children }) => {
       const res = await customGet(
         `/api/articles?category=${category}&platform_id=${platformId}&page=${page}&limit=${limit}&status=publish`
       );
-
+      
       if (res?.data) {
         setArticlesByCategory((prev) => ({
           ...prev,
@@ -194,15 +194,14 @@ export const BackProvider = ({ children }) => {
 
 
   // Di dalam BackContext.js
-  const searchArticles = useCallback(async (query, platformId = 1) => {
-    if (!query) return [];
+ const searchArticles = useCallback(
+  async (query, platformId) => {
+    if (!query || !platformId) return [];
 
     try {
       setSearchLoading(true);
       const response = await customGet(
-        `/api/articles?search=${encodeURIComponent(
-          query
-        )}&platform_id=${platformId}`
+        `/api/articles?search=${encodeURIComponent(query)}&platform_id=${platformId}`
       );
       if (response?.data) {
         setSearchResults(response.data);
@@ -217,7 +216,10 @@ export const BackProvider = ({ children }) => {
     } finally {
       setSearchLoading(false);
     }
-  }, []);
+  },
+  []
+);
+
 
   // Fetch data platform
   const getAllPlatformLogos = useCallback(async () => {

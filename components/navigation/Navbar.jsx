@@ -28,6 +28,9 @@ const Navbar = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const [mobileRegionOpen, setMobileRegionOpen] = useState(false);
   const [platformCategories, setPlatformCategories] = useState([]);
+  const [platformId, setPlatformId] = useState(null);
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [abortController, setAbortController] = useState(null);
 
   const router = useRouter(); // ✅ Router untuk navigasi
   const pathname = usePathname();
@@ -36,23 +39,34 @@ const Navbar = () => {
   const regionSlug = isRegionalPage ? pathname.split("/")[2] : null;
 
   useEffect(() => {
-    if (regionSlug && !platformLogos?.[regionSlug]) {
-      getAllPlatformLogos(); // hanya fetch jika logo belum tersedia
-    }
-  }, [regionSlug]);
+    const resolvePlatform = async () => {
+      if (!regionSlug) {
+        setPlatformId(1); // ✅ Default platform nasional
+        return;
+      }
+
+      const mappedId = platformSlugToId?.[regionSlug];
+      if (mappedId) {
+        setPlatformId(mappedId);
+      } else {
+        await getAllPlatformLogos(); // or getAllPlatforms()
+      }
+    };
+
+    resolvePlatform();
+  }, [regionSlug, platformSlugToId]);
 
   useEffect(() => {
-  const fetchCategories = async () => {
-    if (!regionSlug || !platformSlugToId?.[regionSlug]) return;
+    const fetchCategories = async () => {
+      if (!regionSlug || !platformSlugToId?.[regionSlug]) return;
 
-    const platformId = platformSlugToId[regionSlug];
-    const categories = await getCategoriesByPlatform(platformId);
-    setPlatformCategories(categories); // 🛠️ LANGSUNG ISI ARRAY
-  };
+      const platformId = platformSlugToId[regionSlug];
+      const categories = await getCategoriesByPlatform(platformId);
+      setPlatformCategories(categories); // 🛠️ LANGSUNG ISI ARRAY
+    };
 
-  fetchCategories();
-}, [regionSlug, platformSlugToId]);
-
+    fetchCategories();
+  }, [regionSlug, platformSlugToId]);
 
   const defaultBlack = "/Official.png";
   const defaultWhite = "/Official-white.png";
@@ -85,17 +99,25 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      if (searchQuery.trim() === "") {
-        setFilteredResults([]); // Hapus hasil jika kosong
-        return;
-      }
+    const delay = setTimeout(() => {
+      setDebouncedQuery(searchQuery.trim());
+    }, 600); // ⏱️ delay 500ms setelah user berhenti mengetik
 
-      searchArticles(searchQuery);
-    }, 300);
+    return () => clearTimeout(delay); // bersihkan timeout
+  }, [searchQuery]);
 
-    return () => clearTimeout(delayDebounce);
-  }, [searchQuery, searchArticles]);
+  useEffect(() => {
+    if (!debouncedQuery || !platformId) return;
+
+    if (abortController) {
+      abortController.abort(); // ❌ Batalkan request sebelumnya
+    }
+
+    const controller = new AbortController();
+    setAbortController(controller);
+
+    searchArticles(debouncedQuery, platformId, controller.signal);
+  }, [debouncedQuery, platformId]);
 
   useEffect(() => {
     setFilteredResults(searchResults);
@@ -307,7 +329,7 @@ const Navbar = () => {
         <nav className="bg-gray-100 w-full mt-2 relative  ">
           <div className="2xl:max-w-[1400px] xl:max-w-[1200px] lg:max-w-[1000px] 2xl:flex xl:flex lg:flex flex justify-start items-center space-x-4 py-6 border-b  border-pink-600 border-t-4 overflow-x-auto">
             <div
-              className="relative group"
+              className="relative group 2xl:block hidden"
               onMouseEnter={() => handleMouseEnter("regional")}
               onMouseLeave={handleMouseLeave}
             >
@@ -321,47 +343,48 @@ const Navbar = () => {
               </span>
             </div>
 
-            {isRegionalPage && Array.isArray(platformCategories) && platformCategories.length > 0 ? (
-  platformCategories.map((cat) => (
-    <div
-      key={cat.id}
-      className="relative group"
-      onMouseEnter={() => handleMouseEnter(cat.category_slug)}
-      onMouseLeave={handleMouseLeave}
-    >
-      <Link
-        href={`/regional/${regionSlug}/kategori/${cat.category_slug}`}
-        className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
-      >
-        {cat.category_name}
-      </Link>
-    </div>
-  ))
-) : !isRegionalPage ? (
-  [
-    { name: "Entertainment", path: "/entertaintment" },
-    { name: "Technology", path: "/technology" },
-    { name: "Sport", path: "/sport" },
-    { name: "C-Level", path: "/c-level" },
-    { name: "Lifestyle", path: "/lifestyle" },
-    { name: "Indeks", path: "/indeks" },
-  ].map((menu) => (
-    <div
-      key={menu.name}
-      className="relative group"
-      onMouseEnter={() => handleMouseEnter(menu.category)}
-      onMouseLeave={handleMouseLeave}
-    >
-      <Link
-        href={menu.path}
-        className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
-      >
-        {menu.name}
-      </Link>
-    </div>
-  ))
-) : null}
-
+            {isRegionalPage &&
+            Array.isArray(platformCategories) &&
+            platformCategories.length > 0
+              ? platformCategories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="relative group"
+                    onMouseEnter={() => handleMouseEnter(cat.category_slug)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      href={`/regional/${regionSlug}/kategori/${cat.category_slug}`}
+                      className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
+                    >
+                      {cat.category_name}
+                    </Link>
+                  </div>
+                ))
+              : !isRegionalPage
+              ? [
+                  { name: "Entertainment", path: "/entertaintment" },
+                  { name: "Technology", path: "/technology" },
+                  { name: "Sport", path: "/sport" },
+                  { name: "C-Level", path: "/c-level" },
+                  { name: "Lifestyle", path: "/lifestyle" },
+                  { name: "Indeks", path: "/indeks" },
+                ].map((menu) => (
+                  <div
+                    key={menu.name}
+                    className="relative group"
+                    onMouseEnter={() => handleMouseEnter(menu.category)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      href={menu.path}
+                      className="text-black whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs"
+                    >
+                      {menu.name}
+                    </Link>
+                  </div>
+                ))
+              : null}
 
             <a
               href="https://www.youtube.com/@XYZoneTV"
@@ -378,24 +401,38 @@ const Navbar = () => {
             </a>
           </div>
         </nav>
+        {/* 🔽 Daftar Regional untuk Mobile (langsung tampil) */}
+
+
       </div>
+     {(platformId !== null && platformId !== 0) || isRegionalPage ? (
+  <div className="bg-gray-700 py-2 border-t border-gray-300 overflow-x-auto mt-4 px-4">
+    <div className="flex gap-10 ">
+      {regionData.map((region) => (
+        <Link
+          key={region.id}
+          href={region.path}
+          className="text-sm text-white hover:underline whitespace-nowrap"
+        >
+          {region.name}
+        </Link>
+      ))}
+      {/* Spacer di ujung kanan */}
+      <div className="min-w-[5px]" />
+    </div>
+  </div>
+) : null}
+
+
+
 
       {/* Dropdown Menu */}
-      {hoveredCategory === "regional" ? (
+      {hoveredCategory === "regional" && (
         <RegionalDropdown
           isVisible={true}
           onMouseEnter={() => handleMouseEnter("regional")}
           onMouseLeave={handleMouseLeave}
         />
-      ) : (
-        hoveredCategory && (
-          <DropdownMenu
-            category={hoveredCategory}
-            isVisible={hoveredCategory !== null}
-            onMouseEnter={() => handleMouseEnter(hoveredCategory)}
-            onMouseLeave={handleMouseLeave}
-          />
-        )
       )}
     </div>
   );

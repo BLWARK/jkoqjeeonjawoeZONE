@@ -1,33 +1,43 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { useBackContext } from "@/context/BackContext";
 
 const DropdownMenu = ({ category, isVisible, onMouseEnter, onMouseLeave }) => {
-  const { getArticlesByCategory, articlesByCategory } = useBackContext();
+  const { getArticlesByCategory, articlesByCategory, platformSlugToId } = useBackContext();
   const [animationClass, setAnimationClass] = useState("");
+  const pathname = usePathname();
+
+const slug = pathname?.startsWith("/regional/") ? pathname.split("/")[2] : null;
+const platformId = platformSlugToId?.[slug] || 1; // fallback ke nasional
 
   // 🔹 Mapping kategori frontend ke nama kategori backend
-  const categoryMap = {
-    entertainment: "ENTERTAINTMENT",
-    technology: "TECHNOLOGY",
-    sport: "SPORT",
-    lifestyle: "LIFESTYLE",
-    "c-level": "C-LEVEL",
-    berita: "BERITA", // kalau perlu
-  };
+  // const categoryMap = {
+  //   entertainment: "ENTERTAINTMENT",
+  //   technology: "TECHNOLOGY",
+  //   sport: "SPORT",
+  //   lifestyle: "LIFESTYLE",
+  //   "c-level": "C-LEVEL",
+  //   berita: "Berita", // kalau perlu
+  // };
 
-  const formattedCategory =
-    categoryMap[category?.toLowerCase()] || category?.toUpperCase();
+  // Pakai langsung slug dari URL
+
+
+  const formattedCategory = category[category?.toLowerCase()];
+if (!formattedCategory) return null; // jangan fetch kalau tidak valid
+
+
 
   // 🔹 Ambil artikel dari backend saat kategori berubah
   useEffect(() => {
-    if (formattedCategory) {
-      getArticlesByCategory(formattedCategory, 1, 1, 4); // platformId = 1, limit = 4
-    }
-  }, [formattedCategory]);
+  if (formattedCategory && platformId) {
+    getArticlesByCategory(formattedCategory, platformId, 1, 4);
+  }
+}, [formattedCategory, platformId]);
 
   // 🔹 Animasi masuk/keluar
   useEffect(() => {
