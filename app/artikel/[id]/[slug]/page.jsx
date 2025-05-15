@@ -214,28 +214,27 @@ const ArticlePage = () => {
 
   // ✅ Deteksi embed Twitter → Load script Tiktok
   useEffect(() => {
-    if (currentArticle?.content.includes("tiktok-embed")) {
-      console.log("🚀 TikTok embed detected");
-
-      // Hapus script sebelumnya jika ada
-      const existingScript = document.querySelector(
-        'script[src="https://www.tiktok.com/embed.js"]'
-      );
-      if (existingScript) {
-        existingScript.remove();
+   const timeout = setTimeout(() => {
+    // Twitter
+    if (document.querySelector(".twitter-tweet")) {
+      if (window?.twttr?.widgets) {
+        window.twttr.widgets.load();
+        console.log("✅ Twitter embed reloaded (slug changed)");
+      } else {
+        const script = document.createElement("script");
+        script.src = "https://platform.twitter.com/widgets.js";
+        script.async = true;
+        script.onload = () => {
+          window?.twttr?.widgets?.load();
+          console.log("✅ Twitter script injected");
+        };
+        document.body.appendChild(script);
       }
-
-      // Tambahkan script baru
-      const script = document.createElement("script");
-      script.src = "https://www.tiktok.com/embed.js";
-      script.async = true;
-      script.onload = () => {
-        console.log("✅ TikTok script loaded and initialized");
-      };
-
-      document.body.appendChild(script);
     }
-  }, [currentArticle]);
+  }, 300); // delay sedikit agar konten benar-benar masuk
+
+  return () => clearTimeout(timeout);
+}, [currentArticle?.content, currentPage]); // gunakan slug sebagai trigger
 
   // ✅ Deteksi embed Twitter → Load script Instagram
   useEffect(() => {
@@ -380,7 +379,7 @@ const ArticlePage = () => {
           </div>
 
           {/* Gambar Artikel */}
-          <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] rounded-lg overflow-hidden mb-2">
+          <div className="relative w-full h-[300px] rounded-lg overflow-hidden mb-2">
             <Image
               src={
                 currentArticle.image
