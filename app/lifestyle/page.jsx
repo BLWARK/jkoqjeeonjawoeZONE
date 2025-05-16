@@ -62,13 +62,13 @@ const LifestylePage = () => {
                 {mainArticle.author?.avatar && (
                   <Image
                     src={mainArticle.author.avatar}
-                    alt={mainArticle.author.username}
+                    alt={mainArticle.author.fullname}
                     width={24}
                     height={24}
                     className="rounded-full"
                   />
                 )}
-                <span className="ml-2">{mainArticle.author?.username || "Unknown"}</span>
+                <span className="ml-2">{mainArticle.author?.fullname || "Unknown"}</span>
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
                 <span>{new Date(mainArticle.date).toLocaleDateString()}</span>
               </div>
@@ -100,13 +100,13 @@ const LifestylePage = () => {
                   {article.author?.avatar && (
                     <Image
                       src={article.author.avatar}
-                      alt={article.author.username}
+                      alt={article.author.fullname}
                       width={24}
                       height={24}
                       className="rounded-full"
                     />
                   )}
-                  <span className="ml-2">{article.author?.username || "Unknown"}</span>
+                  <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
                   <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
                   <span>{new Date(article.date).toLocaleDateString()}</span>
                 </div>
@@ -139,13 +139,13 @@ const LifestylePage = () => {
               {article.author?.avatar && (
                 <Image
                   src={article.author.avatar}
-                  alt={article.author.username}
+                  alt={article.author.fullname}
                   width={24}
                   height={24}
                   className="rounded-full"
                 />
               )}
-              <span className="ml-2">{article.author?.username || "Unknown"}</span>
+              <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
               <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
               <span>{new Date(article.date).toLocaleDateString()}</span>
             </div>

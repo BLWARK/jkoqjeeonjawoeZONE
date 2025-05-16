@@ -82,7 +82,7 @@ const PilihanEditorComponent = () => {
                 {mainArticle.author?.avatar ? (
                   <Image
                     src={mainArticle.author.avatar || "/default.jpg"}
-                    alt={mainArticle.author.username}
+                    alt={mainArticle.author.fullname}
                     width={24}
                     height={24}
                     className="rounded-full"
@@ -91,7 +91,7 @@ const PilihanEditorComponent = () => {
                   <div className="w-[24px] h-[24px] bg-gray-400 rounded-full"></div>
                 )}
                 <span className="ml-2">
-                  {mainArticle.author?.username || "Unknown Author"}
+                  {mainArticle.author?.fullname || "Unknown Author"}
                 </span>
 
                 {/* Garis pemisah */}

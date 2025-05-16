@@ -60,7 +60,7 @@ const RelatedNews = ({ currentArticle }) => {
                 <Image
                   // src={article.author.avatar || "/default.jpg"} 
                   src={"/default.jpg"}
-                  alt={article.author.username}
+                  alt={article.author.fullname}
                   width={30}
                   height={30}
                   className="rounded-full"
@@ -68,7 +68,7 @@ const RelatedNews = ({ currentArticle }) => {
               ) : (
                 <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
               )}
-              <span className="ml-2">{article.author?.username || "Unknown"}</span>
+              <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
               <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
               <span>{new Date(article.date).toLocaleDateString()}</span>
             </div>

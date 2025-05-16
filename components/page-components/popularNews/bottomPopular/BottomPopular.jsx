@@ -64,7 +64,7 @@ const BottomPopular = () => {
               {article.author?.avatar ? (
                 <Image
                   src={article.author.avatar || "/default.jpg"}
-                  alt={article.author.username}
+                  alt={article.author.fullname}
                   width={18}
                   height={18}
                   className="rounded-full"
@@ -73,7 +73,7 @@ const BottomPopular = () => {
                 <div className="w-4 h-4 bg-gray-400 rounded-full"></div>
               )}
               <span className="ml-2">
-                {article.author?.username || "Unknown Author"}
+                {article.author?.fullname || "Unknown Author"}
               </span>
 
               {/* 🔹 Garis Pemisah */}

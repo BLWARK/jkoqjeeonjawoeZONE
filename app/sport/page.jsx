@@ -75,12 +75,12 @@ const SportPage = () => {
                 <div className="flex items-center text-sm mt-3">
                   <Image
                     src={mainArticle.author?.avatar || "/default-avatar.jpg"}
-                    alt={mainArticle.author?.username || "Unknown"}
+                    alt={mainArticle.author?.fullname || "Unknown"}
                     width={24}
                     height={24}
                     className="rounded-full"
                   />
-                  <span className="ml-2">{mainArticle.author?.username || "Unknown"}</span>
+                  <span className="ml-2">{mainArticle.author?.fullname || "Unknown"}</span>
                   <div className="w-[1px] h-5 bg-white mx-2" />
                   <span>{new Date(mainArticle.date).toLocaleDateString()}</span>
                 </div>
@@ -116,12 +116,12 @@ const SportPage = () => {
                   <div className="flex items-center text-sm mt-2">
                     <Image
                       src={article.author?.avatar || "/default-avatar.jpg"}
-                      alt={article.author?.username || "Unknown"}
+                      alt={article.author?.fullname || "Unknown"}
                       width={20}
                       height={20}
                       className="rounded-full"
                     />
-                    <span className="ml-2">{article.author?.username || "Unknown"}</span>
+                    <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
                     <div className="w-[1px] h-5 bg-white mx-2" />
                     <span>{new Date(article.date).toLocaleDateString()}</span>
                   </div>

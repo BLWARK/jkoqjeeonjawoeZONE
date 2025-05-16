@@ -64,12 +64,12 @@ const CLevelPage = () => {
                   <div className="flex items-center text-sm mt-2">
                     <Image
                       src={mainArticle.author?.avatar || "/default-avatar.jpg"}
-                      alt={mainArticle.author?.username || "Unknown"}
+                      alt={mainArticle.author?.fullname || "Unknown"}
                       width={24}
                       height={24}
                       className="rounded-full"
                     />
-                    <span className="ml-2">{mainArticle.author?.username || "Unknown"}</span>
+                    <span className="ml-2">{mainArticle.author?.fullname || "Unknown"}</span>
                     <div className="w-[1px] h-5 bg-white mx-2" />
                     <span>{new Date(mainArticle.date).toLocaleDateString()}</span>
                   </div>
@@ -98,12 +98,12 @@ const CLevelPage = () => {
                     <div className="flex items-center text-sm mt-2">
                       <Image
                         src={secondaryArticles[0].author?.avatar || "/default-avatar.jpg"}
-                        alt={secondaryArticles[0].author?.username || "Unknown"}
+                        alt={secondaryArticles[0].author?.fullname || "Unknown"}
                         width={20}
                         height={20}
                         className="rounded-full"
                       />
-                      <span className="ml-2">{secondaryArticles[0].author?.username || "Unknown"}</span>
+                      <span className="ml-2">{secondaryArticles[0].author?.fullname || "Unknown"}</span>
                       <div className="w-[1px] h-5 bg-white mx-2" />
                       <span>{new Date(secondaryArticles[0].date).toLocaleDateString()}</span>
                     </div>

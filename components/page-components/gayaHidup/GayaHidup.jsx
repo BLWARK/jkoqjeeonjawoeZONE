@@ -69,11 +69,11 @@ const GayaHidup = () => {
               {/* Author & Date */}
               <div className="flex items-center text-sm text-gray-500 mt-2">
                 {article.author?.avatar ? (
-                  <Image src={article.author.avatar} alt={article.author.username} width={20} height={20} className="rounded-full" />
+                  <Image src={article.author.avatar} alt={article.author.fullname} width={20} height={20} className="rounded-full" />
                 ) : (
                   <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                 )}
-                <span className="ml-2">{article.author?.username || "Unknown"}</span>
+                <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
                 <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
                 <span>{new Date(article.date).toLocaleDateString("id-ID")}</span>
               </div>

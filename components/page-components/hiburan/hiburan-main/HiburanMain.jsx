@@ -52,7 +52,7 @@ const HiburanMain = ({ article }) => {
           {article.author?.avatar ? (
             <Image
               src={article.author.avatar}
-              alt={article.author.username}
+              alt={article.author.fullname}
               width={24}
               height={24}
               className="rounded-full"
@@ -60,7 +60,7 @@ const HiburanMain = ({ article }) => {
           ) : (
             <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
           )}
-          <span className="ml-2">{article.author?.username || "Unknown"}</span>
+          <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
           <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
           <span>
             {article.date

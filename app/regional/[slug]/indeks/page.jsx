@@ -102,12 +102,12 @@ const RegionalIndeksPage = () => {
         <div className="flex items-center text-sm text-gray-500 mt-2">
           <Image
             src={article.author?.avatar || "/default.jpg"}
-            alt={article.author?.username || "Author"}
+            alt={article.author?.fullname || "Author"}
             width={20}
             height={20}
             className="rounded-full"
           />
-          <span className="ml-2">{article.author?.username || "Unknown"}</span>
+          <span className="ml-2">{article.author?.fullname || "Unknown"}</span>
           <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
           <span>{new Date(article.date).toLocaleDateString("id-ID")}</span>
         </div>

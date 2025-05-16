@@ -7,6 +7,7 @@ const regionData = [
   { id: "jatim", name: "Jawa Timur", path: "/regional/jawa-timur" },
   { id: "banten", name: "Banten", path: "/regional/banten" },
   { id: "jogja", name: "Yogyakarta", path: "/regional/di-yogyakarta" },
+  { id: "bali", name: "Bali", path: "/regional/bali" },
 ];
 
 export default regionData;

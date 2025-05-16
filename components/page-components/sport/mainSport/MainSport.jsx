@@ -50,7 +50,7 @@ const MainSport = ({ topArticles }) => {
                   {author?.avatar ? (
                     <Image
                       src={author.avatar}
-                      alt={author.username}
+                      alt={author.fullname}
                       width={20}
                       height={20}
                       className="rounded-full"
@@ -58,7 +58,7 @@ const MainSport = ({ topArticles }) => {
                   ) : (
                     <div className="w-5 h-5 bg-gray-400 rounded-full"></div>
                   )}
-                  <span className="ml-2">{author?.username || "Unknown Author"}</span>
+                  <span className="ml-2">{author?.fullname || "Unknown Author"}</span>
                   <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
                   <span>{new Date(article.date).toLocaleDateString("id-ID")}</span>
                 </div>

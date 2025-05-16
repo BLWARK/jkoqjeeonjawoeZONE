@@ -43,7 +43,7 @@ const MainPopular = ({ mainArticle }) => {
               {mainArticle.author?.avatar ? (
                 <Image
                   src={mainArticle.author.avatar || "/default-avatar.jpg"}
-                  alt={mainArticle.author.username}
+                  alt={mainArticle.author.fullname}
                   width={24}
                   height={24}
                   className="rounded-full"

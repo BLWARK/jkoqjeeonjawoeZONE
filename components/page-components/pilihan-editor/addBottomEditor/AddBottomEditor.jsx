@@ -82,7 +82,7 @@ const AddBottomEditor = () => {
               {article.author?.avatar ? (
                 <Image
                   src={article.author.avatar || "/default.jpg"}
-                  alt={article.author.username}
+                  alt={article.author.fullname}
                   width={20}
                   height={20}
                   className="rounded-full"
@@ -91,7 +91,7 @@ const AddBottomEditor = () => {
                 <div className="w-5 h-5 bg-gray-300 rounded-full"></div>
               )}
               <span className="ml-2">
-                {article.author?.username || "Unknown Author"}
+                {article.author?.fullname || "Unknown Author"}
               </span>
 
               {/* 🔹 Garis Pemisah */}

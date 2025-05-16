@@ -55,7 +55,7 @@ const AddHeadSide = ({ headlines }) => {
                 {article?.author?.avatar ? (
                   <Image
                     src={article.author.avatar}
-                    alt={article.author.username || "Unknown"}
+                    alt={article.author.fullname || "Unknown"}
                     width={20}
                     height={20}
                     className="rounded-full"
@@ -63,7 +63,7 @@ const AddHeadSide = ({ headlines }) => {
                 ) : (
                   <div className="w-5 h-5 bg-gray-300 rounded-full"></div>
                 )}
-                <span>{article.author?.username || "Unknown"}</span>
+                <span>{article.author?.fullname || "Unknown"}</span>
 
                 {/* 🔹 Garis Pemisah */}
                 <div className="w-[1px] h-5 bg-gray-300 mx-2" />

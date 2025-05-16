@@ -49,7 +49,7 @@ const MostReadCat = () => {
               {news.author?.avatar ? (
                 <Image
                   src={news.author.avatar}
-                  alt={news.author.username || "Unknown"}
+                  alt={news.author.fullname || "Unknown"}
                   width={20}
                   height={20}
                   className="rounded-full object-cover"
@@ -58,7 +58,7 @@ const MostReadCat = () => {
                 <div className="w-5 h-5 bg-gray-400 rounded-full" />
               )}
               <span className="ml-2">
-                {news.author?.username || "Unknown Author"}
+                {news.author?.fullname || "Unknown Author"}
               </span>
               <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
               <span>{new Date(news.date).toLocaleDateString()}</span>

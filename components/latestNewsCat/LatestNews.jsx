@@ -110,7 +110,7 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
                       <Image
                         // src={article.author.avatar}
                         src={"/default.jpg"}
-                        alt={article.author.username}
+                        alt={article.author.fullname}
                         width={30}
                         height={30}
                         className="rounded-full object-cover"
@@ -120,7 +120,7 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
                     )}
 
                     <span className="ml-2">
-                      {article.author?.username || "Unknown"}
+                      {article.author?.fullname || "Unknown"}
                     </span>
                     <div className="w-[1px] h-5 bg-gray-300 mx-3"></div>
                     <span>

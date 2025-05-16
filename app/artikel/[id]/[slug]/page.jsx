@@ -355,7 +355,7 @@ const ArticlePage = () => {
                     <Image
                       // src={authorInfo.avatar || "/default.jpg"}
                       src={"/default.jpg"}
-                      alt={authorInfo.username}
+                      alt={authorInfo.fullname}
                       width={40}
                       height={40}
                       className="rounded-full object-cover"
@@ -364,7 +364,7 @@ const ArticlePage = () => {
                     <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
                   )}
                   <span className="text-sm text-gray-700">
-                    {authorInfo.username}
+                    {authorInfo.fullname}
                   </span>
                   {/* Garis pemisah */}
                   <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
