@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     "XYZONEMEDIA adalah portal berita terpercaya yang menyajikan informasi terkini di dunia crypto, teknologi, dan keuangan.",
     icons: {
-    icon: "/favicon.ico", // atau "/favicon.png"
+    icon: "/logo.jpg", // atau "/favicon.png"
   },
   keywords:
     "Xyzone Media, xyzonemedia, portal berita, informasi terkini, berita teknologi, berita keuangan, berita terkini",
@@ -82,8 +82,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "NewsMediaOrganization",
               "name": "XYZONEMEDIA",
-              "url": "https://xyzone,media",
-              "logo": "https://xyzone.media/logo.png",
+              "url": "https://xyzone.media",
+              "logo": "https://xyzone.media/logo.jpg",
               "sameAs": [
                 "https://twitter.com/XyzoneMedia",
                 "https://www.facebook.com/XyzoneMedia",
@@ -94,7 +94,7 @@ export default function RootLayout({
                 "name": "XYZONEMEDIA",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://xyzone.media/logo.png",
+                  "url": "https://xyzone.media/logo.jpg",
                   "width": 600,
                   "height": 60
                 }
