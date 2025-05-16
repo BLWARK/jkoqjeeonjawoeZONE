@@ -1,20 +1,23 @@
-import sportNews from "@/data/sportNews";
+import { getArticlesBySport } from "../../lib/api";
 
 export async function generateMetadata() {
-  // ✅ Ambil berita utama (jika ada)
-  const mainArticle = sportNews[0];
+  const articles = await getArticlesBySport(1, 1); // platform_id = 1 (nasional)
+  const mainArticle = articles[0];
+
+  const title = "Berita Olahraga Terbaru - Sepak Bola, MotoGP & Lainnya | XYZONEMEDIA";
+  const description =
+    "Dapatkan berita olahraga terbaru dari dunia sepak bola, MotoGP, F1, bulu tangkis, dan cabang olahraga lainnya hanya di XYZONEMEDIA.";
+  const url = "https://xyzone.media/olahraga";
 
   return {
-    title: "Berita Olahraga Terbaru - Sepak Bola, MotoGP & Lainnya | XYZONEMEDIA",
-    description:
-      "Dapatkan berita olahraga terbaru dari dunia sepak bola, MotoGP, F1, bulu tangkis, dan cabang olahraga lainnya hanya di XYZONEMEDIA.",
+    title,
+    description,
     keywords:
       "berita olahraga, berita sepak bola, MotoGP, F1, bulu tangkis, olahraga terbaru, XYZONEMEDIA",
     openGraph: {
-      title: "Berita Olahraga Terbaru - Sepak Bola, MotoGP & Lainnya | XYZONEMEDIA",
-      description:
-        "Dapatkan berita olahraga terbaru dari dunia sepak bola, MotoGP, F1, bulu tangkis, dan cabang olahraga lainnya hanya di XYZONEMEDIA.",
-      url: "https://xyzone.media/olahraga",
+      title,
+      description,
+      url,
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
@@ -30,9 +33,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Berita Olahraga Terbaru - Sepak Bola, MotoGP & Lainnya | XYZONEMEDIA",
-      description:
-        "Dapatkan berita olahraga terbaru dari dunia sepak bola, MotoGP, F1, bulu tangkis, dan cabang olahraga lainnya hanya di XYZONEMEDIA.",
+      title,
+      description,
       images: mainArticle ? [mainArticle.image] : [],
     },
   };

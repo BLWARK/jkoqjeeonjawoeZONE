@@ -1,17 +1,21 @@
-import entertainmentNews from "@/data/entertainmentNews";
+import { getArticlesByEntertainment } from "@/lib/api/";
 
 export async function generateMetadata() {
-  // ✅ Ambil berita utama (jika ada)
-  const mainArticle = entertainmentNews[0];
+  const articles = await getArticlesByEntertainment(1, 1); // platform nasional
+  const mainArticle = articles[0];
+
+  const title = "Entertainment News - Berita Seputar Hiburan & Selebriti | XYZONEMEDIA";
+  const description = "Dapatkan berita terbaru seputar dunia hiburan, film, musik, selebriti, dan gaya hidup hanya di XYZONEMEDIA.";
+  const url = "https://xyzone.media/entertaintment";
 
   return {
-    title: "Entertainment News - Berita Seputar Hiburan & Selebriti | XYZONEMEDIA",
-    description: "Dapatkan berita terbaru seputar dunia hiburan, film, musik, selebriti, dan gaya hidup hanya di XYZONEMEDIA.",
+    title,
+    description,
     keywords: "berita hiburan, selebriti, film terbaru, musik, gosip artis, gaya hidup, XYZONEMEDIA",
     openGraph: {
-      title: "Entertainment News - Berita Seputar Hiburan & Selebriti | XYZONEMEDIA",
-      description: "Dapatkan berita terbaru seputar dunia hiburan, film, musik, selebriti, dan gaya hidup hanya di XYZONEMEDIA.",
-      url: "https://xyzone.media/entertaintment",
+      title,
+      description,
+      url,
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
@@ -27,8 +31,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Entertainment News - Berita Seputar Hiburan & Selebriti | XYZONEMEDIA",
-      description: "Dapatkan berita terbaru seputar dunia hiburan, film, musik, selebriti, dan gaya hidup hanya di XYZONEMEDIA.",
+      title,
+      description,
       images: mainArticle ? [mainArticle.image] : [],
     },
   };

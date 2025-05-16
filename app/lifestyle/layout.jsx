@@ -1,20 +1,23 @@
-import lifestyleNews from "@/data/lifestyleNews";
+import { getArticlesByLifestyle } from "@/lib/api/";
 
 export async function generateMetadata() {
-  // ✅ Ambil berita utama (jika ada)
-  const mainArticle = lifestyleNews[0];
+  const articles = await getArticlesByLifestyle(1, 1);
+  const mainArticle = articles[0];
+
+  const title = "Lifestyle News - Gaya Hidup, Kesehatan & Tren Terkini | XYZONEMEDIA";
+  const description =
+    "Temukan berita terbaru tentang gaya hidup, kesehatan, tren fashion, dan inspirasi sehari-hari hanya di XYZONEMEDIA.";
+  const url = "https://xyzone.media/lifestyle";
 
   return {
-    title: "Lifestyle News - Gaya Hidup, Kesehatan & Tren Terkini | XYZONEMEDIA",
-    description:
-      "Temukan berita terbaru tentang gaya hidup, kesehatan, tren fashion, dan inspirasi sehari-hari hanya di XYZONEMEDIA.",
+    title,
+    description,
     keywords:
       "berita lifestyle, gaya hidup, kesehatan, tren terbaru, inspirasi hidup, fashion, XYZONEMEDIA",
     openGraph: {
-      title: "Lifestyle News - Gaya Hidup, Kesehatan & Tren Terkini | XYZONEMEDIA",
-      description:
-        "Temukan berita terbaru tentang gaya hidup, kesehatan, tren fashion, dan inspirasi sehari-hari hanya di XYZONEMEDIA.",
-      url: "https://xyzone.media/lifestyle",
+      title,
+      description,
+      url,
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
@@ -30,9 +33,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Lifestyle News - Gaya Hidup, Kesehatan & Tren Terkini | XYZONEMEDIA",
-      description:
-        "Temukan berita terbaru tentang gaya hidup, kesehatan, tren fashion, dan inspirasi sehari-hari hanya di XYZONEMEDIA.",
+      title,
+      description,
       images: mainArticle ? [mainArticle.image] : [],
     },
   };

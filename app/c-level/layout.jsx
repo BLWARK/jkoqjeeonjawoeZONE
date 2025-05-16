@@ -1,17 +1,22 @@
-import cLevelNews from "@/data/cLevel";
+import { getArticlesByCLevel } from "@/lib/api/";
 
 export async function generateMetadata() {
-  // ✅ Ambil berita utama (jika ada)
-  const mainArticle = cLevelNews[0];
+  const articles = await getArticlesByCLevel(1, 1);
+  const mainArticle = articles[0];
+
+  const title = "C-Level News - Berita Eksekutif, CEO, dan Pemimpin Bisnis | XYZONEMEDIA";
+  const description =
+    "Dapatkan berita terbaru seputar eksekutif, CEO, dan pemimpin bisnis di dunia industri dan teknologi hanya di XYZONEMEDIA.";
+  const url = "https://xyzone.media/c-level";
 
   return {
-    title: "C-Level News - Berita Eksekutif, CEO, dan Pemimpin Bisnis | XYZONEMEDIA",
-    description: "Dapatkan berita terbaru seputar eksekutif, CEO, dan pemimpin bisnis di dunia industri dan teknologi hanya di XYZONEMEDIA.",
+    title,
+    description,
     keywords: "C-Level, CEO, eksekutif, berita bisnis, pemimpin industri, XYZONEMEDIA",
     openGraph: {
-      title: "C-Level News - Berita Eksekutif, CEO, dan Pemimpin Bisnis | XYZONEMEDIA",
-      description: "Dapatkan berita terbaru seputar eksekutif, CEO, dan pemimpin bisnis di dunia industri dan teknologi hanya di XYZONEMEDIA.",
-      url: "https://xyzone.media/c-level",
+      title,
+      description,
+      url,
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
@@ -27,8 +32,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: "C-Level News - Berita Eksekutif, CEO, dan Pemimpin Bisnis | XYZONEMEDIA",
-      description: "Dapatkan berita terbaru seputar eksekutif, CEO, dan pemimpin bisnis di dunia industri dan teknologi hanya di XYZONEMEDIA.",
+      title,
+      description,
       images: mainArticle ? [mainArticle.image] : [],
     },
   };

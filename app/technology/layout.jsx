@@ -1,20 +1,23 @@
-import teknologiData from "@/data/teknologiData";
+import { getArticlesByTechnology } from "@/lib/api/";
 
 export async function generateMetadata() {
-  // ✅ Ambil berita utama (jika ada)
-  const mainArticle = teknologiData[0];
+  const articles = await getArticlesByTechnology(1, 1); // platform_id = 1, limit 1
+  const mainArticle = articles[0];
+
+  const title = "Berita Teknologi Terkini - AI, Gadget, Startup | XYZONEMEDIA";
+  const description =
+    "Dapatkan berita terbaru seputar teknologi, AI, gadget, startup, dan inovasi digital terkini hanya di XYZONEMEDIA.";
+  const url = "https://xyzone.media/technology";
 
   return {
-    title: "Berita Teknologi Terkini - AI, Gadget, Startup | XYZONEMEDIA",
-    description:
-      "Dapatkan berita terbaru seputar teknologi, AI, gadget, startup, dan inovasi digital terkini hanya di XYZONEMEDIA.",
+    title,
+    description,
     keywords:
       "berita teknologi, teknologi terbaru, gadget terbaru, startup, AI, inovasi digital, XYZONEMEDIA",
     openGraph: {
-      title: "Berita Teknologi Terkini - AI, Gadget, Startup | XYZONEMEDIA",
-      description:
-        "Dapatkan berita terbaru seputar teknologi, AI, gadget, startup, dan inovasi digital terkini hanya di XYZONEMEDIA.",
-      url: "https://xyzone.media/technology",
+      title,
+      description,
+      url,
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
@@ -30,9 +33,8 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Berita Teknologi Terkini - AI, Gadget, Startup | XYZONEMEDIA",
-      description:
-        "Dapatkan berita terbaru seputar teknologi, AI, gadget, startup, dan inovasi digital terkini hanya di XYZONEMEDIA.",
+      title,
+      description,
       images: mainArticle ? [mainArticle.image] : [],
     },
   };
