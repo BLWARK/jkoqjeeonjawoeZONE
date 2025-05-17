@@ -277,7 +277,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden bg-gray-100 p-4 space-y-4">
+          <nav className="md:hidden bg-gray-100 p-4 space-y-4 text-black">
             <button
               onClick={() => setMobileRegionOpen(!mobileRegionOpen)}
               className="flex justify-between items-center w-full text-left text-black hover:underline"
