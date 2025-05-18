@@ -156,21 +156,25 @@ export const BackProvider = ({ children }) => {
 );
 
   // ✅ Fungsi untuk mengambil data editor choices dari backend dengan `useCallback`
-  const getEditorChoices = useCallback(async (platformId) => {
-    try {
-      const response = await customGet(
-        `/api/editor-choices?platform_id=${platformId}`
-      );
-      if (response?.data) {
-        const sortedEditorChoices = response.data.sort(
-          (a, b) => a.position - b.position
-        );
-        setEditorChoices(sortedEditorChoices);
-      }
-    } catch (error) {
-      console.error("Failed to fetch editor choices:", error);
+ const getEditorChoices = useCallback(async (platformId) => {
+  try {
+    const response = await customGet(`/api/editor-choices?platform_id=${platformId}`);
+    if (response?.data) {
+      const sorted = response.data.sort((a, b) => a.position - b.position);
+
+      // ✅ Cek apakah datanya berubah sebelum setState
+      setEditorChoices((prev) => {
+        const prevJSON = JSON.stringify(prev);
+        const newJSON = JSON.stringify(sorted);
+        if (prevJSON !== newJSON) return sorted;
+        return prev; // sama -> tidak update
+      });
     }
-  }, []);
+  } catch (error) {
+    console.error("Failed to fetch editor choices:", error);
+  }
+}, []);
+
 
   const getLatestArticles = useCallback(
   async (platformId = 1, page = 1, limit = 6) => {
@@ -279,10 +283,11 @@ useEffect(() => {
 
   
   // ✅ Gunakan `useEffect` tanpa menyebabkan loop
-  useEffect(() => {
-    getHeadlines(1); // platformId = 1
-    getEditorChoices(1); // platformId = 1
-  }, [getHeadlines, getEditorChoices]);
+ useEffect(() => {
+  const platformId = 1;
+  getHeadlines(platformId);
+  getEditorChoices(platformId);
+}, []); // HANYA SEKALI
 
   useEffect(() => {
     getAllPlatformLogos(); // ✅ cukup satu kali saja di context

@@ -17,8 +17,11 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
 
 
   const displayedIds = new Set(
-    displayedCategoryArticles.map((article) => String(article.article_id))
-  );
+  displayedCategoryArticles
+    .filter((article) => article && article.article_id) // pastikan valid
+    .map((article) => String(article.article_id))
+);
+
 
   const categoryMap = {
     entertainment: "ENTERTAINTMENT",
