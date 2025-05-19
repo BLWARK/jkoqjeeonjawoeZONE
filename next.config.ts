@@ -1,14 +1,6 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "156.67.217.169",
-        port: "9001",
-        pathname: "/**",
-      },
       {
         protocol: "https",
         hostname: "storage.xyzone.media",
@@ -18,4 +10,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig; // ← ini penting, jangan pakai `export default` kalau pakai JavaScript biasa

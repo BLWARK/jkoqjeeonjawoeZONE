@@ -133,7 +133,7 @@ const Footer = () => {
         </p>
 
         {/* Additional Links */}
-        <div className="flex space-x-6">
+        {/* <div className="flex space-x-6">
           <Link href="/kontak" className="hover:text-pink-500">
             Kontak
           </Link>
@@ -143,7 +143,7 @@ const Footer = () => {
           <Link href="/ecosystem" className="hover:text-pink-500">
             Ekosistem
           </Link>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

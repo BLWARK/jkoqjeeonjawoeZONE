@@ -33,16 +33,24 @@ const ArticlePage = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const fetchedSlugRef = useRef(null);
   const speechRef = useRef(null);
-  const BASE_URL = "http://156.67.217.169:9001";
+  const [isLoadingArticle, setIsLoadingArticle] = useState(true);
+
+
   const DEFAULT_IMAGE = "/default-image.jpg"; // 🔥 Pakai gambar lokal sebagai fallback
 
   // ✅ Ambil data artikel berdasarkan `slug` atau `id`
-  useEffect(() => {
+ useEffect(() => {
+  const fetchArticle = async () => {
     if (params?.slug && params.slug !== fetchedSlugRef.current) {
       fetchedSlugRef.current = params.slug;
-      getArticleBySlug(params.slug);
+      setIsLoadingArticle(true);
+      await getArticleBySlug(params.slug);
+      setIsLoadingArticle(false);
     }
-  }, [params?.slug]);
+  };
+  fetchArticle();
+}, [params?.slug]);
+
 
   // ✅ Set author setelah article berhasil didapat
   useEffect(() => {
@@ -214,27 +222,27 @@ const ArticlePage = () => {
 
   // ✅ Deteksi embed Twitter → Load script Tiktok
   useEffect(() => {
-   const timeout = setTimeout(() => {
-    // Twitter
-    if (document.querySelector(".twitter-tweet")) {
-      if (window?.twttr?.widgets) {
-        window.twttr.widgets.load();
-        console.log("✅ Twitter embed reloaded (slug changed)");
-      } else {
-        const script = document.createElement("script");
-        script.src = "https://platform.twitter.com/widgets.js";
-        script.async = true;
-        script.onload = () => {
-          window?.twttr?.widgets?.load();
-          console.log("✅ Twitter script injected");
-        };
-        document.body.appendChild(script);
+    const timeout = setTimeout(() => {
+      // Twitter
+      if (document.querySelector(".twitter-tweet")) {
+        if (window?.twttr?.widgets) {
+          window.twttr.widgets.load();
+          console.log("✅ Twitter embed reloaded (slug changed)");
+        } else {
+          const script = document.createElement("script");
+          script.src = "https://platform.twitter.com/widgets.js";
+          script.async = true;
+          script.onload = () => {
+            window?.twttr?.widgets?.load();
+            console.log("✅ Twitter script injected");
+          };
+          document.body.appendChild(script);
+        }
       }
-    }
-  }, 300); // delay sedikit agar konten benar-benar masuk
+    }, 300); // delay sedikit agar konten benar-benar masuk
 
-  return () => clearTimeout(timeout);
-}, [currentArticle?.content, currentPage]); // gunakan slug sebagai trigger
+    return () => clearTimeout(timeout);
+  }, [currentArticle?.content, currentPage]); // gunakan slug sebagai trigger
 
   // ✅ Deteksi embed Twitter → Load script Instagram
   useEffect(() => {
@@ -315,6 +323,14 @@ const ArticlePage = () => {
     return <p className="text-center py-10">Artikel tidak ditemukan...</p>;
   }
 
+  if (isLoadingArticle) {
+  return (
+    <div className="flex justify-center items-center h-[300px]">
+      <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
+
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-2 px-3">
       {/* 🔹 Tracking Komponen ✅ */}
@@ -383,7 +399,7 @@ const ArticlePage = () => {
             <Image
               src={
                 currentArticle.image
-                  ? `${BASE_URL}/${currentArticle.image}`
+                  ? encodeURI(currentArticle.image)
                   : DEFAULT_IMAGE
               }
               alt={currentArticle.title || "Gambar tidak tersedia"}
