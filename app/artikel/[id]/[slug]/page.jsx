@@ -369,8 +369,8 @@ const ArticlePage = () => {
                 <>
                   {authorInfo.avatar ? (
                     <Image
-                      // src={authorInfo.avatar || "/default.jpg"}
-                      src={"/default.jpg"}
+                      src={authorInfo.avatar || "/default.jpg"}
+                      
                       alt={authorInfo.fullname}
                       width={40}
                       height={40}

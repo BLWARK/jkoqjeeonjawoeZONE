@@ -58,8 +58,7 @@ const RelatedNews = ({ currentArticle }) => {
             <div className="flex items-center text-sm text-gray-500 mt-2">
               {article.author?.avatar ? (
                 <Image
-                  // src={article.author.avatar || "/default.jpg"} 
-                  src={"/default.jpg"}
+                  src={article.author.avatar || "/default.jpg"} 
                   alt={article.author.fullname}
                   width={30}
                   height={30}

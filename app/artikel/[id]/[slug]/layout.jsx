@@ -5,8 +5,6 @@ export async function generateMetadata(context) {
   const { slug } = await context.params;
 
   try {
-    
-
     // ✅ Ambil artikel langsung dari slug (pakai await karena fetching async)
     const article = await getArticleBySlug(slug);
 
@@ -36,14 +34,13 @@ export async function generateMetadata(context) {
         url: `https://xyzone.media/artikel/${article.article_id}/${article.slug}`,
         images: [
           {
-            url: article.image
-              ? `http://156.67.217.169:9001/${article.image}`
-              : "/default-image.jpg",
+            url: article.image || "/default-image.jpg",
             width: 1200,
             height: 630,
             alt: article.title,
           },
         ],
+
         type: "article",
         publishedTime: article.date,
         siteName: "XYZONEMEDIA",
@@ -53,11 +50,7 @@ export async function generateMetadata(context) {
         title: article.title,
         description:
           article.description || article.content.substring(0, 150) + "...",
-        images: [
-          article.image
-            ? `http://156.67.217.169:9001/${article.image}`
-            : "/default-image.jpg",
-        ],
+        images: [article.image || "/default-image.jpg"],
       },
     };
   } catch (error) {
