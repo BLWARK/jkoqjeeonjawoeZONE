@@ -35,22 +35,20 @@ const ArticlePage = () => {
   const speechRef = useRef(null);
   const [isLoadingArticle, setIsLoadingArticle] = useState(true);
 
-
   const DEFAULT_IMAGE = "/default-image.jpg"; // 🔥 Pakai gambar lokal sebagai fallback
 
   // ✅ Ambil data artikel berdasarkan `slug` atau `id`
- useEffect(() => {
-  const fetchArticle = async () => {
-    if (params?.slug && params.slug !== fetchedSlugRef.current) {
-      fetchedSlugRef.current = params.slug;
-      setIsLoadingArticle(true);
-      await getArticleBySlug(params.slug);
-      setIsLoadingArticle(false);
-    }
-  };
-  fetchArticle();
-}, [params?.slug]);
-
+  useEffect(() => {
+    const fetchArticle = async () => {
+      if (params?.slug && params.slug !== fetchedSlugRef.current) {
+        fetchedSlugRef.current = params.slug;
+        setIsLoadingArticle(true);
+        await getArticleBySlug(params.slug);
+        setIsLoadingArticle(false);
+      }
+    };
+    fetchArticle();
+  }, [params?.slug]);
 
   // ✅ Set author setelah article berhasil didapat
   useEffect(() => {
@@ -324,12 +322,12 @@ const ArticlePage = () => {
   }
 
   if (isLoadingArticle) {
-  return (
-    <div className="flex justify-center items-center h-[300px]">
-      <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
-}
+    return (
+      <div className="flex justify-center items-center h-[300px]">
+        <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-2 px-3">
@@ -370,7 +368,6 @@ const ArticlePage = () => {
                   {authorInfo.avatar ? (
                     <Image
                       src={authorInfo.avatar || "/default.jpg"}
-                      
                       alt={authorInfo.fullname}
                       width={40}
                       height={40}
@@ -431,6 +428,11 @@ const ArticlePage = () => {
             [&_td]:border 
             [&_td]:p-2 
             [&_th]:p-2 
+            [&_ul]:list-disc 
+    [&_ul]:pl-6 
+    [&_ol]:list-decimal 
+    [&_ol]:pl-6
+    [&_li]:mb-1
             [&_thead]:bg-gray-100 
             [&_table]:my-6 
             [&_table]:text-sm
