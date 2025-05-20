@@ -1,7 +1,7 @@
 import { getArticleBySlug } from "@/lib/api"; // ✅ Panggil langsung fungsi getArticleBySlug
 
 export async function generateMetadata(context) {
-  const { slug } = context.params;
+  const { slug } = await context.params;
 
   const normalizeImage = (url) => {
     if (!url) return "https://xyzone.media/default-image.jpg";

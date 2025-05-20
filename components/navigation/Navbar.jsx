@@ -31,6 +31,8 @@ const Navbar = () => {
   const [platformId, setPlatformId] = useState(null);
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [abortController, setAbortController] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
 
   const router = useRouter(); // ✅ Router untuk navigasi
   const pathname = usePathname();
@@ -67,6 +69,20 @@ const Navbar = () => {
 
     fetchCategories();
   }, [regionSlug, platformSlugToId]);
+
+  useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   const defaultBlack = "/Official.png";
   const defaultWhite = "/Official-white.png";
@@ -138,10 +154,78 @@ const Navbar = () => {
   };
 
   return (
+    <>
+    
     <div className="w-full max-w-[1200px] 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1000px] bg-gray-100">
+       {isScrolled && (
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4 px-4 flex justify-center space-x-60 items-center  ">
+        <div className="flex">
+        <a href="/" className="relative w-32 h-10 ">
+          <Image
+            src={logoSrc}
+            alt="Logo Scrolled"
+            fill
+            style={{ objectFit: "contain" }}
+          />
+        </a>
+        </div>
+        <div className="flex justify-end">
+        {isRegionalPage &&
+            Array.isArray(platformCategories) &&
+            platformCategories.length > 0
+              ? platformCategories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="relative group"
+                    onMouseEnter={() => handleMouseEnter(cat.category_slug)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      href={`/regional/${regionSlug}/kategori/${cat.category_slug}`}
+                      className="text-black whitespace-nowrap hover:underline px-4 border-r pr-10 border-r-gray-300 2xl:text-lg xl:text-md lg:text-xs"
+                    >
+                      {cat.category_name}
+                    </Link>
+                  </div>
+                ))
+              : !isRegionalPage
+              ? [
+                  { name: "Entertainment", path: "/entertaintment" },
+                  { name: "Technology", path: "/technology" },
+                  { name: "Sport", path: "/sport" },
+                  { name: "C-Level", path: "/c-level" },
+                  { name: "Lifestyle", path: "/lifestyle" },
+                  { name: "Indeks", path: "/indeks" },
+                ].map((menu) => {
+                  const isActive = pathname.startsWith(menu.path);
+
+                  return (
+                    <div
+                      key={menu.name}
+                      className="relative group"
+                      onMouseEnter={() => handleMouseEnter(menu.category)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <Link
+                        href={menu.path}
+                        className={`whitespace-nowrap hover:underline px-4 border-r  border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs ${
+                          isActive
+                            ? "text-pink-500 font-semibold"
+                            : "text-black"
+                        }`}
+                      >
+                        {menu.name}
+                      </Link>
+                    </div>
+                  );
+                })
+              : null}
+              </div>
+      </div>
+    )}
       {/* Main Navbar */}
       <div className="bg-gray-100">
-        <div className="container mx-auto 2xl:py-6 xl:py-6 lg:py-6 flex justify-between items-center px-2">
+        <div className="container  mx-auto 2xl:py-6 xl:py-6 lg:py-6 flex justify-between items-center px-2">
           {/* Logo - Desktop */}
           <a href="/" className="hidden md:block relative w-48 h-20">
             <Image
@@ -448,6 +532,7 @@ const Navbar = () => {
         />
       )}
     </div>
+    </>
   );
 };
 
