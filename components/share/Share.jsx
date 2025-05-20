@@ -29,7 +29,7 @@ const Share = ({ article }) => {
         url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
         break;
       case "whatsapp":
-        url = `https://api.whatsapp.com/send?text=${encodedTitle} ${encodedUrl}`;
+        url = `https://api.whatsapp.com/send?text=${encodedTitle} ${encodedUrl}?ref=wa`;
         break;
       default:
         break;

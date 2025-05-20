@@ -1,15 +1,17 @@
 import { getArticleBySlug } from "@/lib/api"; // ✅ Panggil langsung fungsi getArticleBySlug
 
 export async function generateMetadata(context) {
-  // ✅ Ambil params langsung TANPA AWAIT
-  const { slug } = await context.params;
+  const { slug } = context.params;
+
+  const normalizeImage = (url) => {
+    if (!url) return "https://xyzone.media/default-image.jpg";
+    return url.replace("http://156.67.217.169:9001", "https://storage.xyzone.media");
+  };
 
   try {
-    // ✅ Ambil artikel langsung dari slug (pakai await karena fetching async)
     const article = await getArticleBySlug(slug);
 
     if (!article) {
-      console.warn("⚠️ Artikel tidak ditemukan");
       return {
         title: "Artikel Tidak Ditemukan | XYZONEMEDIA",
         description: "Artikel yang Anda cari tidak ditemukan.",
@@ -17,30 +19,28 @@ export async function generateMetadata(context) {
       };
     }
 
-    // ✅ Ambil keywords dari artikel (jika ada)
     const keywords = Array.isArray(article.tags)
       ? article.tags.join(", ")
       : article.tags || "berita terkini, berita terbaru, informasi terkini";
 
+    const imageUrl = normalizeImage(article.image);
+
     return {
       title: `${article.title} | XYZONEMEDIA`,
-      description:
-        article.description || article.content.substring(0, 150) + "...",
+      description: article.description || article.content.substring(0, 150) + "...",
       keywords,
       openGraph: {
         title: article.title,
-        description:
-          article.description || article.content.substring(0, 150) + "...",
+        description: article.description || article.content.substring(0, 150) + "...",
         url: `https://xyzone.media/artikel/${article.article_id}/${article.slug}`,
         images: [
           {
-            url: article.image || "/default-image.jpg",
+            url: imageUrl,
             width: 1200,
             height: 630,
             alt: article.title,
           },
         ],
-
         type: "article",
         publishedTime: article.date,
         siteName: "XYZONEMEDIA",
@@ -48,9 +48,8 @@ export async function generateMetadata(context) {
       twitter: {
         card: "summary_large_image",
         title: article.title,
-        description:
-          article.description || article.content.substring(0, 150) + "...",
-        images: [article.image || "/default-image.jpg"],
+        description: article.description || article.content.substring(0, 150) + "...",
+        images: [imageUrl],
       },
     };
   } catch (error) {
@@ -62,6 +61,7 @@ export async function generateMetadata(context) {
     };
   }
 }
+
 
 export default function ArticleLayout({ children }) {
   return <>{children}</>;

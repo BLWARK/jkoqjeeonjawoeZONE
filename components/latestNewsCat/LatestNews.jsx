@@ -111,8 +111,8 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
                   <div className="flex items-center text-sm text-gray-500 mt-2">
                     {article.author?.avatar ? (
                       <Image
-                        // src={article.author.avatar}
-                        src={"/default.jpg"}
+                        src={article.author.avatar}
+                        
                         alt={article.author.fullname}
                         width={30}
                         height={30}

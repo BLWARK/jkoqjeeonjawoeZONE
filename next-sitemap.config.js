@@ -8,18 +8,19 @@ const config = {
   exclude: ["/admin", "/login"],
   outDir: "./public",
 
-  // ⬇️ Tambahkan artikel dynamic ke sitemap
+  // ✅ Ambil artikel dari API dan masukkan ke sitemap
   additionalPaths: async (config) => {
-  const res = await fetch("https://api.xyzone.media/articles");
-  const json = await res.json();
-  const articles = json.data || []; // ✅ sesuaikan path array-nya
+    const res = await fetch("https://api.xyzone.media/articles");
+    const json = await res.json();
 
-  return articles.map((article) => ({
-    loc: `${config.siteUrl}/artikel/${article.article_id}/${article.slug}`,
-    lastmod: article.updated_at || new Date().toISOString(),
-    changefreq: "daily",
-    priority: 0.8,
-  }));
+    const articles = json?.data || [];
+
+    return articles.map((article) => ({
+      loc: `${config.siteUrl}/artikel/${article.article_id}/${article.slug}`,
+      lastmod: article.updated_at || new Date().toISOString(),
+      changefreq: "daily",
+      priority: 0.8,
+    }));
   },
 };
 
