@@ -4,7 +4,7 @@ import { useBackContext } from "@/context/BackContext";
 import HiburanLeft from "../../page-components/hiburan/hiburan-left/HiburanLeft";
 import HiburanMain from "../../page-components/hiburan/hiburan-main/HiburanMain";
 import HiburanRight from "../../page-components/hiburan/hiburan-right/HiburanRight";
-import Ads from "@/components/page-components/adv-sect/AdvBottomHead";
+import AdsEnt from "@/components/page-components/adv-sect/AdvEntertainment";
 
 const Hiburan = () => {
   const { getArticlesByCategory, articlesByCategory } = useBackContext();
@@ -34,12 +34,12 @@ const Hiburan = () => {
           View All
         </a>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-14">
         <HiburanLeft articles={leftArticles} />
         <HiburanMain article={mainArticle} />
         <HiburanRight articles={rightArticles} />
       </div>
-      <Ads />
+      <AdsEnt />
     </div>
   );
 };

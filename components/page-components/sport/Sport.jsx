@@ -38,7 +38,9 @@ const Sport = () => {
 
       {/* Berita Tambahan (Orientasi Horizontal) */}
       <BottomSport bottomArticles={bottomArticles} />
+      <div className="mt-10">
       <Ads/>
+      </div>
     </div>
   );
 };
