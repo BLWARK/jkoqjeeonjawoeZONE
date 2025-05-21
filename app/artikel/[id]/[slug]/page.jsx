@@ -62,52 +62,59 @@ const ArticlePage = () => {
   }, [rawPage, pages.length]);
 
   const splitHtmlContent = (html, maxChars = 4000) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
 
-    // Tambahkan caption setelah setiap <img> yang punya alt
-    const images = doc.querySelectorAll("img[alt]");
-    images.forEach((img) => {
-      const altText = img.getAttribute("alt");
-      if (altText) {
-        const caption = document.createElement("small");
-        caption.textContent = altText;
-        caption.style.display = "block";
-        caption.style.textAlign = "left";
-        caption.style.color = "#666";
-        caption.style.fontSize = "0.8rem";
-        caption.style.marginTop = "4px";
+  // 🔥 Cegah blockquote bersarang
+  const nestedQuotes = doc.querySelectorAll("blockquote blockquote");
+  nestedQuotes.forEach((nested) => {
+    nested.replaceWith(...nested.childNodes); // keluarin isi tanpa <blockquote>
+  });
 
-        img.insertAdjacentElement("afterend", caption);
-      }
-    });
+  // ✅ Tambahkan caption setelah setiap <img> yang punya alt
+  const images = doc.querySelectorAll("img[alt]");
+  images.forEach((img) => {
+    const altText = img.getAttribute("alt");
+    if (altText) {
+      const caption = document.createElement("small");
+      caption.textContent = altText;
+      caption.style.display = "block";
+      caption.style.textAlign = "left";
+      caption.style.color = "#666";
+      caption.style.fontSize = "0.8rem";
+      caption.style.marginTop = "4px";
 
-    let chunks = [];
-    let temp = "";
-    let count = 0;
-
-    const children = Array.from(doc.body.childNodes);
-
-    children.forEach((node) => {
-      const htmlString = node.outerHTML || node.textContent;
-      const length = htmlString.length;
-
-      if (count + length > maxChars) {
-        chunks.push(temp);
-        temp = htmlString;
-        count = length;
-      } else {
-        temp += htmlString;
-        count += length;
-      }
-    });
-
-    if (temp) {
-      chunks.push(temp);
+      img.insertAdjacentElement("afterend", caption);
     }
+  });
 
-    return chunks;
-  };
+  let chunks = [];
+  let temp = "";
+  let count = 0;
+
+  const children = Array.from(doc.body.childNodes);
+
+  children.forEach((node) => {
+    const htmlString = node.outerHTML || node.textContent;
+    const length = htmlString.length;
+
+    if (count + length > maxChars) {
+      chunks.push(temp);
+      temp = htmlString;
+      count = length;
+    } else {
+      temp += htmlString;
+      count += length;
+    }
+  });
+
+  if (temp) {
+    chunks.push(temp);
+  }
+
+  return chunks;
+};
+
 
   useEffect(() => {
     if (currentArticle?.content) {
