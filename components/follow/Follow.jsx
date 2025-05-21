@@ -1,5 +1,6 @@
 import React from "react";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { AiFillTikTok } from "react-icons/ai";
 import { FaXTwitter } from "react-icons/fa6";
 
 const follow = () => {
@@ -10,18 +11,18 @@ const follow = () => {
       </h3>
       <div className="flex items-center gap-4">
         <a
-          href="https://www.facebook.com"
+          href="https://www.tiktok.com/@xyzonemedia?_t=ZS-8wDy2fTaIBE&_r=1"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 hover:bg-blue-600 transition duration-300 group"
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 hover:bg-black transition duration-300 group"
         >
-          <FaFacebookF
-            className="text-blue-600 group-hover:text-white transition duration-300"
+          <AiFillTikTok
+            className="text-black group-hover:text-white transition duration-300"
             size={20}
           />
         </a>
         <a
-          href="https://www.twitter.com"
+          href="https://x.com/xyzoneupdate?s=21"
           target="_blank"
           rel="noopener noreferrer"
           className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 hover:bg-black transition duration-300 group"
@@ -32,7 +33,7 @@ const follow = () => {
           />
         </a>
         <a
-          href="https://www.instagram.com"
+          href="https://www.instagram.com/xyzonemedia?igsh=NzNoaTF3aDc3aDM2"
           target="_blank"
           rel="noopener noreferrer"
           className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 hover:bg-pink-500 transition duration-300 group"
@@ -42,6 +43,18 @@ const follow = () => {
             size={20}
           />
         </a>
+        <a
+          href="https://www.youtube.com/@XYZoneTV"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300 hover:bg-red-500 transition duration-300 group"
+        >
+          <FaYoutube
+            className="text-red-500 group-hover:text-white transition duration-300"
+            size={20}
+          />
+        </a>
+        
       </div>
     </div>
   );
