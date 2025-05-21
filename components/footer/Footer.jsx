@@ -27,7 +27,7 @@ const Footer = () => {
           <h4 className="text-lg font-semibold mb-6 text-pink-500">Category</h4>
           <ul className="text-sm text-gray-200 space-y-6">
             <li>
-              <Link href="/entertainment" className=" hover:text-pink-500">
+              <Link href="/entertaintment" className=" hover:text-pink-500">
                 Entertainment
               </Link>
             </li>
