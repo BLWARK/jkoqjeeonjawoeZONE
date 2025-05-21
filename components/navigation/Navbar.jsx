@@ -157,10 +157,12 @@ const Navbar = () => {
     <>
     
     <div className="w-full max-w-[1200px] 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1000px] bg-gray-100">
-       {isScrolled && (
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4 px-4 flex justify-center space-x-60 items-center  ">
-        <div className="flex">
-        <a href="/" className="relative w-32 h-10 ">
+      {isScrolled && (
+  <>
+    {/* Navbar Mini */}
+    <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4 px-4 2xl:flex xl:flex lg:flex md:flex hidden justify-center 2xl:space-x-[300px] xl:space-x-[450px] lg:space-x-[250px] items-center" >
+      <div className="flex">
+        <a href="/" className="relative w-32 h-10">
           <Image
             src={logoSrc}
             alt="Logo Scrolled"
@@ -168,61 +170,89 @@ const Navbar = () => {
             style={{ objectFit: "contain" }}
           />
         </a>
-        </div>
-        <div className="flex justify-end">
-        {isRegionalPage &&
-            Array.isArray(platformCategories) &&
-            platformCategories.length > 0
-              ? platformCategories.map((cat) => (
-                  <div
-                    key={cat.id}
-                    className="relative group"
-                    onMouseEnter={() => handleMouseEnter(cat.category_slug)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <Link
-                      href={`/regional/${regionSlug}/kategori/${cat.category_slug}`}
-                      className="text-black whitespace-nowrap hover:underline px-4 border-r pr-10 border-r-gray-300 2xl:text-lg xl:text-md lg:text-xs"
-                    >
-                      {cat.category_name}
-                    </Link>
-                  </div>
-                ))
-              : !isRegionalPage
-              ? [
-                  { name: "Entertainment", path: "/entertaintment" },
-                  { name: "Technology", path: "/technology" },
-                  { name: "Sport", path: "/sport" },
-                  { name: "C-Level", path: "/c-level" },
-                  { name: "Lifestyle", path: "/lifestyle" },
-                  { name: "Indeks", path: "/indeks" },
-                ].map((menu) => {
-                  const isActive = pathname.startsWith(menu.path);
-
-                  return (
-                    <div
-                      key={menu.name}
-                      className="relative group"
-                      onMouseEnter={() => handleMouseEnter(menu.category)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <Link
-                        href={menu.path}
-                        className={`whitespace-nowrap hover:underline px-4 border-r  border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs ${
-                          isActive
-                            ? "text-pink-500 font-semibold"
-                            : "text-black"
-                        }`}
-                      >
-                        {menu.name}
-                      </Link>
-                    </div>
-                  );
-                })
-              : null}
-              </div>
       </div>
-    )}
+
+      {/* Kategori */}
+      <div className="flex justify-end">
+        {isRegionalPage &&
+        Array.isArray(platformCategories) &&
+        platformCategories.length > 0
+          ? platformCategories.map((cat) => (
+              <div
+                key={cat.id}
+                className="relative group"
+                onMouseEnter={() => handleMouseEnter(cat.category_slug)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Link
+                  href={`/regional/${regionSlug}/kategori/${cat.category_slug}`}
+                  className="text-black whitespace-nowrap hover:underline px-4 border-r pr-10 border-r-gray-300 2xl:text-lg xl:text-md lg:text-xs"
+                >
+                  {cat.category_name}
+                </Link>
+              </div>
+            ))
+          : [
+              { name: "Entertainment", path: "/entertaintment" },
+              { name: "Technology", path: "/technology" },
+              { name: "Sport", path: "/sport" },
+              { name: "C-Level", path: "/c-level" },
+              { name: "Lifestyle", path: "/lifestyle" },
+              { name: "Indeks", path: "/indeks" },
+            ].map((menu) => {
+              const isActive = pathname.startsWith(menu.path);
+              return (
+                <div
+                  key={menu.name}
+                  className="relative group"
+                  onMouseEnter={() => handleMouseEnter(menu.category)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link
+                    href={menu.path}
+                    className={`whitespace-nowrap hover:underline px-4 border-r border-r-gray-300 pr-10 2xl:text-lg xl:text-md lg:text-xs ${
+                      isActive
+                        ? "text-pink-500 font-semibold"
+                        : "text-black"
+                    }`}
+                  >
+                    {menu.name}
+                  </Link>
+                </div>
+              );
+            })}
+      </div>
+    </div>
+
+    {/* Regional Menu (fixed di bawahnya)
+    {(platformId !== null && platformId !== 0) || isRegionalPage ? (
+      <div className="fixed 2xl:block xl:block lg:block  hidden top-[66px] left-0 right-0 z-40 bg-gray-700 py-4 border-t border-gray-300 overflow-x-auto px-4">
+        <div className="max-w-[1000px] 2xl:max-w-[1400px] xl:max-w-[1150px] lg:max-w-[900px] md:max-w-[600px]  flex gap-10 justify-center items-center">
+          {regionData.map((region) => {
+            const isActive =
+              region.path === "/"
+                ? pathname === "/"
+                : pathname.startsWith(region.path);
+
+            return (
+              <Link
+                key={region.id}
+                href={region.path}
+                className={`text-sm whitespace-nowrap hover:underline ${
+                  isActive ? "text-pink-500 font-semibold" : "text-white"
+                }`}
+              >
+                {region.name}
+              </Link>
+            );
+          })}
+          <div className="min-w-[5px]" />
+        </div>
+      </div>
+    ) : null} */}
+  </>
+)}
+
       {/* Main Navbar */}
       <div className="bg-gray-100">
         <div className="container  mx-auto 2xl:py-6 xl:py-6 lg:py-6 flex justify-between items-center px-2">

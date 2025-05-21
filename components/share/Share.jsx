@@ -12,7 +12,7 @@ import { FaXTwitter} from "react-icons/fa6";
 const Share = ({ article }) => {
   if (!article) return null; // ✅ Jangan render jika artikel kosong
 
-  const shareUrl = `https://xyzone.media/artikel/${article._id}/${article.slug || ""}`;
+  const shareUrl = `https://xyzone.media/artikel/${article.article_id}/${article.slug || ""}`;
   const encodedTitle = encodeURIComponent(article.title || "");
   const encodedUrl = encodeURIComponent(shareUrl);
 

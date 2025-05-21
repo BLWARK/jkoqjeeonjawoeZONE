@@ -70,6 +70,7 @@ export default function RootLayout({
         {/* ✅ Tambahkan PWA support */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="google-site-verification" content="l_arQzQREnB3JrRFH_koj6XNhCI2bUasKzT2pSH7w7g" />
+        <meta name="msvalidate.01" content="98F79C92B69C4284488C28E54D68FABC" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#ff6600" />
