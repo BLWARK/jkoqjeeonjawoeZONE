@@ -1,4 +1,4 @@
-import { getArticleBySlug } from "@/lib/api"; // ✅ Panggil langsung fungsi getArticleBySlug
+import { getArticleBySlug } from "@/lib/api";
 
 export async function generateMetadata(context) {
   const { slug } = await context.params;
@@ -24,15 +24,43 @@ export async function generateMetadata(context) {
       : article.tags || "berita terkini, berita terbaru, informasi terkini";
 
     const imageUrl = normalizeImage(article.image);
+    const articleUrl = `https://xyzone.media/artikel/${article.article_id}/${article.slug}`;
+
+    // ✅ JSON-LD schema untuk NewsArticle
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": articleUrl,
+      },
+      "headline": article.title,
+      "image": [imageUrl],
+      "datePublished": article.date,
+      "dateModified": article.updated_at || article.date,
+      "author": {
+        "@type": "Person",
+        "name": article.author?.fullname || "Redaksi XYZONEMEDIA",
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XYZONEMEDIA",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://xyzone.media/logo.png", // ganti dengan logo publik asli kamu
+        },
+      },
+      "description": article.description || article.content?.substring(0, 150) + "...",
+    };
 
     return {
       title: `${article.title} | XYZONEMEDIA`,
-      description: article.description || article.content.substring(0, 150) + "...",
+      description: article.description || article.content?.substring(0, 150) + "...",
       keywords,
       openGraph: {
         title: article.title,
-        description: article.description || article.content.substring(0, 150) + "...",
-        url: `https://xyzone.media/artikel/${article.article_id}/${article.slug}`,
+        description: article.description || article.content?.substring(0, 150) + "...",
+        url: articleUrl,
         images: [
           {
             url: imageUrl,
@@ -48,8 +76,11 @@ export async function generateMetadata(context) {
       twitter: {
         card: "summary_large_image",
         title: article.title,
-        description: article.description || article.content.substring(0, 150) + "...",
+        description: article.description || article.content?.substring(0, 150) + "...",
         images: [imageUrl],
+      },
+      other: {
+        "script:ld+json": JSON.stringify(jsonLd),
       },
     };
   } catch (error) {
@@ -61,7 +92,6 @@ export async function generateMetadata(context) {
     };
   }
 }
-
 
 export default function ArticleLayout({ children }) {
   return <>{children}</>;
