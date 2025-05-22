@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaInstagram, FaYoutube,} from "react-icons/fa";
+import { FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,9 +70,14 @@ const Footer = () => {
                 Susunan Redaksi
               </Link>
             </li>
-            
+
             <li>
-              <Link href="/#" className=" hover:text-pink-500">
+              <Link
+                href="https://wa.me/+6281295095096"
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" hover:text-pink-500"
+              >
                 Kontak Kami
               </Link>
             </li>
