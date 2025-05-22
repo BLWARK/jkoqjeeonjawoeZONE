@@ -35,7 +35,7 @@ const PopularNews = () => {
 
   return (
     <div className="w-screen bg-gray-800">
-      <div className="px-3 py-10 w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-20">
+      <div className="2xl:px-0 xl:px-0 lg:px-0 px-3 py-10 w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto 2xl:py-20">
         {/* Header */}
         <h2 className="text-2xl font-bold text-white mb-2 flex items-center">
           Most Read
