@@ -399,7 +399,7 @@ const ArticlePage = () => {
           </div>
 
           {/* Gambar Artikel */}
-          <div className="relative w-full h-[700px] rounded-lg overflow-hidden mb-2">
+          <div className="relative w-full 2xl:h-[500px] xl:h-[700px] lg:h-[500px] h-[250px] rounded-lg overflow-hidden mb-2">
             <Image
               src={
                 currentArticle.image
