@@ -1,22 +1,36 @@
-import React from 'react'
+"use client"
+import React, { useState, useEffect }  from 'react'
 import PwaButton from "@/components/InstallPWAButton"
 import { FaCalendarAlt } from "react-icons/fa";
 
 
 const TopNavbar = () => {
-    const today = new Date();
-    const formattedDate = new Intl.DateTimeFormat("en-US", {
+
+  const [date, setDate] = useState("");
+   useEffect(() => {
+  const updateDate = () => {
+    const now = new Date();
+    const formatted = new Intl.DateTimeFormat("en-US", {
       weekday: "long",
       year: "numeric",
       month: "short",
       day: "numeric",
-    }).format(today);
+    }).format(now);
+    setDate(formatted);
+  };
+
+  updateDate(); // initial
+  const interval = setInterval(updateDate, 60 * 1000); // update tiap menit
+
+  return () => clearInterval(interval); // cleanup
+}, []);
+
   
   return (
     <div className="w-screen   bg-black text-white text-sm mx-auto  justify-center items-center 2xl:flex xl:flex lg:flex flex px-3">
         <div className="container 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] flex justify-between items-center py-4">
           <div>
-            <span className='flex gap-2 justify-center items-center text-sm'><FaCalendarAlt />{formattedDate}</span>
+            <span className='flex gap-2 justify-center items-center text-sm'><FaCalendarAlt />{date}</span>
           </div>
           <div className="space-x-4 flex justify-start items-center">
             <a href="#" className="hover:underline 2xl:block xl:block lg:block hidden">
