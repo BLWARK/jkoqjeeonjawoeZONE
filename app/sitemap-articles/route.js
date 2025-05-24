@@ -1,4 +1,3 @@
-
 export async function GET() {
   const res = await fetch('https://api.xyzone.media/api/articles?status=publish&page=1&limit=100');
   const json = await res.json();
@@ -7,7 +6,7 @@ export async function GET() {
   const urls = articles.map((article) => `
     <url>
       <loc>https://xyzone.media/artikel/${article.article_id}/${article.slug}</loc>
-      <lastmod>${article.updated_at || new Date().toISOString()}</lastmod>
+      <lastmod>${new Date(article.updated_at || Date.now()).toISOString()}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>`);
