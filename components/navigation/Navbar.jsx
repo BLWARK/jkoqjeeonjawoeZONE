@@ -313,7 +313,7 @@ const Navbar = () => {
 
           {/* Join WhatsApp Button */}
           <a
-            href="#"
+            href="https://www.whatsapp.com/channel/0029VarL93F9hXFC7iEtLL0v"
             className="hidden md:flex items-center space-x-2 text-green-600 font-semibold hover:underline"
           >
             <FaWhatsapp className="text-2xl" />
