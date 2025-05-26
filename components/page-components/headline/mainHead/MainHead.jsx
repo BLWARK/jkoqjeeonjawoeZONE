@@ -22,11 +22,11 @@ const MainHead = ({ headline }) => {
       <Image
         src={headline.image || "/default.jpg"}
         alt={headline.title}
-        className="rounded-lg cursor-pointer"
+        className="rounded-lg cursor-pointer object-cover"
         fill
         sizes="100vw"
-        style={{ objectFit: "cover" }}
-        priority={true}
+        loading="eager"
+        priority
       />
 
       {/* 🔹 Overlay */}
