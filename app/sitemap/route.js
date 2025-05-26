@@ -3,6 +3,7 @@ export async function GET() {
     'https://xyzone.media/sitemap-articles',
     'https://xyzone.media/sitemap-pages',
     'https://xyzone.media/sitemap-regional',
+     "https://xyzone.media/sitemap-tags",
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
