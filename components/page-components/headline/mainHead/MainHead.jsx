@@ -17,7 +17,7 @@ const MainHead = ({ headline }) => {
   }
 
   return (
-    <div className="2xl:col-span-2 xl:col-span-2 lg:col-span-2 col-span-0 2xl:w-full 2xl:h-[500px] xl:h-full lg:h-full w-full h-[300px] relative">
+    <div className="2xl:col-span-2 xl:col-span-2 lg:col-span-2 col-span-0 2xl:w-full 2xl:h-[500px] xl:h-[420px] lg:h-[420px] w-full h-[300px] relative">
       {/* 🔹 Gambar Headline */}
       <Image
         src={headline.image || "/default.jpg"}
