@@ -20,7 +20,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "XYZONEMEDIA - Berita dan Informasi Terkini",
   description:
-    "XYZONEMEDIA adalah portal berita terpercaya yang menyajikan informasi terkini di dunia crypto, teknologi, dan keuangan.",
+    "XYZONEMEDIA adalah adalah portal berita yang menyajikan berita terbaru, berita hari ini, artikel menarik, dan informasi terkini dari berbagai kategori seperti teknologi, hiburan, gaya hidup, dan olahraga",
   icons: {
     icon: "/logo.jpg", // atau "/favicon.png"
   },
