@@ -62,59 +62,58 @@ const ArticlePage = () => {
   }, [rawPage, pages.length]);
 
   const splitHtmlContent = (html, maxChars = 4000) => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
 
-  // 🔥 Cegah blockquote bersarang
-  const nestedQuotes = doc.querySelectorAll("blockquote blockquote");
-  nestedQuotes.forEach((nested) => {
-    nested.replaceWith(...nested.childNodes); // keluarin isi tanpa <blockquote>
-  });
+    // 🔥 Cegah blockquote bersarang
+    const nestedQuotes = doc.querySelectorAll("blockquote blockquote");
+    nestedQuotes.forEach((nested) => {
+      nested.replaceWith(...nested.childNodes); // keluarin isi tanpa <blockquote>
+    });
 
-  // ✅ Tambahkan caption setelah setiap <img> yang punya alt
-  const images = doc.querySelectorAll("img[alt]");
-  images.forEach((img) => {
-    const altText = img.getAttribute("alt");
-    if (altText) {
-      const caption = document.createElement("small");
-      caption.textContent = altText;
-      caption.style.display = "block";
-      caption.style.textAlign = "left";
-      caption.style.color = "#666";
-      caption.style.fontSize = "0.8rem";
-      caption.style.marginTop = "4px";
+    // ✅ Tambahkan caption setelah setiap <img> yang punya alt
+    const images = doc.querySelectorAll("img[alt]");
+    images.forEach((img) => {
+      const altText = img.getAttribute("alt");
+      if (altText) {
+        const caption = document.createElement("small");
+        caption.textContent = altText;
+        caption.style.display = "block";
+        caption.style.textAlign = "left";
+        caption.style.color = "#666";
+        caption.style.fontSize = "0.8rem";
+        caption.style.marginTop = "4px";
 
-      img.insertAdjacentElement("afterend", caption);
-    }
-  });
+        img.insertAdjacentElement("afterend", caption);
+      }
+    });
 
-  let chunks = [];
-  let temp = "";
-  let count = 0;
+    let chunks = [];
+    let temp = "";
+    let count = 0;
 
-  const children = Array.from(doc.body.childNodes);
+    const children = Array.from(doc.body.childNodes);
 
-  children.forEach((node) => {
-    const htmlString = node.outerHTML || node.textContent;
-    const length = htmlString.length;
+    children.forEach((node) => {
+      const htmlString = node.outerHTML || node.textContent;
+      const length = htmlString.length;
 
-    if (count + length > maxChars) {
+      if (count + length > maxChars) {
+        chunks.push(temp);
+        temp = htmlString;
+        count = length;
+      } else {
+        temp += htmlString;
+        count += length;
+      }
+    });
+
+    if (temp) {
       chunks.push(temp);
-      temp = htmlString;
-      count = length;
-    } else {
-      temp += htmlString;
-      count += length;
     }
-  });
 
-  if (temp) {
-    chunks.push(temp);
-  }
-
-  return chunks;
-};
-
+    return chunks;
+  };
 
   useEffect(() => {
     if (currentArticle?.content) {
@@ -425,6 +424,9 @@ const ArticlePage = () => {
             className="
             [&_iframe]:w-full [&_iframe]:h-[400px] [&_iframe]:rounded-lg
             [&_p]:mb-4 
+            font-['Roboto'] !important 
+            [&_*]:font-['Roboto'] 
+             [&_*]:!text-[15px]
             [&_p]:leading-relaxed 
             [&_a]:text-blue-600 
             [&_a]:hover:underline 
@@ -436,15 +438,16 @@ const ArticlePage = () => {
             [&_td]:p-2 
             [&_th]:p-2 
             [&_ul]:list-disc 
-    [&_ul]:pl-6 
-    [&_ol]:list-decimal 
-    [&_ol]:pl-6
-    [&_li]:mb-1
+            [&_ul]:pl-6 
+            [&_ol]:list-decimal 
+            [&_ol]:pl-6
+            [&_li]:mb-1
             [&_thead]:bg-gray-100 
             [&_table]:my-6 
             [&_table]:text-sm
             [&_blockquote.tiktok-embed]:w-full [&_blockquote.tiktok-embed]:!max-w-full
-            
+            [&_hr]:hidden
+            [&_div]:border-none
             
           "
             dangerouslySetInnerHTML={{
