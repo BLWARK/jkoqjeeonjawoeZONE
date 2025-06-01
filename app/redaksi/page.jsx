@@ -8,10 +8,10 @@ const page = () => {
       <section>
         <h2 className="text-xl font-bold text-blue-700 mb-4">ABOUT US</h2>
         <div className="border-l-4 border-blue-500 bg-blue-50 p-4 text-sm leading-relaxed italic">
-          Yo, XYZiest! Di xyzone.media, kita emang bikin kekinian banget! Kita punya empat kategori berita terpadu: News, Technology, Sports, dan Lifestyle. Nah, yang beda, di bagian News, kita punya dua subkategori yang bikin greget: ada Xyzone News buat berita yang keren banget gayanya, dan ada juga media berita lokal LBJ Jakarta, LBJ Makassar, serta LBJ Sukabumi buat liputan berita nasional yang terdesain dan terfokus.
+          Yo, XYZiest! Di xyzonemedia.com, kita emang bikin kekinian banget! Kita punya empat kategori berita terpadu: News, Technology, Sports, dan Lifestyle. Nah, yang beda, di bagian News, kita punya dua subkategori yang bikin greget: ada Xyzone News buat berita yang keren banget gayanya, dan ada juga media berita lokal LBJ Jakarta, LBJ Makassar, serta LBJ Sukabumi buat liputan berita nasional yang terdesain dan terfokus.
 
           <br /><br />
-          Kita di xyzone.media janji banget buat kasih info terpadu dan terpercaya buat kalian semua, guys. Sebagai platform berita online yang super up-to-date, kita menawarkan konten-konten seru dan relevan buat kalian.
+          Kita di xyzonemedia.com janji banget buat kasih info terpadu dan terpercaya buat kalian semua, guys. Sebagai platform berita online yang super up-to-date, kita menawarkan konten-konten seru dan relevan buat kalian.
           <br /><br />
           Visi kita jadi sumber berita yang beneran fresh dan terpercaya, XYZiest! Tim kita selalu jaga kualitas tinggi setiap artikel dan berita yang kita sajikan.
           <br /><br />

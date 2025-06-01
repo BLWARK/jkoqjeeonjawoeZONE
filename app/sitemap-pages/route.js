@@ -14,7 +14,7 @@ export async function GET() {
 
   const urls = staticPages.map((path) => `
     <url>
-      <loc>https://xyzone.media${path}</loc>
+      <loc>https://xyzonemedia.com${path}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>

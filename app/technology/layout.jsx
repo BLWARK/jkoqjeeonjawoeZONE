@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const title = "Berita Teknologi Terkini - AI, Gadget, Startup | XYZONEMEDIA";
   const description =
     "Dapatkan berita terbaru seputar teknologi, AI, gadget, startup, dan inovasi digital terkini hanya di XYZONEMEDIA.";
-  const url = "https://xyzone.media/technology";
+  const url = "https://xyzonemedia.com/technology";
 
   return {
     title,

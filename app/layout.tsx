@@ -26,19 +26,19 @@ export const metadata: Metadata = {
   },
   keywords:
     "Xyzone Media, xyzonemedia, portal berita, informasi terkini, berita teknologi, berita keuangan, berita terkini",
-  authors: [{ name: "Xyzone Team", url: "https://xyzone.media" }],
+  authors: [{ name: "Xyzone Team", url: "https://xyzonemedia.com" }],
   alternates: {
-    canonical: "https://xyzone.media",
+    canonical: "https://xyzonemedia.com",
   },
   openGraph: {
     title: "XYZONEMEDIA - Berita dan Informasi Terkini",
     description:
       "Dapatkan berita terbaru dari dunia crypto, keuangan, dan teknologi di XYZONEMEDIA.",
-    url: "https://xyzone.media",
+    url: "https://xyzonemedia.com",
     siteName: "XYZONEMEDIA",
     images: [
       {
-        url: "https://xyzone.media/XYZONELOGOAPP.png",
+        url: "https://xyzonemedia.com/XYZONELOGOAPP.png",
         width: 1200,
         height: 630,
         alt: "XYZONEMEDIA",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "XYZONEMEDIA - Berita dan Informasi Terkini",
     description:
       "Dapatkan berita terbaru dari dunia crypto, keuangan, dan teknologi di XYZONEMEDIA.",
-    images: ["https://xyzone.media/preview-image.jpg"],
+    images: ["https://xyzonemedia.com/preview-image.jpg"],
   },
   manifest: "/site.webmanifest", // PWA Web Manifest
 };
@@ -86,10 +86,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "XYZONEMEDIA",
-              url: "https://xyzone.media",
+              url: "https://xyzonemedia.com",
               logo: {
                 "@type": "ImageObject",
-                url: "https://xyzone.media/logo.png", // 💡 Ganti dengan PNG transparan resolusi tinggi
+                url: "https://xyzonemedia.com/logo.png", // 💡 Ganti dengan PNG transparan resolusi tinggi
                 width: 300,
                 height: 300,
               },

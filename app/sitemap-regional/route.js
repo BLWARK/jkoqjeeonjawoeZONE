@@ -19,7 +19,7 @@ export async function GET() {
 
       urls.push(`
         <url>
-          <loc>https://xyzone.media/regional/${platformSlug}/kategori/${categorySlug}</loc>
+          <loc>https://xyzonemedia.com/regional/${platformSlug}/kategori/${categorySlug}</loc>
           <lastmod>${new Date().toISOString()}</lastmod>
           <changefreq>weekly</changefreq>
           <priority>0.6</priority>

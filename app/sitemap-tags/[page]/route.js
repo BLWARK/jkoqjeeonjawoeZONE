@@ -40,7 +40,7 @@ export async function GET(request, context) {
     const escapedSlug = escapeXml(encodeURIComponent(slug));
     return `
     <url>
-      <loc>https://xyzone.media/tag/${escapedSlug}?platform_id=1</loc>
+      <loc>https://xyzonemedia.com/tag/${escapedSlug}?platform_id=1</loc>
       <lastmod>${new Date(updated).toISOString()}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>

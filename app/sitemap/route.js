@@ -1,11 +1,11 @@
 export async function GET() {
   const sitemapUrls = [
-    "https://xyzone.media/sitemap-articles",
-    "https://xyzone.media/sitemap-pages",
-    "https://xyzone.media/sitemap-regional",
-    "https://xyzone.media/sitemap-tags/0",
-    "https://xyzone.media/sitemap-tags/1",
-    "https://xyzone.media/sitemap-tags/2",
+    "https://xyzonemedia.com/sitemap-articles",
+    "https://xyzonemedia.com/sitemap-pages",
+    "https://xyzonemedia.com/sitemap-regional",
+    "https://xyzonemedia.com/sitemap-tags/0",
+    "https://xyzonemedia.com/sitemap-tags/1",
+    "https://xyzonemedia.com/sitemap-tags/2",
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

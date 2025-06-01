@@ -21,7 +21,7 @@ export async function generateMetadata() {
       title: "Indeks Berita Terbaru - XYZONEMEDIA",
       description:
         "Kumpulan berita terbaru dan terlengkap dari berbagai kategori di XYZONEMEDIA. Temukan informasi aktual hari ini.",
-      url: "https://xyzone.media/indeks",
+      url: "https://xyzonemedia.com/indeks",
       siteName: "XYZONEMEDIA",
       images: mainArticle
         ? [
@@ -43,7 +43,7 @@ export async function generateMetadata() {
       images: mainArticle ? [mainArticle.image] : [],
     },
     alternates: {
-      canonical: "https://xyzone.media/indeks",
+      canonical: "https://xyzonemedia.com/indeks",
     },
   };
 }

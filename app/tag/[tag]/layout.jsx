@@ -30,7 +30,7 @@ export async function generateMetadata(context) {
       openGraph: {
         title: `Berita dengan Tag "${formattedTag}" | XYZONEMEDIA`,
         description: `Dapatkan berita terbaru dengan tag "${formattedTag}" di XYZONEMEDIA.`,
-        url: `https://xyzone.media/tag/${tag}`,
+        url: `https://xyzonemedia.com/tag/${tag}`,
         images: [
           {
             url: imageUrl,

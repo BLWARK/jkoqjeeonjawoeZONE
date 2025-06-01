@@ -4,7 +4,7 @@ export async function generateMetadata(context) {
   const { slug } = await context.params;
 
   const normalizeImage = (url) => {
-    if (!url) return "https://xyzone.media/default-image.jpg";
+    if (!url) return "https://xyzonemedia.com/default-image.jpg";
     return url.replace("http://156.67.217.169:9001", "https://storage.xyzone.media");
   };
 
@@ -24,7 +24,7 @@ export async function generateMetadata(context) {
       : article.tags || "berita terkini, berita terbaru, informasi terkini";
 
     const imageUrl = normalizeImage(article.image);
-    const articleUrl = `https://xyzone.media/artikel/${article.article_id}/${article.slug}`;
+    const articleUrl = `https://xyzonemedia.com/artikel/${article.article_id}/${article.slug}`;
 
     // ✅ JSON-LD schema untuk NewsArticle
     const jsonLd = {
@@ -47,7 +47,7 @@ export async function generateMetadata(context) {
         "name": "XYZONEMEDIA",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://xyzone.media/logo.png", // ganti dengan logo publik asli kamu
+          "url": "https://xyzonemedia.com/logo.png", // ganti dengan logo publik asli kamu
         },
       },
       "description": article.description || article.content?.substring(0, 150) + "...",

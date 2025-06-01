@@ -5,7 +5,7 @@ export async function GET() {
 
   const sitemapUrls = Array.from({ length: totalPages }, (_, i) => 
     `<sitemap>
-       <loc>https://xyzone.media/sitemap-tags/${i}</loc>
+       <loc>https://xyzonemedia.com/sitemap-tags/${i}</loc>
        <lastmod>${new Date().toISOString()}</lastmod>
      </sitemap>`
   );

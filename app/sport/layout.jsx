@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const title = "Berita Olahraga Terbaru - Sepak Bola, MotoGP & Lainnya | XYZONEMEDIA";
   const description =
     "Dapatkan berita olahraga terbaru dari dunia sepak bola, MotoGP, F1, bulu tangkis, dan cabang olahraga lainnya hanya di XYZONEMEDIA.";
-  const url = "https://xyzone.media/olahraga";
+  const url = "https://xyzonemedia.com/olahraga";
 
   return {
     title,

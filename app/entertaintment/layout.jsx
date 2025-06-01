@@ -6,7 +6,7 @@ export async function generateMetadata() {
 
   const title = "Entertainment News - Berita Seputar Hiburan & Selebriti | XYZONEMEDIA";
   const description = "Dapatkan berita terbaru seputar dunia hiburan, film, musik, selebriti, dan gaya hidup hanya di XYZONEMEDIA.";
-  const url = "https://xyzone.media/entertaintment";
+  const url = "https://xyzonemedia.com/entertaintment";
 
   return {
     title,

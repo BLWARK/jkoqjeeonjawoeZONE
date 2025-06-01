@@ -15,7 +15,7 @@ export async function GET() {
     .filter((article) => article?.article_id && article?.slug)
     .map((article) => `
       <url>
-        <loc>https://xyzone.media/artikel/${article.article_id}/${article.slug}</loc>
+        <loc>https://xyzonemedia.com/artikel/${article.article_id}/${article.slug}</loc>
         <lastmod>${new Date(article.updated_at || Date.now()).toISOString()}</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>

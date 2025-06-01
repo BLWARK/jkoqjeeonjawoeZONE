@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const title = "C-Level News - Berita Eksekutif, CEO, dan Pemimpin Bisnis | XYZONEMEDIA";
   const description =
     "Dapatkan berita terbaru seputar eksekutif, CEO, dan pemimpin bisnis di dunia industri dan teknologi hanya di XYZONEMEDIA.";
-  const url = "https://xyzone.media/c-level";
+  const url = "https://xyzonemedia.com/c-level";
 
   return {
     title,

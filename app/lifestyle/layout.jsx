@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const title = "Lifestyle News - Gaya Hidup, Kesehatan & Tren Terkini | XYZONEMEDIA";
   const description =
     "Temukan berita terbaru tentang gaya hidup, kesehatan, tren fashion, dan inspirasi sehari-hari hanya di XYZONEMEDIA.";
-  const url = "https://xyzone.media/lifestyle";
+  const url = "https://xyzonemedia.com/lifestyle";
 
   return {
     title,
