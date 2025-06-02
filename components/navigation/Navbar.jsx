@@ -165,7 +165,7 @@ const logoWhiteSrc = isRegionalPage
       <div className="flex">
         <a href="/" className="relative w-32 h-10">
           <Image
-            src={logoSrc}
+            src={logoWhiteSrc}
             alt="Logo Scrolled"
             fill
             style={{ objectFit: "contain" }}
