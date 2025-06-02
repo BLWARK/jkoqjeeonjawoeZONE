@@ -426,7 +426,6 @@ const ArticlePage = () => {
             [&_p]:mb-4 
             font-['Roboto'] !important 
             [&_*]:font-['Roboto'] 
-             [&_*]:!text-[15px]
             [&_p]:leading-relaxed 
             [&_a]:text-blue-600 
             [&_a]:hover:underline 
@@ -448,6 +447,12 @@ const ArticlePage = () => {
             [&_blockquote.tiktok-embed]:w-full [&_blockquote.tiktok-embed]:!max-w-full
             [&_hr]:hidden
             [&_div]:border-none
+            [&_h1]:text-3xl
+            [&_h2]:text-2xl  
+            [&_h3]:text-xl   
+            [&_h4]:text-lg   
+            [&_h5]:text-base  
+            [&_h6]:text-sm   
             
           "
             dangerouslySetInnerHTML={{
