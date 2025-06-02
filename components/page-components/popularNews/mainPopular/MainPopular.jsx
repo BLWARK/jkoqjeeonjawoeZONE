@@ -52,8 +52,8 @@ const MainPopular = ({ mainArticle }) => {
                 <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
               )}
               <span className="ml-2">
-                {mainArticle.author?.fullname || "Unknown Author"} •{" "}
-                {new Date(mainArticle.date).toLocaleDateString("id-ID")}
+                {mainArticle.author?.fullname || "Unknown Author"} | {" "}
+                {new Date(mainArticle.date).toLocaleDateString()}
               </span>
             </div>
           </div>

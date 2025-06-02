@@ -107,7 +107,7 @@ const LatestNews = ({ platformId: propPlatformId }) => {
                       </span>
                       <div className="w-[1px] h-5 bg-gray-300 mx-2"></div>
                       <span>
-                        {new Date(article.date).toLocaleDateString("id-ID")}
+                        {new Date(article.date).toLocaleDateString()}
                       </span>
                     </div>
                   </div>
