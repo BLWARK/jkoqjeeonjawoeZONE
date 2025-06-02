@@ -10,6 +10,7 @@ import regionPlatformMap from "@/data/regionPlatformMap";
 import LatestNewsReg from "@/components/latestNewsReg/LatestNewsReg";
 import AdvBottomHead from "@/components/page-components/adv-sect/AdvBottomHead";
 import { useBackContext } from "@/context/BackContext";
+import { getCategoryColor } from "@/data/categoryColors";
 
 const RegionPage = () => {
   const { slug } = useParams();
@@ -65,25 +66,23 @@ const RegionPage = () => {
             />
             <Link href={`/artikel/${featured.article_id}/${featured.slug}`}>
               <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
+                {featured.category?.[0] && (
+                  <span
+                    className={`absolute top-4 left-4 px-3 py-1 text-xs font-semibold text-white rounded ${getCategoryColor(
+                      featured.category[0]
+                    )}`}
+                  >
+                    {featured.category[0]}
+                  </span>
+                )}
+
                 <h2 className="text-white 2xl:text-3xl text-lg font-bold leading-tight">
                   {featured.title}
                 </h2>
                 <p className="text-gray-300 mt-4">
                   {sliceDescription(featured.description || "")}
                 </p>
-                <div className="flex items-center gap-2 mt-3">
-                  <Image
-                    src={featured.author?.avatar || "/default.jpg"}
-                    alt={featured.author?.fullname}
-                    className="w-6 h-6 rounded-full object-cover"
-                    width={6}
-                    height={6}
-                  />
-                  <span className="text-xs text-white">
-                    {featured.author?.fullname}
-                  </span>
-                  <span className="text-xs text-white">| {featured.date}</span>
-                </div>
+                <div className="flex items-center gap-2 mt-3">...</div>
               </div>
             </Link>
           </div>
@@ -104,6 +103,16 @@ const RegionPage = () => {
                   fill
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
+                  {article.category?.[0] && (
+                    <span
+                      className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold text-white rounded ${getCategoryColor(
+                        article.category[0]
+                      )}`}
+                    >
+                      {article.category[0]}
+                    </span>
+                  )}
+
                   <h3 className="text-white text-md font-semibold line-clamp-2">
                     {article.title}
                   </h3>
