@@ -115,7 +115,7 @@ const LatestNews = ({ platformId: propPlatformId }) => {
                     href={`/artikel/${article.article_id}/${article.slug}`}
                     passHref
                   >
-                    <div className="relative 2xl:w-[280px] xl:w-[280px] lg:w-[280px] w-full h-[200px] flex-shrink-0 rounded-lg overflow-hidden">
+                    <div className="relative 2xl:w-[280px] xl:w-[280px] lg:w-[280px] w-[390px] h-[200px] flex-shrink-0 rounded-lg overflow-hidden">
                       <Image
                         src={article.image}
                         alt={article.title}

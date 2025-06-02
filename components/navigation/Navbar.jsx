@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"; // ✅ Gunakan router untuk navigas
 import { useBackContext } from "@/context/BackContext"; // pastikan ini sudah ada
 import RegionalDropdown from "../../components/navigation/DropDownRegional";
 import Image from "next/image";
+import logoMap from "@/data/logoMap";
 
 const Navbar = () => {
   const {
@@ -83,17 +84,17 @@ const Navbar = () => {
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
 
+const defaultBlack = "/Logo XYZone-Solid.png";
+const defaultWhite = "/Logo XYZone White.png";
 
-  const defaultBlack = "/Official.png";
-  const defaultWhite = "/Official-white.png";
 
   const logoSrc = isRegionalPage
-    ? platformLogos?.[regionSlug]?.logo_url || defaultBlack
-    : defaultBlack;
+  ? logoMap?.[regionSlug]?.light || defaultWhite
+  : defaultWhite;
 
-  const logoWhiteSrc = isRegionalPage
-    ? platformLogos?.[regionSlug]?.logo_url || defaultWhite
-    : defaultWhite;
+const logoWhiteSrc = isRegionalPage
+  ? logoMap?.[regionSlug]?.dark || defaultBlack
+  : defaultBlack;
 
   // Fungsi Toggle Menu Mobile
   const toggleMenu = () => {
@@ -259,7 +260,7 @@ const Navbar = () => {
           {/* Logo - Desktop */}
           <a href="/" className="hidden md:block relative w-48 h-20">
             <Image
-              src={logoSrc}
+              src={logoWhiteSrc}
               alt="Logo"
               fill
               style={{ objectFit: "contain" }}
@@ -334,7 +335,7 @@ const Navbar = () => {
             </button>
             <a href="/" className="relative w-32 h-10">
               <Image
-                src={logoWhiteSrc}
+                src={logoSrc}
                 alt="XYZONE Logo Mobile"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
