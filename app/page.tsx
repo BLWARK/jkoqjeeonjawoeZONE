@@ -22,16 +22,11 @@ const HomePage = () => {
       <section className="pilihan-editor 2xl:px-0 px-3"><PilihanEditor/></section>
       <section className="pppular-news 2xl:px-0"><PopularNews/></section>
       <section className="latest-news 2xl:px-0 px-3"><LatestNews platformId={1}/></section>
-      
       <section className="teknologi 2xl:px-0 xl:px-0 lg:px-0  px-0"><Teknologi/></section>
       <section className="gaya-hidup 2xl:px-0 px-3"><Hiburan/></section>
       <section className="sport 2xl:px-0 px-3"><Sport/></section>
-      
       <section className="gaya-hidup 2xl:px-0 px-3"><Lifestyle/></section>
       <section className="XYZONETV 2xl:px-0 px-0"><Xyzonetv/></section>
-      
-      
-      
       <section className="subscribe 2xl:px-0 xl:px-0 lg:px-0 px-0"><Subscribe/></section>
      
     </div>
