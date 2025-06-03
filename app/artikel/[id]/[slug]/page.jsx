@@ -12,6 +12,7 @@ import { useBackContext } from "@/context/BackContext";
 import Adv from "@/components/page-components/adv-sect/AdvBottomHead";
 import Share from "@/components/share/Share";
 import Follow from "@/components/follow/Follow";
+import JoinWa from "@/components/join-wa/Join"
 import { FaPlay, FaStop } from "react-icons/fa";
 import MostRead from "@/components/mostRead/MostRead";
 import RelatedNews from "@/components/relatedNews/RelatedNews";
@@ -498,6 +499,8 @@ const ArticlePage = () => {
               show all
             </button>
           </div>
+
+          <JoinWa/>
 
           <Share article={currentArticle} />
 

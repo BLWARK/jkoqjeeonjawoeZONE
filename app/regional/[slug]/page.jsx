@@ -52,7 +52,7 @@ const RegionPage = () => {
   }, [headlines, platformId]);
 
   return (
-    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 px-4 space-y-6">
+    <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-8 px-2 space-y-6">
       {/* Top Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Berita Utama */}
@@ -83,22 +83,20 @@ const RegionPage = () => {
                   {sliceDescription(featured.description || "")}
                 </p>
                 <div className="flex items-center gap-2 mt-3">
-  <Image
-    src={featured.author?.avatar || "/default.jpg"}
-    alt={featured.author?.fullname || "Author"}
-    className="w-6 h-6 rounded-full object-cover"
-    width={24}
-    height={24}
-  />
-  <span className="text-xs text-white">
-    {featured.author?.fullname || "Unknown"}
-  </span>
- <span className="text-xs text-white">
-  {new Date(featured.date).toLocaleDateString()}
-</span>
-
-</div>
-
+                  <Image
+                    src={featured.author?.avatar || "/default.jpg"}
+                    alt={featured.author?.fullname || "Author"}
+                    className="w-6 h-6 rounded-full object-cover"
+                    width={24}
+                    height={24}
+                  />
+                  <span className="text-xs text-white">
+                    {featured.author?.fullname || "Unknown"}
+                  </span>
+                  <span className="text-xs text-white">
+                    {new Date(featured.date).toLocaleDateString()}
+                  </span>
+                </div>
               </div>
             </Link>
           </div>
@@ -144,9 +142,8 @@ const RegionPage = () => {
                       {article.author?.fullname}
                     </span>
                     <span className="text-xs text-white">
-  {new Date(article.date).toLocaleDateString()}
-</span>
-
+                      {new Date(article.date).toLocaleDateString()}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -167,7 +164,7 @@ const RegionPage = () => {
               <Image
                 src={article.image || "/default.jpg"}
                 alt={article.title}
-                className="w-40 h-24 object-cover rounded"
+                className="w-72 h-24 object-cover rounded"
                 width={160}
                 height={96}
               />
@@ -191,13 +188,14 @@ const RegionPage = () => {
                     fill
                   />
                 </div>
-                <div>
+                <div className="flex gap-2 justify-center items-center text-gray-800">
                   <p className="text-sm font-medium text-gray-800">
                     {article.author?.fullname}
                   </p>
-                   <span className="text-xs text-white">
-  {new Date(article.date).toLocaleDateString()}
-</span>
+                  |
+                  <span className="text-xs text-black">
+                    {new Date(article.date).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
             </div>
