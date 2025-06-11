@@ -62,6 +62,11 @@ const ArticlePage = () => {
     setShowAll(rawPage === pages.length + 1);
   }, [rawPage, pages.length]);
 
+  const replaceDomain = (html) => {
+  return html.replace(/https:\/\/xyzone\.media/g, "https://xyzonemedia.com");
+};
+
+
   const splitHtmlContent = (html, maxChars = 4000) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
@@ -116,14 +121,16 @@ const ArticlePage = () => {
     return chunks;
   };
 
-  useEffect(() => {
-    if (currentArticle?.content) {
-      const decoded = he.decode(currentArticle.content);
-      const splitted = splitHtmlContent(decoded, 4000);
-      setPages(splitted);
-      setCurrentPage(0);
-    }
-  }, [currentArticle]);
+ useEffect(() => {
+  if (currentArticle?.content) {
+    const decoded = he.decode(currentArticle.content);
+    const withCorrectDomain = replaceDomain(decoded); // ✅ replace domain lama ke baru
+    const splitted = splitHtmlContent(withCorrectDomain, 4000);
+    setPages(splitted);
+    setCurrentPage(0);
+  }
+}, [currentArticle]);
+
 
   useEffect(() => {
     if (currentArticle?.content.includes("twitter-tweet")) {
