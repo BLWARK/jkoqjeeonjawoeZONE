@@ -15,7 +15,9 @@ const Tracking = ({ article = null }) => {
 
   const determineVisitType = (path) => {
     if (path === "/" || path === "/home") return "homepage";
-    const categoryMatch = path.match(/^\/(entertaintment|technology|sport|c-level|lifestyle)/);
+    const categoryMatch = path.match(
+      /^\/(entertaintment|technology|sport|c-level|lifestyle)/
+    );
     if (categoryMatch) return `category:${categoryMatch[1]}`;
     return `article:${path}`;
   };
@@ -28,7 +30,8 @@ const Tracking = ({ article = null }) => {
     if (url.includes("facebook.")) return "facebook";
     if (url.includes("instagram.")) return "instagram";
     if (url.includes("t.co")) return "twitter";
-    if (url.includes("whatsapp.com") || url.includes("wa.me")) return "whatsapp";
+    if (url.includes("whatsapp.com") || url.includes("wa.me"))
+      return "whatsapp";
     if (url.includes("tiktok.")) return "tiktok";
     if (url.includes("youtube.")) return "youtube";
     return "other";
@@ -37,44 +40,42 @@ const Tracking = ({ article = null }) => {
   const isArticlePage = /^\/artikel\/\d+\/[\w-]+$/.test(pathname);
 
   const sendExitTracking = () => {
-  console.log("📤 Attempting to send exit tracking...");
+    console.log("📤 Attempting to send exit tracking...");
 
-  if (!visitorIdRef.current || !visitTypeRef.current) {
-    console.log("❌ visitorId or visitType missing. Skip exit tracking.");
-    return;
-  }
-
-  const exitTime = new Date();
-  const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
-
-  const exitPayload = {
-    pathname: previousPathRef.current,
-    type: visitTypeRef.current,
-    exitedAt: exitTime.toISOString(),
-    duration,
-    visitorId: visitorIdRef.current,
-    sessionId: sessionStorage.getItem("sessionId") || null,
-    url: window.location.href,
-  };
-
-  try {
-    const blob = new Blob([JSON.stringify(exitPayload)], {
-      type: "application/json",
-    });
-
-    const success = navigator.sendBeacon(`${baseUrl}/api/track-exit`, blob);
-
-    if (success) {
-      console.log("📤 Sent exit tracking successfully:", exitPayload);
-    } else {
-      console.warn("⚠️ navigator.sendBeacon returned false.");
+    if (!visitorIdRef.current || !visitTypeRef.current) {
+      console.log("❌ visitorId or visitType missing. Skip exit tracking.");
+      return;
     }
-  } catch (err) {
-    console.error("❌ Error sending exit tracking:", err);
-  }
-};
 
+    const exitTime = new Date();
+    const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
 
+    const exitPayload = {
+      pathname: previousPathRef.current,
+      type: visitTypeRef.current,
+      exitedAt: exitTime.toISOString(),
+      duration,
+      visitorId: visitorIdRef.current,
+      sessionId: sessionStorage.getItem("sessionId") || null,
+      url: window.location.href,
+    };
+
+    try {
+      const blob = new Blob([JSON.stringify(exitPayload)], {
+        type: "application/json",
+      });
+
+      const success = navigator.sendBeacon(`${baseUrl}/api/track-exit`, blob);
+
+      if (success) {
+        console.log("📤 Sent exit tracking successfully:", exitPayload);
+      } else {
+        console.warn("⚠️ navigator.sendBeacon returned false.");
+      }
+    } catch (err) {
+      console.error("❌ Error sending exit tracking:", err);
+    }
+  };
 
   const trackEntry = async () => {
     const visitType = determineVisitType(pathname);
@@ -102,8 +103,13 @@ const Tracking = ({ article = null }) => {
     const screenWidth = window.screen.width;
     const screenHeight = window.screen.height;
 
+    // Ambil dari URL langsung
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get("utm_source");
+
+    // Kalau ada utm_source, pakai itu. Kalau tidak, fallback ke referrer detection
     const referrerUrl = document.referrer || "";
-    const referrer = detectReferrerSource(referrerUrl);
+    const referrer = utmSource || detectReferrerSource(referrerUrl);
 
     const sessionId =
       sessionStorage.getItem("sessionId") ||
@@ -131,26 +137,29 @@ const Tracking = ({ article = null }) => {
       screenHeight,
       sessionId,
       is_article_page: isArticlePage,
-       ...(article && {
-    article_id: article.article_id,
-    article_slug: article.slug,
-    platform_id: article.platform_id,
-    category_slug: article.category?.[0] || null,
-    tag_list: article.tags || [],
-  }),
+      ...(article && {
+        article_id: article.article_id,
+        article_slug: article.slug,
+        platform_id: article.platform_id,
+        category_slug: article.category?.[0] || null,
+        tag_list: article.tags || [],
+      }),
     };
 
     const today = new Date().toISOString().split("T")[0];
     const stored = JSON.parse(localStorage.getItem("trackingData")) || {};
     if (stored[visitorId]?.[visitType] === today) return;
 
-    localStorage.setItem("trackingData", JSON.stringify({
-      ...stored,
-      [visitorId]: {
-        ...stored[visitorId],
-        [visitType]: today,
-      },
-    }));
+    localStorage.setItem(
+      "trackingData",
+      JSON.stringify({
+        ...stored,
+        [visitorId]: {
+          ...stored[visitorId],
+          [visitType]: today,
+        },
+      })
+    );
 
     await fetch(`${baseUrl}/api/analytics`, {
       method: "POST",
@@ -161,17 +170,15 @@ const Tracking = ({ article = null }) => {
     console.log("✅ Sent enriched tracking:", payload);
   };
 
- useEffect(() => {
-  if (isArticlePage && (!article || !article.article_id)) return; // hanya skip jika di artikel & data belum siap
-  if (previousPathRef.current) sendExitTracking();
-  trackEntry();
+  useEffect(() => {
+    if (isArticlePage && (!article || !article.article_id)) return; // hanya skip jika di artikel & data belum siap
+    if (previousPathRef.current) sendExitTracking();
+    trackEntry();
 
-  const handleBeforeUnload = () => sendExitTracking();
-  window.addEventListener("beforeunload", handleBeforeUnload);
-  return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-}, [pathname, article]);
-
-
+    const handleBeforeUnload = () => sendExitTracking();
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [pathname, article]);
 
   return null;
 };

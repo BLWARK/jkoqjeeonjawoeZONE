@@ -12,30 +12,41 @@ import { FaXTwitter} from "react-icons/fa6";
 const Share = ({ article }) => {
   if (!article) return null; // ✅ Jangan render jika artikel kosong
 
-  const shareUrl = `https://xyzonemedia.com/artikel/${article.article_id}/${article.slug || ""}`;
-  const encodedTitle = encodeURIComponent(article.title || "");
-  const encodedUrl = encodeURIComponent(shareUrl);
+  const baseUrl = `https://xyzonemedia.com/artikel/${article.article_id}/${article.slug}`;
+const shareUrls = {
+  facebook: `${baseUrl}?utm_source=facebook`,
+  twitter: `${baseUrl}?utm_source=twitter`,
+  linkedin: `${baseUrl}?utm_source=linkedin`,
+  whatsapp: `${baseUrl}?utm_source=whatsapp`,
+};
 
-  const handleShare = (platform) => {
-    let url = "";
-    switch (platform) {
-      case "facebook":
-        url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`;
-        break;
-      case "twitter":
-        url = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
-        break;
-      case "linkedin":
-        url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
-        break;
-      case "whatsapp":
-        url = `https://api.whatsapp.com/send?text=${encodedTitle} ${encodedUrl}?ref=wa`;
-        break;
-      default:
-        break;
-    }
-    window.open(url, "_blank");
-  };
+
+  
+
+ const handleShare = (platform) => {
+  const encodedUrl = encodeURIComponent(shareUrls[platform]);
+  const encodedTitle = encodeURIComponent(article.title || "");
+
+  let url = "";
+  switch (platform) {
+    case "facebook":
+      url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`;
+      break;
+    case "twitter":
+      url = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+      break;
+    case "linkedin":
+      url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
+      break;
+    case "whatsapp":
+      url = `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`;
+      break;
+    default:
+      break;
+  }
+  window.open(url, "_blank");
+};
+
 
   return (
     <div className="mt-8">
