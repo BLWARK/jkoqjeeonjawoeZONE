@@ -40,42 +40,44 @@ const Tracking = ({ article = null }) => {
   const isArticlePage = /^\/artikel\/\d+\/[\w-]+$/.test(pathname);
 
   const sendExitTracking = () => {
-    console.log("📤 Attempting to send exit tracking...");
+  console.log("📤 Attempting to send exit tracking...");
 
-    if (!visitorIdRef.current || !visitTypeRef.current) {
-      console.log("❌ visitorId or visitType missing. Skip exit tracking.");
-      return;
-    }
+  if (!visitorIdRef.current || !visitTypeRef.current) {
+    console.log("❌ visitorId or visitType missing. Skip exit tracking.");
+    return;
+  }
 
-    const exitTime = new Date();
-    const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
+  const exitTime = new Date();
+  const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
 
-    const exitPayload = {
-      pathname: previousPathRef.current,
-      type: visitTypeRef.current,
-      exitedAt: exitTime.toISOString(),
-      duration,
-      visitorId: visitorIdRef.current,
-      sessionId: sessionStorage.getItem("sessionId") || null,
-      url: window.location.href,
-    };
-
-    try {
-      const blob = new Blob([JSON.stringify(exitPayload)], {
-        type: "application/json",
-      });
-
-      const success = navigator.sendBeacon(`${baseUrl}/api/track-exit`, blob);
-
-      if (success) {
-        console.log("📤 Sent exit tracking successfully:", exitPayload);
-      } else {
-        console.warn("⚠️ navigator.sendBeacon returned false.");
-      }
-    } catch (err) {
-      console.error("❌ Error sending exit tracking:", err);
-    }
+  const exitPayload = {
+    event_type: "exit", // 🔥 tambahkan ini agar backend tahu ini exit
+    pathname: previousPathRef.current,
+    type: visitTypeRef.current,
+    exitedAt: exitTime.toISOString(),
+    duration,
+    visitorId: visitorIdRef.current,
+    sessionId: sessionStorage.getItem("sessionId") || null,
+    url: window.location.href,
   };
+
+  try {
+    const blob = new Blob([JSON.stringify(exitPayload)], {
+      type: "application/json",
+    });
+
+    const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
+
+    if (success) {
+      console.log("📤 Sent exit tracking successfully:", exitPayload);
+    } else {
+      console.warn("⚠️ navigator.sendBeacon returned false.");
+    }
+  } catch (err) {
+    console.error("❌ Error sending exit tracking:", err);
+  }
+};
+
 
   const trackEntry = async () => {
     const visitType = determineVisitType(pathname);
