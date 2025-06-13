@@ -7,6 +7,8 @@ import Footer from "@/components/footer/Footer";
 import Tracking from "@/components/Tracking";
 import Scrolltop from "@/components/scroll-to-top/Scroll";
 import { BackProvider } from "@/context/BackContext";
+import Script from "next/script";
+
 
 import "./globals.css";
 
@@ -77,6 +79,22 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#ff6600" />
+
+
+          {/* ✅ Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-E2Z0Z99E7V"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E2Z0Z99E7V');
+          `}
+        </Script>
 
         {/* ✅ JSON-LD Structured Data untuk SEO */}
         <script

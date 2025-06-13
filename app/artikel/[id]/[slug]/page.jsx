@@ -346,7 +346,8 @@ const ArticlePage = () => {
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-2 px-3">
       {/* 🔹 Tracking Komponen ✅ */}
-      <Tracking />
+      <Tracking article={currentArticle} />
+
 
       {/* 🔹 Iklan atas */}
       <Adv />
