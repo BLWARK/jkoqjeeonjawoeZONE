@@ -185,15 +185,55 @@ const Tracking = ({ article = null }) => {
     console.log("✅ Sent enriched tracking:", payload);
   };
 
-  useEffect(() => {
-    if (isArticlePage && (!article || !article.article_id)) return; // hanya skip jika di artikel & data belum siap
-    if (previousPathRef.current) sendExitTracking();
-    trackEntry();
+  
 
-    const handleBeforeUnload = () => sendExitTracking();
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, [pathname, article]);
+ useEffect(() => {
+  if (isArticlePage && (!article || !article.article_id)) return;
+
+  // ⏱️ Kirim exit tracking DULU, sebelum entryTime ditimpa
+  const exitTime = new Date();
+  if (previousPathRef.current && visitorIdRef.current && visitTypeRef.current) {
+    const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
+
+    const exitPayload = {
+      event_type: "exit",
+      pathname: previousPathRef.current,
+      type: visitTypeRef.current,
+      exitedAt: exitTime.toISOString(),
+      duration,
+      visitorId: visitorIdRef.current,
+      sessionId: sessionStorage.getItem("sessionId") || null,
+      url: window.location.href,
+    };
+
+    try {
+      const blob = new Blob([JSON.stringify(exitPayload)], {
+        type: "application/json",
+      });
+      const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
+      if (!success) {
+        fetch(`${baseUrl}/api/analytics`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(exitPayload),
+          keepalive: true,
+        });
+      }
+      console.log("📤 Sent accurate exit tracking:", exitPayload);
+    } catch (err) {
+      console.error("❌ Failed to send exit tracking:", err);
+    }
+  }
+
+  // 🔁 Baru catat entry untuk halaman baru
+  trackEntry();
+
+  // Tambahkan listener saat unload
+  const handleBeforeUnload = () => sendExitTracking();
+  window.addEventListener("beforeunload", handleBeforeUnload);
+  return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+}, [pathname, article]);
+
 
   useEffect(() => {
   const handleVisibilityChange = () => {
