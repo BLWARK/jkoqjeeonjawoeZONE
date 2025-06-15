@@ -78,7 +78,6 @@ const Tracking = ({ article = null }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(exitPayload),
-      credentials: "include",
       keepalive: true, //
     });
     console.log("📤 Fallback fetch sent exit tracking.");
@@ -181,7 +180,6 @@ const Tracking = ({ article = null }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      credentials: "include",
     });
 
     console.log("✅ Sent enriched tracking:", payload);
