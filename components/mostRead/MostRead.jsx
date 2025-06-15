@@ -11,7 +11,7 @@ const MostRead = () => {
   const { getArticlesByViews, popularArticles } = useBackContext();
 
   useEffect(() => {
-    getArticlesByViews(1, 1, 10); // platformId = 1, page = 1, limit = 10
+    getArticlesByViews(); // platformId = 1, page = 1, limit = 10
   }, [getArticlesByViews]);
 
   const mostReadArticles = popularArticles.slice(0, 6);

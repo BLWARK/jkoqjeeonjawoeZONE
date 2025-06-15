@@ -69,10 +69,24 @@ const Tracking = ({ article = null }) => {
     const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
 
     if (success) {
-      console.log("📤 Sent exit tracking successfully:", exitPayload);
-    } else {
-      console.warn("⚠️ navigator.sendBeacon returned false.");
-    }
+  console.log("📤 Sent exit tracking successfully:", exitPayload);
+} else {
+  console.warn("⚠️ navigator.sendBeacon returned false. Trying fetch fallback...");
+
+  try {
+    fetch(`${baseUrl}/api/analytics`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(exitPayload),
+      credentials: "include",
+      keepalive: true, //
+    });
+    console.log("📤 Fallback fetch sent exit tracking.");
+  } catch (err) {
+    console.error("❌ Fallback fetch failed:", err);
+  }
+}
+
   } catch (err) {
     console.error("❌ Error sending exit tracking:", err);
   }
@@ -167,6 +181,7 @@ const Tracking = ({ article = null }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+      credentials: "include",
     });
 
     console.log("✅ Sent enriched tracking:", payload);
@@ -181,6 +196,20 @@ const Tracking = ({ article = null }) => {
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [pathname, article]);
+
+  useEffect(() => {
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === "hidden") {
+      sendExitTracking();
+    }
+  };
+
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+  return () => {
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  };
+}, []);
+
 
   return null;
 };
