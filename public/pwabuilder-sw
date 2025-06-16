@@ -1,16 +1,61 @@
+const CACHE_NAME = "xyzonemedia-cache-v2";
+const OFFLINE_URL = "/offline.html";
+
+// Precache saat install
 self.addEventListener("install", (event) => {
-    event.waitUntil(
-      caches.open("xyzonemedia-cache-v1").then((cache) => {
-        return cache.addAll(["/", "/offline.html"]);
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll([
+        "/",
+        OFFLINE_URL,
+        "/favicon.ico",
+        "/manifest.json",
+        "/logo192.png", // contoh tambahan ikon
+      ]);
+    })
+  );
+  self.skipWaiting();
+});
+
+// Hapus cache lama saat aktivasi
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      )
+    )
+  );
+  self.clients.claim();
+});
+
+// Strategi: Network First → fallback ke cache → fallback ke offline.html
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        // Simpan salinan respons ke cache
+        const clonedResponse = response.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, clonedResponse);
+        });
+        return response;
       })
-    );
-  });
-  
-  self.addEventListener("fetch", (event) => {
-    event.respondWith(
-      caches.match(event.request).then((response) => {
-        return response || fetch(event.request);
-      })
-    );
-  });
-  
+      .catch(() =>
+        caches.match(event.request).then((cached) => {
+          return (
+            cached ||
+            (event.request.mode === "navigate"
+              ? caches.match(OFFLINE_URL)
+              : null)
+          );
+        })
+      )
+  );
+});
