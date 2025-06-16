@@ -11,6 +11,7 @@ const Tracking = ({ article = null }) => {
   const visitorIdRef = useRef(null);
   const previousPathRef = useRef(null);
   const visitTypeRef = useRef(null);
+  const hasSentExitRef = useRef(false);
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
   const determineVisitType = (path) => {
@@ -46,6 +47,8 @@ const Tracking = ({ article = null }) => {
     console.log("❌ visitorId or visitType missing. Skip exit tracking.");
     return;
   }
+
+  hasSentExitRef.current = true;
 
   const exitTime = new Date();
   const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
@@ -93,6 +96,7 @@ const Tracking = ({ article = null }) => {
 
 
   const trackEntry = async () => {
+     hasSentExitRef.current = false;
     const visitType = determineVisitType(pathname);
     visitTypeRef.current = visitType;
     entryTimeRef.current = new Date();
@@ -187,27 +191,31 @@ const Tracking = ({ article = null }) => {
 
   
 
- useEffect(() => {
+useEffect(() => {
   if (isArticlePage && (!article || !article.article_id)) return;
 
-  // ⏱️ Kirim exit tracking DULU, sebelum entryTime ditimpa
-  const exitTime = new Date();
-  if (previousPathRef.current && visitorIdRef.current && visitTypeRef.current) {
-    const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
+  // ✅ Simpan data lama SEBELUM overwrite
+  const lastPath = previousPathRef.current;
+  const lastType = visitTypeRef.current;
+  const lastEntry = entryTimeRef.current;
+  const lastVisitorId = visitorIdRef.current;
 
-    const exitPayload = {
+  if (!hasSentExitRef.current && lastPath && lastType && lastEntry && lastVisitorId) {
+    const exitTime = new Date();
+    const duration = Math.round((exitTime - lastEntry) / 1000);
+    const payload = {
       event_type: "exit",
-      pathname: previousPathRef.current,
-      type: visitTypeRef.current,
+      pathname: lastPath,
+      type: lastType,
       exitedAt: exitTime.toISOString(),
       duration,
-      visitorId: visitorIdRef.current,
+      visitorId: lastVisitorId,
       sessionId: sessionStorage.getItem("sessionId") || null,
       url: window.location.href,
     };
 
     try {
-      const blob = new Blob([JSON.stringify(exitPayload)], {
+      const blob = new Blob([JSON.stringify(payload)], {
         type: "application/json",
       });
       const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
@@ -215,38 +223,39 @@ const Tracking = ({ article = null }) => {
         fetch(`${baseUrl}/api/analytics`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(exitPayload),
+          body: JSON.stringify(payload),
           keepalive: true,
         });
       }
-      console.log("📤 Sent accurate exit tracking:", exitPayload);
+      console.log("📤 Sent fixed exit:", payload);
     } catch (err) {
-      console.error("❌ Failed to send exit tracking:", err);
+      console.error("❌ Failed to send fixed exit:", err);
     }
+
+    hasSentExitRef.current = true;
   }
 
-  // 🔁 Baru catat entry untuk halaman baru
+  // Setelah itu baru overwrite dengan page sekarang
   trackEntry();
 
-  // Tambahkan listener saat unload
-  const handleBeforeUnload = () => sendExitTracking();
-  window.addEventListener("beforeunload", handleBeforeUnload);
-  return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-}, [pathname, article]);
-
-
-  useEffect(() => {
+  const handleBeforeUnload = () => {
+    if (!hasSentExitRef.current) sendExitTracking();
+  };
   const handleVisibilityChange = () => {
-    if (document.visibilityState === "hidden") {
+    if (document.visibilityState === "hidden" && !hasSentExitRef.current) {
       sendExitTracking();
     }
   };
 
+  window.addEventListener("beforeunload", handleBeforeUnload);
   document.addEventListener("visibilitychange", handleVisibilityChange);
   return () => {
+    window.removeEventListener("beforeunload", handleBeforeUnload);
     document.removeEventListener("visibilitychange", handleVisibilityChange);
   };
-}, []);
+}, [pathname, article]);
+
+
 
 
   return null;
