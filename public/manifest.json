@@ -30,7 +30,7 @@
     {
       "name": "Berita Terkini",
       "url": "/",
-      "icons": [{ "src": "/icons/news.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/logo.jpg", "sizes": "96x96" }]
     }
   ]
 }
