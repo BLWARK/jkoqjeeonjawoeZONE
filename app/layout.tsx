@@ -9,7 +9,6 @@ import Scrolltop from "@/components/scroll-to-top/Scroll";
 import { BackProvider } from "@/context/BackContext";
 import Script from "next/script";
 
-
 import "./globals.css";
 
 // Menggunakan font Roboto
@@ -77,11 +76,18 @@ export default function RootLayout({
         />
         <meta name="msvalidate.01" content="98F79C92B69C4284488C28E54D68FABC" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/logo.jpg"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="XYZONEMEDIA" />
         <meta name="theme-color" content="#ff6600" />
 
-
-          {/* ✅ Google Analytics */}
+        {/* ✅ Google Analytics */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-S6SC0MPZP0"
