@@ -7,12 +7,14 @@ import { useBackContext } from "@/context/BackContext";
 import AdsMostRead from "@/components/page-components/adv-sect/AdvMostRead";
 import AdsMostRead2 from "@/components/page-components/adv-sect/AdvMostRead2";
 
-const MostReadTag = () => {
+const MostReadTag = ({platformId}) => {
   const { getArticlesByViews, popularArticles } = useBackContext();
 
-  useEffect(() => {
-    getArticlesByViews(1, 1, 10); // platformId = 1, page = 1, limit = 10
-  }, [getArticlesByViews]);
+      useEffect(() => {
+      if (platformId) {
+        getArticlesByViews(platformId);
+      }
+    }, [getArticlesByViews, platformId]);
 
   const mostReadArticles = popularArticles.slice(0, 5);
 

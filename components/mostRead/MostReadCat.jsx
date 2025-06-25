@@ -9,9 +9,11 @@ import AdsMostRead from "@/components/page-components/adv-sect/AdvMostRead";
 const MostReadCat = ({ platformId }) => {
   const { getArticlesByViews, popularArticles } = useBackContext();
 
-  useEffect(() => {
-    getArticlesByViews(1, 1, 10); // platformId = 1, page = 1, limit = 10
-  }, [getArticlesByViews]);
+     useEffect(() => {
+     if (platformId) {
+       getArticlesByViews(platformId);
+     }
+   }, [getArticlesByViews, platformId]);
 
   const articles = popularArticles.slice(0, 5); // Tampilkan hanya 5
 

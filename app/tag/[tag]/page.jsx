@@ -200,7 +200,8 @@ useEffect(() => {
 
         {/* 🔹 Sidebar */}
         <div className="w-full 2xl:border-l xl:border-l lg:border-l border-l-gray-300 2xl:pl-5 xl:pl-5 lg:pl-5">
-          <MostReadTag />
+          <MostReadTag platformId={platformId || articlesByTag?.[0]?.platform_id || 1} />
+
         </div>
       </div>
     </div>

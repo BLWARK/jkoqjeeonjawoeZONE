@@ -146,7 +146,8 @@ const LatestNews = ({ platformId: propPlatformId }) => {
       {/* Bagian Adv */}
       <div className="2xl:w-[30%] xl:w-[30%] lg:w-[30%] w-full relative">
         <div className="2xl:sticky top-20">
-          <MostReadCat />
+          <MostReadCat platformId={platformId} />
+
         </div>
       </div>
     </div>
