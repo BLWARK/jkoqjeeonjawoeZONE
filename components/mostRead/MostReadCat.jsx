@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useBackContext } from "@/context/BackContext";
 import AdsMostRead from "@/components/page-components/adv-sect/AdvMostRead";
 
-const MostReadCat = () => {
+const MostReadCat = ({ platformId }) => {
   const { getArticlesByViews, popularArticles } = useBackContext();
 
   useEffect(() => {

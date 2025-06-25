@@ -331,10 +331,18 @@ const ArticlePage = () => {
     }
   }, [currentPage]);
 
- if (!currentArticle || isLoadingArticle) {
+if (isLoadingArticle) {
   return (
     <div className="flex justify-center items-center h-[300px]">
       <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
+
+if (!currentArticle) {
+  return (
+    <div className="text-center py-10 text-gray-600">
+      Artikel tidak ditemukan...
     </div>
   );
 }
@@ -555,7 +563,8 @@ const ArticlePage = () => {
         </div>
 
         {/* Right Sidebar - Ads & Most Read */}
-        <MostRead />
+        <MostRead platformId={currentArticle.platform_id} />
+
       </div>
 
       {/* 🔹 Iklan Bawah */}
