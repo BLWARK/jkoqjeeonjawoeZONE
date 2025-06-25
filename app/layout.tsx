@@ -72,7 +72,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="google-site-verification"
-          content="RSAlJodOSUpPQMKD9FJNeaE4D7evrXCbQ3mmBIl5LeQ"
+          content="RSAlJodOSUpPQMKD9FJNeaE4D7evrXCbQ3mmBIl5LeQ" 
         />
         <meta name="msvalidate.01" content="98F79C92B69C4284488C28E54D68FABC" />
         <link rel="icon" href="/favicon.ico" />

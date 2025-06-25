@@ -331,17 +331,14 @@ const ArticlePage = () => {
     }
   }, [currentPage]);
 
-  if (!currentArticle) {
-    return <p className="text-center py-10">Artikel tidak ditemukan...</p>;
-  }
+ if (!currentArticle || isLoadingArticle) {
+  return (
+    <div className="flex justify-center items-center h-[300px]">
+      <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
 
-  if (isLoadingArticle) {
-    return (
-      <div className="flex justify-center items-center h-[300px]">
-        <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
 
   return (
     <div className="w-full 2xl:max-w-[1200px] xl:max-w-[1200px] lg:max-w-[1020px] mx-auto py-2 px-3">
