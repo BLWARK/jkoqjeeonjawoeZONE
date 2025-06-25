@@ -5,7 +5,7 @@ export async function generateMetadata(context) {
   const formattedTag = tag.replace(/-/g, " ");
 
   try {
-    const articles = await getArticlesByTag(tag, 1, 1); // Ambil 1 artikel saja
+    const articles = await getArticlesByTag(tag, "ALL", 1, 1); // Ambil 1 artikel saja
 
     if (!articles.length) {
       return {

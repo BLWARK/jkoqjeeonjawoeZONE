@@ -1,8 +1,7 @@
 export const dynamic = 'force-dynamic'; // ⬅️ WAJIB untuk dynamic API routes
 
 export async function GET(request, context) {
-  const { page } = await context.params; // ❌ SALAH
-
+  const { page } = await context.params; 
   const LIMIT = 50000;
   const allArticles = [];
 
@@ -37,15 +36,16 @@ export async function GET(request, context) {
   const sliced = tagEntries.slice(start, end);
 
   const urls = sliced.map(([slug, updated]) => {
-    const escapedSlug = escapeXml(encodeURIComponent(slug));
-    return `
+  const escapedSlug = escapeXml(encodeURIComponent(slug));
+  return `
     <url>
-      <loc>https://xyzonemedia.com/tag/${escapedSlug}?platform_id=1</loc>
+      <loc>https://xyzonemedia.com/tag/${escapedSlug}</loc>
       <lastmod>${new Date(updated).toISOString()}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>
     </url>`;
-  });
+});
+
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

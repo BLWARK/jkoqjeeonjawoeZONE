@@ -41,62 +41,62 @@ const Tracking = ({ article = null }) => {
   const isArticlePage = /^\/artikel\/\d+\/[\w-]+$/.test(pathname);
 
   const sendExitTracking = () => {
-  console.log("📤 Attempting to send exit tracking...");
+    console.log("📤 Attempting to send exit tracking...");
 
-  if (!visitorIdRef.current || !visitTypeRef.current) {
-    console.log("❌ visitorId or visitType missing. Skip exit tracking.");
-    return;
-  }
+    if (!visitorIdRef.current || !visitTypeRef.current) {
+      console.log("❌ visitorId or visitType missing. Skip exit tracking.");
+      return;
+    }
 
-  hasSentExitRef.current = true;
+    hasSentExitRef.current = true;
 
-  const exitTime = new Date();
-  const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
+    const exitTime = new Date();
+    const duration = Math.round((exitTime - entryTimeRef.current) / 1000);
 
-  const exitPayload = {
-    event_type: "exit", // 🔥 tambahkan ini agar backend tahu ini exit
-    pathname: previousPathRef.current,
-    type: visitTypeRef.current,
-    exitedAt: exitTime.toISOString(),
-    duration,
-    visitorId: visitorIdRef.current,
-    sessionId: sessionStorage.getItem("sessionId") || null,
-    url: window.location.href,
+    const exitPayload = {
+      event_type: "exit", // 🔥 tambahkan ini agar backend tahu ini exit
+      pathname: previousPathRef.current,
+      type: visitTypeRef.current,
+      exitedAt: exitTime.toISOString(),
+      duration,
+      visitorId: visitorIdRef.current,
+      sessionId: sessionStorage.getItem("sessionId") || null,
+      url: window.location.href,
+    };
+
+    try {
+      const blob = new Blob([JSON.stringify(exitPayload)], {
+        type: "application/json",
+      });
+
+      const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
+
+      if (success) {
+        console.log("📤 Sent exit tracking successfully:", exitPayload);
+      } else {
+        console.warn(
+          "⚠️ navigator.sendBeacon returned false. Trying fetch fallback..."
+        );
+
+        try {
+          fetch(`${baseUrl}/api/analytics`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(exitPayload),
+            keepalive: true, //
+          });
+          console.log("📤 Fallback fetch sent exit tracking.");
+        } catch (err) {
+          console.error("❌ Fallback fetch failed:", err);
+        }
+      }
+    } catch (err) {
+      console.error("❌ Error sending exit tracking:", err);
+    }
   };
 
-  try {
-    const blob = new Blob([JSON.stringify(exitPayload)], {
-      type: "application/json",
-    });
-
-    const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
-
-    if (success) {
-  console.log("📤 Sent exit tracking successfully:", exitPayload);
-} else {
-  console.warn("⚠️ navigator.sendBeacon returned false. Trying fetch fallback...");
-
-  try {
-    fetch(`${baseUrl}/api/analytics`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(exitPayload),
-      keepalive: true, //
-    });
-    console.log("📤 Fallback fetch sent exit tracking.");
-  } catch (err) {
-    console.error("❌ Fallback fetch failed:", err);
-  }
-}
-
-  } catch (err) {
-    console.error("❌ Error sending exit tracking:", err);
-  }
-};
-
-
   const trackEntry = async () => {
-     hasSentExitRef.current = false;
+    hasSentExitRef.current = false;
     const visitType = determineVisitType(pathname);
     visitTypeRef.current = visitType;
     entryTimeRef.current = new Date();
@@ -110,9 +110,9 @@ const Tracking = ({ article = null }) => {
     const ipData = await ipRes.json();
     const ip = ipData.ip;
 
-    const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+    const geoRes = await fetch("https://ipinfo.io/json?token=266360202e7ef9");
     const geoData = await geoRes.json();
-    const country = geoData.country_name || "unknown";
+    const country = geoData.country || "unknown";
 
     const ua = new UAParser();
     const userAgent = navigator.userAgent;
@@ -189,74 +189,75 @@ const Tracking = ({ article = null }) => {
     console.log("✅ Sent enriched tracking:", payload);
   };
 
-  
+  useEffect(() => {
+    if (isArticlePage && (!article || !article.article_id)) return;
 
-useEffect(() => {
-  if (isArticlePage && (!article || !article.article_id)) return;
+    // ✅ Simpan data lama SEBELUM overwrite
+    const lastPath = previousPathRef.current;
+    const lastType = visitTypeRef.current;
+    const lastEntry = entryTimeRef.current;
+    const lastVisitorId = visitorIdRef.current;
 
-  // ✅ Simpan data lama SEBELUM overwrite
-  const lastPath = previousPathRef.current;
-  const lastType = visitTypeRef.current;
-  const lastEntry = entryTimeRef.current;
-  const lastVisitorId = visitorIdRef.current;
+    if (
+      !hasSentExitRef.current &&
+      lastPath &&
+      lastType &&
+      lastEntry &&
+      lastVisitorId
+    ) {
+      const exitTime = new Date();
+      const duration = Math.round((exitTime - lastEntry) / 1000);
+      const payload = {
+        event_type: "exit",
+        pathname: lastPath,
+        type: lastType,
+        exitedAt: exitTime.toISOString(),
+        duration,
+        visitorId: lastVisitorId,
+        sessionId: sessionStorage.getItem("sessionId") || null,
+        url: window.location.href,
+      };
 
-  if (!hasSentExitRef.current && lastPath && lastType && lastEntry && lastVisitorId) {
-    const exitTime = new Date();
-    const duration = Math.round((exitTime - lastEntry) / 1000);
-    const payload = {
-      event_type: "exit",
-      pathname: lastPath,
-      type: lastType,
-      exitedAt: exitTime.toISOString(),
-      duration,
-      visitorId: lastVisitorId,
-      sessionId: sessionStorage.getItem("sessionId") || null,
-      url: window.location.href,
+      try {
+        const blob = new Blob([JSON.stringify(payload)], {
+          type: "application/json",
+        });
+        const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
+        if (!success) {
+          fetch(`${baseUrl}/api/analytics`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+            keepalive: true,
+          });
+        }
+        console.log("📤 Sent fixed exit:", payload);
+      } catch (err) {
+        console.error("❌ Failed to send fixed exit:", err);
+      }
+
+      hasSentExitRef.current = true;
+    }
+
+    // Setelah itu baru overwrite dengan page sekarang
+    trackEntry();
+
+    const handleBeforeUnload = () => {
+      if (!hasSentExitRef.current) sendExitTracking();
+    };
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden" && !hasSentExitRef.current) {
+        sendExitTracking();
+      }
     };
 
-    try {
-      const blob = new Blob([JSON.stringify(payload)], {
-        type: "application/json",
-      });
-      const success = navigator.sendBeacon(`${baseUrl}/api/analytics`, blob);
-      if (!success) {
-        fetch(`${baseUrl}/api/analytics`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          keepalive: true,
-        });
-      }
-      console.log("📤 Sent fixed exit:", payload);
-    } catch (err) {
-      console.error("❌ Failed to send fixed exit:", err);
-    }
-
-    hasSentExitRef.current = true;
-  }
-
-  // Setelah itu baru overwrite dengan page sekarang
-  trackEntry();
-
-  const handleBeforeUnload = () => {
-    if (!hasSentExitRef.current) sendExitTracking();
-  };
-  const handleVisibilityChange = () => {
-    if (document.visibilityState === "hidden" && !hasSentExitRef.current) {
-      sendExitTracking();
-    }
-  };
-
-  window.addEventListener("beforeunload", handleBeforeUnload);
-  document.addEventListener("visibilitychange", handleVisibilityChange);
-  return () => {
-    window.removeEventListener("beforeunload", handleBeforeUnload);
-    document.removeEventListener("visibilitychange", handleVisibilityChange);
-  };
-}, [pathname, article]);
-
-
-
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [pathname, article]);
 
   return null;
 };

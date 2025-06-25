@@ -59,19 +59,26 @@ export async function getArticleBySlug(slug) {
 }
 
 // ✅ Fungsi baru untuk ambil artikel berdasarkan tag
-export async function getArticlesByTag(tag, platformId = 1, page = 1, limit = 6) {
+export async function getArticlesByTag(tag, platformId, page = 1, limit = 6) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/articles?tags=${tag}&platform_id=${platformId}&page=${page}&limit=${limit}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_TOKEN}`,
-        },
-        cache: "no-store",
-      }
-    );
+    const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/articles`);
+    url.searchParams.append("tags", tag);
+    url.searchParams.append("page", page);
+    url.searchParams.append("limit", limit);
+
+    // Hanya tambahkan platform_id jika bukan "ALL" atau null
+    if (platformId && platformId !== "ALL") {
+      url.searchParams.append("platform_id", platformId);
+    }
+
+    const res = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_TOKEN}`,
+      },
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       throw new Error(`Failed to fetch articles with tag: ${tag}`);
