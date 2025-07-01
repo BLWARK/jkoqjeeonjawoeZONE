@@ -105,6 +105,7 @@ const Tracking = ({ article = null }) => {
     const fp = await FingerprintJS.load();
     const { visitorId } = await fp.get();
     visitorIdRef.current = visitorId;
+    localStorage.setItem("visitorId", visitorId); // 🔥 tambahkan ini
 
     const ipRes = await fetch("https://api64.ipify.org?format=json");
     const ipData = await ipRes.json();
