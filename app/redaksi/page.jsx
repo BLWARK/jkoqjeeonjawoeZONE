@@ -27,13 +27,10 @@ const page = () => {
         <div className="border border-gray-300 rounded-lg p-4 bg-white">
           <div className="grid md:grid-cols-2 gap-4 text-sm">
             <div className="bg-blue-100 p-2 font-semibold">Pemimpin Umum</div>
-            <div className="bg-blue-50 p-2">Jimmy Lizardo</div>
-
-            <div className="bg-blue-100 p-2 font-semibold">Pemimpin Perusahaan</div>
             <div className="bg-blue-50 p-2">Ricky Nehemia Adam</div>
 
-            <div className="bg-blue-100 p-2 font-semibold">Wakil Pemimpin Perusahaan</div>
-            <div className="bg-blue-50 p-2">Anupam Dubey</div>
+            <div className="bg-blue-100 p-2 font-semibold">Pemimpin Perusahaan</div>
+            <div className="bg-blue-50 p-2">Pandu Bagaskoro</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Penanggung Jawab Redaksi</div>
             <div className="bg-blue-50 p-2">Cecep Mahmud</div>
@@ -45,7 +42,7 @@ const page = () => {
             <div className="bg-blue-50 p-2">Shandi March Dede Titin SE. MiKom</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Sekretaris Redaksi</div>
-            <div className="bg-blue-50 p-2">Rizka Kurnia</div>
+            <div className="bg-blue-50 p-2">Helen</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Penulis</div>
             <div className="bg-blue-50 p-2 space-y-1">
