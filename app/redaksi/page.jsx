@@ -33,13 +33,13 @@ const page = () => {
             <div className="bg-blue-50 p-2">Pandu Bagaskoro</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Penanggung Jawab Redaksi</div>
-            <div className="bg-blue-50 p-2">Cecep Mahmud</div>
+            <div className="bg-blue-50 p-2">Shandi March Dede Titin SE. MiKom</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Pemimpin Redaksi</div>
-            <div className="bg-blue-50 p-2">Cecep Mahmud</div>
+            <div className="bg-blue-50 p-2">Shandi March Dede Titin SE. MiKom</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Wakil Pemimpin Redaksi</div>
-            <div className="bg-blue-50 p-2">Shandi March Dede Titin SE. MiKom</div>
+            <div className="bg-blue-50 p-2">Priya Husada</div>
 
             <div className="bg-blue-100 p-2 font-semibold">Sekretaris Redaksi</div>
             <div className="bg-blue-50 p-2">Helen</div>
