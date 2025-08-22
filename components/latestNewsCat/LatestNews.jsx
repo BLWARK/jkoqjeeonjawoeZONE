@@ -91,7 +91,7 @@ const LatestNews = ({ category, displayedCategoryArticles = [] }) => {
                 className="flex 2xl:flex-row xl:flex-col lg:flex-col flex-col gap-4 border-b pb-4 items-start"
               >
                 <Link href={`/artikel/${article.article_id}/${article.slug}`}>
-                  <div className="relative 2xl:w-[300px] xl:w-[750px] lg:w-[650px] w-[360px] 2xl:h-[200px] xl:h-[300px] lg:h-[300px] h-[200px] flex-shrink-0">
+                  <div className="relative 2xl:w-[300px] xl:w-[750px] lg:w-[650px] w-full 2xl:h-[200px] xl:h-[300px] lg:h-[300px] h-[200px] flex-shrink-0">
                     <Image
                       src={article.image || "/default.jpg"}
                       alt={article.title}
